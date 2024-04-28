@@ -3,9 +3,9 @@ import 'package:openapi_generator_annotations/openapi_generator_annotations.dart
 @Openapi(
     additionalProperties:
     AdditionalProperties(pubName: 'athletix', pubAuthor: 'zimozi'),
-    inputSpecFile: '../base_flutter_app/assets/cart-tech.yaml',
+    inputSpecFile: '../LazoProvider/assets/lazo.yaml',
     generatorName: Generator.dart,
     alwaysRun: true,
     skipSpecValidation: true,
-    outputDirectory: '../base_flutter_app/lib/Data/Network')
+    outputDirectory: '../Lazo/lib/Data/Network')
 class Example extends OpenapiGeneratorConfig {}

@@ -1,0 +1,2651 @@
+openapi: 3.0.0
+info:
+  title: lazo
+  version: 1.0.0
+servers:
+  - url: http://{{url}}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    CodeSendRequest:
+      type: object
+      properties:
+        email_or_phone:
+          type: integer
+          example: '534053560'
+        account_type:
+          type: string
+          example: provider
+
+    CodeSendResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: sms sent successfully to this phone
+        is_exist:
+          type: boolean
+          example: false
+
+    CodeConfirmRequest:
+      type: object
+      properties:
+        email_or_phone:
+          type: integer
+          example: '534053560'
+        confirm_code:
+          type: integer
+          example: '5555'
+        account_type:
+          type: string
+          description: client or provider
+          example: provider
+
+    CodeConfirmResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: phone is verified successfully
+        data:
+          type: string
+
+    ResetCodeSendRequest:
+      type: object
+      properties:
+        email_or_phone:
+          type: integer
+          example: '534053560'
+        account_type:
+          type: string
+          example: provider
+
+    ResetCodeSendResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: reset code sent successfully to your phone
+        data:
+          type: string
+
+    ResetCodeConfirmRequest:
+      type: object
+      properties:
+        email_or_phone:
+          type: integer
+          example: '534053560'
+        confirm_code:
+          type: integer
+          example: '5555'
+        account_type:
+          type: string
+          description: client or provider
+          example: provider
+
+    ResetCodeConfirmResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: phone is verified successfully
+        data:
+          type: string
+
+    ResetPasswordRequest:
+      type: object
+      properties:
+        email_or_phone:
+          type: integer
+          example: '534053560'
+        new_password:
+          type: string
+          example: test1234
+        confirm_new_password:
+          type: string
+          example: test1234
+        account_type:
+          type: string
+          example: provider
+
+    ResetPasswordResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: password updated successfully
+        data:
+          type: string
+
+    ProviderRegistration:
+      type: object
+      properties:
+        name_en:
+          type: string
+          example: hyper market
+        name_ar:
+          type: string
+          example: متاجر هايبر
+        owner_name:
+          type: string
+          example: Ali Ahmed
+        email:
+          type: string
+          example: hyper22@gmail.com
+        phone:
+          type: integer
+          example: '534059560'
+        account_type:
+          type: string
+          enum:
+            - service_provider
+            - packaging_provider
+          example: service_provider
+        password:
+          type: string
+          example: '123456'
+        confirm_password:
+          type: string
+          example: '123456'
+        city_id:
+          type: integer
+          example: '1'
+        tags_ids:
+          type: array
+          items:
+            type: integer
+            example: '1'
+        has_offline_stores:
+          type: integer
+          enum:
+            - 0
+            - 1
+          example: '1'
+        offline_stores_number:
+          type: integer
+          description: required incase of has_offline_stores=1
+          example: '3'
+        locations:
+          type: array
+          items:
+            type: string
+            format: lat-lon
+            description: required incase of has_offline_stores=1
+            example: "31.227578678786685, 29.945350987156488"
+        provide_delivery:
+          type: integer
+          enum:
+            - 0
+            - 1
+          example: '1'
+        business_type:
+          type: string
+          enum:
+            - individual
+            - cooperation
+          example: individual
+        image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        instagram_link:
+          type: string
+          example: https://instagram.com/test
+        snapchat_link:
+          type: string
+          example: https://snapchat.com/test
+        tiktok_link:
+          type: string
+          example: https://tiktok.com/test
+        x_link:
+          type: string
+          example: https://x.com/test
+        start_time:
+          type: string
+          format: time
+          description: 'eg: 02:15 PM'
+          example: 02:15 PM
+        end_time:
+          type: string
+          format: time
+          description: 'eg: 04:00 PM'
+          example: 04:12 PM
+        working_days_indices:
+          type: array
+          items:
+            type: integer
+            enum: [0, 1, 2, 3, 4, 5, 6]
+            description: |
+              take days of week as indices,
+              0 => Sunday,
+              1 => Monday,
+              2 => Tuesday,
+              3 => Wednesday,
+              4 => Thursday,
+              5 => Friday,
+              6 => Saturday
+          example: [0, 3, 5]
+        self_employment_document:
+          type: string
+          description: required when business type is individual
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        commercial_register_image:
+          type: string
+          description: required when business type is cooperation
+          example: uploads/files/04-2024/1713354063L6Sxt212ExLiW2p.png
+        bank_name:
+          type: string
+          example: alrajhi
+        beneficiary_name:
+          type: string
+          example: Ali
+        bank_account_number:
+          type: integer
+          example: '43646364353'
+        iban:
+          type: integer
+          example: '00078687464'
+        iban_image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+
+    ProviderRegisterResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: provider registered successfully
+        data:
+          type: object
+          properties:
+            access_token:
+              type: string
+              example: 9|y0fxGsN3VvWghmCKOSAJXPFnvYR97IYXUK5l6Wwc
+            token_type:
+              type: string
+              example: Bearer
+            provider:
+              $ref: '#/components/schemas/ProviderData'
+
+    ProviderLoginRequest:
+      type: object
+      properties:
+        email_or_phone:
+          type: integer
+          example: '534053560'
+        password:
+          type: integer
+          example: '123456'
+
+    ProviderLoginResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: provider logged in successfully
+        data:
+          type: object
+          properties:
+            access_token:
+              type: string
+              example: 6|xRswjOF63AseSKVjWYSjRgGDn1nxI20E21l7XNz5
+            token_type:
+              type: string
+              example: Bearer
+            provider:
+              $ref: '#/components/schemas/ProviderData'
+            is_exist:
+              type: boolean
+              example: true
+
+    UploadFiles:
+      type: object
+      properties:
+        files[0]:
+          type: string
+          format: binary
+
+    ProviderProfileShowResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          $ref: '#/components/schemas/ProviderData'
+
+    CitiesResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/City'
+
+    BannersResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Banner'
+
+    TagsResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+
+    OccasionsResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Occasion'
+
+    ProviderProfileUpdateRequest:
+      type: object
+      properties:
+        bank_account_number:
+          type: string
+          example: '43646364353'
+        bank_name:
+          type: string
+          example: alrajhi
+        beneficiary_name:
+          type: string
+          example: Ali
+        business_type:
+          type: string
+          example: individual
+        city_id:
+          type: string
+          example: '1'
+        commercial_register_image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt212ExLiW2p.png
+        confirm_password:
+          type: string
+          example: '123456'
+        email:
+          type: string
+          example: hyper242@gmail.com
+        end_time:
+          description: |-
+            take days of week as indices, 
+            0 => Sunday,
+            1 => Monday,
+            2 => Tuesday,
+            3 => Wednesday,
+            4 => Thursday,
+            5 => Friday,
+            6 => Saturday
+          type: string
+          example: 04:12 PM
+        has_offline_stores:
+          type: string
+          example: '1'
+        iban:
+          type: string
+          example: '00078687464'
+        iban_image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        instagram_link:
+          type: string
+          example: https://instagram.com/test
+        locations:
+          type: array
+          items:
+            type: string
+            example: 31.227578678786685, 29.945350987156488
+        name_ar:
+          type: string
+          example: متاجر هايبررر
+        name_en:
+          type: string
+          example: hyper marketttrr
+        offline_stores_number:
+          type: string
+          example: '3'
+        owner_name:
+          type: string
+          example: Ali Ahmeddd
+        password:
+          type: string
+          example: '123456'
+        phone:
+          type: string
+          example: '534059563'
+        provide_delivery:
+          type: string
+          example: '1'
+        self_employment_document:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        snapchat_link:
+          type: string
+          example: https://snapchat.com/test
+        start_time:
+          description: 'eg: 04:00 PM'
+          type: string
+          example: 02:15 PM
+        status:
+          description: activate, deactivate, delete
+          type: string
+          example: deactivate
+        tags_ids:
+          type: array
+          items:
+            type: string
+            example: '1'
+        tiktok_link:
+          type: string
+          example: https://tiktok.com/test
+        working_days_indices:
+          type: array
+          items:
+            type: string
+            example: '0'
+        x_link:
+          description: 'eg: 02:15 PM'
+          type: string
+          example: https://x.com/test
+
+    ProviderProfileUpdateResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            account_type:
+              type: string
+              example: service_provider
+            bank_account_number:
+              type: string
+              example: '43646364353'
+            bank_name:
+              type: string
+              example: alrajhi
+            beneficiary_name:
+              type: string
+              example: Ali
+            business_type:
+              type: string
+              example: individual
+            city:
+              $ref: '#/components/schemas/City'
+            city_id:
+              type: number
+              example: 1
+            commercial_register_image:
+              nullable: true
+              example: null
+            commercial_register_image_path:
+              nullable: true
+              example: null
+            created_at:
+              type: string
+              example: '2024-04-23T12:11:22.000000Z'
+            device_type:
+              nullable: true
+              example: null
+            email:
+              type: string
+              example: hyper242@gmail.com
+            end_time:
+              type: string
+              example: 04:12 PM
+            fcm_token:
+              nullable: true
+              example: null
+            has_offline_stores:
+              type: number
+              example: 1
+            iban:
+              type: string
+              example: '00078687464'
+            iban_image:
+              type: string
+              example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+            id:
+              type: number
+              example: 1
+            image:
+              type: string
+              example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+            imagePath:
+              type: string
+              example: http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+            instagram_link:
+              type: string
+              example: https://instagram.com/test
+            lang:
+              type: string
+              example: ar
+            locations:
+              type: array
+              items:
+                $ref: '#/components/schemas/ProviderLocation'
+              example:
+                - created_at: '2024-04-23T15:10:27.000000Z'
+                  id: 5
+                  location: 31.227578678786685, 29.945350987156488
+                  provider_id: 1
+                  updated_at: '2024-04-23T15:10:27.000000Z'
+                - created_at: '2024-04-23T15:10:27.000000Z'
+                  id: 6
+                  location: 31.22596397297209, 29.946423870724885
+                  provider_id: 1
+                  updated_at: '2024-04-23T15:10:27.000000Z'
+            name:
+              type: string
+              example: متاجر هايبررر
+            name_ar:
+              type: string
+              example: متاجر هايبررر
+            name_en:
+              type: string
+              example: hyper marketttrr
+            offline_stores_number:
+              type: number
+              example: 3
+            owner_name:
+              type: string
+              example: Ali Ahmeddd
+            phone:
+              type: string
+              example: '534059563'
+            provide_delivery:
+              nullable: true
+              example: null
+            self_employment_document:
+              type: string
+              example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+            self_employment_document_path:
+              type: string
+              example: http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+            snapchat_link:
+              type: string
+              example: https://snapchat.com/test
+            start_time:
+              type: string
+              example: 02:15 PM
+            status:
+              type: string
+              example: deactivated
+            tags:
+              type: array
+              items:
+                $ref: '#/components/schemas/Tag'
+              example:
+                - created_at: '2024-04-23T12:11:03.000000Z'
+                  id: 1
+                  name: تسوق
+                  name_ar: تسوق
+                  name_en: shopping
+                  updated_at: '2024-04-23T12:11:03.000000Z'
+            tiktok_link:
+              type: string
+              example: https://tiktok.com/test
+            updated_at:
+              type: string
+              example: '2024-04-23T15:10:27.000000Z'
+            working_days_indices:
+              type: string
+              example: 0,3,5
+            working_days_indices_list:
+              type: array
+              items:
+                type: string
+              example:
+                - '0'
+                - '3'
+                - '5'
+            x_link:
+              type: string
+              example: https://x.com/test
+        message:
+          type: string
+          example: provider's profile update successfully
+        status:
+          type: boolean
+          example: true
+
+    ProviderData:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 4
+        name_en:
+          type: string
+          example: hyper market
+        name_ar:
+          type: string
+          example: متاجر هايبر
+        owner_name:
+          type: string
+          example: Ali Ahmed
+        email:
+          type: string
+          example: hyper22@gmail.com
+        phone:
+          type: string
+          example: '534059560'
+        image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        city_id:
+          type: integer
+          example: 1
+        account_type:
+          type: string
+          example: service_provider
+        device_type:
+          type: string
+        fcm_token:
+          type: string
+        lang:
+          type: string
+          example: ar
+        status:
+          type: string
+          example: pending
+        instagram_link:
+          type: string
+          example: https://instagram.com/test
+        snapchat_link:
+          type: string
+          example: https://snapchat.com/test
+        tiktok_link:
+          type: string
+          example: https://tiktok.com/test
+        x_link:
+          type: string
+          example: https://x.com/test
+        has_offline_stores:
+          type: integer
+          example: 1
+        offline_stores_number:
+          type: integer
+          example: 3
+        provide_delivery:
+          type: string
+        business_type:
+          type: string
+          example: individual
+        commercial_register_image:
+          type: string
+        self_employment_document:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        start_time:
+          type: string
+          example: 02:15 PM
+        end_time:
+          type: string
+          example: 04:12 PM
+        working_days_indices:
+          type: string
+          example: 0,3,5
+        bank_name:
+          type: string
+          example: alrajhi
+        beneficiary_name:
+          type: string
+          example: Ali
+        bank_account_number:
+          type: string
+          example: '43646364353'
+        iban:
+          type: string
+          example: '00078687464'
+        iban_image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        created_at:
+          type: string
+          example: '2024-04-20T16:31:09.000000Z'
+        updated_at:
+          type: string
+          example: '2024-04-20T16:31:09.000000Z'
+        name:
+          type: string
+          example: متاجر هايبر
+        imagePath:
+          type: string
+          example: http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        working_days_indices_list:
+          type: array
+          items:
+            type: string
+          example: ['0', '3', '5']
+        self_employment_document_path:
+          type: string
+          example: http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        commercial_register_image_path:
+          type: string
+        city:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 1
+            name_en:
+              type: string
+              example: Alriyadh
+            name_ar:
+              type: string
+              example: الرياض
+            created_at:
+              type: string
+              example: '2024-04-18T12:43:48.000000Z'
+            updated_at:
+              type: string
+              example: '2024-04-18T12:43:48.000000Z'
+            name:
+              type: string
+              example: الرياض
+        locations:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 7
+              provider_id:
+                type: integer
+                example: 4
+              location:
+                type: string
+                example: 31.227578678786685, 29.945350987156488
+              created_at:
+                type: string
+                example: '2024-04-20T16:31:09.000000Z'
+              updated_at:
+                type: string
+                example: '2024-04-20T16:31:09.000000Z'
+          example: []
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              name_en:
+                type: string
+                example: shopping
+              name_ar:
+                type: string
+                example: تسوق
+              created_at:
+                type: string
+                example: '2024-04-18T22:17:27.000000Z'
+              updated_at:
+                type: string
+                example: '2024-04-18T22:17:27.000000Z'
+              name:
+                type: string
+                example: تسوق
+          example: []
+
+    ProviderLocation:
+      type: object
+      properties:
+        created_at:
+          type: string
+          example: '2024-04-23T15:10:27.000000Z'
+        id:
+          type: number
+          example: 5
+        location:
+          type: string
+          example: 31.227578678786685, 29.945350987156488
+        provider_id:
+          type: number
+          example: 1
+        updated_at:
+          type: string
+          example: '2024-04-23T15:10:27.000000Z'
+
+    City:
+      type: object
+      properties:
+        id:
+          type: integer
+        name_en:
+          type: string
+        name_ar:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        name:
+          type: string
+
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        name_en:
+          type: string
+        name_ar:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+        name:
+          type: string
+
+    Banner:
+      type: object
+      properties:
+        created_at:
+          type: string
+          example: '2024-04-23T10:29:41.000000Z'
+        id:
+          type: number
+          example: 1
+        image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        imagePath:
+          type: string
+          example: http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        title:
+          type: string
+          example: first banner
+        updated_at:
+          type: string
+          example: '2024-04-23T10:29:41.000000Z'
+
+    Occasion:
+      type: object
+      properties:
+        created_at:
+          type: string
+          example: '2024-04-23T10:42:32.000000Z'
+        id:
+          type: number
+          example: 1
+        image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        imagePath:
+          type: string
+          example: http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        name:
+          type: string
+          example: حفل زفاف
+        name_ar:
+          type: string
+          example: حفل زفاف
+        name_en:
+          type: string
+          example: wedding
+        updated_at:
+          type: string
+          example: '2024-04-23T10:42:32.000000Z'
+
+    PromocodeDetails:
+      type: object
+      properties:
+        allowed_usage_number:
+          type: string
+          example: '5'
+        code:
+          type: string
+          example: XWESF34
+        created_at:
+          type: string
+          example: '2024-04-23T12:00:20.000000Z'
+        expiration_date:
+          type: string
+          example: '2024-04-26'
+        id:
+          type: number
+          example: 4
+        type:
+          type: string
+          example: percent
+        updated_at:
+          type: string
+          example: '2024-04-23T12:02:04.000000Z'
+        value:
+          type: number
+          example: 58
+
+tags:
+  - name: public
+  - name: public > auth
+  - name: admin
+  - name: admin > city
+  - name: admin > tags
+  - name: provider
+paths:
+  /code/send:
+    post:
+      tags:
+        - public > auth
+      summary: send code
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email_or_phone:
+                  type: integer
+                  example: '534053560'
+                account_type:
+                  type: string
+                  example: provider
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 12:02:36 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: sms sent successfully to this phone
+                is_exist: false
+  /code/confirm:
+    post:
+      tags:
+        - public > auth
+      summary: confirm code
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email_or_phone:
+                  type: integer
+                  example: '534053560'
+                confirm_code:
+                  type: integer
+                  example: '5555'
+                account_type:
+                  type: string
+                  description: client or provider
+                  example: provider
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 12:04:03 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: phone is verified successfully
+                data: string
+  /reset-code/send:
+    post:
+      tags:
+        - public > auth
+      summary: send reset code
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email_or_phone:
+                  type: integer
+                  example: '534053560'
+                account_type:
+                  type: string
+                  example: provider
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Sat, 20 Apr 2024 14:08:07 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: reset code sent successfully to your phone
+                data: string
+  /reset-code/confirm:
+    post:
+      tags:
+        - public > auth
+      summary: confirm reset code
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email_or_phone:
+                  type: integer
+                  example: '534053560'
+                confirm_code:
+                  type: integer
+                  example: '5555'
+                account_type:
+                  type: string
+                  description: client or provider
+                  example: provider
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Sat, 20 Apr 2024 14:08:16 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: phone is verified successfully
+                data: string
+  /reset-password:
+    post:
+      tags:
+        - public > auth
+      summary: reset password
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email_or_phone:
+                  type: integer
+                  example: '534053560'
+                new_password:
+                  type: string
+                  example: test1234
+                confirm_new_password:
+                  type: string
+                  example: test1234
+                account_type:
+                  type: string
+                  example: provider
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Sat, 20 Apr 2024 14:08:23 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '57'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: password updated successfully
+                data: string
+  /provider/register:
+    post:
+      tags:
+        - public > auth
+      summary: provider signup
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name_en:
+                  type: string
+                  example: hyper market
+                name_ar:
+                  type: string
+                  example: متاجر هايبر
+                owner_name:
+                  type: string
+                  example: Ali Ahmed
+                email:
+                  type: string
+                  example: hyper22@gmail.com
+                phone:
+                  type: integer
+                  example: '534059560'
+                account_type:
+                  type: string
+                  description: service_provider or packaging_provider
+                  example: service_provider
+                password:
+                  type: integer
+                  example: '123456'
+                confirm_password:
+                  type: integer
+                  example: '123456'
+                city_id:
+                  type: integer
+                  example: '1'
+                tags_ids[0]:
+                  type: integer
+                  example: '1'
+                tags_ids[1]:
+                  type: integer
+                  example: '2'
+                has_offline_stores:
+                  type: integer
+                  description: take 0 or 1
+                  example: '1'
+                offline_stores_number:
+                  type: integer
+                  description: required incase of has_offline_stores=1
+                  example: '3'
+                locations[0]:
+                  type: number
+                  description: required incase of has_offline_stores=1
+                  example: 31.227578678786685, 29.945350987156488
+                locations[1]:
+                  type: number
+                  description: required incase of has_offline_stores=1
+                  example: 31.22596397297209, 29.946423870724885
+                provide_delivery:
+                  type: integer
+                  description: take 0 or 1
+                  example: '1'
+                business_type:
+                  type: string
+                  description: individual or cooperation
+                  example: individual
+                image:
+                  type: string
+                  example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                instagram_link:
+                  type: string
+                  description: optional
+                  example: https://instagram.com/test
+                snapchat_link:
+                  type: string
+                  description: optional
+                  example: https://snapchat.com/test
+                tiktok_link:
+                  type: string
+                  description: optional
+                  example: https://tiktok.com/test
+                x_link:
+                  type: string
+                  description: optional
+                  example: https://x.com/test
+                start_time:
+                  type: string
+                  description: 'eg: 02:15 PM'
+                  example: 02:15 PM
+                end_time:
+                  type: string
+                  description: 'eg: 04:00 PM'
+                  example: 04:12 PM
+                working_days_indices[0]:
+                  type: integer
+                  description: |-
+                    take days of week as indices, 
+                    0 => Sunday,
+                    1 => Monday,
+                    2 => Tuesday,
+                    3 => Wednesday,
+                    4 => Thursday,
+                    5 => Friday,
+                    6 => Saturday
+                  example: '0'
+                working_days_indices[1]:
+                  type: integer
+                  description: |-
+                    take days of week as indices, 
+                    0 => Sunday,
+                    1 => Monday,
+                    2 => Tuesday,
+                    3 => Wednesday,
+                    4 => Thursday,
+                    5 => Friday,
+                    6 => Saturday
+                  example: '3'
+                working_days_indices[2]:
+                  type: integer
+                  description: |-
+                    take days of week as indices, 
+                    0 => Sunday,
+                    1 => Monday,
+                    2 => Tuesday,
+                    3 => Wednesday,
+                    4 => Thursday,
+                    5 => Friday,
+                    6 => Saturday
+                  example: '5'
+                self_employment_document:
+                  type: string
+                  description: required when business type is individual
+                  example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                commercial_register_image:
+                  type: string
+                  description: required when business type is cooperation
+                  example: uploads/files/04-2024/1713354063L6Sxt212ExLiW2p.png
+                bank_name:
+                  type: string
+                  description: optional
+                  example: alrajhi
+                beneficiary_name:
+                  type: string
+                  description: optional
+                  example: Ali
+                bank_account_number:
+                  type: integer
+                  description: optional
+                  example: '43646364353'
+                iban:
+                  type: integer
+                  example: '00078687464'
+                iban_image:
+                  type: string
+                  description: optional
+                  example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Sat, 20 Apr 2024 16:31:09 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '57'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: provider registered successfully
+                data:
+                  access_token: 9|y0fxGsN3VvWghmCKOSAJXPFnvYR97IYXUK5l6Wwc
+                  token_type: Bearer
+                  provider:
+                    id: 4
+                    name_en: hyper market
+                    name_ar: متاجر هايبر
+                    owner_name: Ali Ahmed
+                    email: hyper22@gmail.com
+                    phone: '534059560'
+                    image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    city_id: 1
+                    account_type: service_provider
+                    device_type: string
+                    fcm_token: string
+                    lang: ar
+                    status: pending
+                    instagram_link: https://instagram.com/test
+                    snapchat_link: https://snapchat.com/test
+                    tiktok_link: https://tiktok.com/test
+                    x_link: https://x.com/test
+                    has_offline_stores: 1
+                    offline_stores_number: 3
+                    provide_delivery: string
+                    business_type: individual
+                    commercial_register_image: string
+                    self_employment_document: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    start_time: 02:15 PM
+                    end_time: 04:12 PM
+                    working_days_indices: 0,3,5
+                    bank_name: alrajhi
+                    beneficiary_name: Ali
+                    bank_account_number: '43646364353'
+                    iban: '00078687464'
+                    iban_image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    created_at: '2024-04-20T16:31:09.000000Z'
+                    updated_at: '2024-04-20T16:31:09.000000Z'
+                    name: متاجر هايبر
+                    imagePath: >-
+                      http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    working_days_indices_list:
+                      - '0'
+                      - '3'
+                      - '5'
+                    self_employment_document_path: >-
+                      http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    commercial_register_image_path: string
+                    city:
+                      id: 1
+                      name_en: Alriyadh
+                      name_ar: الرياض
+                      created_at: '2024-04-18T12:43:48.000000Z'
+                      updated_at: '2024-04-18T12:43:48.000000Z'
+                      name: الرياض
+                    locations:
+                      - id: 7
+                        provider_id: 4
+                        location: 31.227578678786685, 29.945350987156488
+                        created_at: '2024-04-20T16:31:09.000000Z'
+                        updated_at: '2024-04-20T16:31:09.000000Z'
+                      - id: 8
+                        provider_id: 4
+                        location: 31.22596397297209, 29.946423870724885
+                        created_at: '2024-04-20T16:31:09.000000Z'
+                        updated_at: '2024-04-20T16:31:09.000000Z'
+                    tags:
+                      - id: 1
+                        name_en: shopping
+                        name_ar: تسوق
+                        created_at: '2024-04-18T22:17:27.000000Z'
+                        updated_at: '2024-04-18T22:17:27.000000Z'
+                        name: تسوق
+                      - id: 2
+                        name_en: e-com
+                        name_ar: متجر إلكترونيات
+                        created_at: '2024-04-18T22:17:31.000000Z'
+                        updated_at: '2024-04-18T22:17:35.000000Z'
+                        name: متجر إلكترونيات
+  /provider/login:
+    post:
+      tags:
+        - public > auth
+      summary: provider login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email_or_phone:
+                  type: integer
+                  example: '534053560'
+                password:
+                  type: integer
+                  example: '123456'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 17:35:10 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: provider logged in successfully
+                data:
+                  access_token: 6|xRswjOF63AseSKVjWYSjRgGDn1nxI20E21l7XNz5
+                  token_type: Bearer
+                  provider:
+                    id: 18
+                    name_en: hyper market
+                    name_ar: متاجر هايبر
+                    owner_name: Ali Ahmed
+                    email: hyper@gmail.com
+                    phone: '534053560'
+                    image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    city_id: 1
+                    account_type: service_provider
+                    device_type: string
+                    fcm_token: string
+                    lang: ar
+                    status: pending
+                    instagram_link: https://instagram.com/test
+                    snapchat_link: https://snapchat.com/test
+                    tiktok_link: https://tiktok.com/test
+                    x_link: https://x.com/test
+                    has_offline_stores: 1
+                    offline_stores_number: 3
+                    provide_delivery: string
+                    business_type: individual
+                    commercial_register_image: string
+                    self_employment_document: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    start_time: 02:15 PM
+                    end_time: 04:12 PM
+                    working_days_indices: 0,3,5
+                    bank_name: alrajhi
+                    beneficiary_name: Ali
+                    bank_account_number: '43646364353'
+                    iban: '00078687464'
+                    iban_image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    created_at: '2024-04-17T17:22:43.000000Z'
+                    updated_at: '2024-04-17T17:22:43.000000Z'
+                    name: متاجر هايبر
+                    imagePath: >-
+                      http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    working_days_indices_list:
+                      - '0'
+                      - '3'
+                      - '5'
+                    self_employment_document_path: >-
+                      http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                    commercial_register_image_path: string
+                    city:
+                      id: 1
+                      name_en: Alriyadh
+                      name_ar: الرياض
+                      created_at: '2024-04-17T11:05:49.000000Z'
+                      updated_at: '2024-04-17T11:05:49.000000Z'
+                      name: الرياض
+                    locations:
+                      - id: 35
+                        provider_id: 18
+                        location: 31.227578678786685, 29.945350987156488
+                        created_at: '2024-04-17T17:22:43.000000Z'
+                        updated_at: '2024-04-17T17:22:43.000000Z'
+                      - id: 36
+                        provider_id: 18
+                        location: 31.22596397297209, 29.946423870724885
+                        created_at: '2024-04-17T17:22:43.000000Z'
+                        updated_at: '2024-04-17T17:22:43.000000Z'
+                    tags:
+                      - id: 1
+                        name_en: shopping
+                        name_ar: تسوق
+                        created_at: '2024-04-17T11:24:40.000000Z'
+                        updated_at: '2024-04-17T11:24:40.000000Z'
+                        name: تسوق
+                      - id: 2
+                        name_en: e-com
+                        name_ar: متجر إلكترونيات
+                        created_at: '2024-04-17T11:24:50.000000Z'
+                        updated_at: '2024-04-17T11:26:02.000000Z'
+                        name: متجر إلكترونيات
+                is_exist: true
+  /admin/login:
+    post:
+      tags:
+        - public > auth
+      summary: admin login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: admin@admin.com
+                password:
+                  type: integer
+                  example: '123456'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 11:06:10 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: login successfully
+                data:
+                  access_token: 1|xFefDJgycdXJKygfVvnxGpydcgqZNfnbv6d9JO0d
+                  token_type: Bearer
+                  admin:
+                    id: 1
+                    name: admin
+                    email: admin@admin.com
+                    phone: '-'
+                    role: super
+                    image: string
+                    categories: all
+                    created_at: '2024-04-17T11:05:49.000000Z'
+                    updated_at: '2024-04-17T11:05:49.000000Z'
+                    imagePath: https://www.w3schools.com/howto/img_avatar.png
+  /upload/files:
+    post:
+      tags:
+        - public
+      summary: upload file(s)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files[0]:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 11:41:03 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: file uploaded successfully
+                data:
+                  - uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+  /cities:
+    get:
+      tags:
+        - public
+      summary: show all cities
+      parameters:
+        - name: lang
+          in: header
+          schema:
+            type: string
+          example: ar
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 11:23:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: list of cities
+                data:
+                  - id: 1
+                    name_en: Alriyadh
+                    name_ar: الرياض
+                    created_at: '2024-04-17T11:05:49.000000Z'
+                    updated_at: '2024-04-17T11:05:49.000000Z'
+                    name: الرياض
+                  - id: 2
+                    name_en: Jeddah
+                    name_ar: جده
+                    created_at: '2024-04-17T11:09:59.000000Z'
+                    updated_at: '2024-04-17T11:09:59.000000Z'
+                    name: جده
+                  - id: 4
+                    name_en: Al-Dammam
+                    name_ar: الدمام
+                    created_at: '2024-04-17T11:16:30.000000Z'
+                    updated_at: '2024-04-17T11:16:30.000000Z'
+                    name: الدمام
+  /tags:
+    get:
+      tags:
+        - public
+      summary: show all tags
+      parameters:
+        - name: lang
+          in: header
+          schema:
+            type: string
+          example: ar
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 11:26:41 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '57'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: list of tags
+                data:
+                  - id: 1
+                    name_en: shopping
+                    name_ar: تسوق
+                    created_at: '2024-04-17T11:24:40.000000Z'
+                    updated_at: '2024-04-17T11:24:40.000000Z'
+                    name: تسوق
+                  - id: 2
+                    name_en: e-com
+                    name_ar: متجر إلكترونيات
+                    created_at: '2024-04-17T11:24:50.000000Z'
+                    updated_at: '2024-04-17T11:26:02.000000Z'
+                    name: متجر إلكترونيات
+                  - id: 3
+                    name_en: shopping
+                    name_ar: تسوق
+                    created_at: '2024-04-17T11:24:51.000000Z'
+                    updated_at: '2024-04-17T11:24:51.000000Z'
+                    name: تسوق
+  /admin/city/create:
+    post:
+      tags:
+        - admin > city
+      summary: update city
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                city_id:
+                  type: integer
+                  example: '2'
+                name_en:
+                  type: string
+                  example: Al-Dammam
+                name_ar:
+                  type: string
+                  example: الدمام
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 11:16:30 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: city created successfully
+                data:
+                  name_en: Al-Dammam
+                  name_ar: الدمام
+                  updated_at: '2024-04-17T11:16:30.000000Z'
+                  created_at: '2024-04-17T11:16:30.000000Z'
+                  id: 4
+                  name: الدمام
+  /admin/city/delete:
+    delete:
+      tags:
+        - admin > city
+      summary: delete city
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: city_id
+          in: query
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/tag/create:
+    post:
+      tags:
+        - admin > tags
+      summary: create a tag
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name_en:
+                  type: string
+                  example: shopping
+                name_ar:
+                  type: string
+                  example: تسوق
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 11:24:40 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '59'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: tag created successfully
+                data:
+                  name_en: shopping
+                  name_ar: تسوق
+                  updated_at: '2024-04-17T11:24:40.000000Z'
+                  created_at: '2024-04-17T11:24:40.000000Z'
+                  id: 1
+                  name: تسوق
+  /admin/tag/update:
+    post:
+      tags:
+        - admin > tags
+      summary: update a tag
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                tag_id:
+                  type: integer
+                  example: '2'
+                name_en:
+                  type: string
+                  example: e-com
+                name_ar:
+                  type: string
+                  example: متجر إلكترونيات
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 11:26:02 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '57'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: tag updated successfully
+                data:
+                  id: 2
+                  name_en: e-com
+                  name_ar: متجر إلكترونيات
+                  created_at: '2024-04-17T11:24:50.000000Z'
+                  updated_at: '2024-04-17T11:26:02.000000Z'
+                  name: متجر إلكترونيات
+  /admin/tag/delete:
+    delete:
+      tags:
+        - admin > tags
+      summary: delete a tag
+      parameters:
+        - name: tag_id
+          in: query
+          schema:
+            type: integer
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/profile/show:
+    get:
+      tags:
+        - admin
+      summary: show admin profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 11:27:40 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: admin's profile
+                data:
+                  id: 1
+                  name: admin
+                  email: admin@admin.com
+                  phone: '-'
+                  role: super
+                  image: string
+                  categories: all
+                  created_at: '2024-04-17T11:05:49.000000Z'
+                  updated_at: '2024-04-17T11:05:49.000000Z'
+                  imagePath: https://www.w3schools.com/howto/img_avatar.png
+  /provider/profile/show:
+    get:
+      tags:
+        - provider
+      summary: show profile
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Wed, 17 Apr 2024 17:34:43 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.2.3
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '56'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: provider's profile
+                data:
+                  id: 18
+                  name_en: hyper market
+                  name_ar: متاجر هايبر
+                  owner_name: Ali Ahmed
+                  email: hyper@gmail.com
+                  phone: '534053560'
+                  image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  city_id: 1
+                  account_type: service_provider
+                  device_type: string
+                  fcm_token: string
+                  lang: ar
+                  status: pending
+                  instagram_link: https://instagram.com/test
+                  snapchat_link: https://snapchat.com/test
+                  tiktok_link: https://tiktok.com/test
+                  x_link: https://x.com/test
+                  has_offline_stores: 1
+                  offline_stores_number: 3
+                  provide_delivery: string
+                  business_type: individual
+                  commercial_register_image: string
+                  self_employment_document: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  start_time: 02:15 PM
+                  end_time: 04:12 PM
+                  working_days_indices: 0,3,5
+                  bank_name: alrajhi
+                  beneficiary_name: Ali
+                  bank_account_number: '43646364353'
+                  iban: '00078687464'
+                  iban_image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  created_at: '2024-04-17T17:22:43.000000Z'
+                  updated_at: '2024-04-17T17:22:43.000000Z'
+                  name: متاجر هايبر
+                  imagePath: >-
+                    http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  working_days_indices_list:
+                    - '0'
+                    - '3'
+                    - '5'
+                  self_employment_document_path: >-
+                    http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  commercial_register_image_path: string
+                  city:
+                    id: 1
+                    name_en: Alriyadh
+                    name_ar: الرياض
+                    created_at: '2024-04-17T11:05:49.000000Z'
+                    updated_at: '2024-04-17T11:05:49.000000Z'
+                    name: الرياض
+                  locations:
+                    - id: 35
+                      provider_id: 18
+                      location: 31.227578678786685, 29.945350987156488
+                      created_at: '2024-04-17T17:22:43.000000Z'
+                      updated_at: '2024-04-17T17:22:43.000000Z'
+                    - id: 36
+                      provider_id: 18
+                      location: 31.22596397297209, 29.946423870724885
+                      created_at: '2024-04-17T17:22:43.000000Z'
+                      updated_at: '2024-04-17T17:22:43.000000Z'
+                  tags:
+                    - id: 1
+                      name_en: shopping
+                      name_ar: تسوق
+                      created_at: '2024-04-17T11:24:40.000000Z'
+                      updated_at: '2024-04-17T11:24:40.000000Z'
+                      name: تسوق
+                    - id: 2
+                      name_en: e-com
+                      name_ar: متجر إلكترونيات
+                      created_at: '2024-04-17T11:24:50.000000Z'
+                      updated_at: '2024-04-17T11:26:02.000000Z'
+                      name: متجر إلكترونيات
+  /provider/profile/update:
+    post:
+      tags:
+        - provider
+      summary: update profile main data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                store_name_en:
+                  type: string
+                  example: new store name
+                store_name_ar:
+                  type: string
+                  example: متجر بأسم جديد
+                store_owner_name:
+                  type: string
+                  example: new owner name
+                city_id:
+                  type: integer
+                  example: '1'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            Date:
+              schema:
+                type: string
+                example: Sat, 20 Apr 2024 14:07:38 GMT
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: number
+                example: PHP/8.1.2-1ubuntu2.14
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '58'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: true
+                message: provider's profile update successfully
+                data:
+                  id: 1
+                  name_en: new store name
+                  name_ar: متجر بأسم جديد
+                  owner_name: new owner name
+                  email: hyper@gmail.com
+                  phone: '534053560'
+                  image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  city_id: 1
+                  account_type: service_provider
+                  device_type: string
+                  fcm_token: string
+                  lang: ar
+                  status: pending
+                  instagram_link: https://instagram.com/test
+                  snapchat_link: https://snapchat.com/test
+                  tiktok_link: https://tiktok.com/test
+                  x_link: https://x.com/test
+                  has_offline_stores: 1
+                  offline_stores_number: 3
+                  provide_delivery: string
+                  business_type: individual
+                  commercial_register_image: string
+                  self_employment_document: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  start_time: 02:15 PM
+                  end_time: 04:12 PM
+                  working_days_indices: 0,3,5
+                  bank_name: alrajhi
+                  beneficiary_name: Ali
+                  bank_account_number: '43646364353'
+                  iban: '00078687464'
+                  iban_image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  created_at: '2024-04-18T22:52:15.000000Z'
+                  updated_at: '2024-04-20T14:07:38.000000Z'
+                  name: متجر بأسم جديد
+                  imagePath: >-
+                    http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  working_days_indices_list:
+                    - '0'
+                    - '3'
+                    - '5'
+                  self_employment_document_path: >-
+                    http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                  commercial_register_image_path: string
+                  city:
+                    id: 1
+                    name_en: Alriyadh
+                    name_ar: الرياض
+                    created_at: '2024-04-18T12:43:48.000000Z'
+                    updated_at: '2024-04-18T12:43:48.000000Z'
+                    name: الرياض
+                  locations:
+                    - id: 1
+                      provider_id: 1
+                      location: 31.227578678786685, 29.945350987156488
+                      created_at: '2024-04-18T22:52:15.000000Z'
+                      updated_at: '2024-04-18T22:52:15.000000Z'
+                    - id: 2
+                      provider_id: 1
+                      location: 31.22596397297209, 29.946423870724885
+                      created_at: '2024-04-18T22:52:15.000000Z'
+                      updated_at: '2024-04-18T22:52:15.000000Z'
+                  tags:
+                    - id: 1
+                      name_en: shopping
+                      name_ar: تسوق
+                      created_at: '2024-04-18T22:17:27.000000Z'
+                      updated_at: '2024-04-18T22:17:27.000000Z'
+                      name: تسوق
+                    - id: 2
+                      name_en: e-com
+                      name_ar: متجر إلكترونيات
+                      created_at: '2024-04-18T22:17:31.000000Z'
+                      updated_at: '2024-04-18T22:17:35.000000Z'
+                      name: متجر إلكترونيات
+  /provider/logout:
+    get:
+      tags:
+        - provider
+      summary: provider logout
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

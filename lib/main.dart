@@ -8,9 +8,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as ago;
 
 import '../../../../../Constants.dart';
-import '../../../../../UI/Screens/SplashScreen.dart';
+import '../../../../../Presentation/Screens/SplashScreen.dart';
 
-import 'UI/Theme/AppColors.dart';
+import 'Presentation/Theme/AppColors.dart';
 
 
 late SharedPreferences prefs;
@@ -120,7 +120,7 @@ class MyApp extends ConsumerWidget {
       duration: const Duration(milliseconds: 500),
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'BaseFlutter',
+        title: 'LazoProvider',
         themeMode:ThemeMode.light,
         theme: AppColors.lightTheme,
         darkTheme: AppColors.darkTheme,

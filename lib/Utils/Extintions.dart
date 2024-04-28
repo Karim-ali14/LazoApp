@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:base_flutter_app/UI/Dialogs/LoadingDialog.dart';
+import 'package:lazo_provider/Presentation/Dialogs/LoadingDialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';

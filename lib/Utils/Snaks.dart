@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../UI/Theme/AppColors.dart';
-import '../UI/Widgets/SimpleAlert.dart';
+import '../Presentation/Theme/AppColors.dart';
+import '../Presentation/Widgets/SimpleAlert.dart';
 
 class AppSnackBar {
   static showSnackBar(context,{required bool isSuccess,required String message,action}){

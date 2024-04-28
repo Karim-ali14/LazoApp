@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://localhost', this.authentication,});
+  ApiClient({this.basePath = 'http://}', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -181,6 +181,76 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
+        case 'Banner':
+          return Banner.fromJson(value);
+        case 'BannersResponse':
+          return BannersResponse.fromJson(value);
+        case 'CitiesResponse':
+          return CitiesResponse.fromJson(value);
+        case 'City':
+          return City.fromJson(value);
+        case 'CodeConfirmRequest':
+          return CodeConfirmRequest.fromJson(value);
+        case 'CodeConfirmResponse':
+          return CodeConfirmResponse.fromJson(value);
+        case 'CodeSendRequest':
+          return CodeSendRequest.fromJson(value);
+        case 'CodeSendResponse':
+          return CodeSendResponse.fromJson(value);
+        case 'Occasion':
+          return Occasion.fromJson(value);
+        case 'OccasionsResponse':
+          return OccasionsResponse.fromJson(value);
+        case 'PromocodeDetails':
+          return PromocodeDetails.fromJson(value);
+        case 'ProviderData':
+          return ProviderData.fromJson(value);
+        case 'ProviderDataCity':
+          return ProviderDataCity.fromJson(value);
+        case 'ProviderDataLocationsInner':
+          return ProviderDataLocationsInner.fromJson(value);
+        case 'ProviderDataTagsInner':
+          return ProviderDataTagsInner.fromJson(value);
+        case 'ProviderLocation':
+          return ProviderLocation.fromJson(value);
+        case 'ProviderLoginRequest':
+          return ProviderLoginRequest.fromJson(value);
+        case 'ProviderLoginResponse':
+          return ProviderLoginResponse.fromJson(value);
+        case 'ProviderLoginResponseData':
+          return ProviderLoginResponseData.fromJson(value);
+        case 'ProviderProfileShowResponse':
+          return ProviderProfileShowResponse.fromJson(value);
+        case 'ProviderProfileUpdateRequest':
+          return ProviderProfileUpdateRequest.fromJson(value);
+        case 'ProviderProfileUpdateResponse':
+          return ProviderProfileUpdateResponse.fromJson(value);
+        case 'ProviderProfileUpdateResponseData':
+          return ProviderProfileUpdateResponseData.fromJson(value);
+        case 'ProviderRegisterResponse':
+          return ProviderRegisterResponse.fromJson(value);
+        case 'ProviderRegisterResponseData':
+          return ProviderRegisterResponseData.fromJson(value);
+        case 'ProviderRegistration':
+          return ProviderRegistration.fromJson(value);
+        case 'ResetCodeConfirmRequest':
+          return ResetCodeConfirmRequest.fromJson(value);
+        case 'ResetCodeConfirmResponse':
+          return ResetCodeConfirmResponse.fromJson(value);
+        case 'ResetCodeSendRequest':
+          return ResetCodeSendRequest.fromJson(value);
+        case 'ResetCodeSendResponse':
+          return ResetCodeSendResponse.fromJson(value);
+        case 'ResetPasswordRequest':
+          return ResetPasswordRequest.fromJson(value);
+        case 'ResetPasswordResponse':
+          return ResetPasswordResponse.fromJson(value);
+        case 'Tag':
+          return Tag.fromJson(value);
+        case 'TagsResponse':
+          return TagsResponse.fromJson(value);
+        case 'UploadFiles':
+          return UploadFiles.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {
