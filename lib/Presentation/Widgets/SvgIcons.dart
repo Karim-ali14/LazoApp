@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lazo_provider/Commes/Assets.dart';
-
 import '../../Constants.dart';
+import '../../Constants/Assets.dart';
 
 class SVGIcons {
-  static Widget whiteSplashAppLogoIcon({double width = 40, double height = 40}){
+  static Widget appLogoIcon({double width = 40, double height = 40,Color color = Colors.white}){
     return SvgPicture.asset(
       whiteSplashAppLogo,
-      color: Colors.white,
+      color: color,
       width: width,
       height: height,
     );

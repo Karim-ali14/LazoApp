@@ -1,4 +1,4 @@
-import '../../../../../Presentation/Theme/AppColors.dart';
+import '../../../../../Presentation/Theme/AppTheme.dart';
 import 'package:flutter/material.dart';
 
 class FlatAppButton extends StatelessWidget {

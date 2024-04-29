@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class AppColors {
+class AppTheme {
 
-  static const Color mainAppColorLight = Color(0xFFE21B33);
+  static const Color mainAppColor = Color(0xFFE21B33);
+  static const Color mainAppColorLight = Color(0xFFF7DBDE);
   static const Color mainAppColorBright = Color(0xFFe6f4ff);
   static const Color mainAppColorDark = Color(0xFF003A59);
   static const Color secondaryAppColorLight = Color(0xFF4FC2FF);
@@ -16,6 +17,8 @@ class AppColors {
   static const Color appGrey3 = Color(0xFFe5e5e5);
   static const Color appGrey4 = Color(0xFFF5F5F5);
   static const Color appGrey5 = Color(0xFFCECECE);
+  static const Color appGrey6 = Color(0xFFE6E9EC);
+  static const Color appGrey7 = Color(0xFF8088A4);
   static const Color appLightGrey = Color(0xFFe5e5e5);
   static const Color appLightGreyV2 = Color(0xFFF0F0F0);
   static const Color appDarkerGrey = Color(0xFF898989);
@@ -46,18 +49,18 @@ class AppColors {
   static const kDefaultPadding = 20.0;
 
   static const MaterialColor appSwatch = MaterialColor(
-    0xFF004A72,
+    0xFFE21B33,
     <int, Color>{
-      50: Color(0xFF004A72),
-      100: Color(0xFF004A72),
-      200: Color(0xFF004A72),
-      300: Color(0xFF004A72),
-      400: Color(0xFF004A72),
-      500: Color(0xFF004A72),
-      600: Color(0xFF004A72),
-      700: Color(0xFF004A72),
-      800: Color(0xFF004A72),
-      900: Color(0xFF004A72),
+      50: Color(0xFFE21B33),
+      100: Color(0xFFE21B33),
+      200: Color(0xFFE21B33),
+      300: Color(0xFFE21B33),
+      400: Color(0xFFE21B33),
+      500: Color(0xFFE21B33),
+      600: Color(0xFFE21B33),
+      700: Color(0xFFE21B33),
+      800: Color(0xFFE21B33),
+      900: Color(0xFFE21B33),
     },
   );
 
@@ -85,19 +88,19 @@ class AppColors {
         color: Colors.black, fontSize: 16, fontWeight: FontWeight.normal),
   );
 
-  static final mediumBodyBlue = appTextTheme.bodyMedium?.copyWith(color: AppColors.mainAppColorLight);
+  static final mediumBodyBlue = appTextTheme.bodyMedium?.copyWith(color: AppTheme.mainAppColor);
 
-  static final mediumBodyBlue2 = appTextTheme.bodyMedium?.copyWith(color: AppColors.mainAppColorLight,fontSize: 14);
+  static final mediumBodyBlue2 = appTextTheme.bodyMedium?.copyWith(color: AppTheme.mainAppColor,fontSize: 14);
 
 
   static ThemeData lightTheme = ThemeData(
       brightness: Brightness.light,
-      primaryColor: mainAppColorLight,
+      primaryColor: mainAppColor,
       appBarTheme: const AppBarTheme(backgroundColor: Colors.white,
           titleTextStyle: TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold)
       ),
-      primaryColorLight: mainAppColorLight,
+      primaryColorLight: mainAppColor,
       scaffoldBackgroundColor: mainBackgroundLightColor,
       bottomAppBarColor: Colors.white,
       backgroundColor: Colors.white,
@@ -112,16 +115,24 @@ class AppColors {
       checkboxTheme: CheckboxThemeData(checkColor: MaterialStateProperty.all(Colors.white),fillColor: MaterialStateProperty.all(appSwatch)),
       textTheme: appTextTheme,
       tabBarTheme: const TabBarTheme(
-          indicatorColor:mainAppColorLight,
+          indicatorColor:mainAppColor,
           unselectedLabelColor:appGrey2,
-          labelColor: mainAppColorLight
+          labelColor: mainAppColor
       )
   );
+
+  // Text style
+  static const TextStyle styleWithTextBlackAdelleSansExtendedFonts20w700 = TextStyle(
+      color: Colors.black, fontSize: 20, fontWeight: FontWeight.w700);
+
+  static const TextStyle styleWithTextGray7AdelleSansExtendedFonts16w400 = TextStyle(
+      color: appGrey7 , fontSize: 16, fontWeight: FontWeight.w400);
+
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: secondaryAppColorDark,
-    primaryColorLight: mainAppColorLight,
+    primaryColorLight: mainAppColor,
     expansionTileTheme: const ExpansionTileThemeData(backgroundColor: Colors.transparent,collapsedBackgroundColor: Colors.transparent),
     radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(appSwatch)),
     appBarTheme: const AppBarTheme(
@@ -145,13 +156,12 @@ class AppColors {
   static ThemeData expandedTileTheme =
   ThemeData(dividerColor: Colors.transparent);
 
-
 }
 
 const appGradiant = LinearGradient(
   colors: [
-    AppColors.mainAppColorLight,
-    AppColors.secondaryAppColorLight
+    AppTheme.mainAppColor,
+    AppTheme.secondaryAppColorLight
   ],
   begin: AlignmentDirectional.bottomStart,
   end: AlignmentDirectional.topEnd,

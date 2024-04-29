@@ -55,6 +55,7 @@ dependencies:
   cached_network_image: ^3.2.3
   shake_animation_widget:
   openapi_generator_annotations: ^4.11.0
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   change_app_package_name: ^1.1.0

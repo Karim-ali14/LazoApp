@@ -1,6 +1,6 @@
 // import 'package:flutter/material.dart';
 //
-// import '../Theme/AppColors.dart';
+// import '../Theme/AppTheme.dart';
 //
 // class AppVersion extends StatefulWidget {
 //   const AppVersion({super.key});
@@ -22,6 +22,6 @@
 //   }
 //   @override
 //   Widget build(BuildContext context) {
-//     return Text(version ?? "",style: AppColors.appTextTheme.titleSmall?.copyWith(fontSize: 16),);
+//     return Text(version ?? "",style: AppTheme.appTextTheme.titleSmall?.copyWith(fontSize: 16),);
 //   }
 // }

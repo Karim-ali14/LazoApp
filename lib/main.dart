@@ -4,13 +4,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lazo_provider/Presentation/Screens/OnboardingPage/OnboardingScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as ago;
 
 import '../../../../../Constants.dart';
 import '../../../../../Presentation/Screens/SplashScreen.dart';
 
-import 'Presentation/Theme/AppColors.dart';
+import 'Presentation/Theme/AppTheme.dart';
 
 
 late SharedPreferences prefs;
@@ -122,8 +123,8 @@ class MyApp extends ConsumerWidget {
         debugShowCheckedModeBanner: false,
         title: 'LazoProvider',
         themeMode:ThemeMode.light,
-        theme: AppColors.lightTheme,
-        darkTheme: AppColors.darkTheme,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
@@ -138,8 +139,16 @@ class MyApp extends ConsumerWidget {
     routes: <GoRoute>[
       GoRoute(
         path: R_splashScreenRout,
-        builder: (BuildContext context, GoRouterState state) => SplashScreen(),
+        builder: (BuildContext context, GoRouterState state) => const SplashScreen(),
       ),
+      GoRoute(
+          path: R_Onboarding,
+          builder: (BuildContext context, GoRouterState state) => const OnboardingScreen()
+      ),
+      // GoRoute(
+      //     path: R_LoginScreen,
+      //     builder: () =>
+      // )
     ],
   );
 }

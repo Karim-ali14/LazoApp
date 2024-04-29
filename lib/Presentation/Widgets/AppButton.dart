@@ -1,4 +1,4 @@
-import '../../../../../Presentation/Theme/AppColors.dart';
+import '../../../../../Presentation/Theme/AppTheme.dart';
 import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
@@ -24,7 +24,7 @@ class AppButton extends StatelessWidget {
         child: outlined == true ? OutlinedButton(
           onPressed: enabled! ? onPress : null,
           style: OutlinedButton.styleFrom(
-            side: BorderSide(color: backColor??AppColors.appSwatch,width: strokeWidth??1),
+            side: BorderSide(color: backColor??AppTheme.appSwatch,width: strokeWidth??1),
             shape: RoundedRectangleBorder(borderRadius: radius??BorderRadius.circular(10),)
           ),
           child: child?? Text(
@@ -34,9 +34,9 @@ class AppButton extends StatelessWidget {
           onPressed: enabled! ? onPress : null,
           style: ButtonStyle(
             shape: isCircle == true ? MaterialStateProperty.all(const CircleBorder()) : MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: radius??BorderRadius.circular(10)
+                borderRadius: radius??BorderRadius.circular(6)
             )),
-            backgroundColor: MaterialStateProperty.all(backColor ?? AppColors.appSwatch),
+            backgroundColor: MaterialStateProperty.all(backColor ?? AppTheme.appSwatch),
           ),
           child: child ?? Text(
               text!,

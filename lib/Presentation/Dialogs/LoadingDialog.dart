@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../Theme/AppColors.dart';
+import '../Theme/AppTheme.dart';
 import '../Widgets/AppButton.dart';
 import '../Widgets/FlatAppButton.dart';
 
@@ -51,7 +51,7 @@ extension Dialogs on BuildContext {
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 10,),
-            Align(alignment:Alignment.centerLeft,child: Text(message ?? "Success!" "👍",style: Theme.of(this).textTheme.bodyMedium?.copyWith(color: AppColors.successColor),textAlign: TextAlign.center,)),
+            Align(alignment:Alignment.centerLeft,child: Text(message ?? "Success!" "👍",style: Theme.of(this).textTheme.bodyMedium?.copyWith(color: AppTheme.successColor),textAlign: TextAlign.center,)),
             const SizedBox(height: 8,),
             Text(textAlign: TextAlign.start , description,style: Theme.of(this).textTheme.titleLarge?.copyWith(fontSize: 16),),
             const SizedBox(height: 10,),
@@ -61,7 +61,7 @@ extension Dialogs on BuildContext {
               if(onCancel != null) AppButton(onPress: (){
                 pop();
                 onCancel.call();
-              },text: this.tr("cancel"),backColor: AppColors.mainAppColorLight,outlined: true,width: 80,height: 40,),
+              },text: this.tr("cancel"),backColor: AppTheme.mainAppColor,outlined: true,width: 80,height: 40,),
               const SizedBox(width: 14,),
               AppButton(onPress: (){
                 pop();
@@ -86,16 +86,16 @@ extension Dialogs on BuildContext {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.error,color: AppColors.failureColor,size: 100,),
+            const Icon(Icons.error,color: AppTheme.failureColor,size: 100,),
             const SizedBox(height: 20,),
-            Text(message,style: Theme.of(this).textTheme.bodyText2?.copyWith(color: AppColors.failureColor),textAlign: TextAlign.center,),
+            Text(message,style: Theme.of(this).textTheme.bodyText2?.copyWith(color: AppTheme.failureColor),textAlign: TextAlign.center,),
             const SizedBox(height: 8,),
             if(description != null) Text(description,style: Theme.of(this).textTheme.subtitle1,textAlign: TextAlign.center,),
             const SizedBox(height: 10,),
             FlatAppButton(onPress: (){
               Navigator.pop(this);
               onClose?.call();
-            },text: 'close',txtColor: AppColors.appSwatch,)
+            },text: 'close',txtColor: AppTheme.appSwatch,)
           ],
         ),
       ),
@@ -117,7 +117,7 @@ extension Dialogs on BuildContext {
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 10,),
-            Align(alignment:Alignment.centerLeft,child: Text(header??tr("attention"),style: Theme.of(this).textTheme.bodyMedium?.copyWith(color: AppColors.lightAlert),textAlign: TextAlign.center,)),
+            Align(alignment:Alignment.centerLeft,child: Text(header??tr("attention"),style: Theme.of(this).textTheme.bodyMedium?.copyWith(color: AppTheme.lightAlert),textAlign: TextAlign.center,)),
             const SizedBox(height: 8,),
             Text(textAlign: TextAlign.start , description,style: Theme.of(this).textTheme.titleLarge?.copyWith(fontSize: 16),),
             const SizedBox(height: 10,),
@@ -127,7 +127,7 @@ extension Dialogs on BuildContext {
                 if(onCancel != null) AppButton(onPress: (){
                   pop();
                   onCancel.call();
-                },text: this.tr("cancel"),backColor: AppColors.mainAppColorLight,outlined: true,width: 80,height: 40,),
+                },text: this.tr("cancel"),backColor: AppTheme.mainAppColor,outlined: true,width: 80,height: 40,),
                 const SizedBox(width: 14,),
                 AppButton(onPress: (){
                   pop();
@@ -152,7 +152,7 @@ extension Dialogs on BuildContext {
           Center(child: Text("")),
           Expanded(child: SingleChildScrollView(padding: const EdgeInsets.all(15),child: Text(terms,style: Theme.of(this).textTheme.bodyText1))),
           const SizedBox(height: 10,),
-          FlatAppButton(onPress: ()=> Navigator.pop(this),text: 'close',txtColor: AppColors.appSwatch,)
+          FlatAppButton(onPress: ()=> Navigator.pop(this),text: 'close',txtColor: AppTheme.appSwatch,)
         ],
       ),
     ));
@@ -193,7 +193,7 @@ class LoadingWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(child: CircularProgressIndicator(),),
-            //Text(AppLocalizations.of(context)!.translate("loading"),style: Theme.of(context).textTheme.bodyText1?.copyWith(color: AppColors.appSwatch),)
+            //Text(AppLocalizations.of(context)!.translate("loading"),style: Theme.of(context).textTheme.bodyText1?.copyWith(color: AppTheme.appSwatch),)
           ],
         ),),
     );

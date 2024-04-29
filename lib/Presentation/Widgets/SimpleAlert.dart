@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shake_animation_widget/shake_animation_widget.dart';
 
-import '../Theme/AppColors.dart';
+import '../Theme/AppTheme.dart';
 
 class SimpleAlert extends StatefulWidget {
   final SimpleAlertType alertType;
@@ -54,7 +54,7 @@ class SimpleAlertState extends State<SimpleAlert> {
                   borderRadius: BorderRadius.circular(6),
                   boxShadow: [
                     BoxShadow(
-                        color: AppColors.appGrey.withOpacity(0.5),
+                        color: AppTheme.appGrey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 10)
                   ]),
@@ -68,7 +68,7 @@ class SimpleAlertState extends State<SimpleAlert> {
                         margin: const EdgeInsetsDirectional.only(end: 8),
                         width: 8,
                         decoration: BoxDecoration(
-                            color: _alertType == SimpleAlertType.danger ? AppColors.failureColor : _alertType == SimpleAlertType.alert ? AppColors.pendingColor : AppColors.successColor,
+                            color: _alertType == SimpleAlertType.danger ? AppTheme.failureColor : _alertType == SimpleAlertType.alert ? AppTheme.pendingColor : AppTheme.successColor,
                             borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(6),
                               bottomLeft: Radius.circular(6),
@@ -78,7 +78,7 @@ class SimpleAlertState extends State<SimpleAlert> {
                         padding: const EdgeInsets.symmetric(vertical: 14.0),
                         child: Icon(
                           _alertType == SimpleAlertType.danger ? Icons.cancel : _alertType == SimpleAlertType.alert ? Icons.info : Icons.check_circle,
-                          color: _alertType == SimpleAlertType.danger ? AppColors.failureColor : _alertType == SimpleAlertType.alert ? AppColors.pendingColor : AppColors.successColor,
+                          color: _alertType == SimpleAlertType.danger ? AppTheme.failureColor : _alertType == SimpleAlertType.alert ? AppTheme.pendingColor : AppTheme.successColor,
                           size: 29,
                         ),
                       ),
@@ -88,7 +88,7 @@ class SimpleAlertState extends State<SimpleAlert> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             _message ?? "",
-                            style: AppColors.appTextTheme.titleLarge
+                            style: AppTheme.appTextTheme.titleLarge
                                 ?.copyWith(fontWeight: FontWeight.w500),
                           ),
                         ),
@@ -107,7 +107,7 @@ class SimpleAlertState extends State<SimpleAlert> {
                               },
                               icon: const Icon(
                                 Icons.close,
-                                color: AppColors.appGrey,
+                                color: AppTheme.appGrey,
                               )),
                         ),
                       )

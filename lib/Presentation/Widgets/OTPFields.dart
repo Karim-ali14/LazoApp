@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../../../Utils/Extintions.dart';
-import '../Theme/AppColors.dart';
+import '../Theme/AppTheme.dart';
 import 'AppTextField.dart';
 
 class OTPFields extends StatefulWidget {
@@ -58,7 +58,7 @@ class OTPFieldsState extends State<OTPFields> {
                 decoration: InputDecoration(
                   counter: const SizedBox(),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.mainAppColorLight),
+                    borderSide: const BorderSide(color: AppTheme.mainAppColor),
                     borderRadius:BorderRadius.circular(10),
                   ),
                 ),
@@ -86,7 +86,7 @@ class OTPFieldsState extends State<OTPFields> {
                 decoration: InputDecoration(
                   counter: const SizedBox(),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.mainAppColorLight),
+                    borderSide: const BorderSide(color: AppTheme.mainAppColor),
                     borderRadius:BorderRadius.circular(10),
                   ),
                 ),
@@ -114,7 +114,7 @@ class OTPFieldsState extends State<OTPFields> {
                 decoration: InputDecoration(
                   counter: const SizedBox(),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.mainAppColorLight),
+                    borderSide: const BorderSide(color: AppTheme.mainAppColor),
                     borderRadius:BorderRadius.circular(10),
                   ),
                 ),
@@ -140,7 +140,7 @@ class OTPFieldsState extends State<OTPFields> {
                 decoration: InputDecoration(
                   counter: const SizedBox(),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: AppColors.mainAppColorLight),
+                    borderSide: const BorderSide(color: AppTheme.mainAppColor),
                     borderRadius:BorderRadius.circular(10),
                   ),
                 ),

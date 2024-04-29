@@ -1,3 +1,6 @@
 {
-  "appName" : "Base"
+  "appName" : "Base",
+  "letsStart" : "Let`s Start",
+  "skip" : "Skip",
+  "login" : "Log In"
 }

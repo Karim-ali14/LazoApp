@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'AppColors.dart';
+import 'AppTheme.dart';
 
 class AppThemeMode extends ChangeNotifier {
   bool isDark = false;
   ThemeData? appTheme;
   bool toggleThemeMode() {
     isDark = !isDark;
-    appTheme = isDark ? AppColors.darkTheme : AppColors.lightTheme;
+    appTheme = isDark ? AppTheme.darkTheme : AppTheme.lightTheme;
     //_userData.saveAppTheme(isDark ? "Dark" : "Light");
     //saveTheme();
     notifyListeners();
@@ -17,7 +17,7 @@ class AppThemeMode extends ChangeNotifier {
 
  /* void getSavedTheme(UserModel? userModel) async {
     isDark = userModel?.isDarkMoodEnabled??false;
-    appTheme = isDark ? AppColors.darkTheme : AppColors.lightTheme;
+    appTheme = isDark ? AppTheme.darkTheme : AppTheme.lightTheme;
     notifyListeners();
   }*/
 
