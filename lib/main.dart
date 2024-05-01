@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lazo_provider/Presentation/Screens/Auth/forgetpassword/ForgetPasswordScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/OnboardingPage/OnboardingScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as ago;
@@ -149,7 +150,11 @@ class MyApp extends ConsumerWidget {
       GoRoute(
           path: R_LoginScreen,
           builder: (BuildContext context, GoRouterState state) => const LoginScreen()
-      )
+      ),
+      GoRoute(
+          path: R_ForgetPasswordScreen,
+          builder: (BuildContext context, GoRouterState state) => const ForgetPasswordScreen()
+      ),
     ],
   );
 }

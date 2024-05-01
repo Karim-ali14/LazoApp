@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
 import 'package:lazo_provider/Localization/keys.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/login/Widgets/BlockProviderBottomSheet.dart';
@@ -73,8 +75,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
               Row(
                 children: [
-                  const Expanded(child: SizedBox()),
-                  Text(context.tr(forgetPasswordKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts14w400,)
+                  const Spacer(),
+                  InkWell(onTap: forgetPassword,child: Text(context.tr(forgetPasswordKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts14w400,))
                 ],
               ),
               SizedBox(
@@ -100,6 +102,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   void login() async {
     // if(phoneKey.currentState?.validate() == true){
       ref.read(providerLoginStateProvider.notifier).login(phoneAndEmailController.value.text, passwordController.value.text);
+    // }
+  }
+
+  void forgetPassword() async {
+    // if(phoneKey.currentState?.validate() == true){
+    context.push(R_ForgetPasswordScreen);
     // }
   }
 
