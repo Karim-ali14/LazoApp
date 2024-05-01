@@ -820,7 +820,7 @@ components:
             lists:
               type: array
               items:
-                $ref: '#/components/schemas/List'
+                $ref: '#/components/schemas/ProductListItems'
             name:
               type: string
               example: زهرة الليلي
@@ -1318,7 +1318,7 @@ components:
           format: date-time
           example: '2024-04-25T22:57:37.000000Z'
 
-    List:
+    ProductListItems:
       type: object
       properties:
         created_at:

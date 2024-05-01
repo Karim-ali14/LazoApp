@@ -209,12 +209,12 @@ class ApiClient {
           return ColorsResponse.fromJson(value);
         case 'ExtraItem':
           return ExtraItem.fromJson(value);
-        case 'ModelList':
-          return ModelList.fromJson(value);
         case 'Occasion':
           return Occasion.fromJson(value);
         case 'OccasionsResponse':
           return OccasionsResponse.fromJson(value);
+        case 'ProductListItems':
+          return ProductListItems.fromJson(value);
         case 'ProductShowResponse':
           return ProductShowResponse.fromJson(value);
         case 'ProductShowResponseData':

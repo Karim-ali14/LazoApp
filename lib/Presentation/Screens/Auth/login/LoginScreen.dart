@@ -2,8 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
 import 'package:lazo_provider/Localization/keys.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/login/Widgets/BlockProviderBottomSheet.dart';
+import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Presentation/Widgets/AppTextField.dart';
 import 'package:lazo_provider/Presentation/Widgets/SvgIcons.dart';
@@ -12,18 +15,23 @@ import 'package:lazo_provider/Utils/Extintions.dart';
 import '../../../../Constants/Constants.dart';
 import '../../../Widgets/AppButton.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final phoneAndEmailController = TextEditingController();
   final passwordController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
+    handleState(providerLoginStateProvider,showLoading: true,showToast: true,onSuccess: (state){
+      print("success ....");
+    });
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -72,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 16,
               ),
-              AppButton(onPress: showBlockBottomSheet,text: context.tr(loginKey),width: context.getScreenSize.width,),
+              AppButton(onPress: login,text: context.tr(loginKey),width: context.getScreenSize.width,),
               SizedBox(
                 height: 16,
               ),
@@ -89,9 +97,9 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-  void login()/* async */{
+  void login() async {
     // if(phoneKey.currentState?.validate() == true){
-    //   ref.read(sendOtpLoginStateNotifier.notifier).sendLoginOtp(phoneKey.currentState?.phone ?? "");
+      ref.read(providerLoginStateProvider.notifier).login(phoneAndEmailController.value.text, passwordController.value.text);
     // }
   }
 

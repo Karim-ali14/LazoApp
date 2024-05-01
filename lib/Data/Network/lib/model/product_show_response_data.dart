@@ -101,7 +101,7 @@ class ProductShowResponseData {
   ///
   num? id;
 
-  List<List> lists;
+  List<ProductListItems> lists;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -346,7 +346,7 @@ class ProductShowResponseData {
         id: json[r'id'] == null
             ? null
             : num.parse(json[r'id'].toString()),
-        lists: List.listFromJson(json[r'lists']),
+        lists: ProductListItems.listFromJson(json[r'lists']),
         name: mapValueOfType<String>(json, r'name'),
         nameAr: mapValueOfType<String>(json, r'name_ar'),
         nameEn: mapValueOfType<String>(json, r'name_en'),
