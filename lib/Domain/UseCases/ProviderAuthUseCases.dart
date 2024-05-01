@@ -2,13 +2,29 @@ import 'dart:convert';
 
 import 'package:lazo_provider/Data/Models/StateModel.dart';
 import 'package:lazo_provider/Data/Network/lib/api.dart';
+import 'package:lazo_provider/Data/Providers/UserProvider.dart';
 import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
+import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import 'package:lazo_provider/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../Constants.dart';
 // import '../../Presentation/StateNotifiers-ViewModel/UserAuthStateNotifiers.dart';
-//
+
+
+class ProviderLoginUseCase extends StateNotifier<StateModel<ProviderLoginResponse>>{
+  final Ref ref;
+  final PublicAuthApi authApi;
+  ProviderLoginUseCase( this.ref, this.authApi):super(StateModel());
+
+  void login(String? emailOrPhone,String? pass) async {
+    state = StateModel.loading();
+    request(() => authApi.providerLoginPost(emailOrPhone: emailOrPhone , password: pass),onComplete: (resp) {
+      ref.read(providerTokenStateProvider.notifier).setUser(resp.data);
+    });
+  }
+
+}
 // class UserSignUpUseCase extends StateNotifier<StateModel<String>> {
 //
 //   final Ref ref;
@@ -97,25 +113,26 @@ import '../../Constants.dart';
 //   }
 //
 // }
-//
-// class UserProvider extends StateNotifier<Token?> {
-//
-//   final Ref ref;
-//   UserProvider(this.ref) : super(null);
-//
-//   Token? checkIfSavedUser(){
-//     return prefs.getString(userKey) != null ? Token.fromJson(json.decode(prefs.getString(userKey)!)) : null;
-//   }
-//   void setUser(Token tokenObject){
-//     state = tokenObject;
-//     prefs.setString(userKey, json.encode(tokenObject.toJson()));
-//     ref.read(apiClient).defaultHeaderMap.update("Authorization", (value) => "Bearer ${tokenObject.token}",ifAbsent: ()=> "Bearer ${tokenObject.token}");
-//   }
-//
-//   Future<bool> logout() async {
-//     state = null;
-//     await prefs.remove(userKey);
-//     return true;
-//   }
-//
-// }
+
+class UserProvider extends StateNotifier<ProviderLoginResponseData?> {
+
+  final Ref ref;
+  UserProvider(this.ref) : super(null);
+
+  String? checkIfSavedUser(){
+    return prefs.getString(userKey);
+  }
+
+  void setUser(ProviderLoginResponseData? providerObject){
+    state = providerObject;
+    prefs.setString(userKey, json.encode(providerObject?.toJson()));
+    ref.read(apiClient).defaultHeaderMap.update("Authorization", (value) => "Bearer ${providerObject?.accessToken}",ifAbsent: ()=> "Bearer ${providerObject?.accessToken}");
+  }
+
+  Future<bool> logout() async {
+    state = null;
+    await prefs.remove(userKey);
+    return true;
+  }
+
+}

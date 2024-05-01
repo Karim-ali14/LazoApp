@@ -19,7 +19,6 @@ class ProviderProfileUpdateRequest {
     this.businessType,
     this.cityId,
     this.commercialRegisterImage,
-    this.confirmPassword,
     this.email,
     this.endTime,
     this.hasOfflineStores,
@@ -32,7 +31,6 @@ class ProviderProfileUpdateRequest {
     this.nameEn,
     this.offlineStoresNumber,
     this.ownerName,
-    this.password,
     this.phone,
     this.provideDelivery,
     this.selfEmploymentDocument,
@@ -99,17 +97,9 @@ class ProviderProfileUpdateRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? confirmPassword;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? email;
 
-  /// take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+  /// take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -198,14 +188,6 @@ class ProviderProfileUpdateRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? password;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   String? phone;
 
   ///
@@ -279,7 +261,6 @@ class ProviderProfileUpdateRequest {
      other.businessType == businessType &&
      other.cityId == cityId &&
      other.commercialRegisterImage == commercialRegisterImage &&
-     other.confirmPassword == confirmPassword &&
      other.email == email &&
      other.endTime == endTime &&
      other.hasOfflineStores == hasOfflineStores &&
@@ -292,7 +273,6 @@ class ProviderProfileUpdateRequest {
      other.nameEn == nameEn &&
      other.offlineStoresNumber == offlineStoresNumber &&
      other.ownerName == ownerName &&
-     other.password == password &&
      other.phone == phone &&
      other.provideDelivery == provideDelivery &&
      other.selfEmploymentDocument == selfEmploymentDocument &&
@@ -313,7 +293,6 @@ class ProviderProfileUpdateRequest {
     (businessType == null ? 0 : businessType!.hashCode) +
     (cityId == null ? 0 : cityId!.hashCode) +
     (commercialRegisterImage == null ? 0 : commercialRegisterImage!.hashCode) +
-    (confirmPassword == null ? 0 : confirmPassword!.hashCode) +
     (email == null ? 0 : email!.hashCode) +
     (endTime == null ? 0 : endTime!.hashCode) +
     (hasOfflineStores == null ? 0 : hasOfflineStores!.hashCode) +
@@ -326,7 +305,6 @@ class ProviderProfileUpdateRequest {
     (nameEn == null ? 0 : nameEn!.hashCode) +
     (offlineStoresNumber == null ? 0 : offlineStoresNumber!.hashCode) +
     (ownerName == null ? 0 : ownerName!.hashCode) +
-    (password == null ? 0 : password!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
     (provideDelivery == null ? 0 : provideDelivery!.hashCode) +
     (selfEmploymentDocument == null ? 0 : selfEmploymentDocument!.hashCode) +
@@ -339,7 +317,7 @@ class ProviderProfileUpdateRequest {
     (xLink == null ? 0 : xLink!.hashCode);
 
   @override
-  String toString() => 'ProviderProfileUpdateRequest[bankAccountNumber=$bankAccountNumber, bankName=$bankName, beneficiaryName=$beneficiaryName, businessType=$businessType, cityId=$cityId, commercialRegisterImage=$commercialRegisterImage, confirmPassword=$confirmPassword, email=$email, endTime=$endTime, hasOfflineStores=$hasOfflineStores, iban=$iban, ibanImage=$ibanImage, image=$image, instagramLink=$instagramLink, locations=$locations, nameAr=$nameAr, nameEn=$nameEn, offlineStoresNumber=$offlineStoresNumber, ownerName=$ownerName, password=$password, phone=$phone, provideDelivery=$provideDelivery, selfEmploymentDocument=$selfEmploymentDocument, snapchatLink=$snapchatLink, startTime=$startTime, status=$status, tagsIds=$tagsIds, tiktokLink=$tiktokLink, workingDaysIndices=$workingDaysIndices, xLink=$xLink]';
+  String toString() => 'ProviderProfileUpdateRequest[bankAccountNumber=$bankAccountNumber, bankName=$bankName, beneficiaryName=$beneficiaryName, businessType=$businessType, cityId=$cityId, commercialRegisterImage=$commercialRegisterImage, email=$email, endTime=$endTime, hasOfflineStores=$hasOfflineStores, iban=$iban, ibanImage=$ibanImage, image=$image, instagramLink=$instagramLink, locations=$locations, nameAr=$nameAr, nameEn=$nameEn, offlineStoresNumber=$offlineStoresNumber, ownerName=$ownerName, phone=$phone, provideDelivery=$provideDelivery, selfEmploymentDocument=$selfEmploymentDocument, snapchatLink=$snapchatLink, startTime=$startTime, status=$status, tagsIds=$tagsIds, tiktokLink=$tiktokLink, workingDaysIndices=$workingDaysIndices, xLink=$xLink]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -372,11 +350,6 @@ class ProviderProfileUpdateRequest {
       json[r'commercial_register_image'] = this.commercialRegisterImage;
     } else {
       json[r'commercial_register_image'] = null;
-    }
-    if (this.confirmPassword != null) {
-      json[r'confirm_password'] = this.confirmPassword;
-    } else {
-      json[r'confirm_password'] = null;
     }
     if (this.email != null) {
       json[r'email'] = this.email;
@@ -433,11 +406,6 @@ class ProviderProfileUpdateRequest {
       json[r'owner_name'] = this.ownerName;
     } else {
       json[r'owner_name'] = null;
-    }
-    if (this.password != null) {
-      json[r'password'] = this.password;
-    } else {
-      json[r'password'] = null;
     }
     if (this.phone != null) {
       json[r'phone'] = this.phone;
@@ -509,7 +477,6 @@ class ProviderProfileUpdateRequest {
         businessType: mapValueOfType<String>(json, r'business_type'),
         cityId: mapValueOfType<String>(json, r'city_id'),
         commercialRegisterImage: mapValueOfType<String>(json, r'commercial_register_image'),
-        confirmPassword: mapValueOfType<String>(json, r'confirm_password'),
         email: mapValueOfType<String>(json, r'email'),
         endTime: mapValueOfType<String>(json, r'end_time'),
         hasOfflineStores: mapValueOfType<String>(json, r'has_offline_stores'),
@@ -524,7 +491,6 @@ class ProviderProfileUpdateRequest {
         nameEn: mapValueOfType<String>(json, r'name_en'),
         offlineStoresNumber: mapValueOfType<String>(json, r'offline_stores_number'),
         ownerName: mapValueOfType<String>(json, r'owner_name'),
-        password: mapValueOfType<String>(json, r'password'),
         phone: mapValueOfType<String>(json, r'phone'),
         provideDelivery: mapValueOfType<String>(json, r'provide_delivery'),
         selfEmploymentDocument: mapValueOfType<String>(json, r'self_employment_document'),

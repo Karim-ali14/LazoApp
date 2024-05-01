@@ -46,17 +46,12 @@ void main() {
       // TODO
     });
 
-    // String confirmPassword
-    test('to test the property `confirmPassword`', () async {
-      // TODO
-    });
-
     // String email
     test('to test the property `email`', () async {
       // TODO
     });
 
-    // take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+    // take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
     // String endTime
     test('to test the property `endTime`', () async {
       // TODO
@@ -109,11 +104,6 @@ void main() {
 
     // String ownerName
     test('to test the property `ownerName`', () async {
-      // TODO
-    });
-
-    // String password
-    test('to test the property `password`', () async {
       // TODO
     });
 

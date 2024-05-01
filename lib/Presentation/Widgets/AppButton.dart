@@ -34,7 +34,7 @@ class AppButton extends StatelessWidget {
           onPressed: enabled! ? onPress : null,
           style: ButtonStyle(
             shape: isCircle == true ? MaterialStateProperty.all(const CircleBorder()) : MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: radius??BorderRadius.circular(6)
+                borderRadius: radius??BorderRadius.circular(4)
             )),
             backgroundColor: MaterialStateProperty.all(backColor ?? AppTheme.appSwatch),
           ),

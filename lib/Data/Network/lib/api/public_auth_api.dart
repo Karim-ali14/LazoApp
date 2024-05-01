@@ -91,13 +91,13 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
-  /// * [int] confirmCode:
+  /// * [String] confirmCode:
   ///
   /// * [String] accountType:
   ///   client or provider
-  Future<Response> codeConfirmPostWithHttpInfo({ int? emailOrPhone, int? confirmCode, String? accountType, }) async {
+  Future<Response> codeConfirmPostWithHttpInfo({ String? emailOrPhone, String? confirmCode, String? accountType, }) async {
     // ignore: prefer_const_declarations
     final path = r'/code/confirm';
 
@@ -143,13 +143,13 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
-  /// * [int] confirmCode:
+  /// * [String] confirmCode:
   ///
   /// * [String] accountType:
   ///   client or provider
-  Future<Object?> codeConfirmPost({ int? emailOrPhone, int? confirmCode, String? accountType, }) async {
+  Future<Object?> codeConfirmPost({ String? emailOrPhone, String? confirmCode, String? accountType, }) async {
     final response = await codeConfirmPostWithHttpInfo( emailOrPhone: emailOrPhone, confirmCode: confirmCode, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -170,10 +170,10 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
   /// * [String] accountType:
-  Future<Response> codeSendPostWithHttpInfo({ int? emailOrPhone, String? accountType, }) async {
+  Future<Response> codeSendPostWithHttpInfo({ String? emailOrPhone, String? accountType, }) async {
     // ignore: prefer_const_declarations
     final path = r'/code/send';
 
@@ -215,10 +215,10 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
   /// * [String] accountType:
-  Future<Object?> codeSendPost({ int? emailOrPhone, String? accountType, }) async {
+  Future<Object?> codeSendPost({ String? emailOrPhone, String? accountType, }) async {
     final response = await codeSendPostWithHttpInfo( emailOrPhone: emailOrPhone, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -239,10 +239,10 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
-  /// * [int] password:
-  Future<Response> providerLoginPostWithHttpInfo({ int? emailOrPhone, int? password, }) async {
+  /// * [String] password:
+  Future<Response> providerLoginPostWithHttpInfo({ String? emailOrPhone, String? password, }) async {
     // ignore: prefer_const_declarations
     final path = r'/provider/login';
 
@@ -284,10 +284,10 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
-  /// * [int] password:
-  Future<Object?> providerLoginPost({ int? emailOrPhone, int? password, }) async {
+  /// * [String] password:
+  Future<ProviderLoginResponse?> providerLoginPost({ String? emailOrPhone, String? password, }) async {
     final response = await providerLoginPostWithHttpInfo( emailOrPhone: emailOrPhone, password: password, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -296,7 +296,7 @@ class PublicAuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProviderLoginResponse',) as ProviderLoginResponse;
     
     }
     return null;
@@ -370,13 +370,13 @@ class PublicAuthApi {
   ///   eg: 04:00 PM
   ///
   /// * [int] workingDaysIndicesLeftSquareBracket0RightSquareBracket:
-  ///   take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+  ///   take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
   ///
   /// * [int] workingDaysIndicesLeftSquareBracket1RightSquareBracket:
-  ///   take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+  ///   take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
   ///
   /// * [int] workingDaysIndicesLeftSquareBracket2RightSquareBracket:
-  ///   take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+  ///   take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
   ///
   /// * [String] selfEmploymentDocument:
   ///   required when business type is individual
@@ -629,13 +629,13 @@ class PublicAuthApi {
   ///   eg: 04:00 PM
   ///
   /// * [int] workingDaysIndicesLeftSquareBracket0RightSquareBracket:
-  ///   take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+  ///   take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
   ///
   /// * [int] workingDaysIndicesLeftSquareBracket1RightSquareBracket:
-  ///   take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+  ///   take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
   ///
   /// * [int] workingDaysIndicesLeftSquareBracket2RightSquareBracket:
-  ///   take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+  ///   take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
   ///
   /// * [String] selfEmploymentDocument:
   ///   required when business type is individual
@@ -677,13 +677,13 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
-  /// * [int] confirmCode:
+  /// * [String] confirmCode:
   ///
   /// * [String] accountType:
   ///   client or provider
-  Future<Response> resetCodeConfirmPostWithHttpInfo({ int? emailOrPhone, int? confirmCode, String? accountType, }) async {
+  Future<Response> resetCodeConfirmPostWithHttpInfo({ String? emailOrPhone, String? confirmCode, String? accountType, }) async {
     // ignore: prefer_const_declarations
     final path = r'/reset-code/confirm';
 
@@ -729,13 +729,13 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
-  /// * [int] confirmCode:
+  /// * [String] confirmCode:
   ///
   /// * [String] accountType:
   ///   client or provider
-  Future<Object?> resetCodeConfirmPost({ int? emailOrPhone, int? confirmCode, String? accountType, }) async {
+  Future<Object?> resetCodeConfirmPost({ String? emailOrPhone, String? confirmCode, String? accountType, }) async {
     final response = await resetCodeConfirmPostWithHttpInfo( emailOrPhone: emailOrPhone, confirmCode: confirmCode, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -756,10 +756,10 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
   /// * [String] accountType:
-  Future<Response> resetCodeSendPostWithHttpInfo({ int? emailOrPhone, String? accountType, }) async {
+  Future<Response> resetCodeSendPostWithHttpInfo({ String? emailOrPhone, String? accountType, }) async {
     // ignore: prefer_const_declarations
     final path = r'/reset-code/send';
 
@@ -801,10 +801,10 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
   /// * [String] accountType:
-  Future<Object?> resetCodeSendPost({ int? emailOrPhone, String? accountType, }) async {
+  Future<Object?> resetCodeSendPost({ String? emailOrPhone, String? accountType, }) async {
     final response = await resetCodeSendPostWithHttpInfo( emailOrPhone: emailOrPhone, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -825,14 +825,14 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
   /// * [String] newPassword:
   ///
   /// * [String] confirmNewPassword:
   ///
   /// * [String] accountType:
-  Future<Response> resetPasswordPostWithHttpInfo({ int? emailOrPhone, String? newPassword, String? confirmNewPassword, String? accountType, }) async {
+  Future<Response> resetPasswordPostWithHttpInfo({ String? emailOrPhone, String? newPassword, String? confirmNewPassword, String? accountType, }) async {
     // ignore: prefer_const_declarations
     final path = r'/reset-password';
 
@@ -882,14 +882,14 @@ class PublicAuthApi {
   ///
   /// Parameters:
   ///
-  /// * [int] emailOrPhone:
+  /// * [String] emailOrPhone:
   ///
   /// * [String] newPassword:
   ///
   /// * [String] confirmNewPassword:
   ///
   /// * [String] accountType:
-  Future<Object?> resetPasswordPost({ int? emailOrPhone, String? newPassword, String? confirmNewPassword, String? accountType, }) async {
+  Future<Object?> resetPasswordPost({ String? emailOrPhone, String? newPassword, String? confirmNewPassword, String? accountType, }) async {
     final response = await resetPasswordPostWithHttpInfo( emailOrPhone: emailOrPhone, newPassword: newPassword, confirmNewPassword: confirmNewPassword, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));

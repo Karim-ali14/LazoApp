@@ -125,8 +125,23 @@ class AppTheme {
   static const TextStyle styleWithTextBlackAdelleSansExtendedFonts20w700 = TextStyle(
       color: Colors.black, fontSize: 20, fontWeight: FontWeight.w700);
 
+  static const TextStyle styleWithTextBlackAdelleSansExtendedFonts18w700 = TextStyle(
+      color: Colors.black, fontSize: 18, fontWeight: FontWeight.w700);
+
   static const TextStyle styleWithTextGray7AdelleSansExtendedFonts16w400 = TextStyle(
       color: appGrey7 , fontSize: 16, fontWeight: FontWeight.w400);
+
+  static const TextStyle styleWithTextBlackAdelleSansExtendedFonts16w400 = TextStyle(
+      color: Colors.black , fontSize: 16, fontWeight: FontWeight.w400);
+
+  static const TextStyle styleWithTextRedAdelleSansExtendedFonts16w400 = TextStyle(
+      color: mainAppColor , fontSize: 16, fontWeight: FontWeight.w400);
+
+  static const TextStyle styleWithTextBlackAdelleSansExtendedFonts14w400 = TextStyle(
+      color: Colors.black , fontSize: 14, fontWeight: FontWeight.w400);
+
+  static const TextStyle styleWithTextWhiteAdelleSansExtendedFonts14w400 = TextStyle(
+      color: Colors.white , fontSize: 14, fontWeight: FontWeight.w400);
 
 
   static ThemeData darkTheme = ThemeData(

@@ -8,7 +8,7 @@ import 'package:athletix/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emailOrPhone** | **int** |  | [optional] 
+**emailOrPhone** | **String** |  | [optional] 
 **newPassword** | **String** |  | [optional] 
 **confirmNewPassword** | **String** |  | [optional] 
 **accountType** | **String** |  | [optional] 

@@ -12,4 +12,6 @@ const R_Onboarding = '/onboarding';
 const R_LoginScreen = '/loginScreen';
 const R_MainScreen = '/mainScreen';
 const R_OTP = '/otp';
+
 //EXTRAS
+const userKey = "user";

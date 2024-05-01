@@ -11,18 +11,23 @@
 import 'package:athletix/api.dart';
 import 'package:test/test.dart';
 
-// tests for ProviderLoginRequest
+// tests for SizesResponse
 void main() {
-  // final instance = ProviderLoginRequest();
+  // final instance = SizesResponse();
 
-  group('test ProviderLoginRequest', () {
-    // int emailOrPhone
-    test('to test the property `emailOrPhone`', () async {
+  group('test SizesResponse', () {
+    // List<Size> data (default value: const [])
+    test('to test the property `data`', () async {
       // TODO
     });
 
-    // int password
-    test('to test the property `password`', () async {
+    // String message
+    test('to test the property `message`', () async {
+      // TODO
+    });
+
+    // bool status
+    test('to test the property `status`', () async {
       // TODO
     });
 

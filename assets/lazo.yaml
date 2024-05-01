@@ -14,7 +14,7 @@ components:
       type: object
       properties:
         email_or_phone:
-          type: integer
+          type: string
           example: '534053560'
         account_type:
           type: string
@@ -37,10 +37,10 @@ components:
       type: object
       properties:
         email_or_phone:
-          type: integer
+          type: string
           example: '534053560'
         confirm_code:
-          type: integer
+          type: string
           example: '5555'
         account_type:
           type: string
@@ -63,7 +63,7 @@ components:
       type: object
       properties:
         email_or_phone:
-          type: integer
+          type: string
           example: '534053560'
         account_type:
           type: string
@@ -85,10 +85,10 @@ components:
       type: object
       properties:
         email_or_phone:
-          type: integer
+          type: string
           example: '534053560'
         confirm_code:
-          type: integer
+          type: string
           example: '5555'
         account_type:
           type: string
@@ -111,7 +111,7 @@ components:
       type: object
       properties:
         email_or_phone:
-          type: integer
+          type: string
           example: '534053560'
         new_password:
           type: string
@@ -135,7 +135,7 @@ components:
         data:
           type: string
 
-    ProviderRegistration:
+    ProviderRegisterRequest:
       type: object
       properties:
         name_en:
@@ -151,7 +151,7 @@ components:
           type: string
           example: hyper22@gmail.com
         phone:
-          type: integer
+          type: string
           example: '534059560'
         account_type:
           type: string
@@ -257,10 +257,10 @@ components:
           type: string
           example: Ali
         bank_account_number:
-          type: integer
+          type: string
           example: '43646364353'
         iban:
-          type: integer
+          type: string
           example: '00078687464'
         iban_image:
           type: string
@@ -291,10 +291,10 @@ components:
       type: object
       properties:
         email_or_phone:
-          type: integer
+          type: string
           example: '534053560'
         password:
-          type: integer
+          type: string
           example: '123456'
 
     ProviderLoginResponse:
@@ -374,6 +374,34 @@ components:
           items:
             $ref: '#/components/schemas/Tag'
 
+    SizesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Size'
+        message:
+          type: string
+          example: list of sizes
+        status:
+          type: boolean
+          example: true
+
+    ColorsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Color'
+        message:
+          type: string
+          example: list of colors
+        status:
+          type: boolean
+          example: true
+
     OccasionsResponse:
       type: object
       properties:
@@ -385,6 +413,34 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Occasion'
+
+    CategoriesResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: list of categories
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+
+    ProviderCategoryMenuResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: list of categories menus
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryMenu'
 
     ProviderProfileUpdateRequest:
       type: object
@@ -407,15 +463,12 @@ components:
         commercial_register_image:
           type: string
           example: uploads/files/04-2024/1713354063L6Sxt212ExLiW2p.png
-        confirm_password:
-          type: string
-          example: '123456'
         email:
           type: string
           example: hyper242@gmail.com
         end_time:
           description: |-
-            take days of week as indices, 
+            take days of week as indices,
             0 => Sunday,
             1 => Monday,
             2 => Tuesday,
@@ -457,9 +510,6 @@ components:
         owner_name:
           type: string
           example: Ali Ahmeddd
-        password:
-          type: string
-          example: '123456'
         phone:
           type: string
           example: '534059563'
@@ -654,6 +704,159 @@ components:
         message:
           type: string
           example: provider's profile update successfully
+        status:
+          type: boolean
+          example: true
+
+    ProductsListResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: list of products
+        data:
+          type: object
+          properties:
+            current_page:
+              type: number
+              example: 1
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/ProviderProduct'
+            first_page_url:
+              type: string
+              example: http://localhost:8000/api/provider/product/all?page=1
+            from:
+              type: number
+              example: 1
+            last_page:
+              type: number
+              example: 1
+            last_page_url:
+              type: string
+              example: http://localhost:8000/api/provider/product/all?page=1
+            links:
+              type: array
+              items:
+                type: object
+                properties:
+                  active:
+                    type: boolean
+                    example: false
+                  label:
+                    type: string
+                    example: '&laquo; Previous'
+                  url:
+                    type: string
+                    nullable: true
+                    example: null
+            next_page_url:
+              nullable: true
+              example: null
+            path:
+              type: string
+              example: http://localhost:8000/api/provider/product/all
+            per_page:
+              type: number
+              example: 15
+            prev_page_url:
+              nullable: true
+              example: null
+            to:
+              type: number
+              example: 3
+            total:
+              type: number
+              example: 3
+
+    ProductShowResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            amount:
+              type: number
+              example: 5
+            categories:
+              type: array
+              items:
+                $ref: '#/components/schemas/Category'
+            category_menu:
+              type: array
+              items:
+                $ref: '#/components/schemas/CategoryMenu'
+            colors:
+              type: array
+              items:
+                $ref: '#/components/schemas/Color'
+            created_at:
+              type: string
+              format: date-time
+              example: '2024-04-25T22:57:37.000000Z'
+            description:
+              type: string
+              example: زهره جميله
+            description_ar:
+              type: string
+              example: زهره جميله
+            description_en:
+              type: string
+              example: a beautiful flowerrrr
+            expected_processing_time:
+              type: string
+              example: 3 days 4 hours 50 minutes
+            extra_items:
+              type: array
+              items:
+                $ref: '#/components/schemas/ExtraItem'
+            id:
+              type: number
+              example: 36
+            lists:
+              type: array
+              items:
+                $ref: '#/components/schemas/List'
+            name:
+              type: string
+              example: زهرة الليلي
+            name_ar:
+              type: string
+              example: زهرة الليلي
+            name_en:
+              type: string
+              example: lily flowerrrr
+            occasions:
+              type: array
+              items:
+                $ref: '#/components/schemas/Occasion'
+            price:
+              type: number
+              example: 120.32
+            price_after_discount:
+              type: number
+              example: 90.43
+            provider_id:
+              type: number
+              example: 1
+            sizes:
+              type: array
+              items:
+                $ref: '#/components/schemas/Size'
+            type:
+              type: string
+              example: ready_made_gifts
+            updated_at:
+              type: string
+              format: date-time
+              example: '2024-04-26T17:58:07.000000Z'
+        message:
+          type: string
+          example: show product details
         status:
           type: boolean
           example: true
@@ -940,6 +1143,96 @@ components:
           type: string
           example: '2024-04-23T10:42:32.000000Z'
 
+    Category:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name_en:
+          type: string
+          example: food
+        name_ar:
+          type: string
+          example: المأكولات
+        image:
+          type: string
+          example: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        imagePath:
+          type: string
+          example: http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+        created_at:
+          type: string
+          example: '2024-04-22T16:47:42.000000Z'
+        updated_at:
+          type: string
+          example: '2024-04-22T16:47:42.000000Z'
+
+    CategoryMenu:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name_en:
+          type: string
+          example: category menu b
+        name_ar:
+          type: string
+          example: قائمة فئات ب
+        provider_id:
+          type: number
+          example: 1
+        created_at:
+          type: string
+          example: '2024-04-24T23:04:39.000000Z'
+        updated_at:
+          type: string
+          example: '2024-04-24T23:21:59.000000Z'
+
+    ProviderProduct:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 34
+        name_en:
+          type: string
+          example: lily flower
+        name_ar:
+          type: string
+          example: زهرة الليلي
+        description_en:
+          type: string
+          example: a beautiful flower
+        description_ar:
+          type: string
+          example: زهره جميله
+        price:
+          type: number
+          example: 120.32
+        price_after_discount:
+          type: number
+          example: 90.43
+        amount:
+          type: number
+          example: 5
+        expected_processing_time:
+          type: string
+          example: 3 days 4 hours 50 minutes
+        provider_id:
+          type: number
+          example: 1
+        type:
+          type: string
+          example: ready_made_gifts
+        created_at:
+          type: string
+          example: '2024-04-25T22:11:39.000000Z'
+        updated_at:
+          type: string
+          example: '2024-04-25T22:11:39.000000Z'
+
     PromocodeDetails:
       type: object
       properties:
@@ -968,6 +1261,120 @@ components:
           type: number
           example: 58
 
+    Color:
+      type: object
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-04-24T22:04:54.000000Z'
+        hexcode:
+          type: string
+          example: '#0000FF'
+        id:
+          type: number
+          example: 1
+        name:
+          type: string
+          example: الأصفر
+        name_ar:
+          type: string
+          example: الأصفر
+        name_en:
+          type: string
+          example: yellow
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-04-24T22:50:51.000000Z'
+
+    ExtraItem:
+      type: object
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-04-25T22:57:37.000000Z'
+        id:
+          type: number
+          example: 2
+        name:
+          type: string
+          example: اكسترا 1
+        name_ar:
+          type: string
+          example: اكسترا 1
+        name_en:
+          type: string
+          example: first extra item
+        price:
+          type: number
+          example: 43.32
+        product_id:
+          type: number
+          example: 36
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-04-25T22:57:37.000000Z'
+
+    List:
+      type: object
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-04-25T22:57:37.000000Z'
+        id:
+          type: number
+          example: 3
+        is_selectable:
+          type: number
+          example: 1
+        name:
+          type: string
+          example: لست 1
+        name_ar:
+          type: string
+          example: لست 1
+        name_en:
+          type: string
+          example: list 1
+        price:
+          type: number
+          example: 12.32
+        product_id:
+          type: number
+          example: 36
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-04-25T22:57:37.000000Z'
+
+    Size:
+      type: object
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-04-24T22:55:31.000000Z'
+        id:
+          type: number
+          example: 1
+        name:
+          type: string
+          example: متوسط
+        name_ar:
+          type: string
+          example: متوسط
+        name_en:
+          type: string
+          example: medium
+        updated_at:
+          type: string
+          format: date-time
+          example: '2024-04-24T22:58:52.000000Z'
+
 tags:
   - name: public
   - name: public > auth
@@ -988,7 +1395,7 @@ paths:
               type: object
               properties:
                 email_or_phone:
-                  type: integer
+                  type: string
                   example: '534053560'
                 account_type:
                   type: string
@@ -1053,10 +1460,10 @@ paths:
               type: object
               properties:
                 email_or_phone:
-                  type: integer
+                  type: string
                   example: '534053560'
                 confirm_code:
-                  type: integer
+                  type: string
                   example: '5555'
                 account_type:
                   type: string
@@ -1122,7 +1529,7 @@ paths:
               type: object
               properties:
                 email_or_phone:
-                  type: integer
+                  type: string
                   example: '534053560'
                 account_type:
                   type: string
@@ -1187,10 +1594,10 @@ paths:
               type: object
               properties:
                 email_or_phone:
-                  type: integer
+                  type: string
                   example: '534053560'
                 confirm_code:
-                  type: integer
+                  type: string
                   example: '5555'
                 account_type:
                   type: string
@@ -1256,7 +1663,7 @@ paths:
               type: object
               properties:
                 email_or_phone:
-                  type: integer
+                  type: string
                   example: '534053560'
                 new_password:
                   type: string
@@ -1414,7 +1821,7 @@ paths:
                 working_days_indices[0]:
                   type: integer
                   description: |-
-                    take days of week as indices, 
+                    take days of week as indices,
                     0 => Sunday,
                     1 => Monday,
                     2 => Tuesday,
@@ -1426,7 +1833,7 @@ paths:
                 working_days_indices[1]:
                   type: integer
                   description: |-
-                    take days of week as indices, 
+                    take days of week as indices,
                     0 => Sunday,
                     1 => Monday,
                     2 => Tuesday,
@@ -1438,7 +1845,7 @@ paths:
                 working_days_indices[2]:
                   type: integer
                   description: |-
-                    take days of week as indices, 
+                    take days of week as indices,
                     0 => Sunday,
                     1 => Monday,
                     2 => Tuesday,
@@ -1608,14 +2015,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              type: object
-              properties:
-                email_or_phone:
-                  type: integer
-                  example: '534053560'
-                password:
-                  type: integer
-                  example: '123456'
+              $ref: '#/components/schemas/ProviderLoginRequest'
       responses:
         '200':
           description: OK
@@ -1659,89 +2059,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: provider logged in successfully
-                data:
-                  access_token: 6|xRswjOF63AseSKVjWYSjRgGDn1nxI20E21l7XNz5
-                  token_type: Bearer
-                  provider:
-                    id: 18
-                    name_en: hyper market
-                    name_ar: متاجر هايبر
-                    owner_name: Ali Ahmed
-                    email: hyper@gmail.com
-                    phone: '534053560'
-                    image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    city_id: 1
-                    account_type: service_provider
-                    device_type: string
-                    fcm_token: string
-                    lang: ar
-                    status: pending
-                    instagram_link: https://instagram.com/test
-                    snapchat_link: https://snapchat.com/test
-                    tiktok_link: https://tiktok.com/test
-                    x_link: https://x.com/test
-                    has_offline_stores: 1
-                    offline_stores_number: 3
-                    provide_delivery: string
-                    business_type: individual
-                    commercial_register_image: string
-                    self_employment_document: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    start_time: 02:15 PM
-                    end_time: 04:12 PM
-                    working_days_indices: 0,3,5
-                    bank_name: alrajhi
-                    beneficiary_name: Ali
-                    bank_account_number: '43646364353'
-                    iban: '00078687464'
-                    iban_image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    created_at: '2024-04-17T17:22:43.000000Z'
-                    updated_at: '2024-04-17T17:22:43.000000Z'
-                    name: متاجر هايبر
-                    imagePath: >-
-                      http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    working_days_indices_list:
-                      - '0'
-                      - '3'
-                      - '5'
-                    self_employment_document_path: >-
-                      http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    commercial_register_image_path: string
-                    city:
-                      id: 1
-                      name_en: Alriyadh
-                      name_ar: الرياض
-                      created_at: '2024-04-17T11:05:49.000000Z'
-                      updated_at: '2024-04-17T11:05:49.000000Z'
-                      name: الرياض
-                    locations:
-                      - id: 35
-                        provider_id: 18
-                        location: 31.227578678786685, 29.945350987156488
-                        created_at: '2024-04-17T17:22:43.000000Z'
-                        updated_at: '2024-04-17T17:22:43.000000Z'
-                      - id: 36
-                        provider_id: 18
-                        location: 31.22596397297209, 29.946423870724885
-                        created_at: '2024-04-17T17:22:43.000000Z'
-                        updated_at: '2024-04-17T17:22:43.000000Z'
-                    tags:
-                      - id: 1
-                        name_en: shopping
-                        name_ar: تسوق
-                        created_at: '2024-04-17T11:24:40.000000Z'
-                        updated_at: '2024-04-17T11:24:40.000000Z'
-                        name: تسوق
-                      - id: 2
-                        name_en: e-com
-                        name_ar: متجر إلكترونيات
-                        created_at: '2024-04-17T11:24:50.000000Z'
-                        updated_at: '2024-04-17T11:26:02.000000Z'
-                        name: متجر إلكترونيات
-                is_exist: true
+                $ref: '#/components/schemas/ProviderLoginResponse'
   /admin/login:
     post:
       tags:

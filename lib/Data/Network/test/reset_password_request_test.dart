@@ -16,7 +16,7 @@ void main() {
   // final instance = ResetPasswordRequest();
 
   group('test ResetPasswordRequest', () {
-    // int emailOrPhone
+    // String emailOrPhone
     test('to test the property `emailOrPhone`', () async {
       // TODO
     });

@@ -24,7 +24,7 @@ class ResetCodeConfirmRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? emailOrPhone;
+  String? emailOrPhone;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -32,7 +32,7 @@ class ResetCodeConfirmRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? confirmCode;
+  String? confirmCode;
 
   /// client or provider
   ///
@@ -98,8 +98,8 @@ class ResetCodeConfirmRequest {
       }());
 
       return ResetCodeConfirmRequest(
-        emailOrPhone: mapValueOfType<int>(json, r'email_or_phone'),
-        confirmCode: mapValueOfType<int>(json, r'confirm_code'),
+        emailOrPhone: mapValueOfType<String>(json, r'email_or_phone'),
+        confirmCode: mapValueOfType<String>(json, r'confirm_code'),
         accountType: mapValueOfType<String>(json, r'account_type'),
       );
     }

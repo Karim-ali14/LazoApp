@@ -16,7 +16,7 @@ void main() {
   // final instance = ResetCodeSendRequest();
 
   group('test ResetCodeSendRequest', () {
-    // int emailOrPhone
+    // String emailOrPhone
     test('to test the property `emailOrPhone`', () async {
       // TODO
     });

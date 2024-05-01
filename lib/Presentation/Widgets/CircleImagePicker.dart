@@ -48,7 +48,7 @@ class _CircleImgPickerState extends State<CircleImgPicker> {
                     fit: BoxFit.cover,
                   )
                 : (widget.initialImg != null
-                    ? CircleImage(
+                    ? ImageView(
                         placeHolder: widget.placeHolder,
                         initialImg: widget.initialImg)
                     : Image.asset(widget.placeHolder??"",

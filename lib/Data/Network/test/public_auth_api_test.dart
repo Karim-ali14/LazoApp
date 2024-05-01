@@ -26,21 +26,21 @@ void main() {
 
     // confirm code
     //
-    //Future<Object> codeConfirmPost({ int emailOrPhone, int confirmCode, String accountType }) async
+    //Future<Object> codeConfirmPost({ String emailOrPhone, String confirmCode, String accountType }) async
     test('test codeConfirmPost', () async {
       // TODO
     });
 
     // send code
     //
-    //Future<Object> codeSendPost({ int emailOrPhone, String accountType }) async
+    //Future<Object> codeSendPost({ String emailOrPhone, String accountType }) async
     test('test codeSendPost', () async {
       // TODO
     });
 
     // provider login
     //
-    //Future<Object> providerLoginPost({ int emailOrPhone, int password }) async
+    //Future<ProviderLoginResponse> providerLoginPost({ String emailOrPhone, String password }) async
     test('test providerLoginPost', () async {
       // TODO
     });
@@ -54,21 +54,21 @@ void main() {
 
     // confirm reset code
     //
-    //Future<Object> resetCodeConfirmPost({ int emailOrPhone, int confirmCode, String accountType }) async
+    //Future<Object> resetCodeConfirmPost({ String emailOrPhone, String confirmCode, String accountType }) async
     test('test resetCodeConfirmPost', () async {
       // TODO
     });
 
     // send reset code
     //
-    //Future<Object> resetCodeSendPost({ int emailOrPhone, String accountType }) async
+    //Future<Object> resetCodeSendPost({ String emailOrPhone, String accountType }) async
     test('test resetCodeSendPost', () async {
       // TODO
     });
 
     // reset password
     //
-    //Future<Object> resetPasswordPost({ int emailOrPhone, String newPassword, String confirmNewPassword, String accountType }) async
+    //Future<Object> resetPasswordPost({ String emailOrPhone, String newPassword, String confirmNewPassword, String accountType }) async
     test('test resetPasswordPost', () async {
       // TODO
     });

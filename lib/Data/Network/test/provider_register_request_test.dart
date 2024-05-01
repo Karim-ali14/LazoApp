@@ -11,11 +11,11 @@
 import 'package:athletix/api.dart';
 import 'package:test/test.dart';
 
-// tests for ProviderRegistration
+// tests for ProviderRegisterRequest
 void main() {
-  // final instance = ProviderRegistration();
+  // final instance = ProviderRegisterRequest();
 
-  group('test ProviderRegistration', () {
+  group('test ProviderRegisterRequest', () {
     // String nameEn
     test('to test the property `nameEn`', () async {
       // TODO
@@ -36,7 +36,7 @@ void main() {
       // TODO
     });
 
-    // int phone
+    // String phone
     test('to test the property `phone`', () async {
       // TODO
     });
@@ -156,12 +156,12 @@ void main() {
       // TODO
     });
 
-    // int bankAccountNumber
+    // String bankAccountNumber
     test('to test the property `bankAccountNumber`', () async {
       // TODO
     });
 
-    // int iban
+    // String iban
     test('to test the property `iban`', () async {
       // TODO
     });

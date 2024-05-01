@@ -2,5 +2,9 @@
   "appName" : "Base",
   "letsStart" : "Let`s Start",
   "skip" : "Skip",
-  "login" : "Log In"
+  "login" : "Log In",
+  "arabic" : "اللغة العربية",
+  "phoneNumberAndEmailAddress" : "Phone Number / Email Address",
+  "password" : "Password",
+  "forgetPassword" : "Forget Password?"
 }

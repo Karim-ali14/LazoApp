@@ -72,8 +72,8 @@ confirm code
 import 'package:athletix/api.dart';
 
 final api_instance = PublicAuthApi();
-final emailOrPhone = 56; // int | 
-final confirmCode = 56; // int | 
+final emailOrPhone = emailOrPhone_example; // String | 
+final confirmCode = confirmCode_example; // String | 
 final accountType = accountType_example; // String | client or provider
 
 try {
@@ -88,8 +88,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailOrPhone** | **int**|  | [optional] 
- **confirmCode** | **int**|  | [optional] 
+ **emailOrPhone** | **String**|  | [optional] 
+ **confirmCode** | **String**|  | [optional] 
  **accountType** | **String**| client or provider | [optional] 
 
 ### Return type
@@ -117,7 +117,7 @@ send code
 import 'package:athletix/api.dart';
 
 final api_instance = PublicAuthApi();
-final emailOrPhone = 56; // int | 
+final emailOrPhone = emailOrPhone_example; // String | 
 final accountType = accountType_example; // String | 
 
 try {
@@ -132,7 +132,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailOrPhone** | **int**|  | [optional] 
+ **emailOrPhone** | **String**|  | [optional] 
  **accountType** | **String**|  | [optional] 
 
 ### Return type
@@ -151,7 +151,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **providerLoginPost**
-> Object providerLoginPost(emailOrPhone, password)
+> ProviderLoginResponse providerLoginPost(emailOrPhone, password)
 
 provider login
 
@@ -160,8 +160,8 @@ provider login
 import 'package:athletix/api.dart';
 
 final api_instance = PublicAuthApi();
-final emailOrPhone = 56; // int | 
-final password = 56; // int | 
+final emailOrPhone = emailOrPhone_example; // String | 
+final password = password_example; // String | 
 
 try {
     final result = api_instance.providerLoginPost(emailOrPhone, password);
@@ -175,12 +175,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailOrPhone** | **int**|  | [optional] 
- **password** | **int**|  | [optional] 
+ **emailOrPhone** | **String**|  | [optional] 
+ **password** | **String**|  | [optional] 
 
 ### Return type
 
-[**Object**](Object.md)
+[**ProviderLoginResponse**](ProviderLoginResponse.md)
 
 ### Authorization
 
@@ -227,9 +227,9 @@ final tiktokLink = tiktokLink_example; // String | optional
 final xLink = xLink_example; // String | optional
 final startTime = startTime_example; // String | eg: 02:15 PM
 final endTime = endTime_example; // String | eg: 04:00 PM
-final workingDaysIndicesLeftSquareBracket0RightSquareBracket = 56; // int | take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
-final workingDaysIndicesLeftSquareBracket1RightSquareBracket = 56; // int | take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
-final workingDaysIndicesLeftSquareBracket2RightSquareBracket = 56; // int | take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+final workingDaysIndicesLeftSquareBracket0RightSquareBracket = 56; // int | take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+final workingDaysIndicesLeftSquareBracket1RightSquareBracket = 56; // int | take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
+final workingDaysIndicesLeftSquareBracket2RightSquareBracket = 56; // int | take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday
 final selfEmploymentDocument = selfEmploymentDocument_example; // String | required when business type is individual
 final commercialRegisterImage = commercialRegisterImage_example; // String | required when business type is cooperation
 final bankName = bankName_example; // String | optional
@@ -274,9 +274,9 @@ Name | Type | Description  | Notes
  **xLink** | **String**| optional | [optional] 
  **startTime** | **String**| eg: 02:15 PM | [optional] 
  **endTime** | **String**| eg: 04:00 PM | [optional] 
- **workingDaysIndicesLeftSquareBracket0RightSquareBracket** | **int**| take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday | [optional] 
- **workingDaysIndicesLeftSquareBracket1RightSquareBracket** | **int**| take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday | [optional] 
- **workingDaysIndicesLeftSquareBracket2RightSquareBracket** | **int**| take days of week as indices,  0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday | [optional] 
+ **workingDaysIndicesLeftSquareBracket0RightSquareBracket** | **int**| take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday | [optional] 
+ **workingDaysIndicesLeftSquareBracket1RightSquareBracket** | **int**| take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday | [optional] 
+ **workingDaysIndicesLeftSquareBracket2RightSquareBracket** | **int**| take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday | [optional] 
  **selfEmploymentDocument** | **String**| required when business type is individual | [optional] 
  **commercialRegisterImage** | **String**| required when business type is cooperation | [optional] 
  **bankName** | **String**| optional | [optional] 
@@ -310,8 +310,8 @@ confirm reset code
 import 'package:athletix/api.dart';
 
 final api_instance = PublicAuthApi();
-final emailOrPhone = 56; // int | 
-final confirmCode = 56; // int | 
+final emailOrPhone = emailOrPhone_example; // String | 
+final confirmCode = confirmCode_example; // String | 
 final accountType = accountType_example; // String | client or provider
 
 try {
@@ -326,8 +326,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailOrPhone** | **int**|  | [optional] 
- **confirmCode** | **int**|  | [optional] 
+ **emailOrPhone** | **String**|  | [optional] 
+ **confirmCode** | **String**|  | [optional] 
  **accountType** | **String**| client or provider | [optional] 
 
 ### Return type
@@ -355,7 +355,7 @@ send reset code
 import 'package:athletix/api.dart';
 
 final api_instance = PublicAuthApi();
-final emailOrPhone = 56; // int | 
+final emailOrPhone = emailOrPhone_example; // String | 
 final accountType = accountType_example; // String | 
 
 try {
@@ -370,7 +370,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailOrPhone** | **int**|  | [optional] 
+ **emailOrPhone** | **String**|  | [optional] 
  **accountType** | **String**|  | [optional] 
 
 ### Return type
@@ -398,7 +398,7 @@ reset password
 import 'package:athletix/api.dart';
 
 final api_instance = PublicAuthApi();
-final emailOrPhone = 56; // int | 
+final emailOrPhone = emailOrPhone_example; // String | 
 final newPassword = newPassword_example; // String | 
 final confirmNewPassword = confirmNewPassword_example; // String | 
 final accountType = accountType_example; // String | 
@@ -415,7 +415,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailOrPhone** | **int**|  | [optional] 
+ **emailOrPhone** | **String**|  | [optional] 
  **newPassword** | **String**|  | [optional] 
  **confirmNewPassword** | **String**|  | [optional] 
  **accountType** | **String**|  | [optional] 

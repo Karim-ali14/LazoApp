@@ -185,6 +185,12 @@ class ApiClient {
           return Banner.fromJson(value);
         case 'BannersResponse':
           return BannersResponse.fromJson(value);
+        case 'CategoriesResponse':
+          return CategoriesResponse.fromJson(value);
+        case 'Category':
+          return Category.fromJson(value);
+        case 'CategoryMenu':
+          return CategoryMenu.fromJson(value);
         case 'CitiesResponse':
           return CitiesResponse.fromJson(value);
         case 'City':
@@ -197,12 +203,32 @@ class ApiClient {
           return CodeSendRequest.fromJson(value);
         case 'CodeSendResponse':
           return CodeSendResponse.fromJson(value);
+        case 'Color':
+          return Color.fromJson(value);
+        case 'ColorsResponse':
+          return ColorsResponse.fromJson(value);
+        case 'ExtraItem':
+          return ExtraItem.fromJson(value);
+        case 'ModelList':
+          return ModelList.fromJson(value);
         case 'Occasion':
           return Occasion.fromJson(value);
         case 'OccasionsResponse':
           return OccasionsResponse.fromJson(value);
+        case 'ProductShowResponse':
+          return ProductShowResponse.fromJson(value);
+        case 'ProductShowResponseData':
+          return ProductShowResponseData.fromJson(value);
+        case 'ProductsListResponse':
+          return ProductsListResponse.fromJson(value);
+        case 'ProductsListResponseData':
+          return ProductsListResponseData.fromJson(value);
+        case 'ProductsListResponseDataLinksInner':
+          return ProductsListResponseDataLinksInner.fromJson(value);
         case 'PromocodeDetails':
           return PromocodeDetails.fromJson(value);
+        case 'ProviderCategoryMenuResponse':
+          return ProviderCategoryMenuResponse.fromJson(value);
         case 'ProviderData':
           return ProviderData.fromJson(value);
         case 'ProviderDataCity':
@@ -213,12 +239,12 @@ class ApiClient {
           return ProviderDataTagsInner.fromJson(value);
         case 'ProviderLocation':
           return ProviderLocation.fromJson(value);
-        case 'ProviderLoginRequest':
-          return ProviderLoginRequest.fromJson(value);
         case 'ProviderLoginResponse':
           return ProviderLoginResponse.fromJson(value);
         case 'ProviderLoginResponseData':
           return ProviderLoginResponseData.fromJson(value);
+        case 'ProviderProduct':
+          return ProviderProduct.fromJson(value);
         case 'ProviderProfileShowResponse':
           return ProviderProfileShowResponse.fromJson(value);
         case 'ProviderProfileUpdateRequest':
@@ -227,12 +253,12 @@ class ApiClient {
           return ProviderProfileUpdateResponse.fromJson(value);
         case 'ProviderProfileUpdateResponseData':
           return ProviderProfileUpdateResponseData.fromJson(value);
+        case 'ProviderRegisterRequest':
+          return ProviderRegisterRequest.fromJson(value);
         case 'ProviderRegisterResponse':
           return ProviderRegisterResponse.fromJson(value);
         case 'ProviderRegisterResponseData':
           return ProviderRegisterResponseData.fromJson(value);
-        case 'ProviderRegistration':
-          return ProviderRegistration.fromJson(value);
         case 'ResetCodeConfirmRequest':
           return ResetCodeConfirmRequest.fromJson(value);
         case 'ResetCodeConfirmResponse':
@@ -245,6 +271,10 @@ class ApiClient {
           return ResetPasswordRequest.fromJson(value);
         case 'ResetPasswordResponse':
           return ResetPasswordResponse.fromJson(value);
+        case 'Size':
+          return Size.fromJson(value);
+        case 'SizesResponse':
+          return SizesResponse.fromJson(value);
         case 'Tag':
           return Tag.fromJson(value);
         case 'TagsResponse':

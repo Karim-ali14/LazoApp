@@ -2,6 +2,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Constants/Assets.dart';
@@ -32,7 +33,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark
+        )
+      );
     });
     super.initState();
   }
@@ -47,7 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SVGIcons.appLogoIcon(width: 113,height: 95,color: Colors.black),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 SizedBox(
@@ -132,7 +137,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
   void getStarted(){
-    // context.go(R_LoginScreen);
+    context.go(R_LoginScreen);
     prefs.setBool(doneLandingKey,true);
   }
 }

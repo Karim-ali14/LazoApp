@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../Theme/AppTheme.dart';
+
 typedef StringCallBack = Function(String);
 
 class AppTextField extends StatefulWidget {
   final String hint;
-  final String label;
+  final String? label;
   final StringCallBack? value;
   final StringCallBack? changeValueCallback;
   final TextEditingController textEditingController;
@@ -24,25 +26,27 @@ class AppTextField extends StatefulWidget {
   final TextStyle? style;
   final String? endText;
   final String? Function(String?)? validate;
+  final Widget? endWidget;
+  final Widget? startWidget;
   final TextInputFormatter? mask;
-  AppTextField(
-      {Key? key,
-      required this.hint,
-      this.borderRidus,
-      this.secured = false,
-      this.textInputType,
-      this.width,
-      required this.label,
-      this.value,
-      this.style,
-      this.minLines,
-      this.maxLines,
-      this.maxLen,
-      this.changeValueCallback,
-      this.mask,
-      required this.textEditingController,
-      this.textFieldColor, this.textInputAction, this.textFieldBorderColor, this.disabled, this.onClick, this.endText, this.validate})
-      : super(key: key);
+  const AppTextField(
+      {super.key,
+        required this.hint,
+        this.borderRidus,
+        this.secured = false,
+        this.textInputType,
+        this.width,
+        required this.label,
+        this.value,
+        this.style,
+        this.minLines,
+        this.maxLines,
+        this.maxLen,
+        this.changeValueCallback,
+        this.mask,
+        this.endWidget,this.startWidget,
+        required this.textEditingController,
+        this.textFieldColor, this.textInputAction, this.textFieldBorderColor, this.disabled, this.onClick, this.endText, this.validate, });
 
   @override
   _AppTextFieldState createState() => _AppTextFieldState();
@@ -57,7 +61,7 @@ class _AppTextFieldState extends State<AppTextField> {
     final ThemeData themeData = Theme.of(context);
     return GestureDetector(
       onTap: widget.onClick,
-      child: Container(
+      child: SizedBox(
         width: widget.width,
         child:TextFormField(
             inputFormatters: widget.mask != null ? [widget.mask!] : null,
@@ -79,46 +83,56 @@ class _AppTextFieldState extends State<AppTextField> {
             maxLength: widget.maxLen,
             maxLines: widget.secured == true ? 1 : widget.maxLines,
             onFieldSubmitted: (val) =>  widget.value!(val),
-            style: widget.style ?? TextStyle(color: Theme.of(context).textTheme.bodyText1!.color,fontSize: 16),
+            readOnly: !(widget.disabled != null ? (!widget.disabled!) : true),
+            style: widget.style ?? TextStyle(color: widget.disabled == true ? const Color(0xFF8088A4) : Theme.of(context).textTheme.bodyLarge!.color,fontSize: 14),
             decoration: InputDecoration(
                 suffixText: widget.endText,
-                labelText: widget.label,
+                labelText: widget.label ?? "",
                 hintText: widget.hint,
-                suffixIcon: widget.secured!
+                alignLabelWithHint: true,
+                prefixIcon: widget.startWidget,
+                suffixIcon:  widget.secured!
                     ? IconButton(
                   onPressed: () => setState(() => _visiblePassword = !_visiblePassword),
                   icon: Icon(_visiblePassword ? Icons.visibility_off : Icons.visibility),color: Colors.grey,)
-                    : null,
+                    : widget.endWidget,
                 labelStyle: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w100,
-                    color: Theme.of(context).textTheme.bodyText1!.color),
+                    color: Theme.of(context).textTheme.bodyLarge!.color),
                 focusedBorder: getBorder,
                 errorBorder: getErrBorder,
                 focusedErrorBorder: getErrBorder,
                 enabledBorder: getBorder,
                 disabledBorder: getBorder,
+                errorStyle: AppTheme.appTextTheme.titleMedium?.copyWith(color: Colors.red),
                 filled: true,
-                counter: SizedBox(),
-                enabled: widget.disabled != null ? (!widget.disabled!) : true,
+                counter: const SizedBox(),
+                enabled: true,
                 fillColor: widget.textFieldColor??themeData.appBarTheme.backgroundColor)),
       ),
     );
   }
 
-  InputBorder get getBorder => widget.textFieldBorderColor != null ?  OutlineInputBorder(
-    borderSide: BorderSide(color: widget.textFieldBorderColor??Colors.transparent),
-    borderRadius: widget.borderRidus?? BorderRadius.circular(10),
+  InputBorder get getBorder => widget.textFieldBorderColor == null ?  OutlineInputBorder(
+    borderSide: BorderSide(color: widget.textFieldBorderColor??AppTheme.appGrey3),
+    borderRadius: widget.borderRidus?? BorderRadius.circular(4),
   ) : UnderlineInputBorder(
-    borderSide: BorderSide(color:Colors.transparent),
-    borderRadius: widget.borderRidus?? BorderRadius.circular(10),
+    borderSide: const BorderSide(color:AppTheme.appGrey3),
+    borderRadius: widget.borderRidus?? BorderRadius.circular(4),
   );
 
-  InputBorder get getErrBorder => widget.textFieldBorderColor != null ?  OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.red),
-    borderRadius: widget.borderRidus?? BorderRadius.circular(10),
+  InputBorder get getErrBorder => widget.textFieldBorderColor == null ?  OutlineInputBorder(
+    borderSide: const BorderSide(color: Colors.red),
+    borderRadius: widget.borderRidus?? BorderRadius.circular(4),
   ) : UnderlineInputBorder(
-    borderSide: BorderSide(color:Colors.transparent),
-    borderRadius: widget.borderRidus?? BorderRadius.circular(10),
+    borderSide: const BorderSide(color:AppTheme.appGrey3),
+    borderRadius: widget.borderRidus?? BorderRadius.circular(4),
   );
+}
+
+class TextFormatters {
+  static FilteringTextInputFormatter onlyLetters = FilteringTextInputFormatter.allow(RegExp('[a-z A-Z ا-ي]'));
+  static FilteringTextInputFormatter nonStartingZero =  FilteringTextInputFormatter.deny(RegExp(r'^0+'),);
+  static FilteringTextInputFormatter nonArabicPhone =  FilteringTextInputFormatter.allow(RegExp('[0-9]'),);
 }

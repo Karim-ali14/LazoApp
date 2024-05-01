@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ProviderRegistration {
-  /// Returns a new [ProviderRegistration] instance.
-  ProviderRegistration({
+class ProviderRegisterRequest {
+  /// Returns a new [ProviderRegisterRequest] instance.
+  ProviderRegisterRequest({
     this.nameEn,
     this.nameAr,
     this.ownerName,
@@ -83,9 +83,9 @@ class ProviderRegistration {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? phone;
+  String? phone;
 
-  ProviderRegistrationAccountTypeEnum? accountType;
+  ProviderRegisterRequestAccountTypeEnum? accountType;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -113,7 +113,7 @@ class ProviderRegistration {
 
   List<int> tagsIds;
 
-  ProviderRegistrationHasOfflineStoresEnum? hasOfflineStores;
+  ProviderRegisterRequestHasOfflineStoresEnum? hasOfflineStores;
 
   /// required incase of has_offline_stores=1
   ///
@@ -126,9 +126,9 @@ class ProviderRegistration {
 
   List<String> locations;
 
-  ProviderRegistrationProvideDeliveryEnum? provideDelivery;
+  ProviderRegisterRequestProvideDeliveryEnum? provideDelivery;
 
-  ProviderRegistrationBusinessTypeEnum? businessType;
+  ProviderRegisterRequestBusinessTypeEnum? businessType;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -188,7 +188,7 @@ class ProviderRegistration {
   ///
   String? endTime;
 
-  List<ProviderRegistrationWorkingDaysIndicesEnum> workingDaysIndices;
+  List<ProviderRegisterRequestWorkingDaysIndicesEnum> workingDaysIndices;
 
   /// required when business type is individual
   ///
@@ -230,7 +230,7 @@ class ProviderRegistration {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? bankAccountNumber;
+  String? bankAccountNumber;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -238,7 +238,7 @@ class ProviderRegistration {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? iban;
+  String? iban;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -249,7 +249,7 @@ class ProviderRegistration {
   String? ibanImage;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProviderRegistration &&
+  bool operator ==(Object other) => identical(this, other) || other is ProviderRegisterRequest &&
      other.nameEn == nameEn &&
      other.nameAr == nameAr &&
      other.ownerName == ownerName &&
@@ -316,7 +316,7 @@ class ProviderRegistration {
     (ibanImage == null ? 0 : ibanImage!.hashCode);
 
   @override
-  String toString() => 'ProviderRegistration[nameEn=$nameEn, nameAr=$nameAr, ownerName=$ownerName, email=$email, phone=$phone, accountType=$accountType, password=$password, confirmPassword=$confirmPassword, cityId=$cityId, tagsIds=$tagsIds, hasOfflineStores=$hasOfflineStores, offlineStoresNumber=$offlineStoresNumber, locations=$locations, provideDelivery=$provideDelivery, businessType=$businessType, image=$image, instagramLink=$instagramLink, snapchatLink=$snapchatLink, tiktokLink=$tiktokLink, xLink=$xLink, startTime=$startTime, endTime=$endTime, workingDaysIndices=$workingDaysIndices, selfEmploymentDocument=$selfEmploymentDocument, commercialRegisterImage=$commercialRegisterImage, bankName=$bankName, beneficiaryName=$beneficiaryName, bankAccountNumber=$bankAccountNumber, iban=$iban, ibanImage=$ibanImage]';
+  String toString() => 'ProviderRegisterRequest[nameEn=$nameEn, nameAr=$nameAr, ownerName=$ownerName, email=$email, phone=$phone, accountType=$accountType, password=$password, confirmPassword=$confirmPassword, cityId=$cityId, tagsIds=$tagsIds, hasOfflineStores=$hasOfflineStores, offlineStoresNumber=$offlineStoresNumber, locations=$locations, provideDelivery=$provideDelivery, businessType=$businessType, image=$image, instagramLink=$instagramLink, snapchatLink=$snapchatLink, tiktokLink=$tiktokLink, xLink=$xLink, startTime=$startTime, endTime=$endTime, workingDaysIndices=$workingDaysIndices, selfEmploymentDocument=$selfEmploymentDocument, commercialRegisterImage=$commercialRegisterImage, bankName=$bankName, beneficiaryName=$beneficiaryName, bankAccountNumber=$bankAccountNumber, iban=$iban, ibanImage=$ibanImage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -461,10 +461,10 @@ class ProviderRegistration {
     return json;
   }
 
-  /// Returns a new [ProviderRegistration] instance and imports its values from
+  /// Returns a new [ProviderRegisterRequest] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProviderRegistration? fromJson(dynamic value) {
+  static ProviderRegisterRequest? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -473,32 +473,32 @@ class ProviderRegistration {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProviderRegistration[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProviderRegistration[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ProviderRegisterRequest[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ProviderRegisterRequest[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProviderRegistration(
+      return ProviderRegisterRequest(
         nameEn: mapValueOfType<String>(json, r'name_en'),
         nameAr: mapValueOfType<String>(json, r'name_ar'),
         ownerName: mapValueOfType<String>(json, r'owner_name'),
         email: mapValueOfType<String>(json, r'email'),
-        phone: mapValueOfType<int>(json, r'phone'),
-        accountType: ProviderRegistrationAccountTypeEnum.fromJson(json[r'account_type']),
+        phone: mapValueOfType<String>(json, r'phone'),
+        accountType: ProviderRegisterRequestAccountTypeEnum.fromJson(json[r'account_type']),
         password: mapValueOfType<String>(json, r'password'),
         confirmPassword: mapValueOfType<String>(json, r'confirm_password'),
         cityId: mapValueOfType<int>(json, r'city_id'),
         tagsIds: json[r'tags_ids'] is List
             ? (json[r'tags_ids'] as List).cast<int>()
             : const [],
-        hasOfflineStores: ProviderRegistrationHasOfflineStoresEnum.fromJson(json[r'has_offline_stores']),
+        hasOfflineStores: ProviderRegisterRequestHasOfflineStoresEnum.fromJson(json[r'has_offline_stores']),
         offlineStoresNumber: mapValueOfType<int>(json, r'offline_stores_number'),
         locations: json[r'locations'] is List
             ? (json[r'locations'] as List).cast<String>()
             : const [],
-        provideDelivery: ProviderRegistrationProvideDeliveryEnum.fromJson(json[r'provide_delivery']),
-        businessType: ProviderRegistrationBusinessTypeEnum.fromJson(json[r'business_type']),
+        provideDelivery: ProviderRegisterRequestProvideDeliveryEnum.fromJson(json[r'provide_delivery']),
+        businessType: ProviderRegisterRequestBusinessTypeEnum.fromJson(json[r'business_type']),
         image: mapValueOfType<String>(json, r'image'),
         instagramLink: mapValueOfType<String>(json, r'instagram_link'),
         snapchatLink: mapValueOfType<String>(json, r'snapchat_link'),
@@ -506,24 +506,24 @@ class ProviderRegistration {
         xLink: mapValueOfType<String>(json, r'x_link'),
         startTime: mapValueOfType<String>(json, r'start_time'),
         endTime: mapValueOfType<String>(json, r'end_time'),
-        workingDaysIndices: ProviderRegistrationWorkingDaysIndicesEnum.listFromJson(json[r'working_days_indices']),
+        workingDaysIndices: ProviderRegisterRequestWorkingDaysIndicesEnum.listFromJson(json[r'working_days_indices']),
         selfEmploymentDocument: mapValueOfType<String>(json, r'self_employment_document'),
         commercialRegisterImage: mapValueOfType<String>(json, r'commercial_register_image'),
         bankName: mapValueOfType<String>(json, r'bank_name'),
         beneficiaryName: mapValueOfType<String>(json, r'beneficiary_name'),
-        bankAccountNumber: mapValueOfType<int>(json, r'bank_account_number'),
-        iban: mapValueOfType<int>(json, r'iban'),
+        bankAccountNumber: mapValueOfType<String>(json, r'bank_account_number'),
+        iban: mapValueOfType<String>(json, r'iban'),
         ibanImage: mapValueOfType<String>(json, r'iban_image'),
       );
     }
     return null;
   }
 
-  static List<ProviderRegistration> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderRegistration>[];
+  static List<ProviderRegisterRequest> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProviderRegisterRequest>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderRegistration.fromJson(row);
+        final value = ProviderRegisterRequest.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -532,12 +532,12 @@ class ProviderRegistration {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProviderRegistration> mapFromJson(dynamic json) {
-    final map = <String, ProviderRegistration>{};
+  static Map<String, ProviderRegisterRequest> mapFromJson(dynamic json) {
+    final map = <String, ProviderRegisterRequest>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProviderRegistration.fromJson(entry.value);
+        final value = ProviderRegisterRequest.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -546,14 +546,14 @@ class ProviderRegistration {
     return map;
   }
 
-  // maps a json object with a list of ProviderRegistration-objects as value to a dart map
-  static Map<String, List<ProviderRegistration>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProviderRegistration>>{};
+  // maps a json object with a list of ProviderRegisterRequest-objects as value to a dart map
+  static Map<String, List<ProviderRegisterRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ProviderRegisterRequest>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProviderRegistration.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ProviderRegisterRequest.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -565,9 +565,9 @@ class ProviderRegistration {
 }
 
 
-class ProviderRegistrationAccountTypeEnum {
+class ProviderRegisterRequestAccountTypeEnum {
   /// Instantiate a new enum with the provided [value].
-  const ProviderRegistrationAccountTypeEnum._(this.value);
+  const ProviderRegisterRequestAccountTypeEnum._(this.value);
 
   /// The underlying value of this enum member.
   final String value;
@@ -577,22 +577,22 @@ class ProviderRegistrationAccountTypeEnum {
 
   String toJson() => value;
 
-  static const serviceProvider = ProviderRegistrationAccountTypeEnum._(r'service_provider');
-  static const packagingProvider = ProviderRegistrationAccountTypeEnum._(r'packaging_provider');
+  static const serviceProvider = ProviderRegisterRequestAccountTypeEnum._(r'service_provider');
+  static const packagingProvider = ProviderRegisterRequestAccountTypeEnum._(r'packaging_provider');
 
-  /// List of all possible values in this [enum][ProviderRegistrationAccountTypeEnum].
-  static const values = <ProviderRegistrationAccountTypeEnum>[
+  /// List of all possible values in this [enum][ProviderRegisterRequestAccountTypeEnum].
+  static const values = <ProviderRegisterRequestAccountTypeEnum>[
     serviceProvider,
     packagingProvider,
   ];
 
-  static ProviderRegistrationAccountTypeEnum? fromJson(dynamic value) => ProviderRegistrationAccountTypeEnumTypeTransformer().decode(value);
+  static ProviderRegisterRequestAccountTypeEnum? fromJson(dynamic value) => ProviderRegisterRequestAccountTypeEnumTypeTransformer().decode(value);
 
-  static List<ProviderRegistrationAccountTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderRegistrationAccountTypeEnum>[];
+  static List<ProviderRegisterRequestAccountTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProviderRegisterRequestAccountTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderRegistrationAccountTypeEnum.fromJson(row);
+        final value = ProviderRegisterRequestAccountTypeEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -602,16 +602,16 @@ class ProviderRegistrationAccountTypeEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [ProviderRegistrationAccountTypeEnum] to String,
-/// and [decode] dynamic data back to [ProviderRegistrationAccountTypeEnum].
-class ProviderRegistrationAccountTypeEnumTypeTransformer {
-  factory ProviderRegistrationAccountTypeEnumTypeTransformer() => _instance ??= const ProviderRegistrationAccountTypeEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [ProviderRegisterRequestAccountTypeEnum] to String,
+/// and [decode] dynamic data back to [ProviderRegisterRequestAccountTypeEnum].
+class ProviderRegisterRequestAccountTypeEnumTypeTransformer {
+  factory ProviderRegisterRequestAccountTypeEnumTypeTransformer() => _instance ??= const ProviderRegisterRequestAccountTypeEnumTypeTransformer._();
 
-  const ProviderRegistrationAccountTypeEnumTypeTransformer._();
+  const ProviderRegisterRequestAccountTypeEnumTypeTransformer._();
 
-  String encode(ProviderRegistrationAccountTypeEnum data) => data.value;
+  String encode(ProviderRegisterRequestAccountTypeEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a ProviderRegistrationAccountTypeEnum.
+  /// Decodes a [dynamic value][data] to a ProviderRegisterRequestAccountTypeEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -619,11 +619,11 @@ class ProviderRegistrationAccountTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  ProviderRegistrationAccountTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+  ProviderRegisterRequestAccountTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'service_provider': return ProviderRegistrationAccountTypeEnum.serviceProvider;
-        case r'packaging_provider': return ProviderRegistrationAccountTypeEnum.packagingProvider;
+        case r'service_provider': return ProviderRegisterRequestAccountTypeEnum.serviceProvider;
+        case r'packaging_provider': return ProviderRegisterRequestAccountTypeEnum.packagingProvider;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -633,15 +633,15 @@ class ProviderRegistrationAccountTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [ProviderRegistrationAccountTypeEnumTypeTransformer] instance.
-  static ProviderRegistrationAccountTypeEnumTypeTransformer? _instance;
+  /// Singleton [ProviderRegisterRequestAccountTypeEnumTypeTransformer] instance.
+  static ProviderRegisterRequestAccountTypeEnumTypeTransformer? _instance;
 }
 
 
 
-class ProviderRegistrationHasOfflineStoresEnum {
+class ProviderRegisterRequestHasOfflineStoresEnum {
   /// Instantiate a new enum with the provided [value].
-  const ProviderRegistrationHasOfflineStoresEnum._(this.value);
+  const ProviderRegisterRequestHasOfflineStoresEnum._(this.value);
 
   /// The underlying value of this enum member.
   final int value;
@@ -651,22 +651,22 @@ class ProviderRegistrationHasOfflineStoresEnum {
 
   int toJson() => value;
 
-  static const number0 = ProviderRegistrationHasOfflineStoresEnum._(0);
-  static const number1 = ProviderRegistrationHasOfflineStoresEnum._(1);
+  static const number0 = ProviderRegisterRequestHasOfflineStoresEnum._(0);
+  static const number1 = ProviderRegisterRequestHasOfflineStoresEnum._(1);
 
-  /// List of all possible values in this [enum][ProviderRegistrationHasOfflineStoresEnum].
-  static const values = <ProviderRegistrationHasOfflineStoresEnum>[
+  /// List of all possible values in this [enum][ProviderRegisterRequestHasOfflineStoresEnum].
+  static const values = <ProviderRegisterRequestHasOfflineStoresEnum>[
     number0,
     number1,
   ];
 
-  static ProviderRegistrationHasOfflineStoresEnum? fromJson(dynamic value) => ProviderRegistrationHasOfflineStoresEnumTypeTransformer().decode(value);
+  static ProviderRegisterRequestHasOfflineStoresEnum? fromJson(dynamic value) => ProviderRegisterRequestHasOfflineStoresEnumTypeTransformer().decode(value);
 
-  static List<ProviderRegistrationHasOfflineStoresEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderRegistrationHasOfflineStoresEnum>[];
+  static List<ProviderRegisterRequestHasOfflineStoresEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProviderRegisterRequestHasOfflineStoresEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderRegistrationHasOfflineStoresEnum.fromJson(row);
+        final value = ProviderRegisterRequestHasOfflineStoresEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -676,16 +676,16 @@ class ProviderRegistrationHasOfflineStoresEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [ProviderRegistrationHasOfflineStoresEnum] to int,
-/// and [decode] dynamic data back to [ProviderRegistrationHasOfflineStoresEnum].
-class ProviderRegistrationHasOfflineStoresEnumTypeTransformer {
-  factory ProviderRegistrationHasOfflineStoresEnumTypeTransformer() => _instance ??= const ProviderRegistrationHasOfflineStoresEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [ProviderRegisterRequestHasOfflineStoresEnum] to int,
+/// and [decode] dynamic data back to [ProviderRegisterRequestHasOfflineStoresEnum].
+class ProviderRegisterRequestHasOfflineStoresEnumTypeTransformer {
+  factory ProviderRegisterRequestHasOfflineStoresEnumTypeTransformer() => _instance ??= const ProviderRegisterRequestHasOfflineStoresEnumTypeTransformer._();
 
-  const ProviderRegistrationHasOfflineStoresEnumTypeTransformer._();
+  const ProviderRegisterRequestHasOfflineStoresEnumTypeTransformer._();
 
-  int encode(ProviderRegistrationHasOfflineStoresEnum data) => data.value;
+  int encode(ProviderRegisterRequestHasOfflineStoresEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a ProviderRegistrationHasOfflineStoresEnum.
+  /// Decodes a [dynamic value][data] to a ProviderRegisterRequestHasOfflineStoresEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -693,11 +693,11 @@ class ProviderRegistrationHasOfflineStoresEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  ProviderRegistrationHasOfflineStoresEnum? decode(dynamic data, {bool allowNull = true}) {
+  ProviderRegisterRequestHasOfflineStoresEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 0: return ProviderRegistrationHasOfflineStoresEnum.number0;
-        case 1: return ProviderRegistrationHasOfflineStoresEnum.number1;
+        case 0: return ProviderRegisterRequestHasOfflineStoresEnum.number0;
+        case 1: return ProviderRegisterRequestHasOfflineStoresEnum.number1;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -707,15 +707,15 @@ class ProviderRegistrationHasOfflineStoresEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [ProviderRegistrationHasOfflineStoresEnumTypeTransformer] instance.
-  static ProviderRegistrationHasOfflineStoresEnumTypeTransformer? _instance;
+  /// Singleton [ProviderRegisterRequestHasOfflineStoresEnumTypeTransformer] instance.
+  static ProviderRegisterRequestHasOfflineStoresEnumTypeTransformer? _instance;
 }
 
 
 
-class ProviderRegistrationProvideDeliveryEnum {
+class ProviderRegisterRequestProvideDeliveryEnum {
   /// Instantiate a new enum with the provided [value].
-  const ProviderRegistrationProvideDeliveryEnum._(this.value);
+  const ProviderRegisterRequestProvideDeliveryEnum._(this.value);
 
   /// The underlying value of this enum member.
   final int value;
@@ -725,22 +725,22 @@ class ProviderRegistrationProvideDeliveryEnum {
 
   int toJson() => value;
 
-  static const number0 = ProviderRegistrationProvideDeliveryEnum._(0);
-  static const number1 = ProviderRegistrationProvideDeliveryEnum._(1);
+  static const number0 = ProviderRegisterRequestProvideDeliveryEnum._(0);
+  static const number1 = ProviderRegisterRequestProvideDeliveryEnum._(1);
 
-  /// List of all possible values in this [enum][ProviderRegistrationProvideDeliveryEnum].
-  static const values = <ProviderRegistrationProvideDeliveryEnum>[
+  /// List of all possible values in this [enum][ProviderRegisterRequestProvideDeliveryEnum].
+  static const values = <ProviderRegisterRequestProvideDeliveryEnum>[
     number0,
     number1,
   ];
 
-  static ProviderRegistrationProvideDeliveryEnum? fromJson(dynamic value) => ProviderRegistrationProvideDeliveryEnumTypeTransformer().decode(value);
+  static ProviderRegisterRequestProvideDeliveryEnum? fromJson(dynamic value) => ProviderRegisterRequestProvideDeliveryEnumTypeTransformer().decode(value);
 
-  static List<ProviderRegistrationProvideDeliveryEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderRegistrationProvideDeliveryEnum>[];
+  static List<ProviderRegisterRequestProvideDeliveryEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProviderRegisterRequestProvideDeliveryEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderRegistrationProvideDeliveryEnum.fromJson(row);
+        final value = ProviderRegisterRequestProvideDeliveryEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -750,16 +750,16 @@ class ProviderRegistrationProvideDeliveryEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [ProviderRegistrationProvideDeliveryEnum] to int,
-/// and [decode] dynamic data back to [ProviderRegistrationProvideDeliveryEnum].
-class ProviderRegistrationProvideDeliveryEnumTypeTransformer {
-  factory ProviderRegistrationProvideDeliveryEnumTypeTransformer() => _instance ??= const ProviderRegistrationProvideDeliveryEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [ProviderRegisterRequestProvideDeliveryEnum] to int,
+/// and [decode] dynamic data back to [ProviderRegisterRequestProvideDeliveryEnum].
+class ProviderRegisterRequestProvideDeliveryEnumTypeTransformer {
+  factory ProviderRegisterRequestProvideDeliveryEnumTypeTransformer() => _instance ??= const ProviderRegisterRequestProvideDeliveryEnumTypeTransformer._();
 
-  const ProviderRegistrationProvideDeliveryEnumTypeTransformer._();
+  const ProviderRegisterRequestProvideDeliveryEnumTypeTransformer._();
 
-  int encode(ProviderRegistrationProvideDeliveryEnum data) => data.value;
+  int encode(ProviderRegisterRequestProvideDeliveryEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a ProviderRegistrationProvideDeliveryEnum.
+  /// Decodes a [dynamic value][data] to a ProviderRegisterRequestProvideDeliveryEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -767,11 +767,11 @@ class ProviderRegistrationProvideDeliveryEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  ProviderRegistrationProvideDeliveryEnum? decode(dynamic data, {bool allowNull = true}) {
+  ProviderRegisterRequestProvideDeliveryEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 0: return ProviderRegistrationProvideDeliveryEnum.number0;
-        case 1: return ProviderRegistrationProvideDeliveryEnum.number1;
+        case 0: return ProviderRegisterRequestProvideDeliveryEnum.number0;
+        case 1: return ProviderRegisterRequestProvideDeliveryEnum.number1;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -781,15 +781,15 @@ class ProviderRegistrationProvideDeliveryEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [ProviderRegistrationProvideDeliveryEnumTypeTransformer] instance.
-  static ProviderRegistrationProvideDeliveryEnumTypeTransformer? _instance;
+  /// Singleton [ProviderRegisterRequestProvideDeliveryEnumTypeTransformer] instance.
+  static ProviderRegisterRequestProvideDeliveryEnumTypeTransformer? _instance;
 }
 
 
 
-class ProviderRegistrationBusinessTypeEnum {
+class ProviderRegisterRequestBusinessTypeEnum {
   /// Instantiate a new enum with the provided [value].
-  const ProviderRegistrationBusinessTypeEnum._(this.value);
+  const ProviderRegisterRequestBusinessTypeEnum._(this.value);
 
   /// The underlying value of this enum member.
   final String value;
@@ -799,22 +799,22 @@ class ProviderRegistrationBusinessTypeEnum {
 
   String toJson() => value;
 
-  static const individual = ProviderRegistrationBusinessTypeEnum._(r'individual');
-  static const cooperation = ProviderRegistrationBusinessTypeEnum._(r'cooperation');
+  static const individual = ProviderRegisterRequestBusinessTypeEnum._(r'individual');
+  static const cooperation = ProviderRegisterRequestBusinessTypeEnum._(r'cooperation');
 
-  /// List of all possible values in this [enum][ProviderRegistrationBusinessTypeEnum].
-  static const values = <ProviderRegistrationBusinessTypeEnum>[
+  /// List of all possible values in this [enum][ProviderRegisterRequestBusinessTypeEnum].
+  static const values = <ProviderRegisterRequestBusinessTypeEnum>[
     individual,
     cooperation,
   ];
 
-  static ProviderRegistrationBusinessTypeEnum? fromJson(dynamic value) => ProviderRegistrationBusinessTypeEnumTypeTransformer().decode(value);
+  static ProviderRegisterRequestBusinessTypeEnum? fromJson(dynamic value) => ProviderRegisterRequestBusinessTypeEnumTypeTransformer().decode(value);
 
-  static List<ProviderRegistrationBusinessTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderRegistrationBusinessTypeEnum>[];
+  static List<ProviderRegisterRequestBusinessTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProviderRegisterRequestBusinessTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderRegistrationBusinessTypeEnum.fromJson(row);
+        final value = ProviderRegisterRequestBusinessTypeEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -824,16 +824,16 @@ class ProviderRegistrationBusinessTypeEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [ProviderRegistrationBusinessTypeEnum] to String,
-/// and [decode] dynamic data back to [ProviderRegistrationBusinessTypeEnum].
-class ProviderRegistrationBusinessTypeEnumTypeTransformer {
-  factory ProviderRegistrationBusinessTypeEnumTypeTransformer() => _instance ??= const ProviderRegistrationBusinessTypeEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [ProviderRegisterRequestBusinessTypeEnum] to String,
+/// and [decode] dynamic data back to [ProviderRegisterRequestBusinessTypeEnum].
+class ProviderRegisterRequestBusinessTypeEnumTypeTransformer {
+  factory ProviderRegisterRequestBusinessTypeEnumTypeTransformer() => _instance ??= const ProviderRegisterRequestBusinessTypeEnumTypeTransformer._();
 
-  const ProviderRegistrationBusinessTypeEnumTypeTransformer._();
+  const ProviderRegisterRequestBusinessTypeEnumTypeTransformer._();
 
-  String encode(ProviderRegistrationBusinessTypeEnum data) => data.value;
+  String encode(ProviderRegisterRequestBusinessTypeEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a ProviderRegistrationBusinessTypeEnum.
+  /// Decodes a [dynamic value][data] to a ProviderRegisterRequestBusinessTypeEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -841,11 +841,11 @@ class ProviderRegistrationBusinessTypeEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  ProviderRegistrationBusinessTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+  ProviderRegisterRequestBusinessTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'individual': return ProviderRegistrationBusinessTypeEnum.individual;
-        case r'cooperation': return ProviderRegistrationBusinessTypeEnum.cooperation;
+        case r'individual': return ProviderRegisterRequestBusinessTypeEnum.individual;
+        case r'cooperation': return ProviderRegisterRequestBusinessTypeEnum.cooperation;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -855,15 +855,15 @@ class ProviderRegistrationBusinessTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [ProviderRegistrationBusinessTypeEnumTypeTransformer] instance.
-  static ProviderRegistrationBusinessTypeEnumTypeTransformer? _instance;
+  /// Singleton [ProviderRegisterRequestBusinessTypeEnumTypeTransformer] instance.
+  static ProviderRegisterRequestBusinessTypeEnumTypeTransformer? _instance;
 }
 
 
 /// take days of week as indices, 0 => Sunday, 1 => Monday, 2 => Tuesday, 3 => Wednesday, 4 => Thursday, 5 => Friday, 6 => Saturday 
-class ProviderRegistrationWorkingDaysIndicesEnum {
+class ProviderRegisterRequestWorkingDaysIndicesEnum {
   /// Instantiate a new enum with the provided [value].
-  const ProviderRegistrationWorkingDaysIndicesEnum._(this.value);
+  const ProviderRegisterRequestWorkingDaysIndicesEnum._(this.value);
 
   /// The underlying value of this enum member.
   final int value;
@@ -873,16 +873,16 @@ class ProviderRegistrationWorkingDaysIndicesEnum {
 
   int toJson() => value;
 
-  static const number0 = ProviderRegistrationWorkingDaysIndicesEnum._(0);
-  static const number1 = ProviderRegistrationWorkingDaysIndicesEnum._(1);
-  static const number2 = ProviderRegistrationWorkingDaysIndicesEnum._(2);
-  static const number3 = ProviderRegistrationWorkingDaysIndicesEnum._(3);
-  static const number4 = ProviderRegistrationWorkingDaysIndicesEnum._(4);
-  static const number5 = ProviderRegistrationWorkingDaysIndicesEnum._(5);
-  static const number6 = ProviderRegistrationWorkingDaysIndicesEnum._(6);
+  static const number0 = ProviderRegisterRequestWorkingDaysIndicesEnum._(0);
+  static const number1 = ProviderRegisterRequestWorkingDaysIndicesEnum._(1);
+  static const number2 = ProviderRegisterRequestWorkingDaysIndicesEnum._(2);
+  static const number3 = ProviderRegisterRequestWorkingDaysIndicesEnum._(3);
+  static const number4 = ProviderRegisterRequestWorkingDaysIndicesEnum._(4);
+  static const number5 = ProviderRegisterRequestWorkingDaysIndicesEnum._(5);
+  static const number6 = ProviderRegisterRequestWorkingDaysIndicesEnum._(6);
 
-  /// List of all possible values in this [enum][ProviderRegistrationWorkingDaysIndicesEnum].
-  static const values = <ProviderRegistrationWorkingDaysIndicesEnum>[
+  /// List of all possible values in this [enum][ProviderRegisterRequestWorkingDaysIndicesEnum].
+  static const values = <ProviderRegisterRequestWorkingDaysIndicesEnum>[
     number0,
     number1,
     number2,
@@ -892,13 +892,13 @@ class ProviderRegistrationWorkingDaysIndicesEnum {
     number6,
   ];
 
-  static ProviderRegistrationWorkingDaysIndicesEnum? fromJson(dynamic value) => ProviderRegistrationWorkingDaysIndicesEnumTypeTransformer().decode(value);
+  static ProviderRegisterRequestWorkingDaysIndicesEnum? fromJson(dynamic value) => ProviderRegisterRequestWorkingDaysIndicesEnumTypeTransformer().decode(value);
 
-  static List<ProviderRegistrationWorkingDaysIndicesEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderRegistrationWorkingDaysIndicesEnum>[];
+  static List<ProviderRegisterRequestWorkingDaysIndicesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ProviderRegisterRequestWorkingDaysIndicesEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderRegistrationWorkingDaysIndicesEnum.fromJson(row);
+        final value = ProviderRegisterRequestWorkingDaysIndicesEnum.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -908,16 +908,16 @@ class ProviderRegistrationWorkingDaysIndicesEnum {
   }
 }
 
-/// Transformation class that can [encode] an instance of [ProviderRegistrationWorkingDaysIndicesEnum] to int,
-/// and [decode] dynamic data back to [ProviderRegistrationWorkingDaysIndicesEnum].
-class ProviderRegistrationWorkingDaysIndicesEnumTypeTransformer {
-  factory ProviderRegistrationWorkingDaysIndicesEnumTypeTransformer() => _instance ??= const ProviderRegistrationWorkingDaysIndicesEnumTypeTransformer._();
+/// Transformation class that can [encode] an instance of [ProviderRegisterRequestWorkingDaysIndicesEnum] to int,
+/// and [decode] dynamic data back to [ProviderRegisterRequestWorkingDaysIndicesEnum].
+class ProviderRegisterRequestWorkingDaysIndicesEnumTypeTransformer {
+  factory ProviderRegisterRequestWorkingDaysIndicesEnumTypeTransformer() => _instance ??= const ProviderRegisterRequestWorkingDaysIndicesEnumTypeTransformer._();
 
-  const ProviderRegistrationWorkingDaysIndicesEnumTypeTransformer._();
+  const ProviderRegisterRequestWorkingDaysIndicesEnumTypeTransformer._();
 
-  int encode(ProviderRegistrationWorkingDaysIndicesEnum data) => data.value;
+  int encode(ProviderRegisterRequestWorkingDaysIndicesEnum data) => data.value;
 
-  /// Decodes a [dynamic value][data] to a ProviderRegistrationWorkingDaysIndicesEnum.
+  /// Decodes a [dynamic value][data] to a ProviderRegisterRequestWorkingDaysIndicesEnum.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -925,16 +925,16 @@ class ProviderRegistrationWorkingDaysIndicesEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  ProviderRegistrationWorkingDaysIndicesEnum? decode(dynamic data, {bool allowNull = true}) {
+  ProviderRegisterRequestWorkingDaysIndicesEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case 0: return ProviderRegistrationWorkingDaysIndicesEnum.number0;
-        case 1: return ProviderRegistrationWorkingDaysIndicesEnum.number1;
-        case 2: return ProviderRegistrationWorkingDaysIndicesEnum.number2;
-        case 3: return ProviderRegistrationWorkingDaysIndicesEnum.number3;
-        case 4: return ProviderRegistrationWorkingDaysIndicesEnum.number4;
-        case 5: return ProviderRegistrationWorkingDaysIndicesEnum.number5;
-        case 6: return ProviderRegistrationWorkingDaysIndicesEnum.number6;
+        case 0: return ProviderRegisterRequestWorkingDaysIndicesEnum.number0;
+        case 1: return ProviderRegisterRequestWorkingDaysIndicesEnum.number1;
+        case 2: return ProviderRegisterRequestWorkingDaysIndicesEnum.number2;
+        case 3: return ProviderRegisterRequestWorkingDaysIndicesEnum.number3;
+        case 4: return ProviderRegisterRequestWorkingDaysIndicesEnum.number4;
+        case 5: return ProviderRegisterRequestWorkingDaysIndicesEnum.number5;
+        case 6: return ProviderRegisterRequestWorkingDaysIndicesEnum.number6;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -944,8 +944,8 @@ class ProviderRegistrationWorkingDaysIndicesEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [ProviderRegistrationWorkingDaysIndicesEnumTypeTransformer] instance.
-  static ProviderRegistrationWorkingDaysIndicesEnumTypeTransformer? _instance;
+  /// Singleton [ProviderRegisterRequestWorkingDaysIndicesEnumTypeTransformer] instance.
+  static ProviderRegisterRequestWorkingDaysIndicesEnumTypeTransformer? _instance;
 }
 
 

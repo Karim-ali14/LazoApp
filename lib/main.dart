@@ -11,6 +11,7 @@ import 'package:timeago/timeago.dart' as ago;
 import '../../../../../Constants.dart';
 import '../../../../../Presentation/Screens/SplashScreen.dart';
 
+import 'Presentation/Screens/Auth/login/LoginScreen.dart';
 import 'Presentation/Theme/AppTheme.dart';
 
 
@@ -145,10 +146,10 @@ class MyApp extends ConsumerWidget {
           path: R_Onboarding,
           builder: (BuildContext context, GoRouterState state) => const OnboardingScreen()
       ),
-      // GoRoute(
-      //     path: R_LoginScreen,
-      //     builder: () =>
-      // )
+      GoRoute(
+          path: R_LoginScreen,
+          builder: (BuildContext context, GoRouterState state) => const LoginScreen()
+      )
     ],
   );
 }

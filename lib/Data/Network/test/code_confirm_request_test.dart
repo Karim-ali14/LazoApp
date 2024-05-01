@@ -16,12 +16,12 @@ void main() {
   // final instance = CodeConfirmRequest();
 
   group('test CodeConfirmRequest', () {
-    // int emailOrPhone
+    // String emailOrPhone
     test('to test the property `emailOrPhone`', () async {
       // TODO
     });
 
-    // int confirmCode
+    // String confirmCode
     test('to test the property `confirmCode`', () async {
       // TODO
     });

@@ -16,7 +16,7 @@ void main() {
   // final instance = CodeSendRequest();
 
   group('test CodeSendRequest', () {
-    // int emailOrPhone
+    // String emailOrPhone
     test('to test the property `emailOrPhone`', () async {
       // TODO
     });

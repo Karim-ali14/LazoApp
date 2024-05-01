@@ -12,6 +12,42 @@ class SVGIcons {
       height: height,
     );
   }
+
+  static Widget warningIcon({double? width , double? height }){
+    return SvgPicture.asset(
+      warningIc,
+      width: width,
+      height: height,
+    );
+  }
+  static Widget emailIcon({double? width , double? height }){
+    return SvgPicture.asset(
+      emailIc,
+      width: width,
+      height: height,
+    );
+  }
+  static Widget redCallingIcon({double? width , double? height }){
+    return SvgPicture.asset(
+      redCallingIc,
+      width: width,
+      height: height,
+    );
+  }
+  static Widget whiteCallingIcon({double? width , double? height }){
+    return SvgPicture.asset(
+      whiteCallingIc,
+      width: width,
+      height: height,
+    );
+  }
+  static Widget whatsAppIcon({double? width , double? height }){
+    return SvgPicture.asset(
+      whatsAppIc,
+      width: width,
+      height: height,
+    );
+  }
   static Widget shareIcon(){
     return SvgPicture.asset(
       shareIconSvg,

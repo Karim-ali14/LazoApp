@@ -10,20 +10,15 @@
 
 part of openapi.api;
 
-class ProviderLoginRequest {
-  /// Returns a new [ProviderLoginRequest] instance.
-  ProviderLoginRequest({
-    this.emailOrPhone,
-    this.password,
+class ColorsResponse {
+  /// Returns a new [ColorsResponse] instance.
+  ColorsResponse({
+    this.data = const [],
+    this.message,
+    this.status,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? emailOrPhone;
+  List<Color> data;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -31,41 +26,52 @@ class ProviderLoginRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? password;
+  String? message;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? status;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProviderLoginRequest &&
-     other.emailOrPhone == emailOrPhone &&
-     other.password == password;
+  bool operator ==(Object other) => identical(this, other) || other is ColorsResponse &&
+     other.data == data &&
+     other.message == message &&
+     other.status == status;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (emailOrPhone == null ? 0 : emailOrPhone!.hashCode) +
-    (password == null ? 0 : password!.hashCode);
+    (data.hashCode) +
+    (message == null ? 0 : message!.hashCode) +
+    (status == null ? 0 : status!.hashCode);
 
   @override
-  String toString() => 'ProviderLoginRequest[emailOrPhone=$emailOrPhone, password=$password]';
+  String toString() => 'ColorsResponse[data=$data, message=$message, status=$status]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.emailOrPhone != null) {
-      json[r'email_or_phone'] = this.emailOrPhone;
+      json[r'data'] = this.data;
+    if (this.message != null) {
+      json[r'message'] = this.message;
     } else {
-      json[r'email_or_phone'] = null;
+      json[r'message'] = null;
     }
-    if (this.password != null) {
-      json[r'password'] = this.password;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'password'] = null;
+      json[r'status'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ProviderLoginRequest] instance and imports its values from
+  /// Returns a new [ColorsResponse] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProviderLoginRequest? fromJson(dynamic value) {
+  static ColorsResponse? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -74,25 +80,26 @@ class ProviderLoginRequest {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProviderLoginRequest[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProviderLoginRequest[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ColorsResponse[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ColorsResponse[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProviderLoginRequest(
-        emailOrPhone: mapValueOfType<int>(json, r'email_or_phone'),
-        password: mapValueOfType<int>(json, r'password'),
+      return ColorsResponse(
+        data: Color.listFromJson(json[r'data']),
+        message: mapValueOfType<String>(json, r'message'),
+        status: mapValueOfType<bool>(json, r'status'),
       );
     }
     return null;
   }
 
-  static List<ProviderLoginRequest> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderLoginRequest>[];
+  static List<ColorsResponse> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ColorsResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderLoginRequest.fromJson(row);
+        final value = ColorsResponse.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -101,12 +108,12 @@ class ProviderLoginRequest {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProviderLoginRequest> mapFromJson(dynamic json) {
-    final map = <String, ProviderLoginRequest>{};
+  static Map<String, ColorsResponse> mapFromJson(dynamic json) {
+    final map = <String, ColorsResponse>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProviderLoginRequest.fromJson(entry.value);
+        final value = ColorsResponse.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -115,14 +122,14 @@ class ProviderLoginRequest {
     return map;
   }
 
-  // maps a json object with a list of ProviderLoginRequest-objects as value to a dart map
-  static Map<String, List<ProviderLoginRequest>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProviderLoginRequest>>{};
+  // maps a json object with a list of ColorsResponse-objects as value to a dart map
+  static Map<String, List<ColorsResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ColorsResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProviderLoginRequest.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ColorsResponse.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

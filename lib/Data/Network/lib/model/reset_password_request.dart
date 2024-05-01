@@ -25,7 +25,7 @@ class ResetPasswordRequest {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? emailOrPhone;
+  String? emailOrPhone;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -113,7 +113,7 @@ class ResetPasswordRequest {
       }());
 
       return ResetPasswordRequest(
-        emailOrPhone: mapValueOfType<int>(json, r'email_or_phone'),
+        emailOrPhone: mapValueOfType<String>(json, r'email_or_phone'),
         newPassword: mapValueOfType<String>(json, r'new_password'),
         confirmNewPassword: mapValueOfType<String>(json, r'confirm_new_password'),
         accountType: mapValueOfType<String>(json, r'account_type'),

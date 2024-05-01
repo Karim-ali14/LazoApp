@@ -1,4 +1,4 @@
-# athletix.model.ProviderRegistration
+# athletix.model.ProviderRegisterRequest
 
 ## Load the model package
 ```dart
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **nameAr** | **String** |  | [optional] 
 **ownerName** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
-**phone** | **int** |  | [optional] 
+**phone** | **String** |  | [optional] 
 **accountType** | **String** |  | [optional] 
 **password** | **String** |  | [optional] 
 **confirmPassword** | **String** |  | [optional] 
@@ -35,8 +35,8 @@ Name | Type | Description | Notes
 **commercialRegisterImage** | **String** | required when business type is cooperation | [optional] 
 **bankName** | **String** |  | [optional] 
 **beneficiaryName** | **String** |  | [optional] 
-**bankAccountNumber** | **int** |  | [optional] 
-**iban** | **int** |  | [optional] 
+**bankAccountNumber** | **String** |  | [optional] 
+**iban** | **String** |  | [optional] 
 **ibanImage** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
