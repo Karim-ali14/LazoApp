@@ -48,6 +48,13 @@ class SVGIcons {
       height: height,
     );
   }
+  static Widget editIcon({double? width , double? height }){
+    return SvgPicture.asset(
+      editIc,
+      width: width,
+      height: height,
+    );
+  }
   static Widget shareIcon(){
     return SvgPicture.asset(
       shareIconSvg,

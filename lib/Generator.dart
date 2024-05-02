@@ -7,5 +7,5 @@ import 'package:openapi_generator_annotations/openapi_generator_annotations.dart
     generatorName: Generator.dart,
     alwaysRun: true,
     skipSpecValidation: true,
-    outputDirectory: '../LazoProvider/lib/Data/Network')
+    outputDirectory: '../LazoProvider/lib/Data/Network/')
 class Example extends OpenapiGeneratorConfig {}

@@ -125,4 +125,3 @@ lib/model/tag.dart
 lib/model/tags_response.dart
 lib/model/upload_files.dart
 pubspec.yaml
-test/product_list_items_test.dart
