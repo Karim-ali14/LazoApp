@@ -11,6 +11,8 @@ const R_splashScreenRout = '/';
 const R_Onboarding = '/onboarding';
 const R_LoginScreen = '/loginScreen';
 const R_ForgetPasswordScreen = '/forgetPasswordScreen';
+const R_OTPScreen = '/otpScreen';
+const R_ChangePasswordScreen = '/changePasswordScreen';
 const R_MainScreen = '/mainScreen';
 const R_OTP = '/otp';
 

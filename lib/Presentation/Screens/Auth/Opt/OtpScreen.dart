@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lazo_provider/Constants.dart';
+import 'package:lazo_provider/Constants/Eunms.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/Opt/Componants/OTPFields.dart';
 import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
@@ -18,7 +20,8 @@ import 'Componants/TimerCounter.dart';
 
 class OtpScreen extends ConsumerStatefulWidget {
   final String? emailOrPhone;
-  const OtpScreen(this.emailOrPhone, {super.key});
+  final OTPType? otpType;
+  const OtpScreen({super.key,required this.emailOrPhone,required this.otpType});
 
   @override
   ConsumerState<OtpScreen> createState() => _OtpScreenState();
@@ -86,7 +89,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
             const SizedBox(height: 40,),
             OTPFields(key: otpFieldsKeys,),
             SizedBox(height: 20,),
-            Padding(padding : EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal), child: AppButton(onPress: sendOtp ,text: "Continue",width: context.getScreenSize.width,)),
+            Padding(padding : EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal), child: AppButton(onPress: verifyPhoneOrEmail ,text: "Continue",width: context.getScreenSize.width,)),
             Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: TimerText(key: timerKey,onTimerFinish: (){
@@ -128,5 +131,9 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
   }
   void sendOtp() async {
 
+  }
+
+  void verifyPhoneOrEmail() async {
+    context.push(R_ChangePasswordScreen,extra: {"emailOrPhone":"5465465465"});
   }
 }

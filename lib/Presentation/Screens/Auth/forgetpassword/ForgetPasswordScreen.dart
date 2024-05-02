@@ -2,6 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lazo_provider/Constants.dart';
+import 'package:lazo_provider/Constants/Eunms.dart';
 import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
 
@@ -67,6 +70,6 @@ class _ForgetPasswordScreenState extends ConsumerState<ForgetPasswordScreen> {
     );
   }
   void sendOtp() async {
-
+    context.push(R_OTP,extra: {"emailOrPhone" : "65464645" , "type" : OTPType.Update});
   }
 }

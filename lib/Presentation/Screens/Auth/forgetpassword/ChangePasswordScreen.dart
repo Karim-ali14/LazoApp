@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
 
 import '../../../../Constants/Constants.dart';
@@ -69,6 +70,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   }
 
   void changePassword() async {
+    Navigator.of(context).pushNamedAndRemoveUntil(R_LoginScreen, (Route route) => false);
     // if(phoneKey.currentState?.validate() == true){
     // ref.read(providerLoginStateProvider.notifier).login(phoneAndEmailController.value.text, passwordController.value.text);
     // }
