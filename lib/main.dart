@@ -13,6 +13,7 @@ import 'package:timeago/timeago.dart' as ago;
 import '../../../../../Constants.dart';
 import '../../../../../Presentation/Screens/SplashScreen.dart';
 
+import 'Presentation/Screens/Auth/forgetpassword/ChangePasswordScreen.dart';
 import 'Presentation/Screens/Auth/login/LoginScreen.dart';
 import 'Presentation/Theme/AppTheme.dart';
 
@@ -154,7 +155,7 @@ class MyApp extends ConsumerWidget {
       ),
       GoRoute(
           path: R_ForgetPasswordScreen,
-          builder: (BuildContext context, GoRouterState state) => const OtpScreen("654654654654")
+          builder: (BuildContext context, GoRouterState state) => const ChangePasswordScreen(emailOrPhone: '654654654654',)
       ),
     ],
   );
