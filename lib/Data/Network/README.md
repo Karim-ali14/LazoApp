@@ -46,97 +46,98 @@ import 'package:athletix/api.dart';
 // String yourTokenGeneratorFunction() { ... }
 //defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = AdminApi();
+final api_instance = ProviderApi();
 
 try {
-    final result = api_instance.adminProfileShowGet();
-    print(result);
+    api_instance.providerLogoutGet();
 } catch (e) {
-    print('Exception when calling AdminApi->adminProfileShowGet: $e\n');
+    print('Exception when calling ProviderApi->providerLogoutGet: $e\n');
 }
 
 ```
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://}*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AdminApi* | [**adminProfileShowGet**](doc\/AdminApi.md#adminprofileshowget) | **GET** /admin/profile/show | show admin profile
-*AdminCityApi* | [**adminCityCreatePost**](doc\/AdminCityApi.md#admincitycreatepost) | **POST** /admin/city/create | update city
-*AdminCityApi* | [**adminCityDeleteDelete**](doc\/AdminCityApi.md#admincitydeletedelete) | **DELETE** /admin/city/delete | delete city
-*AdminTagsApi* | [**adminTagCreatePost**](doc\/AdminTagsApi.md#admintagcreatepost) | **POST** /admin/tag/create | create a tag
-*AdminTagsApi* | [**adminTagDeleteDelete**](doc\/AdminTagsApi.md#admintagdeletedelete) | **DELETE** /admin/tag/delete | delete a tag
-*AdminTagsApi* | [**adminTagUpdatePost**](doc\/AdminTagsApi.md#admintagupdatepost) | **POST** /admin/tag/update | update a tag
-*ProviderApi* | [**providerLogoutGet**](doc\/ProviderApi.md#providerlogoutget) | **GET** /provider/logout | provider logout
-*ProviderApi* | [**providerProfileShowGet**](doc\/ProviderApi.md#providerprofileshowget) | **GET** /provider/profile/show | show profile
-*ProviderApi* | [**providerProfileUpdatePost**](doc\/ProviderApi.md#providerprofileupdatepost) | **POST** /provider/profile/update | update profile main data
-*PublicApi* | [**citiesGet**](doc\/PublicApi.md#citiesget) | **GET** /cities | show all cities
-*PublicApi* | [**tagsGet**](doc\/PublicApi.md#tagsget) | **GET** /tags | show all tags
-*PublicApi* | [**uploadFilesPost**](doc\/PublicApi.md#uploadfilespost) | **POST** /upload/files | upload file(s)
-*PublicAuthApi* | [**adminLoginPost**](doc\/PublicAuthApi.md#adminloginpost) | **POST** /admin/login | admin login
-*PublicAuthApi* | [**codeConfirmPost**](doc\/PublicAuthApi.md#codeconfirmpost) | **POST** /code/confirm | confirm code
-*PublicAuthApi* | [**codeSendPost**](doc\/PublicAuthApi.md#codesendpost) | **POST** /code/send | send code
-*PublicAuthApi* | [**providerLoginPost**](doc\/PublicAuthApi.md#providerloginpost) | **POST** /provider/login | provider login
-*PublicAuthApi* | [**providerRegisterPost**](doc\/PublicAuthApi.md#providerregisterpost) | **POST** /provider/register | provider signup
-*PublicAuthApi* | [**resetCodeConfirmPost**](doc\/PublicAuthApi.md#resetcodeconfirmpost) | **POST** /reset-code/confirm | confirm reset code
-*PublicAuthApi* | [**resetCodeSendPost**](doc\/PublicAuthApi.md#resetcodesendpost) | **POST** /reset-code/send | send reset code
-*PublicAuthApi* | [**resetPasswordPost**](doc\/PublicAuthApi.md#resetpasswordpost) | **POST** /reset-password | reset password
+*ProviderApi* | [**providerLogoutGet**](doc//ProviderApi.md#providerlogoutget) | **GET** /provider/logout | provider logout
+*ProviderApi* | [**providerProfileShowGet**](doc//ProviderApi.md#providerprofileshowget) | **GET** /provider/profile/show | show profile
+*ProviderApi* | [**providerProfileUpdatePost**](doc//ProviderApi.md#providerprofileupdatepost) | **POST** /provider/profile/update | update profile main data
+*PublicApi* | [**citiesGet**](doc//PublicApi.md#citiesget) | **GET** /cities | show all cities
+*PublicApi* | [**showAllBanners**](doc//PublicApi.md#showallbanners) | **GET** /banners | show all banners
+*PublicApi* | [**showAllCategories**](doc//PublicApi.md#showallcategories) | **GET** /categories | show all categories
+*PublicApi* | [**showAllColors**](doc//PublicApi.md#showallcolors) | **GET** /colors | show all colors
+*PublicApi* | [**showAllOccasions**](doc//PublicApi.md#showalloccasions) | **GET** /occasions | show all occasions
+*PublicApi* | [**showAllProducts**](doc//PublicApi.md#showallproducts) | **GET** /products/all | show all products
+*PublicApi* | [**showAllSizes**](doc//PublicApi.md#showallsizes) | **GET** /sizes | show all sizes
+*PublicApi* | [**showPromocodeDetails**](doc//PublicApi.md#showpromocodedetails) | **GET** /promocode/show | show promocode details
+*PublicApi* | [**tagsGet**](doc//PublicApi.md#tagsget) | **GET** /tags | show all tags
+*PublicApi* | [**uploadFilesPost**](doc//PublicApi.md#uploadfilespost) | **POST** /upload/files | upload file(s)
+*PublicAuthApi* | [**codeConfirmPost**](doc//PublicAuthApi.md#codeconfirmpost) | **POST** /code/confirm | confirm code
+*PublicAuthApi* | [**codeSendPost**](doc//PublicAuthApi.md#codesendpost) | **POST** /code/send | send code
+*PublicAuthApi* | [**providerLoginPost**](doc//PublicAuthApi.md#providerloginpost) | **POST** /provider/login | provider login
+*PublicAuthApi* | [**providerRegisterPost**](doc//PublicAuthApi.md#providerregisterpost) | **POST** /provider/register | provider signup
+*PublicAuthApi* | [**resetCodeConfirmPost**](doc//PublicAuthApi.md#resetcodeconfirmpost) | **POST** /reset-code/confirm | confirm reset code
+*PublicAuthApi* | [**resetCodeSendPost**](doc//PublicAuthApi.md#resetcodesendpost) | **POST** /reset-code/send | send reset code
+*PublicAuthApi* | [**resetPasswordPost**](doc//PublicAuthApi.md#resetpasswordpost) | **POST** /reset-password | reset password
 
 
 ## Documentation For Models
 
- - [Banner](doc\/Banner.md)
- - [BannersResponse](doc\/BannersResponse.md)
- - [CategoriesResponse](doc\/CategoriesResponse.md)
- - [Category](doc\/Category.md)
- - [CategoryMenu](doc\/CategoryMenu.md)
- - [CitiesResponse](doc\/CitiesResponse.md)
- - [City](doc\/City.md)
- - [CodeConfirmRequest](doc\/CodeConfirmRequest.md)
- - [CodeConfirmResponse](doc\/CodeConfirmResponse.md)
- - [CodeSendRequest](doc\/CodeSendRequest.md)
- - [CodeSendResponse](doc\/CodeSendResponse.md)
- - [Color](doc\/Color.md)
- - [ColorsResponse](doc\/ColorsResponse.md)
- - [ExtraItem](doc\/ExtraItem.md)
- - [Occasion](doc\/Occasion.md)
- - [OccasionsResponse](doc\/OccasionsResponse.md)
- - [ProductListItems](doc\/ProductListItems.md)
- - [ProductShowResponse](doc\/ProductShowResponse.md)
- - [ProductShowResponseData](doc\/ProductShowResponseData.md)
- - [ProductsListResponse](doc\/ProductsListResponse.md)
- - [ProductsListResponseData](doc\/ProductsListResponseData.md)
- - [ProductsListResponseDataLinksInner](doc\/ProductsListResponseDataLinksInner.md)
- - [PromocodeDetails](doc\/PromocodeDetails.md)
- - [ProviderCategoryMenuResponse](doc\/ProviderCategoryMenuResponse.md)
- - [ProviderData](doc\/ProviderData.md)
- - [ProviderDataCity](doc\/ProviderDataCity.md)
- - [ProviderDataLocationsInner](doc\/ProviderDataLocationsInner.md)
- - [ProviderDataTagsInner](doc\/ProviderDataTagsInner.md)
- - [ProviderLocation](doc\/ProviderLocation.md)
- - [ProviderLoginResponse](doc\/ProviderLoginResponse.md)
- - [ProviderLoginResponseData](doc\/ProviderLoginResponseData.md)
- - [ProviderProduct](doc\/ProviderProduct.md)
- - [ProviderProfileShowResponse](doc\/ProviderProfileShowResponse.md)
- - [ProviderProfileUpdateRequest](doc\/ProviderProfileUpdateRequest.md)
- - [ProviderProfileUpdateResponse](doc\/ProviderProfileUpdateResponse.md)
- - [ProviderProfileUpdateResponseData](doc\/ProviderProfileUpdateResponseData.md)
- - [ProviderRegisterRequest](doc\/ProviderRegisterRequest.md)
- - [ProviderRegisterResponse](doc\/ProviderRegisterResponse.md)
- - [ProviderRegisterResponseData](doc\/ProviderRegisterResponseData.md)
- - [ResetCodeConfirmRequest](doc\/ResetCodeConfirmRequest.md)
- - [ResetCodeConfirmResponse](doc\/ResetCodeConfirmResponse.md)
- - [ResetCodeSendRequest](doc\/ResetCodeSendRequest.md)
- - [ResetCodeSendResponse](doc\/ResetCodeSendResponse.md)
- - [ResetPasswordRequest](doc\/ResetPasswordRequest.md)
- - [ResetPasswordResponse](doc\/ResetPasswordResponse.md)
- - [Size](doc\/Size.md)
- - [SizesResponse](doc\/SizesResponse.md)
- - [Tag](doc\/Tag.md)
- - [TagsResponse](doc\/TagsResponse.md)
- - [UploadFiles](doc\/UploadFiles.md)
+ - [Banner](doc//Banner.md)
+ - [BannersResponse](doc//BannersResponse.md)
+ - [CategoriesResponse](doc//CategoriesResponse.md)
+ - [Category](doc//Category.md)
+ - [CategoryMenu](doc//CategoryMenu.md)
+ - [CitiesResponse](doc//CitiesResponse.md)
+ - [City](doc//City.md)
+ - [CodeConfirmRequest](doc//CodeConfirmRequest.md)
+ - [CodeConfirmResponse](doc//CodeConfirmResponse.md)
+ - [CodeSendRequest](doc//CodeSendRequest.md)
+ - [CodeSendResponse](doc//CodeSendResponse.md)
+ - [Color](doc//Color.md)
+ - [ColorsResponse](doc//ColorsResponse.md)
+ - [ExtraItem](doc//ExtraItem.md)
+ - [ListItems](doc//ListItems.md)
+ - [Occasion](doc//Occasion.md)
+ - [OccasionsResponse](doc//OccasionsResponse.md)
+ - [ProductShowResponse](doc//ProductShowResponse.md)
+ - [ProductShowResponseData](doc//ProductShowResponseData.md)
+ - [ProductsListResponse](doc//ProductsListResponse.md)
+ - [ProductsListResponseData](doc//ProductsListResponseData.md)
+ - [ProductsListResponseDataLinksInner](doc//ProductsListResponseDataLinksInner.md)
+ - [PromocodeDetails](doc//PromocodeDetails.md)
+ - [ProviderCategoryMenuResponse](doc//ProviderCategoryMenuResponse.md)
+ - [ProviderData](doc//ProviderData.md)
+ - [ProviderDataCity](doc//ProviderDataCity.md)
+ - [ProviderDataLocationsInner](doc//ProviderDataLocationsInner.md)
+ - [ProviderDataTagsInner](doc//ProviderDataTagsInner.md)
+ - [ProviderLocation](doc//ProviderLocation.md)
+ - [ProviderLoginResponse](doc//ProviderLoginResponse.md)
+ - [ProviderLoginResponseData](doc//ProviderLoginResponseData.md)
+ - [ProviderProduct](doc//ProviderProduct.md)
+ - [ProviderProfileShowResponse](doc//ProviderProfileShowResponse.md)
+ - [ProviderProfileUpdateRequest](doc//ProviderProfileUpdateRequest.md)
+ - [ProviderProfileUpdateResponse](doc//ProviderProfileUpdateResponse.md)
+ - [ProviderProfileUpdateResponseData](doc//ProviderProfileUpdateResponseData.md)
+ - [ProviderRegisterRequest](doc//ProviderRegisterRequest.md)
+ - [ProviderRegisterResponse](doc//ProviderRegisterResponse.md)
+ - [ProviderRegisterResponseData](doc//ProviderRegisterResponseData.md)
+ - [ResetCodeConfirmRequest](doc//ResetCodeConfirmRequest.md)
+ - [ResetCodeConfirmResponse](doc//ResetCodeConfirmResponse.md)
+ - [ResetCodeSendRequest](doc//ResetCodeSendRequest.md)
+ - [ResetCodeSendResponse](doc//ResetCodeSendResponse.md)
+ - [ResetPasswordRequest](doc//ResetPasswordRequest.md)
+ - [ResetPasswordResponse](doc//ResetPasswordResponse.md)
+ - [ShowPromocodeDetails200Response](doc//ShowPromocodeDetails200Response.md)
+ - [ShowPromocodeDetails200ResponseData](doc//ShowPromocodeDetails200ResponseData.md)
+ - [Size](doc//Size.md)
+ - [SizesResponse](doc//SizesResponse.md)
+ - [Tag](doc//Tag.md)
+ - [TagsResponse](doc//TagsResponse.md)
+ - [UploadFiles](doc//UploadFiles.md)
 
 
 ## Documentation For Authorization

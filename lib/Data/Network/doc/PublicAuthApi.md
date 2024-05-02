@@ -5,11 +5,10 @@
 import 'package:athletix/api.dart';
 ```
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**adminLoginPost**](PublicAuthApi.md#adminloginpost) | **POST** /admin/login | admin login
 [**codeConfirmPost**](PublicAuthApi.md#codeconfirmpost) | **POST** /code/confirm | confirm code
 [**codeSendPost**](PublicAuthApi.md#codesendpost) | **POST** /code/send | send code
 [**providerLoginPost**](PublicAuthApi.md#providerloginpost) | **POST** /provider/login | provider login
@@ -19,51 +18,8 @@ Method | HTTP request | Description
 [**resetPasswordPost**](PublicAuthApi.md#resetpasswordpost) | **POST** /reset-password | reset password
 
 
-# **adminLoginPost**
-> Object adminLoginPost(email, password)
-
-admin login
-
-### Example
-```dart
-import 'package:athletix/api.dart';
-
-final api_instance = PublicAuthApi();
-final email = email_example; // String | 
-final password = 56; // int | 
-
-try {
-    final result = api_instance.adminLoginPost(email, password);
-    print(result);
-} catch (e) {
-    print('Exception when calling PublicAuthApi->adminLoginPost: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **email** | **String**|  | [optional] 
- **password** | **int**|  | [optional] 
-
-### Return type
-
-[**Object**](Object.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **codeConfirmPost**
-> Object codeConfirmPost(emailOrPhone, confirmCode, accountType)
+> CodeConfirmResponse codeConfirmPost(emailOrPhone, confirmCode, accountType)
 
 confirm code
 
@@ -94,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CodeConfirmResponse**](CodeConfirmResponse.md)
 
 ### Authorization
 
@@ -108,7 +64,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **codeSendPost**
-> Object codeSendPost(emailOrPhone, accountType)
+> CodeSendResponse codeSendPost(emailOrPhone, accountType)
 
 send code
 
@@ -137,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CodeSendResponse**](CodeSendResponse.md)
 
 ### Authorization
 
@@ -194,7 +150,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **providerRegisterPost**
-> Object providerRegisterPost(nameEn, nameAr, ownerName, email, phone, accountType, password, confirmPassword, cityId, tagsIdsLeftSquareBracket0RightSquareBracket, tagsIdsLeftSquareBracket1RightSquareBracket, hasOfflineStores, offlineStoresNumber, locationsLeftSquareBracket0RightSquareBracket, locationsLeftSquareBracket1RightSquareBracket, provideDelivery, businessType, image, instagramLink, snapchatLink, tiktokLink, xLink, startTime, endTime, workingDaysIndicesLeftSquareBracket0RightSquareBracket, workingDaysIndicesLeftSquareBracket1RightSquareBracket, workingDaysIndicesLeftSquareBracket2RightSquareBracket, selfEmploymentDocument, commercialRegisterImage, bankName, beneficiaryName, bankAccountNumber, iban, ibanImage)
+> ProviderRegisterResponse providerRegisterPost(nameEn, nameAr, ownerName, email, phone, accountType, password, confirmPassword, cityId, tagsIdsLeftSquareBracket0RightSquareBracket, tagsIdsLeftSquareBracket1RightSquareBracket, hasOfflineStores, offlineStoresNumber, locationsLeftSquareBracket0RightSquareBracket, locationsLeftSquareBracket1RightSquareBracket, provideDelivery, businessType, image, instagramLink, snapchatLink, tiktokLink, xLink, startTime, endTime, workingDaysIndicesLeftSquareBracket0RightSquareBracket, workingDaysIndicesLeftSquareBracket1RightSquareBracket, workingDaysIndicesLeftSquareBracket2RightSquareBracket, selfEmploymentDocument, commercialRegisterImage, bankName, beneficiaryName, bankAccountNumber, iban, ibanImage)
 
 provider signup
 
@@ -287,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ProviderRegisterResponse**](ProviderRegisterResponse.md)
 
 ### Authorization
 
@@ -301,7 +257,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resetCodeConfirmPost**
-> Object resetCodeConfirmPost(emailOrPhone, confirmCode, accountType)
+> ResetCodeConfirmResponse resetCodeConfirmPost(emailOrPhone, confirmCode, accountType)
 
 confirm reset code
 
@@ -332,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ResetCodeConfirmResponse**](ResetCodeConfirmResponse.md)
 
 ### Authorization
 
@@ -346,7 +302,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resetCodeSendPost**
-> Object resetCodeSendPost(emailOrPhone, accountType)
+> ResetCodeSendResponse resetCodeSendPost(emailOrPhone, accountType)
 
 send reset code
 
@@ -375,7 +331,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ResetCodeSendResponse**](ResetCodeSendResponse.md)
 
 ### Authorization
 
@@ -389,7 +345,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resetPasswordPost**
-> Object resetPasswordPost(emailOrPhone, newPassword, confirmNewPassword, accountType)
+> ResetPasswordResponse resetPasswordPost(emailOrPhone, newPassword, confirmNewPassword, accountType)
 
 reset password
 
@@ -422,7 +378,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ResetPasswordResponse**](ResetPasswordResponse.md)
 
 ### Authorization
 

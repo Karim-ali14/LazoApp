@@ -1,7 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lazo_provider/Constants.dart';
+import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
+import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
 
 import '../../../../Constants/Constants.dart';
@@ -11,21 +14,27 @@ import '../../../Widgets/AppButton.dart';
 import '../../../Widgets/AppTextField.dart';
 import '../../../Widgets/CustomAppBar.dart';
 
-class ChangePasswordScreen extends StatefulWidget {
+class ChangePasswordScreen extends ConsumerStatefulWidget {
   final String emailOrPhone;
-  const ChangePasswordScreen({super.key, required this.emailOrPhone});
+  final String code;
+  const ChangePasswordScreen({super.key, required this.emailOrPhone, required this.code});
 
   @override
-  State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
+  ConsumerState<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
 }
 
-class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
 
   final confirmPasswordController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+
+    handleState(changePasswordStateProvider,showLoading: true,showToast: true,onSuccess: (state){
+
+    });
+
     return Scaffold(
       appBar: CustomAppBar(
           appContext: context,
@@ -70,9 +79,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   }
 
   void changePassword() async {
-    Navigator.of(context).pushNamedAndRemoveUntil(R_LoginScreen, (Route route) => false);
-    // if(phoneKey.currentState?.validate() == true){
-    // ref.read(providerLoginStateProvider.notifier).login(phoneAndEmailController.value.text, passwordController.value.text);
-    // }
+    ref.read(changePasswordStateProvider.notifier).changePassword(widget.emailOrPhone,passwordController.value.text, confirmPasswordController.value.text);
   }
 }

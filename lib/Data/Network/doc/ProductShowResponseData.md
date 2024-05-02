@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **expectedProcessingTime** | **String** |  | [optional] 
 **extraItems** | [**List<ExtraItem>**](ExtraItem.md) |  | [optional] [default to const []]
 **id** | **num** |  | [optional] 
-**lists** | [**List<ProductListItems>**](ProductListItems.md) |  | [optional] [default to const []]
+**lists** | [**List<ListItems>**](ListItems.md) |  | [optional] [default to const []]
 **name** | **String** |  | [optional] 
 **nameAr** | **String** |  | [optional] 
 **nameEn** | **String** |  | [optional] 

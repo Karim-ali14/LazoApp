@@ -57,7 +57,7 @@ class PublicApi {
   /// Parameters:
   ///
   /// * [String] lang:
-  Future<Object?> citiesGet({ String? lang, }) async {
+  Future<CitiesResponse?> citiesGet({ String? lang, }) async {
     final response = await citiesGetWithHttpInfo( lang: lang, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -66,7 +66,378 @@ class PublicApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CitiesResponse',) as CitiesResponse;
+    
+    }
+    return null;
+  }
+
+  /// show all banners
+  ///
+  /// show all banners
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> showAllBannersWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/banners';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// show all banners
+  ///
+  /// show all banners
+  Future<BannersResponse?> showAllBanners() async {
+    final response = await showAllBannersWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BannersResponse',) as BannersResponse;
+    
+    }
+    return null;
+  }
+
+  /// show all categories
+  ///
+  /// show all categories
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> showAllCategoriesWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/categories';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// show all categories
+  ///
+  /// show all categories
+  Future<CategoriesResponse?> showAllCategories() async {
+    final response = await showAllCategoriesWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CategoriesResponse',) as CategoriesResponse;
+    
+    }
+    return null;
+  }
+
+  /// show all colors
+  ///
+  /// show all colors
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> showAllColorsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/colors';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// show all colors
+  ///
+  /// show all colors
+  Future<ColorsResponse?> showAllColors() async {
+    final response = await showAllColorsWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ColorsResponse',) as ColorsResponse;
+    
+    }
+    return null;
+  }
+
+  /// show all occasions
+  ///
+  /// show all occasions
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> showAllOccasionsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/occasions';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// show all occasions
+  ///
+  /// show all occasions
+  Future<OccasionsResponse?> showAllOccasions() async {
+    final response = await showAllOccasionsWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'OccasionsResponse',) as OccasionsResponse;
+    
+    }
+    return null;
+  }
+
+  /// show all products
+  ///
+  /// show all products
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] providerId:
+  Future<Response> showAllProductsWithHttpInfo({ String? providerId, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/products/all';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (providerId != null) {
+      queryParams.addAll(_queryParams('', 'provider_id', providerId));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// show all products
+  ///
+  /// show all products
+  ///
+  /// Parameters:
+  ///
+  /// * [String] providerId:
+  Future<ProductsListResponse?> showAllProducts({ String? providerId, }) async {
+    final response = await showAllProductsWithHttpInfo( providerId: providerId, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProductsListResponse',) as ProductsListResponse;
+    
+    }
+    return null;
+  }
+
+  /// show all sizes
+  ///
+  /// show all sizes
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> showAllSizesWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/sizes';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// show all sizes
+  ///
+  /// show all sizes
+  Future<SizesResponse?> showAllSizes() async {
+    final response = await showAllSizesWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SizesResponse',) as SizesResponse;
+    
+    }
+    return null;
+  }
+
+  /// show promocode details
+  ///
+  /// show promocode details
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] promocodeId:
+  ///   optional but choose either id or code
+  ///
+  /// * [String] code:
+  ///   optional but choose either id or code
+  Future<Response> showPromocodeDetailsWithHttpInfo({ String? promocodeId, String? code, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/promocode/show';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (promocodeId != null) {
+      queryParams.addAll(_queryParams('', 'promocode_id', promocodeId));
+    }
+    if (code != null) {
+      queryParams.addAll(_queryParams('', 'code', code));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// show promocode details
+  ///
+  /// show promocode details
+  ///
+  /// Parameters:
+  ///
+  /// * [String] promocodeId:
+  ///   optional but choose either id or code
+  ///
+  /// * [String] code:
+  ///   optional but choose either id or code
+  Future<ShowPromocodeDetails200Response?> showPromocodeDetails({ String? promocodeId, String? code, }) async {
+    final response = await showPromocodeDetailsWithHttpInfo( promocodeId: promocodeId, code: code, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ShowPromocodeDetails200Response',) as ShowPromocodeDetails200Response;
     
     }
     return null;
@@ -113,7 +484,7 @@ class PublicApi {
   /// Parameters:
   ///
   /// * [String] lang:
-  Future<Object?> tagsGet({ String? lang, }) async {
+  Future<TagsResponse?> tagsGet({ String? lang, }) async {
     final response = await tagsGetWithHttpInfo( lang: lang, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -122,7 +493,7 @@ class PublicApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'TagsResponse',) as TagsResponse;
     
     }
     return null;
@@ -175,7 +546,7 @@ class PublicApi {
   /// Parameters:
   ///
   /// * [MultipartFile] filesLeftSquareBracket0RightSquareBracket:
-  Future<Object?> uploadFilesPost({ MultipartFile? filesLeftSquareBracket0RightSquareBracket, }) async {
+  Future<UploadFiles?> uploadFilesPost({ MultipartFile? filesLeftSquareBracket0RightSquareBracket, }) async {
     final response = await uploadFilesPostWithHttpInfo( filesLeftSquareBracket0RightSquareBracket: filesLeftSquareBracket0RightSquareBracket, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -184,7 +555,7 @@ class PublicApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UploadFiles',) as UploadFiles;
     
     }
     return null;

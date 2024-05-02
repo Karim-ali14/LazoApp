@@ -5,7 +5,7 @@
 import 'package:athletix/api.dart';
 ```
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -57,7 +57,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **providerProfileShowGet**
-> Object providerProfileShowGet()
+> ProviderData providerProfileShowGet()
 
 show profile
 
@@ -86,7 +86,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Object**](Object.md)
+[**ProviderData**](ProviderData.md)
 
 ### Authorization
 
@@ -100,7 +100,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **providerProfileUpdatePost**
-> Object providerProfileUpdatePost(storeNameEn, storeNameAr, storeOwnerName, cityId)
+> ProviderData providerProfileUpdatePost(storeNameEn, storeNameAr, storeOwnerName, cityId)
 
 update profile main data
 
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**ProviderData**](ProviderData.md)
 
 ### Authorization
 

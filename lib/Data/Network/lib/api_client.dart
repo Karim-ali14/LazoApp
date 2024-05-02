@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://localhost', this.authentication,});
+  ApiClient({this.basePath = 'http://}', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -209,12 +209,12 @@ class ApiClient {
           return ColorsResponse.fromJson(value);
         case 'ExtraItem':
           return ExtraItem.fromJson(value);
+        case 'ListItems':
+          return ListItems.fromJson(value);
         case 'Occasion':
           return Occasion.fromJson(value);
         case 'OccasionsResponse':
           return OccasionsResponse.fromJson(value);
-        case 'ProductListItems':
-          return ProductListItems.fromJson(value);
         case 'ProductShowResponse':
           return ProductShowResponse.fromJson(value);
         case 'ProductShowResponseData':
@@ -271,6 +271,10 @@ class ApiClient {
           return ResetPasswordRequest.fromJson(value);
         case 'ResetPasswordResponse':
           return ResetPasswordResponse.fromJson(value);
+        case 'ShowPromocodeDetails200Response':
+          return ShowPromocodeDetails200Response.fromJson(value);
+        case 'ShowPromocodeDetails200ResponseData':
+          return ShowPromocodeDetails200ResponseData.fromJson(value);
         case 'Size':
           return Size.fromJson(value);
         case 'SizesResponse':

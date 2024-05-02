@@ -2,9 +2,6 @@
 .travis.yml
 README.md
 analysis_options.yaml
-doc/AdminApi.md
-doc/AdminCityApi.md
-doc/AdminTagsApi.md
 doc/Banner.md
 doc/BannersResponse.md
 doc/CategoriesResponse.md
@@ -19,9 +16,9 @@ doc/CodeSendResponse.md
 doc/Color.md
 doc/ColorsResponse.md
 doc/ExtraItem.md
+doc/ListItems.md
 doc/Occasion.md
 doc/OccasionsResponse.md
-doc/ProductListItems.md
 doc/ProductShowResponse.md
 doc/ProductShowResponseData.md
 doc/ProductsListResponse.md
@@ -53,6 +50,8 @@ doc/ResetCodeSendRequest.md
 doc/ResetCodeSendResponse.md
 doc/ResetPasswordRequest.md
 doc/ResetPasswordResponse.md
+doc/ShowPromocodeDetails200Response.md
+doc/ShowPromocodeDetails200ResponseData.md
 doc/Size.md
 doc/SizesResponse.md
 doc/Tag.md
@@ -60,9 +59,6 @@ doc/TagsResponse.md
 doc/UploadFiles.md
 git_push.sh
 lib/api.dart
-lib/api/admin_api.dart
-lib/api/admin_city_api.dart
-lib/api/admin_tags_api.dart
 lib/api/provider_api.dart
 lib/api/public_api.dart
 lib/api/public_auth_api.dart
@@ -88,9 +84,9 @@ lib/model/code_send_response.dart
 lib/model/color.dart
 lib/model/colors_response.dart
 lib/model/extra_item.dart
+lib/model/list_items.dart
 lib/model/occasion.dart
 lib/model/occasions_response.dart
-lib/model/product_list_items.dart
 lib/model/product_show_response.dart
 lib/model/product_show_response_data.dart
 lib/model/products_list_response.dart
@@ -119,9 +115,12 @@ lib/model/reset_code_send_request.dart
 lib/model/reset_code_send_response.dart
 lib/model/reset_password_request.dart
 lib/model/reset_password_response.dart
+lib/model/show_promocode_details200_response.dart
+lib/model/show_promocode_details200_response_data.dart
 lib/model/size.dart
 lib/model/sizes_response.dart
 lib/model/tag.dart
 lib/model/tags_response.dart
 lib/model/upload_files.dart
 pubspec.yaml
+test/list_items_test.dart

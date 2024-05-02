@@ -25,6 +25,39 @@ class ProviderLoginUseCase extends StateNotifier<StateModel<ProviderLoginRespons
   }
 
 }
+
+class SendOtpUseCase extends StateNotifier<StateModel<Object>>{
+  final Ref ref;
+  final PublicAuthApi authApi;
+  SendOtpUseCase( this.ref, this.authApi):super(StateModel());
+
+  void sendOtp(String? emailOrPhone) async {
+    state = StateModel.loading();
+    request(() => authApi.resetCodeSendPost(emailOrPhone: emailOrPhone,accountType : "provider"));
+  }
+}
+
+class ConfirmResetCodeUseCase extends StateNotifier<StateModel<Object>>{
+  final Ref ref;
+  final PublicAuthApi authApi;
+  ConfirmResetCodeUseCase( this.ref, this.authApi):super(StateModel());
+
+  void confirmReset(String? emailOrPhone,String? code) async {
+    state = StateModel.loading();
+    request(() => authApi.resetCodeConfirmPost(emailOrPhone: emailOrPhone,confirmCode: code ,accountType : "provider"));
+  }
+}
+
+class ChangePasswordUseCase extends StateNotifier<StateModel<Object>>{
+  final Ref ref;
+  final PublicAuthApi authApi;
+  ChangePasswordUseCase( this.ref, this.authApi):super(StateModel());
+
+  void changePassword(String? emailOrPhone, String? newPassword, String? confirmNewPassword) async {
+    state = StateModel.loading();
+    request(() => authApi.resetPasswordPost(emailOrPhone: emailOrPhone,newPassword: newPassword,confirmNewPassword: confirmNewPassword ,accountType : "provider"));
+  }
+}
 // class UserSignUpUseCase extends StateNotifier<StateModel<String>> {
 //
 //   final Ref ref;

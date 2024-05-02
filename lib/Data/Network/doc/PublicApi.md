@@ -5,17 +5,24 @@
 import 'package:athletix/api.dart';
 ```
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://}*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**citiesGet**](PublicApi.md#citiesget) | **GET** /cities | show all cities
+[**showAllBanners**](PublicApi.md#showallbanners) | **GET** /banners | show all banners
+[**showAllCategories**](PublicApi.md#showallcategories) | **GET** /categories | show all categories
+[**showAllColors**](PublicApi.md#showallcolors) | **GET** /colors | show all colors
+[**showAllOccasions**](PublicApi.md#showalloccasions) | **GET** /occasions | show all occasions
+[**showAllProducts**](PublicApi.md#showallproducts) | **GET** /products/all | show all products
+[**showAllSizes**](PublicApi.md#showallsizes) | **GET** /sizes | show all sizes
+[**showPromocodeDetails**](PublicApi.md#showpromocodedetails) | **GET** /promocode/show | show promocode details
 [**tagsGet**](PublicApi.md#tagsget) | **GET** /tags | show all tags
 [**uploadFilesPost**](PublicApi.md#uploadfilespost) | **POST** /upload/files | upload file(s)
 
 
 # **citiesGet**
-> Object citiesGet(lang)
+> CitiesResponse citiesGet(lang)
 
 show all cities
 
@@ -42,7 +49,290 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**CitiesResponse**](CitiesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showAllBanners**
+> BannersResponse showAllBanners()
+
+show all banners
+
+show all banners
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+
+try {
+    final result = api_instance.showAllBanners();
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showAllBanners: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BannersResponse**](BannersResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showAllCategories**
+> CategoriesResponse showAllCategories()
+
+show all categories
+
+show all categories
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+
+try {
+    final result = api_instance.showAllCategories();
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showAllCategories: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CategoriesResponse**](CategoriesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showAllColors**
+> ColorsResponse showAllColors()
+
+show all colors
+
+show all colors
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+
+try {
+    final result = api_instance.showAllColors();
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showAllColors: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ColorsResponse**](ColorsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showAllOccasions**
+> OccasionsResponse showAllOccasions()
+
+show all occasions
+
+show all occasions
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+
+try {
+    final result = api_instance.showAllOccasions();
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showAllOccasions: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**OccasionsResponse**](OccasionsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showAllProducts**
+> ProductsListResponse showAllProducts(providerId)
+
+show all products
+
+show all products
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+final providerId = 1; // String | 
+
+try {
+    final result = api_instance.showAllProducts(providerId);
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showAllProducts: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **providerId** | **String**|  | [optional] 
+
+### Return type
+
+[**ProductsListResponse**](ProductsListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showAllSizes**
+> SizesResponse showAllSizes()
+
+show all sizes
+
+show all sizes
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+
+try {
+    final result = api_instance.showAllSizes();
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showAllSizes: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SizesResponse**](SizesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showPromocodeDetails**
+> ShowPromocodeDetails200Response showPromocodeDetails(promocodeId, code)
+
+show promocode details
+
+show promocode details
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+final promocodeId = 4; // String | optional but choose either id or code
+final code = XWESF34; // String | optional but choose either id or code
+
+try {
+    final result = api_instance.showPromocodeDetails(promocodeId, code);
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showPromocodeDetails: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **promocodeId** | **String**| optional but choose either id or code | [optional] 
+ **code** | **String**| optional but choose either id or code | [optional] 
+
+### Return type
+
+[**ShowPromocodeDetails200Response**](ShowPromocodeDetails200Response.md)
 
 ### Authorization
 
@@ -56,7 +346,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **tagsGet**
-> Object tagsGet(lang)
+> TagsResponse tagsGet(lang)
 
 show all tags
 
@@ -83,7 +373,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**TagsResponse**](TagsResponse.md)
 
 ### Authorization
 
@@ -97,7 +387,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uploadFilesPost**
-> Object uploadFilesPost(filesLeftSquareBracket0RightSquareBracket)
+> UploadFiles uploadFilesPost(filesLeftSquareBracket0RightSquareBracket)
 
 upload file(s)
 
@@ -124,7 +414,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Object**](Object.md)
+[**UploadFiles**](UploadFiles.md)
 
 ### Authorization
 

@@ -168,7 +168,7 @@ class MyApp extends ConsumerWidget {
           path: R_ChangePasswordScreen,
           builder: (BuildContext context, GoRouterState state) {
             var extra = state.extra as Map;
-            return ChangePasswordScreen(emailOrPhone: extra["emailOrPhone"]);
+            return ChangePasswordScreen(emailOrPhone: extra["emailOrPhone"],code : extra["code"]);
           }
       ),
     ],

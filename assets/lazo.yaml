@@ -820,7 +820,7 @@ components:
             lists:
               type: array
               items:
-                $ref: '#/components/schemas/ProductListItems'
+                $ref: '#/components/schemas/ListItems'
             name:
               type: string
               example: زهرة الليلي
@@ -1318,7 +1318,7 @@ components:
           format: date-time
           example: '2024-04-25T22:57:37.000000Z'
 
-    ProductListItems:
+    ListItems:
       type: object
       properties:
         created_at:
@@ -1378,9 +1378,6 @@ components:
 tags:
   - name: public
   - name: public > auth
-  - name: admin
-  - name: admin > city
-  - name: admin > tags
   - name: provider
 paths:
   /code/send:
@@ -1443,11 +1440,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: sms sent successfully to this phone
-                is_exist: false
+                $ref: '#/components/schemas/CodeSendResponse'
   /code/confirm:
     post:
       tags:
@@ -1512,11 +1505,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: phone is verified successfully
-                data: string
+                $ref: '#/components/schemas/CodeConfirmResponse'
   /reset-code/send:
     post:
       tags:
@@ -1577,11 +1566,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: reset code sent successfully to your phone
-                data: string
+                $ref: '#/components/schemas/ResetCodeSendResponse'
   /reset-code/confirm:
     post:
       tags:
@@ -1646,11 +1631,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: phone is verified successfully
-                data: string
+                $ref: '#/components/schemas/ResetCodeConfirmResponse'
   /reset-password:
     post:
       tags:
@@ -1717,11 +1698,8 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: password updated successfully
-                data: string
+                $ref: '#/components/schemas/ResetPasswordResponse'
+
   /provider/register:
     post:
       tags:
@@ -1924,88 +1902,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: provider registered successfully
-                data:
-                  access_token: 9|y0fxGsN3VvWghmCKOSAJXPFnvYR97IYXUK5l6Wwc
-                  token_type: Bearer
-                  provider:
-                    id: 4
-                    name_en: hyper market
-                    name_ar: متاجر هايبر
-                    owner_name: Ali Ahmed
-                    email: hyper22@gmail.com
-                    phone: '534059560'
-                    image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    city_id: 1
-                    account_type: service_provider
-                    device_type: string
-                    fcm_token: string
-                    lang: ar
-                    status: pending
-                    instagram_link: https://instagram.com/test
-                    snapchat_link: https://snapchat.com/test
-                    tiktok_link: https://tiktok.com/test
-                    x_link: https://x.com/test
-                    has_offline_stores: 1
-                    offline_stores_number: 3
-                    provide_delivery: string
-                    business_type: individual
-                    commercial_register_image: string
-                    self_employment_document: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    start_time: 02:15 PM
-                    end_time: 04:12 PM
-                    working_days_indices: 0,3,5
-                    bank_name: alrajhi
-                    beneficiary_name: Ali
-                    bank_account_number: '43646364353'
-                    iban: '00078687464'
-                    iban_image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    created_at: '2024-04-20T16:31:09.000000Z'
-                    updated_at: '2024-04-20T16:31:09.000000Z'
-                    name: متاجر هايبر
-                    imagePath: >-
-                      http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    working_days_indices_list:
-                      - '0'
-                      - '3'
-                      - '5'
-                    self_employment_document_path: >-
-                      http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                    commercial_register_image_path: string
-                    city:
-                      id: 1
-                      name_en: Alriyadh
-                      name_ar: الرياض
-                      created_at: '2024-04-18T12:43:48.000000Z'
-                      updated_at: '2024-04-18T12:43:48.000000Z'
-                      name: الرياض
-                    locations:
-                      - id: 7
-                        provider_id: 4
-                        location: 31.227578678786685, 29.945350987156488
-                        created_at: '2024-04-20T16:31:09.000000Z'
-                        updated_at: '2024-04-20T16:31:09.000000Z'
-                      - id: 8
-                        provider_id: 4
-                        location: 31.22596397297209, 29.946423870724885
-                        created_at: '2024-04-20T16:31:09.000000Z'
-                        updated_at: '2024-04-20T16:31:09.000000Z'
-                    tags:
-                      - id: 1
-                        name_en: shopping
-                        name_ar: تسوق
-                        created_at: '2024-04-18T22:17:27.000000Z'
-                        updated_at: '2024-04-18T22:17:27.000000Z'
-                        name: تسوق
-                      - id: 2
-                        name_en: e-com
-                        name_ar: متجر إلكترونيات
-                        created_at: '2024-04-18T22:17:31.000000Z'
-                        updated_at: '2024-04-18T22:17:35.000000Z'
-                        name: متجر إلكترونيات
+                $ref: '#/components/schemas/ProviderRegisterResponse'
   /provider/login:
     post:
       tags:
@@ -2060,84 +1957,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProviderLoginResponse'
-  /admin/login:
-    post:
-      tags:
-        - public > auth
-      summary: admin login
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: admin@admin.com
-                password:
-                  type: integer
-                  example: '123456'
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: localhost:8000
-            Date:
-              schema:
-                type: string
-                example: Wed, 17 Apr 2024 11:06:10 GMT
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: number
-                example: PHP/8.2.3
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '60'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '59'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                status: true
-                message: login successfully
-                data:
-                  access_token: 1|xFefDJgycdXJKygfVvnxGpydcgqZNfnbv6d9JO0d
-                  token_type: Bearer
-                  admin:
-                    id: 1
-                    name: admin
-                    email: admin@admin.com
-                    phone: '-'
-                    role: super
-                    image: string
-                    categories: all
-                    created_at: '2024-04-17T11:05:49.000000Z'
-                    updated_at: '2024-04-17T11:05:49.000000Z'
-                    imagePath: https://www.w3schools.com/howto/img_avatar.png
   /upload/files:
     post:
       tags:
@@ -2195,12 +2014,8 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: file uploaded successfully
-                data:
-                  - uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
+                $ref: '#/components/schemas/UploadFiles'
+
   /cities:
     get:
       tags:
@@ -2255,29 +2070,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: list of cities
-                data:
-                  - id: 1
-                    name_en: Alriyadh
-                    name_ar: الرياض
-                    created_at: '2024-04-17T11:05:49.000000Z'
-                    updated_at: '2024-04-17T11:05:49.000000Z'
-                    name: الرياض
-                  - id: 2
-                    name_en: Jeddah
-                    name_ar: جده
-                    created_at: '2024-04-17T11:09:59.000000Z'
-                    updated_at: '2024-04-17T11:09:59.000000Z'
-                    name: جده
-                  - id: 4
-                    name_en: Al-Dammam
-                    name_ar: الدمام
-                    created_at: '2024-04-17T11:16:30.000000Z'
-                    updated_at: '2024-04-17T11:16:30.000000Z'
-                    name: الدمام
+                $ref: '#/components/schemas/CitiesResponse'
   /tags:
     get:
       tags:
@@ -2332,353 +2125,406 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: list of tags
-                data:
-                  - id: 1
-                    name_en: shopping
-                    name_ar: تسوق
-                    created_at: '2024-04-17T11:24:40.000000Z'
-                    updated_at: '2024-04-17T11:24:40.000000Z'
-                    name: تسوق
-                  - id: 2
-                    name_en: e-com
-                    name_ar: متجر إلكترونيات
-                    created_at: '2024-04-17T11:24:50.000000Z'
-                    updated_at: '2024-04-17T11:26:02.000000Z'
-                    name: متجر إلكترونيات
-                  - id: 3
-                    name_en: shopping
-                    name_ar: تسوق
-                    created_at: '2024-04-17T11:24:51.000000Z'
-                    updated_at: '2024-04-17T11:24:51.000000Z'
-                    name: تسوق
-  /admin/city/create:
-    post:
-      tags:
-        - admin > city
-      summary: update city
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                city_id:
-                  type: integer
-                  example: '2'
-                name_en:
-                  type: string
-                  example: Al-Dammam
-                name_ar:
-                  type: string
-                  example: الدمام
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: localhost:8000
-            Date:
-              schema:
-                type: string
-                example: Wed, 17 Apr 2024 11:16:30 GMT
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: number
-                example: PHP/8.2.3
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '60'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '59'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                status: true
-                message: city created successfully
-                data:
-                  name_en: Al-Dammam
-                  name_ar: الدمام
-                  updated_at: '2024-04-17T11:16:30.000000Z'
-                  created_at: '2024-04-17T11:16:30.000000Z'
-                  id: 4
-                  name: الدمام
-  /admin/city/delete:
-    delete:
-      tags:
-        - admin > city
-      summary: delete city
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: city_id
-          in: query
-          schema:
-            type: integer
-          example: '3'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /admin/tag/create:
-    post:
-      tags:
-        - admin > tags
-      summary: create a tag
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                name_en:
-                  type: string
-                  example: shopping
-                name_ar:
-                  type: string
-                  example: تسوق
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: localhost:8000
-            Date:
-              schema:
-                type: string
-                example: Wed, 17 Apr 2024 11:24:40 GMT
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: number
-                example: PHP/8.2.3
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '60'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '59'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                status: true
-                message: tag created successfully
-                data:
-                  name_en: shopping
-                  name_ar: تسوق
-                  updated_at: '2024-04-17T11:24:40.000000Z'
-                  created_at: '2024-04-17T11:24:40.000000Z'
-                  id: 1
-                  name: تسوق
-  /admin/tag/update:
-    post:
-      tags:
-        - admin > tags
-      summary: update a tag
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                tag_id:
-                  type: integer
-                  example: '2'
-                name_en:
-                  type: string
-                  example: e-com
-                name_ar:
-                  type: string
-                  example: متجر إلكترونيات
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: OK
-          headers:
-            Host:
-              schema:
-                type: string
-                example: localhost:8000
-            Date:
-              schema:
-                type: string
-                example: Wed, 17 Apr 2024 11:26:02 GMT
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: number
-                example: PHP/8.2.3
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '60'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '57'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                status: true
-                message: tag updated successfully
-                data:
-                  id: 2
-                  name_en: e-com
-                  name_ar: متجر إلكترونيات
-                  created_at: '2024-04-17T11:24:50.000000Z'
-                  updated_at: '2024-04-17T11:26:02.000000Z'
-                  name: متجر إلكترونيات
-  /admin/tag/delete:
-    delete:
-      tags:
-        - admin > tags
-      summary: delete a tag
-      parameters:
-        - name: tag_id
-          in: query
-          schema:
-            type: integer
-          example: '3'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /admin/profile/show:
+                $ref: '#/components/schemas/TagsResponse'
+  /categories:
     get:
       tags:
-        - admin
-      summary: show admin profile
-      security:
-        - bearerAuth: []
+        - public
+      summary: show all categories
+      description: show all categories
+      operationId: showAllCategories
       responses:
         '200':
-          description: OK
+          description: show all categories
           headers:
-            Host:
-              schema:
-                type: string
-                example: localhost:8000
-            Date:
-              schema:
-                type: string
-                example: Wed, 17 Apr 2024 11:27:40 GMT
-            Connection:
-              schema:
-                type: string
-                example: close
-            X-Powered-By:
-              schema:
-                type: number
-                example: PHP/8.2.3
-            Cache-Control:
-              schema:
-                type: string
-                example: no-cache, private
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            X-RateLimit-Limit:
-              schema:
-                type: integer
-                example: '60'
-            X-RateLimit-Remaining:
-              schema:
-                type: integer
-                example: '58'
             Access-Control-Allow-Origin:
               schema:
                 type: string
                 example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: close
+            Date:
+              schema:
+                type: string
+                example: Mon, 22 Apr 2024 16:48:40 GMT
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.3
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '58'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriesResponse'
+  /banners:
+    get:
+      tags:
+        - public
+      summary: show all banners
+      description: show all banners
+      operationId: showAllBanners
+      responses:
+        '200':
+          description: New Request
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: close
+            Date:
+              schema:
+                type: string
+                example: Tue, 23 Apr 2024 10:50:23 GMT
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.3
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '59'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BannersResponse'
+
+  /sizes:
+    get:
+      tags:
+        - public
+      summary: show all sizes
+      description: show all sizes
+      operationId: showAllSizes
+      responses:
+        '200':
+          description: show all sizes
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: close
+            Date:
+              schema:
+                type: string
+                example: Mon, 29 Apr 2024 20:57:26 GMT
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.2-1ubuntu2.14
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '58'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SizesResponse'
+  /colors:
+    get:
+      tags:
+        - public
+      summary: show all colors
+      description: show all colors
+      operationId: showAllColors
+      responses:
+        '200':
+          description: show all colors
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: close
+            Date:
+              schema:
+                type: string
+                example: Mon, 29 Apr 2024 20:51:43 GMT
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.2-1ubuntu2.14
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '59'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColorsResponse'
+
+  /occasions:
+    get:
+      tags:
+        - public
+      summary: show all occasions
+      description: show all occasions
+      operationId: showAllOccasions
+      responses:
+        '200':
+          description: New Request
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: close
+            Date:
+              schema:
+                type: string
+                example: Tue, 23 Apr 2024 10:47:29 GMT
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.3
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '59'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OccasionsResponse'
+  /promocode/show:
+    get:
+      tags:
+        - public
+      summary: show promocode details
+      description: show promocode details
+      operationId: showPromocodeDetails
+      parameters:
+        - name: promocode_id
+          in: query
+          schema:
+            type: string
+            example: '4'
+          description: optional but choose either id or code
+        - name: code
+          in: query
+          schema:
+            type: string
+            example: XWESF34
+          description: optional but choose either id or code
+      responses:
+        '200':
+          description: show promocode details
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: close
+            Date:
+              schema:
+                type: string
+                example: Tue, 23 Apr 2024 12:07:03 GMT
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.2.3
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '55'
           content:
             application/json:
               schema:
                 type: object
-              example:
-                status: true
-                message: admin's profile
-                data:
-                  id: 1
-                  name: admin
-                  email: admin@admin.com
-                  phone: '-'
-                  role: super
-                  image: string
-                  categories: all
-                  created_at: '2024-04-17T11:05:49.000000Z'
-                  updated_at: '2024-04-17T11:05:49.000000Z'
-                  imagePath: https://www.w3schools.com/howto/img_avatar.png
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      allowed_usage_number:
+                        type: string
+                        example: '5'
+                      code:
+                        type: string
+                        example: XWESF34
+                      created_at:
+                        type: string
+                        example: '2024-04-23T12:00:20.000000Z'
+                      expiration_date:
+                        type: string
+                        example: '2024-04-26'
+                      id:
+                        type: number
+                        example: 4
+                      type:
+                        type: string
+                        example: percent
+                      updated_at:
+                        type: string
+                        example: '2024-04-23T12:02:04.000000Z'
+                      value:
+                        type: number
+                        example: 58
+                  message:
+                    type: string
+                    example: promocode details
+                  status:
+                    type: boolean
+                    example: true
+              examples:
+                show promocode details:
+                  value:
+                    data:
+                      allowed_usage_number: '5'
+                      code: XWESF34
+                      created_at: '2024-04-23T12:00:20.000000Z'
+                      expiration_date: '2024-04-26'
+                      id: 4
+                      type: percent
+                      updated_at: '2024-04-23T12:02:04.000000Z'
+                      value: 58
+                    message: promocode details
+                    status: true
+  /products/all:
+    get:
+      tags:
+        - public
+      summary: show all products
+      description: show all products
+      operationId: showAllProducts
+      parameters:
+        - name: provider_id
+          in: query
+          schema:
+            type: string
+            example: '1'
+      responses:
+        '200':
+          description: show all products
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Connection:
+              schema:
+                type: string
+                example: close
+            Date:
+              schema:
+                type: string
+                example: Thu, 25 Apr 2024 22:31:50 GMT
+            Host:
+              schema:
+                type: string
+                example: localhost:8000
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.1.2-1ubuntu2.14
+            X-RateLimit-Limit:
+              schema:
+                type: string
+                example: '60'
+            X-RateLimit-Remaining:
+              schema:
+                type: string
+                example: '58'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductsListResponse'
+
   /provider/profile/show:
     get:
       tags:
@@ -2729,8 +2575,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
+                $ref: '#/components/schemas/ProviderData'
                 status: true
                 message: provider's profile
                 data:
@@ -2876,85 +2721,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-              example:
-                status: true
-                message: provider's profile update successfully
-                data:
-                  id: 1
-                  name_en: new store name
-                  name_ar: متجر بأسم جديد
-                  owner_name: new owner name
-                  email: hyper@gmail.com
-                  phone: '534053560'
-                  image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                  city_id: 1
-                  account_type: service_provider
-                  device_type: string
-                  fcm_token: string
-                  lang: ar
-                  status: pending
-                  instagram_link: https://instagram.com/test
-                  snapchat_link: https://snapchat.com/test
-                  tiktok_link: https://tiktok.com/test
-                  x_link: https://x.com/test
-                  has_offline_stores: 1
-                  offline_stores_number: 3
-                  provide_delivery: string
-                  business_type: individual
-                  commercial_register_image: string
-                  self_employment_document: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                  start_time: 02:15 PM
-                  end_time: 04:12 PM
-                  working_days_indices: 0,3,5
-                  bank_name: alrajhi
-                  beneficiary_name: Ali
-                  bank_account_number: '43646364353'
-                  iban: '00078687464'
-                  iban_image: uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                  created_at: '2024-04-18T22:52:15.000000Z'
-                  updated_at: '2024-04-20T14:07:38.000000Z'
-                  name: متجر بأسم جديد
-                  imagePath: >-
-                    http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                  working_days_indices_list:
-                    - '0'
-                    - '3'
-                    - '5'
-                  self_employment_document_path: >-
-                    http://localhost:8000/uploads/files/04-2024/1713354063L6Sxt2kHExLiW2p.png
-                  commercial_register_image_path: string
-                  city:
-                    id: 1
-                    name_en: Alriyadh
-                    name_ar: الرياض
-                    created_at: '2024-04-18T12:43:48.000000Z'
-                    updated_at: '2024-04-18T12:43:48.000000Z'
-                    name: الرياض
-                  locations:
-                    - id: 1
-                      provider_id: 1
-                      location: 31.227578678786685, 29.945350987156488
-                      created_at: '2024-04-18T22:52:15.000000Z'
-                      updated_at: '2024-04-18T22:52:15.000000Z'
-                    - id: 2
-                      provider_id: 1
-                      location: 31.22596397297209, 29.946423870724885
-                      created_at: '2024-04-18T22:52:15.000000Z'
-                      updated_at: '2024-04-18T22:52:15.000000Z'
-                  tags:
-                    - id: 1
-                      name_en: shopping
-                      name_ar: تسوق
-                      created_at: '2024-04-18T22:17:27.000000Z'
-                      updated_at: '2024-04-18T22:17:27.000000Z'
-                      name: تسوق
-                    - id: 2
-                      name_en: e-com
-                      name_ar: متجر إلكترونيات
-                      created_at: '2024-04-18T22:17:31.000000Z'
-                      updated_at: '2024-04-18T22:17:35.000000Z'
-                      name: متجر إلكترونيات
+                $ref: '#/components/schemas/ProviderData'
   /provider/logout:
     get:
       tags:

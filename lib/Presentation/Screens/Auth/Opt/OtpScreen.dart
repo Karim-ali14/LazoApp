@@ -7,7 +7,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Constants/Eunms.dart';
+import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/Opt/Componants/OTPFields.dart';
+import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
 
@@ -19,7 +21,7 @@ import '../../../Widgets/SvgIcons.dart';
 import 'Componants/TimerCounter.dart';
 
 class OtpScreen extends ConsumerStatefulWidget {
-  final String? emailOrPhone;
+  final String emailOrPhone;
   final OTPType? otpType;
   const OtpScreen({super.key,required this.emailOrPhone,required this.otpType});
 
@@ -33,6 +35,15 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
   var readyToResendOtp = false;
   @override
   Widget build(BuildContext context) {
+
+    handleState(sendOtpStateProvider,showLoading: true,showToast: true,onSuccess: (state){
+      timerKey.currentState?.restart();
+    });
+
+    handleState(confirmResetCodeStateProvider,showLoading: true,showToast: true,onSuccess: (state){
+      context.push(R_ChangePasswordScreen,extra: {"emailOrPhone":widget.emailOrPhone,"code" : otpFieldsKeys.currentState?.getCode});
+    });
+
     return Scaffold(
       appBar: CustomAppBar(
           appContext: context,
@@ -89,7 +100,9 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
             const SizedBox(height: 40,),
             OTPFields(key: otpFieldsKeys,),
             SizedBox(height: 20,),
-            Padding(padding : EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal), child: AppButton(onPress: verifyPhoneOrEmail ,text: "Continue",width: context.getScreenSize.width,)),
+            Padding(padding : const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal), child: AppButton(onPress: () {
+              verifyPhoneOrEmail(widget.emailOrPhone,otpFieldsKeys.currentState?.getCode);
+            } ,text: "Continue",width: context.getScreenSize.width,)),
             Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: TimerText(key: timerKey,onTimerFinish: (){
@@ -118,7 +131,6 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                     // }
                     setState(() {
                       readyToResendOtp = false;
-                      timerKey.currentState?.restart();
                     });
                   },
                 ),
@@ -129,11 +141,12 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
       ),
     );
   }
-  void sendOtp() async {
 
+  void sendOtp(String emailOrPhone) async {
+    ref.read(sendOtpStateProvider.notifier).sendOtp(emailOrPhone);
   }
 
-  void verifyPhoneOrEmail() async {
-    context.push(R_ChangePasswordScreen,extra: {"emailOrPhone":"5465465465"});
+  void verifyPhoneOrEmail(String emailOrPhone,String? code) async {
+    ref.read(confirmResetCodeStateProvider.notifier).confirmReset(emailOrPhone, code);
   }
 }

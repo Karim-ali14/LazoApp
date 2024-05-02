@@ -16,75 +16,6 @@ class PublicAuthApi {
 
   final ApiClient apiClient;
 
-  /// admin login
-  ///
-  /// Note: This method returns the HTTP [Response].
-  ///
-  /// Parameters:
-  ///
-  /// * [String] email:
-  ///
-  /// * [int] password:
-  Future<Response> adminLoginPostWithHttpInfo({ String? email, int? password, }) async {
-    // ignore: prefer_const_declarations
-    final path = r'/admin/login';
-
-    // ignore: prefer_final_locals
-    Object? postBody;
-
-    final queryParams = <QueryParam>[];
-    final headerParams = <String, String>{};
-    final formParams = <String, String>{};
-
-    const contentTypes = <String>['multipart/form-data'];
-
-    bool hasFields = false;
-    final mp = MultipartRequest('POST', Uri.parse(path));
-    if (email != null) {
-      hasFields = true;
-      mp.fields[r'email'] = parameterToString(email);
-    }
-    if (password != null) {
-      hasFields = true;
-      mp.fields[r'password'] = parameterToString(password);
-    }
-    if (hasFields) {
-      postBody = mp;
-    }
-
-    return apiClient.invokeAPI(
-      path,
-      'POST',
-      queryParams,
-      postBody,
-      headerParams,
-      formParams,
-      contentTypes.isEmpty ? null : contentTypes.first,
-    );
-  }
-
-  /// admin login
-  ///
-  /// Parameters:
-  ///
-  /// * [String] email:
-  ///
-  /// * [int] password:
-  Future<Object?> adminLoginPost({ String? email, int? password, }) async {
-    final response = await adminLoginPostWithHttpInfo( email: email, password: password, );
-    if (response.statusCode >= HttpStatus.badRequest) {
-      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
-    }
-    // When a remote server returns no body with a status of 204, we shall not decode it.
-    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
-    // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
-    
-    }
-    return null;
-  }
-
   /// confirm code
   ///
   /// Note: This method returns the HTTP [Response].
@@ -149,7 +80,7 @@ class PublicAuthApi {
   ///
   /// * [String] accountType:
   ///   client or provider
-  Future<Object?> codeConfirmPost({ String? emailOrPhone, String? confirmCode, String? accountType, }) async {
+  Future<CodeConfirmResponse?> codeConfirmPost({ String? emailOrPhone, String? confirmCode, String? accountType, }) async {
     final response = await codeConfirmPostWithHttpInfo( emailOrPhone: emailOrPhone, confirmCode: confirmCode, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -158,7 +89,7 @@ class PublicAuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CodeConfirmResponse',) as CodeConfirmResponse;
     
     }
     return null;
@@ -218,7 +149,7 @@ class PublicAuthApi {
   /// * [String] emailOrPhone:
   ///
   /// * [String] accountType:
-  Future<Object?> codeSendPost({ String? emailOrPhone, String? accountType, }) async {
+  Future<CodeSendResponse?> codeSendPost({ String? emailOrPhone, String? accountType, }) async {
     final response = await codeSendPostWithHttpInfo( emailOrPhone: emailOrPhone, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -227,7 +158,7 @@ class PublicAuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CodeSendResponse',) as CodeSendResponse;
     
     }
     return null;
@@ -656,7 +587,7 @@ class PublicAuthApi {
   ///
   /// * [String] ibanImage:
   ///   optional
-  Future<Object?> providerRegisterPost({ String? nameEn, String? nameAr, String? ownerName, String? email, int? phone, String? accountType, int? password, int? confirmPassword, int? cityId, int? tagsIdsLeftSquareBracket0RightSquareBracket, int? tagsIdsLeftSquareBracket1RightSquareBracket, int? hasOfflineStores, int? offlineStoresNumber, num? locationsLeftSquareBracket0RightSquareBracket, num? locationsLeftSquareBracket1RightSquareBracket, int? provideDelivery, String? businessType, String? image, String? instagramLink, String? snapchatLink, String? tiktokLink, String? xLink, String? startTime, String? endTime, int? workingDaysIndicesLeftSquareBracket0RightSquareBracket, int? workingDaysIndicesLeftSquareBracket1RightSquareBracket, int? workingDaysIndicesLeftSquareBracket2RightSquareBracket, String? selfEmploymentDocument, String? commercialRegisterImage, String? bankName, String? beneficiaryName, int? bankAccountNumber, int? iban, String? ibanImage, }) async {
+  Future<ProviderRegisterResponse?> providerRegisterPost({ String? nameEn, String? nameAr, String? ownerName, String? email, int? phone, String? accountType, int? password, int? confirmPassword, int? cityId, int? tagsIdsLeftSquareBracket0RightSquareBracket, int? tagsIdsLeftSquareBracket1RightSquareBracket, int? hasOfflineStores, int? offlineStoresNumber, num? locationsLeftSquareBracket0RightSquareBracket, num? locationsLeftSquareBracket1RightSquareBracket, int? provideDelivery, String? businessType, String? image, String? instagramLink, String? snapchatLink, String? tiktokLink, String? xLink, String? startTime, String? endTime, int? workingDaysIndicesLeftSquareBracket0RightSquareBracket, int? workingDaysIndicesLeftSquareBracket1RightSquareBracket, int? workingDaysIndicesLeftSquareBracket2RightSquareBracket, String? selfEmploymentDocument, String? commercialRegisterImage, String? bankName, String? beneficiaryName, int? bankAccountNumber, int? iban, String? ibanImage, }) async {
     final response = await providerRegisterPostWithHttpInfo( nameEn: nameEn, nameAr: nameAr, ownerName: ownerName, email: email, phone: phone, accountType: accountType, password: password, confirmPassword: confirmPassword, cityId: cityId, tagsIdsLeftSquareBracket0RightSquareBracket: tagsIdsLeftSquareBracket0RightSquareBracket, tagsIdsLeftSquareBracket1RightSquareBracket: tagsIdsLeftSquareBracket1RightSquareBracket, hasOfflineStores: hasOfflineStores, offlineStoresNumber: offlineStoresNumber, locationsLeftSquareBracket0RightSquareBracket: locationsLeftSquareBracket0RightSquareBracket, locationsLeftSquareBracket1RightSquareBracket: locationsLeftSquareBracket1RightSquareBracket, provideDelivery: provideDelivery, businessType: businessType, image: image, instagramLink: instagramLink, snapchatLink: snapchatLink, tiktokLink: tiktokLink, xLink: xLink, startTime: startTime, endTime: endTime, workingDaysIndicesLeftSquareBracket0RightSquareBracket: workingDaysIndicesLeftSquareBracket0RightSquareBracket, workingDaysIndicesLeftSquareBracket1RightSquareBracket: workingDaysIndicesLeftSquareBracket1RightSquareBracket, workingDaysIndicesLeftSquareBracket2RightSquareBracket: workingDaysIndicesLeftSquareBracket2RightSquareBracket, selfEmploymentDocument: selfEmploymentDocument, commercialRegisterImage: commercialRegisterImage, bankName: bankName, beneficiaryName: beneficiaryName, bankAccountNumber: bankAccountNumber, iban: iban, ibanImage: ibanImage, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -665,7 +596,7 @@ class PublicAuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProviderRegisterResponse',) as ProviderRegisterResponse;
     
     }
     return null;
@@ -735,7 +666,7 @@ class PublicAuthApi {
   ///
   /// * [String] accountType:
   ///   client or provider
-  Future<Object?> resetCodeConfirmPost({ String? emailOrPhone, String? confirmCode, String? accountType, }) async {
+  Future<ResetCodeConfirmResponse?> resetCodeConfirmPost({ String? emailOrPhone, String? confirmCode, String? accountType, }) async {
     final response = await resetCodeConfirmPostWithHttpInfo( emailOrPhone: emailOrPhone, confirmCode: confirmCode, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -744,7 +675,7 @@ class PublicAuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ResetCodeConfirmResponse',) as ResetCodeConfirmResponse;
     
     }
     return null;
@@ -804,7 +735,7 @@ class PublicAuthApi {
   /// * [String] emailOrPhone:
   ///
   /// * [String] accountType:
-  Future<Object?> resetCodeSendPost({ String? emailOrPhone, String? accountType, }) async {
+  Future<ResetCodeSendResponse?> resetCodeSendPost({ String? emailOrPhone, String? accountType, }) async {
     final response = await resetCodeSendPostWithHttpInfo( emailOrPhone: emailOrPhone, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -813,7 +744,7 @@ class PublicAuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ResetCodeSendResponse',) as ResetCodeSendResponse;
     
     }
     return null;
@@ -889,7 +820,7 @@ class PublicAuthApi {
   /// * [String] confirmNewPassword:
   ///
   /// * [String] accountType:
-  Future<Object?> resetPasswordPost({ String? emailOrPhone, String? newPassword, String? confirmNewPassword, String? accountType, }) async {
+  Future<ResetPasswordResponse?> resetPasswordPost({ String? emailOrPhone, String? newPassword, String? confirmNewPassword, String? accountType, }) async {
     final response = await resetPasswordPostWithHttpInfo( emailOrPhone: emailOrPhone, newPassword: newPassword, confirmNewPassword: confirmNewPassword, accountType: accountType, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -898,7 +829,7 @@ class PublicAuthApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ResetPasswordResponse',) as ResetPasswordResponse;
     
     }
     return null;

@@ -81,7 +81,7 @@ class ProviderApi {
   }
 
   /// show profile
-  Future<Object?> providerProfileShowGet() async {
+  Future<ProviderData?> providerProfileShowGet() async {
     final response = await providerProfileShowGetWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -90,7 +90,7 @@ class ProviderApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProviderData',) as ProviderData;
     
     }
     return null;
@@ -166,7 +166,7 @@ class ProviderApi {
   /// * [String] storeOwnerName:
   ///
   /// * [int] cityId:
-  Future<Object?> providerProfileUpdatePost({ String? storeNameEn, String? storeNameAr, String? storeOwnerName, int? cityId, }) async {
+  Future<ProviderData?> providerProfileUpdatePost({ String? storeNameEn, String? storeNameAr, String? storeOwnerName, int? cityId, }) async {
     final response = await providerProfileUpdatePostWithHttpInfo( storeNameEn: storeNameEn, storeNameAr: storeNameAr, storeOwnerName: storeOwnerName, cityId: cityId, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -175,7 +175,7 @@ class ProviderApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProviderData',) as ProviderData;
     
     }
     return null;
