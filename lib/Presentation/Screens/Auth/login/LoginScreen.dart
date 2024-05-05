@@ -27,7 +27,9 @@ class LoginScreen extends ConsumerStatefulWidget {
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final phoneAndEmailController = TextEditingController();
   final passwordController = TextEditingController();
-  
+
+  final fromKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     handleState(providerLoginStateProvider,showLoading: true,showToast: true,onSuccess: (state){
@@ -38,71 +40,90 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: defaultPaddingHorizontal,
-                  vertical: 20
+          child: Form(
+            key: fromKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: defaultPaddingHorizontal,
+                    vertical: 20
+                  ),
+                  child: Row(
+                    children: [
+                      Text(context.tr(loginKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts20w700,),
+                      const Expanded(child: SizedBox()),
+                      Text(context.tr(arabicKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,),
+                    ],
+                  ),
                 ),
-                child: Row(
+                SVGIcons.appLogoIcon(width: 113,height: 95,color: Colors.black),
+                const SizedBox(
+                  height: 40,
+                ),
+                AppTextField(
+                  mode: AutovalidateMode.onUserInteraction,
+                  hint: context.tr(phoneNumberAndEmailAddressKey),
+                  label: context.tr(phoneNumberAndEmailAddressKey),
+                  textEditingController: phoneAndEmailController,
+                  validate: (value){
+                    if(value?.isEmpty == true){
+                      return 'You should select phone or email';
+                    }else {
+                      return null;
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                AppTextField (
+                    mode: AutovalidateMode.onUserInteraction,
+                    hint: context.tr(passwordKey),
+                  label: context.tr(passwordKey),
+                  textEditingController: passwordController,
+                    validate: (value){
+                      if(value?.isEmpty == true){
+                        return 'You should select password';
+                      }else {
+                        return null;
+                      }
+                    }
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
                   children: [
-                    Text(context.tr(loginKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts20w700,),
-                    const Expanded(child: SizedBox()),
-                    Text(context.tr(arabicKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,),
+                    const Spacer(),
+                    InkWell(onTap: forgetPassword,child: Text(context.tr(forgetPasswordKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts14w400,))
                   ],
                 ),
-              ),
-              SVGIcons.appLogoIcon(width: 113,height: 95,color: Colors.black),
-              const SizedBox(
-                height: 40,
-              ),
-              AppTextField(
-                hint: context.tr(phoneNumberAndEmailAddressKey),
-                label: context.tr(phoneNumberAndEmailAddressKey),
-                textEditingController: phoneAndEmailController,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              AppTextField (
-                hint: context.tr(passwordKey),
-                label: context.tr(passwordKey),
-                textEditingController: passwordController,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  const Spacer(),
-                  InkWell(onTap: forgetPassword,child: Text(context.tr(forgetPasswordKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts14w400,))
-                ],
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              AppButton(onPress: login,text: context.tr(loginKey),width: context.getScreenSize.width,),
-              SizedBox(
-                height: 16,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Don’t have an account?",style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,),
-                  Text("Sign Up",style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w400.copyWith(decoration: TextDecoration.underline,decorationColor: AppTheme.mainAppColor),)
-                ],
-              )
-            ],
+                SizedBox(
+                  height: 16,
+                ),
+                AppButton(onPress: login,text: context.tr(loginKey),width: context.getScreenSize.width,),
+                SizedBox(
+                  height: 16,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don’t have an account?",style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,),
+                    Text("Sign Up",style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w400.copyWith(decoration: TextDecoration.underline,decorationColor: AppTheme.mainAppColor),)
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
   }
   void login() async {
-    // if(phoneKey.currentState?.validate() == true){
+    if(fromKey.currentState?.validate() == true){
       ref.read(providerLoginStateProvider.notifier).login(phoneAndEmailController.value.text, passwordController.value.text);
-    // }
+    }
   }
 
   void forgetPassword() async {

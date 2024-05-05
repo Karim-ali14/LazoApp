@@ -29,6 +29,7 @@ class AppTextField extends StatefulWidget {
   final Widget? endWidget;
   final Widget? startWidget;
   final TextInputFormatter? mask;
+  final AutovalidateMode? mode;
   const AppTextField(
       {super.key,
         required this.hint,
@@ -46,7 +47,7 @@ class AppTextField extends StatefulWidget {
         this.mask,
         this.endWidget,this.startWidget,
         required this.textEditingController,
-        this.textFieldColor, this.textInputAction, this.textFieldBorderColor, this.disabled, this.onClick, this.endText, this.validate, });
+        this.textFieldColor, this.textInputAction, this.textFieldBorderColor, this.disabled, this.onClick, this.endText, this.validate, this.mode, });
 
   @override
   _AppTextFieldState createState() => _AppTextFieldState();
@@ -64,6 +65,7 @@ class _AppTextFieldState extends State<AppTextField> {
       child: SizedBox(
         width: widget.width,
         child:TextFormField(
+          autovalidateMode: widget.mode,
             inputFormatters: widget.mask != null ? [widget.mask!] : null,
             onTapOutside: (val){
               FocusManager.instance.primaryFocus?.unfocus();

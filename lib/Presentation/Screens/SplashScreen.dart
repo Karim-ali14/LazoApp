@@ -29,6 +29,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3),(){
+      setState(() => _opc = 1.0);
       SystemChrome.setSystemUIOverlayStyle(
           const SystemUiOverlayStyle(
           statusBarColor:
@@ -36,12 +37,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       );
       User? user = ref.read(userProvider);
       print("User $user");
-      // if(user != null){
-      //   context.push(R_MainScreen);
-      // }else{
-        // setState(() => _opc = 1.0);
+      if(user != null){
+        context.push(R_MainScreen);
+      }if(prefs.getBool("doneLanding") == true){
+        context.go(R_LoginScreen);
+      }else {
         context.push(R_Onboarding);
-      // }
+      }
     });
     //setupInteractedMessage(context);
     super.initState();
@@ -62,7 +64,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Spacer(),
-                AnimatedPadding(duration: const Duration(milliseconds: 500),padding: EdgeInsets.only(top: _opc == 1.0 ? 0 : 130),
+                AnimatedPadding(duration: const Duration(milliseconds: 300),padding: EdgeInsets.only(top: _opc == 1.0 ? 0 : 130),
                   child: SVGIcons.appLogoIcon(width: 191,height: 159) ,),
                 const Spacer(),
                 AnimatedOpacity(opacity: _opc , duration: const Duration(milliseconds: 500),
