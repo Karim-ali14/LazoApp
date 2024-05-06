@@ -22,14 +22,14 @@ class SplashScreen extends ConsumerStatefulWidget {
 
 class _SplashScreenState extends ConsumerState<SplashScreen> {
 
-  double _opc = 0.0;
+  // double _opc = 0.0;
   late AppThemeMode _appThemeMode;
   bool isThereUser = false;
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 3),(){
-      setState(() => _opc = 1.0);
+    Future.delayed(const Duration(seconds: 4),(){
+      // setState(() => _opc = 1.0);
       SystemChrome.setSystemUIOverlayStyle(
           const SystemUiOverlayStyle(
           statusBarColor:
@@ -63,12 +63,24 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
                 const Spacer(),
-                AnimatedPadding(duration: const Duration(milliseconds: 300),padding: EdgeInsets.only(top: _opc == 1.0 ? 0 : 130),
-                  child: SVGIcons.appLogoIcon(width: 191,height: 159) ,),
+                TweenAnimationBuilder<double>(
+                    tween: Tween<double>(begin: 0.0, end: 1.0),
+                    curve: Curves.ease,
+                    duration: const Duration(seconds: 4),
+                    builder: (BuildContext context, double opacity, Widget? child) {
+                      return Opacity(
+                          opacity: opacity,
+                          child: SVGIcons.appLogoIcon(width: 191,height: 159)
+                      );
+                    }),
+
+                // AnimatedPadding(duration: const Duration(milliseconds: 500),padding: EdgeInsets.only(top: _opc == 1.0 ? 0 : 130),
+                //   child:  ,),
                 const Spacer(),
-                AnimatedOpacity(opacity: _opc , duration: const Duration(milliseconds: 500),
-                  child: Container(),)
+                // AnimatedOpacity(opacity: _opc , duration: const Duration(milliseconds: 500),
+                //   child: Container(),)
               ],
             ),
           ),
