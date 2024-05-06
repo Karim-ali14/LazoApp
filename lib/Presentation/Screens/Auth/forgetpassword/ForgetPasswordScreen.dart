@@ -26,7 +26,7 @@ class ForgetPasswordScreen extends ConsumerStatefulWidget {
 
 class _ForgetPasswordScreenState extends ConsumerState<ForgetPasswordScreen> {
   final phoneAndEmailController = TextEditingController();
-
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     handleState(sendOtpStateProvider,showLoading: true,showToast: true,onSuccess: (state){
@@ -46,40 +46,50 @@ class _ForgetPasswordScreenState extends ConsumerState<ForgetPasswordScreen> {
       body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 40,
-                ),
-                SVGIcons.appLogoIcon(width: 113,height: 95,color: Colors.black),
-                const SizedBox(
-                  height: 25,
-                ),
-                Text("Enter your phone number / email address we will send you a code to reset the password",style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts16w400,),
-                const SizedBox(
-                  height: 25
-                ),
-                AppTextField(
-                  hint: context.tr(phoneNumberAndEmailAddressKey),
-                  label: context.tr(phoneNumberAndEmailAddressKey),
-                  textEditingController: phoneAndEmailController,
-                ),
-                SizedBox(
-                  height: 16,
-                ),
-                AppButton(onPress:() {
-                  if(phoneAndEmailController.value.text.isNotEmpty){
-                    print(phoneAndEmailController.value.text);
-                    sendOtp(phoneAndEmailController.value.text);
-                  }
-                } ,text: "Continue",width: context.getScreenSize.width,),
-              ],
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  SVGIcons.appLogoIcon(width: 113,height: 95,color: Colors.black),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Text("Enter your phone number / email address we will send you a code to reset the password",style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts16w400,),
+                  const SizedBox(
+                    height: 25
+                  ),
+                  AppTextField(
+                    hint: context.tr(phoneNumberAndEmailAddressKey),
+                    label: context.tr(phoneNumberAndEmailAddressKey),
+                    textEditingController: phoneAndEmailController,
+                    mode: AutovalidateMode.onUserInteraction,
+                    validate: (value){
+                      if(value?.isEmpty == true){
+                        return "Enter your phone number or email address";
+                      }else {
+                        return null;
+                      }
+                    },
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  AppButton(onPress:() {
+                      sendOtp(phoneAndEmailController.value.text);
+                  } ,text: "Continue",width: context.getScreenSize.width,),
+                ],
+              ),
             ),
           ),
       ),
     );
   }
   void sendOtp(String emailOrPhone) async {
-    ref.read(sendOtpStateProvider.notifier).sendOtp(emailOrPhone);
+    if (formKey.currentState?.validate() == true) {
+      ref.read(sendOtpStateProvider.notifier).sendOtp(emailOrPhone);
+    }
   }
 }

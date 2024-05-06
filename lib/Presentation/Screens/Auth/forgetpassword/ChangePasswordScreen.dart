@@ -27,6 +27,7 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
 
   final confirmPasswordController = TextEditingController();
   final passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -49,29 +50,50 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              AppTextField (
-                hint: context.tr(passwordKey),
-                label: context.tr(passwordKey),
-                textEditingController: passwordController,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              AppTextField(
-                hint: context.tr("Confirm New Password"),
-                label: context.tr("Confirm New Password"),
-                textEditingController: confirmPasswordController,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              AppButton(onPress: changePassword ,text: "Continue",width: context.getScreenSize.width,),
-            ],
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                AppTextField (
+                  hint: context.tr(passwordKey),
+                  label: context.tr(passwordKey),
+                  textEditingController: passwordController,
+                  mode: AutovalidateMode.onUserInteraction,
+                  validate: (value){
+                    if(value?.isEmpty == true){
+                      return "Enter your password";
+                    }else {
+                      return null;
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                AppTextField(
+                  hint: context.tr("Confirm New Password"),
+                  label: context.tr("Confirm New Password"),
+                  textEditingController: confirmPasswordController,
+                  mode: AutovalidateMode.onUserInteraction,
+                  validate: (value){
+                    if(value?.isEmpty == true){
+                      return "Enter confirm password";
+                    }else if(passwordController.value.text != confirmPasswordController.value.text){
+                      return "password and confirm password not match";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                AppButton(onPress: changePassword ,text: "Continue",width: context.getScreenSize.width,),
+              ],
+            ),
           ),
         ),
       ),
@@ -79,6 +101,10 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
   }
 
   void changePassword() async {
-    ref.read(changePasswordStateProvider.notifier).changePassword(widget.emailOrPhone,passwordController.value.text, confirmPasswordController.value.text);
+    if(formKey.currentState?.validate() == true) {
+      ref.read(changePasswordStateProvider.notifier).changePassword(
+          widget.emailOrPhone, passwordController.value.text,
+          confirmPasswordController.value.text);
+    }
   }
 }

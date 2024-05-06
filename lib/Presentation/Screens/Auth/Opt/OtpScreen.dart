@@ -101,7 +101,9 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
             OTPFields(key: otpFieldsKeys,),
             SizedBox(height: 20,),
             Padding(padding : const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal), child: AppButton(onPress: () {
-              verifyPhoneOrEmail(widget.emailOrPhone,otpFieldsKeys.currentState?.getCode);
+              if(otpFieldsKeys.currentState?.formKey.currentState?.validate() == true){
+                verifyPhoneOrEmail(widget.emailOrPhone,otpFieldsKeys.currentState?.getCode);
+              }
             } ,text: "Continue",width: context.getScreenSize.width,)),
             Padding(
                 padding: const EdgeInsets.all(16.0),

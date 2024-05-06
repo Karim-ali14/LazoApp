@@ -13,6 +13,7 @@ class OTPFields extends StatefulWidget {
 }
 
 class OTPFieldsState extends State<OTPFields> {
+  final formKey = GlobalKey<FormState>();
   final otp1 = TextEditingController();
   final otp2 = TextEditingController();
   final otp3 = TextEditingController();
@@ -35,167 +36,206 @@ class OTPFieldsState extends State<OTPFields> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: 56,
-          height: 56,
-          child: TextField(
-            cursorHeight: 40,
-            showCursor: false,
-            controller: otp1,
-            focusNode: focusNode1,
-            maxLengthEnforcement: MaxLengthEnforcement.none,
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              TextFormatters.nonArabicPhone,
-              LengthLimitingTextInputFormatter(1)
-            ],
-            decoration: InputDecoration(
-                fillColor: Colors.white,
-                filled: true,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppTheme.appGrey6),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: AppTheme.secondaryAppColorLight),
-                    borderRadius: BorderRadius.circular(8)),
-                enabledBorder: OutlineInputBorder(
+    return Form(
+      key: formKey,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 56,
+            height: 56,
+            child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              cursorHeight: 40,
+              showCursor: false,
+              controller: otp1,
+              focusNode: focusNode1,
+              maxLengthEnforcement: MaxLengthEnforcement.none,
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                TextFormatters.nonArabicPhone,
+                LengthLimitingTextInputFormatter(1)
+              ],
+              decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  filled: true,
+                  errorStyle: const TextStyle(fontSize: 0),
+                  border: OutlineInputBorder(
                     borderSide: BorderSide(color: AppTheme.appGrey6),
-                    borderRadius: BorderRadius.circular(8))),
-            style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts32w400,
-            textAlign: TextAlign.center,
-            textAlignVertical: TextAlignVertical.top,
-            onChanged: (value) {
-              if(value.isNotEmpty){
-                FocusScope.of(context).requestFocus(focusNode2);
-              }
-            },
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: AppTheme.secondaryAppColorLight),
+                      borderRadius: BorderRadius.circular(8)),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppTheme.appGrey6),
+                      borderRadius: BorderRadius.circular(8))),
+              style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts32w400,
+              textAlign: TextAlign.center,
+              textAlignVertical: TextAlignVertical.top,
+              onChanged: (value) {
+                if(value.isNotEmpty){
+                  FocusScope.of(context).requestFocus(focusNode2);
+                }
+              },
+                validator: (value){
+                  if(value?.isEmpty == true){
+                    return "";
+                  }else{
+                    return null;
+                  }
+                }
+            ),
           ),
-        ),
-        const SizedBox(width: 15),
-        SizedBox(
-          width: 56,
-          height: 56,
-          child: TextField(
-            cursorHeight: 40,
-            showCursor: false,
-            controller: otp2,
-            focusNode: focusNode2,
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              TextFormatters.nonArabicPhone,
-              LengthLimitingTextInputFormatter(1)
-            ],
-            decoration: InputDecoration(
-                fillColor: Colors.white,
-                filled: true,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppTheme.appGrey6),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide:
-                    BorderSide(color: AppTheme.secondaryAppColorLight),
-                    borderRadius: BorderRadius.circular(8)),
-                enabledBorder: OutlineInputBorder(
+          const SizedBox(width: 15),
+          SizedBox(
+            width: 56,
+            height: 56,
+            child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              cursorHeight: 40,
+              showCursor: false,
+              controller: otp2,
+              focusNode: focusNode2,
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                TextFormatters.nonArabicPhone,
+                LengthLimitingTextInputFormatter(1)
+              ],
+              decoration: InputDecoration(
+                  errorStyle: const TextStyle(fontSize: 0),
+                  fillColor: Colors.white,
+                  filled: true,
+                  border: OutlineInputBorder(
                     borderSide: BorderSide(color: AppTheme.appGrey6),
-                    borderRadius: BorderRadius.circular(8))),
-            style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts32w400,
-            textAlign: TextAlign.center,
-            textAlignVertical: TextAlignVertical.top,
-            onChanged: (value) {
-              if(value.isNotEmpty){
-                FocusScope.of(context).requestFocus(focusNode3);
-              }else {
-                FocusScope.of(context).requestFocus(focusNode1);
-              }
-            },
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide:
+                      BorderSide(color: AppTheme.secondaryAppColorLight),
+                      borderRadius: BorderRadius.circular(8)),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppTheme.appGrey6),
+                      borderRadius: BorderRadius.circular(8))),
+              style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts32w400,
+              textAlign: TextAlign.center,
+              textAlignVertical: TextAlignVertical.top,
+              onChanged: (value) {
+                if(value.isNotEmpty){
+                  FocusScope.of(context).requestFocus(focusNode3);
+                }else {
+                  FocusScope.of(context).requestFocus(focusNode1);
+                }
+              },
+                validator: (value){
+                  if(value?.isEmpty == true){
+                    return "";
+                  }else{
+                    return null;
+                  }
+                }
+            ),
           ),
-        ),
-        const SizedBox(width: 15),
-        SizedBox(
-          width: 56,
-          height: 56,
-          child: TextField(
-            cursorHeight: 40,
-            showCursor: false,
-            controller: otp3,
-            focusNode: focusNode3,
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              TextFormatters.nonArabicPhone,
-              LengthLimitingTextInputFormatter(1)
-            ],
-            decoration: InputDecoration(
-                fillColor: Colors.white,
-                filled: true,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppTheme.appGrey6),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: AppTheme.secondaryAppColorLight),
-                    borderRadius: BorderRadius.circular(8)),
-                enabledBorder: OutlineInputBorder(
+          const SizedBox(width: 15),
+          SizedBox(
+            width: 56,
+            height: 56,
+            child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              cursorHeight: 40,
+              showCursor: false,
+              controller: otp3,
+              focusNode: focusNode3,
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                TextFormatters.nonArabicPhone,
+                LengthLimitingTextInputFormatter(1)
+              ],
+              decoration: InputDecoration(
+                  errorStyle: const TextStyle(fontSize: 0),
+                  fillColor: Colors.white,
+                  filled: true,
+                  border: OutlineInputBorder(
                     borderSide: BorderSide(color: AppTheme.appGrey6),
-                    borderRadius: BorderRadius.circular(8))),
-            style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts32w400,
-            textAlign: TextAlign.center,
-            textAlignVertical: TextAlignVertical.top,
-            onChanged: (value) {
-              if(value.isNotEmpty){
-                FocusScope.of(context).requestFocus(focusNode4);
-              }else{
-                FocusScope.of(context).requestFocus(focusNode2);
-              }
-            },
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: AppTheme.secondaryAppColorLight),
+                      borderRadius: BorderRadius.circular(8)),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppTheme.appGrey6),
+                      borderRadius: BorderRadius.circular(8))),
+              style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts32w400,
+              textAlign: TextAlign.center,
+              textAlignVertical: TextAlignVertical.top,
+              onChanged: (value) {
+                if(value.isNotEmpty){
+                  FocusScope.of(context).requestFocus(focusNode4);
+                }else{
+                  FocusScope.of(context).requestFocus(focusNode2);
+                }
+              },
+              validator: (value){
+                if(value?.isEmpty == true){
+                  return "";
+                }else{
+                  return null;
+                }
+              },
+            ),
           ),
-        ),
-        const SizedBox(width: 15),
-        SizedBox(
-          width: 56,
-          height: 56,
-          child: TextField(
-            cursorHeight: 40,
-            showCursor: false,
-            controller: otp4,
-            focusNode: focusNode4,
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              TextFormatters.nonArabicPhone,
-              LengthLimitingTextInputFormatter(1)
-            ],
-            decoration: InputDecoration(
-                fillColor: Colors.white,
-                filled: true,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppTheme.appGrey6),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide:
-                    BorderSide(color: AppTheme.secondaryAppColorLight),
-                    borderRadius: BorderRadius.circular(8)),
-                enabledBorder: OutlineInputBorder(
+          const SizedBox(width: 15),
+          SizedBox(
+            width: 56,
+            height: 56,
+            child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              cursorHeight: 40,
+              showCursor: false,
+              controller: otp4,
+              focusNode: focusNode4,
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                TextFormatters.nonArabicPhone,
+                LengthLimitingTextInputFormatter(1)
+              ],
+              decoration: InputDecoration(
+                  errorStyle: const TextStyle(fontSize: 0),
+                  fillColor: Colors.white,
+                  filled: true,
+                  border: OutlineInputBorder(
                     borderSide: BorderSide(color: AppTheme.appGrey6),
-                    borderRadius: BorderRadius.circular(8))),
-            style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts32w400,
-            textAlign: TextAlign.center,
-            textAlignVertical: TextAlignVertical.top,
-            onChanged: (value) {
-              if(value.isEmpty){
-                FocusScope.of(context).requestFocus(focusNode3);
-              }
-            },
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide:
+                      BorderSide(color: AppTheme.secondaryAppColorLight),
+                      borderRadius: BorderRadius.circular(8)),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppTheme.appGrey6),
+                      borderRadius: BorderRadius.circular(8))),
+              style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts32w400,
+              textAlign: TextAlign.center,
+              textAlignVertical: TextAlignVertical.top,
+              onChanged: (value) {
+                if(value.isEmpty){
+                  FocusScope.of(context).requestFocus(focusNode3);
+                }
+              },
+                validator: (value){
+                  if(value?.isEmpty == true){
+                    return "";
+                  }else{
+                    return null;
+                  }
+                }
+            ),
           ),
-        ),
-        const SizedBox(width: 15)
-      ],
+          const SizedBox(width: 15)
+        ],
+      ),
     );
   }
   @override
