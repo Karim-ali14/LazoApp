@@ -20,6 +20,7 @@ class ProviderLoginUseCase extends StateNotifier<StateModel<ProviderLoginRespons
   void login(String? emailOrPhone,String? pass) async {
     state = StateModel.loading();
     request(() => authApi.providerLoginPost(emailOrPhone: emailOrPhone , password: pass),onComplete: (resp) {
+      print("user ${resp.data}");
       ref.read(providerTokenStateProvider.notifier).setUser(resp.data);
     });
   }

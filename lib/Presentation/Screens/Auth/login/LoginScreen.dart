@@ -33,7 +33,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     handleState(providerLoginStateProvider,showLoading: true,showToast: true,onSuccess: (state){
-      print("success ....");
+      context.go(R_Home);
     });
 
     return Scaffold(

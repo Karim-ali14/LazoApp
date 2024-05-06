@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:lazo_provider/Constants.dart';
+
 import '../../../../../Data/Models/StateModel.dart';
 import '../../../../../Data/Repositories/UserRepository/UserRepository.dart';
 import '../../../../../Data/Repositories/UserRepository/UserRepositoryImp.dart';
@@ -7,24 +9,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../main.dart';
 import '../HttpOps.dart';
 import '../Models/User.dart';
+import '../Network/lib/api.dart';
 
-class UserModelProvider extends StateNotifier<User?> {
+class UserModelProvider extends StateNotifier<ProviderLoginResponseData?> {
   final Ref ref;
 
   UserModelProvider(this.ref) : super(null) {
-    String? userJson = prefs.getString("User");
+    String? userJson = prefs.getString(userKey);
+    print("user before convert $userJson");
     if(userJson != null){
       Map<String,dynamic> userJsonObj = json.decode(userJson);
-      state = User.fromJson(userJsonObj);
+      state = ProviderLoginResponseData.fromJson(userJsonObj);
     }
   }
 
-  void updateUserData(User? userModel){
+  void updateUserData(ProviderLoginResponseData? userModel){
     state = userModel;
   }
 }
 
-final userProvider = StateNotifierProvider<UserModelProvider,User?>((ref)  {
+final userProvider = StateNotifierProvider<UserModelProvider,ProviderLoginResponseData?>((ref)  {
   return UserModelProvider(ref);
 });
 

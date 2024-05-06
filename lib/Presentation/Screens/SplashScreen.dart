@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:lazo_provider/Data/Network/lib/api.dart';
 import 'package:lazo_provider/Presentation/Widgets/SvgIcons.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
 
@@ -35,11 +36,12 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           statusBarColor:
           AppTheme.mainAppColor,statusBarIconBrightness: Brightness.dark)
       );
-      User? user = ref.read(userProvider);
-      print("User $user");
+      ProviderLoginResponseData? user = ref.read(userProvider);
+      print("Usersfsdfsdfsd $user");
+      print("Usersfsdfsdfsd ${user == null}");
       if(user != null){
-        context.push(R_MainScreen);
-      }if(prefs.getBool("doneLanding") == true){
+        context.go(R_Home);
+      }else if(prefs.getBool("doneLanding") == true){
         context.go(R_LoginScreen);
       }else {
         context.push(R_Onboarding);

@@ -15,6 +15,7 @@ import '../../../../../Presentation/Screens/SplashScreen.dart';
 
 import 'Presentation/Screens/Auth/forgetpassword/ChangePasswordScreen.dart';
 import 'Presentation/Screens/Auth/login/LoginScreen.dart';
+import 'Presentation/Screens/HomeScreen.dart';
 import 'Presentation/Theme/AppTheme.dart';
 
 
@@ -176,6 +177,10 @@ class MyApp extends ConsumerWidget {
               ]
             ),
           ]
+      ),
+      GoRoute(
+          path: R_Home,
+          builder: (BuildContext context, GoRouterState state) => const HomeScreen()
       ),
     ],
   );

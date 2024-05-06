@@ -15,6 +15,7 @@ const R_ForgetPasswordScreen = 'forgetPasswordScreen';
 const R_ChangePasswordScreen = 'changePasswordScreen';
 const R_MainScreen = '/mainScreen';
 const R_OTP = 'otp';
+const R_Home = '/home';
 
 //EXTRAS
 const userKey = "user";

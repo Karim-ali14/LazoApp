@@ -11,11 +11,12 @@ import '../Localization/AppLocalizations.dart';
 import '../Utils/UtilsExts.dart';
 import 'Models/ResponseModel.dart';
 import 'Models/User.dart';
+import 'Network/lib/api.dart';
 
 
 class HttpOps {
   final Ref ref;
-  final User? _userModel;
+  final ProviderLoginResponseData? _userModel;
 
   HttpWithMiddleware httpLog = HttpWithMiddleware.build(middlewares: [
     HttpLogger(logLevel: LogLevel.BODY),
@@ -31,7 +32,7 @@ class HttpOps {
         Uri.parse(mainAppUrl + endPoint + (params)),
         headers:authorized ? <String, String> {
           'Content-Type': 'application/json; charset=UTF-8',
-          'Authorization': 'Bearer ${_userModel?.token}',
+          'Authorization': 'Bearer ${_userModel?.accessToken}',
           "Accept" : "application/json",
           'lang' : AppLocalizations.globalLocale?.languageCode ?? "en"
         } :
@@ -77,7 +78,7 @@ class HttpOps {
         Uri.parse(mainAppUrl + endPoint + (params)),
         headers:authorized ? <String, String> {
           'Content-Type': 'application/json; charset=UTF-8',
-          'Authorization': 'Bearer ${_userModel?.token}',
+          'Authorization': 'Bearer ${_userModel?.accessToken}',
           "Accept" : "application/json",
           'lang' : AppLocalizations.globalLocale?.languageCode ?? "en"
         } :
@@ -110,7 +111,7 @@ class HttpOps {
         Uri.parse(mainAppUrl + endPoint + (params)),
         headers:authorized ? <String, String> {
           'Content-Type': 'application/json; charset=UTF-8',
-          'Authorization': 'Bearer ${_userModel?.token}',
+          'Authorization': 'Bearer ${_userModel?.accessToken}',
           "Accept" : "application/json",
           'lang' : AppLocalizations.globalLocale?.languageCode ?? "en"
         } :
@@ -141,9 +142,9 @@ class HttpOps {
     try{
       var postUri = Uri.parse(mainAppUrl + endPoint + params);
       http.MultipartRequest request =  http.MultipartRequest("POST", postUri);
-      print("User Token 3 ${_userModel?.token}");
+      print("User Token 3 ${_userModel?.accessToken}");
       request.headers.addAll(authorized ? <String, String> {
-        'Authorization': 'Bearer ${_userModel?.token}',
+        'Authorization': 'Bearer ${_userModel?.accessToken}',
         'Content-Type': 'multipart/form-data;',
         'Accept': 'application/json',
         'lang' : AppLocalizations.globalLocale?.languageCode ?? "en"
