@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
 import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
@@ -33,7 +34,7 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
   Widget build(BuildContext context) {
 
     handleState(changePasswordStateProvider,showLoading: true,showToast: true,onSuccess: (state){
-
+      context.go(R_LoginScreen);
     });
 
     return Scaffold(

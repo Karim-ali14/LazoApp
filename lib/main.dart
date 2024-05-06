@@ -151,25 +151,31 @@ class MyApp extends ConsumerWidget {
       ),
       GoRoute(
           path: R_LoginScreen,
-          builder: (BuildContext context, GoRouterState state) => const LoginScreen()
-      ),
-      GoRoute(
-          path: R_ForgetPasswordScreen,
-          builder: (BuildContext context, GoRouterState state) => const ForgetPasswordScreen()
-      ),
-      GoRoute(
-          path: R_OTP,
-          builder: (BuildContext context, GoRouterState state) {
-            var extra = state.extra as Map;
-            return  OtpScreen(emailOrPhone: extra["emailOrPhone"],otpType: extra["type"]);
-          }
-      ),
-      GoRoute(
-          path: R_ChangePasswordScreen,
-          builder: (BuildContext context, GoRouterState state) {
-            var extra = state.extra as Map;
-            return ChangePasswordScreen(emailOrPhone: extra["emailOrPhone"],code : extra["code"]);
-          }
+          builder: (BuildContext context, GoRouterState state) => const LoginScreen(),
+          routes: [
+            GoRoute(
+                path: R_ForgetPasswordScreen,
+                builder: (BuildContext context, GoRouterState state) => const ForgetPasswordScreen(),
+              routes: [
+                GoRoute(
+                    path: R_OTP,
+                    builder: (BuildContext context, GoRouterState state) {
+                      var extra = state.extra as Map;
+                      return  OtpScreen(emailOrPhone: extra["emailOrPhone"],otpType: extra["type"]);
+                    },
+                  routes: [
+                    GoRoute(
+                        path: R_ChangePasswordScreen,
+                        builder: (BuildContext context, GoRouterState state) {
+                          var extra = state.extra as Map;
+                          return ChangePasswordScreen(emailOrPhone: extra["emailOrPhone"],code : extra["code"]);
+                        }
+                    )
+                  ]
+                )
+              ]
+            ),
+          ]
       ),
     ],
   );

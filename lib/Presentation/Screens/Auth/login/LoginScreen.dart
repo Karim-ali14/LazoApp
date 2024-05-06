@@ -128,7 +128,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   void forgetPassword() async {
     // if(phoneKey.currentState?.validate() == true){
-    context.push(R_ForgetPasswordScreen);
+    context.push("$R_LoginScreen/$R_ForgetPasswordScreen");
     // }
   }
 

@@ -41,7 +41,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
     });
 
     handleState(confirmResetCodeStateProvider,showLoading: true,showToast: true,onSuccess: (state){
-      context.push(R_ChangePasswordScreen,extra: {"emailOrPhone":widget.emailOrPhone,"code" : otpFieldsKeys.currentState?.getCode});
+      context.go("$R_LoginScreen/$R_ForgetPasswordScreen/$R_OTP/$R_ChangePasswordScreen",extra: {"emailOrPhone":widget.emailOrPhone,"code" : otpFieldsKeys.currentState?.getCode});
     });
 
     return Scaffold(

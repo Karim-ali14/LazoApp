@@ -30,7 +30,7 @@ class _ForgetPasswordScreenState extends ConsumerState<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     handleState(sendOtpStateProvider,showLoading: true,showToast: true,onSuccess: (state){
-      context.push(R_OTP,extra: {"emailOrPhone" : phoneAndEmailController.value.text , "type" : OTPType.Update});
+      context.push("$R_LoginScreen/$R_ForgetPasswordScreen/$R_OTP",extra: {"emailOrPhone" : phoneAndEmailController.value.text , "type" : OTPType.Update});
     });
     return Scaffold(
       appBar: CustomAppBar(
