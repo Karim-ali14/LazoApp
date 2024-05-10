@@ -13,6 +13,7 @@ import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Presentation/Widgets/AppTextField.dart';
 import 'package:lazo_provider/Presentation/Widgets/SvgIcons.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../Constants/Constants.dart';
 import '../../../Widgets/AppButton.dart';
@@ -110,7 +111,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("Don’t have an account?",style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,),
-                    Text("Sign Up",style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w400.copyWith(decoration: TextDecoration.underline,decorationColor: AppTheme.mainAppColor),)
+                    InkWell(
+                        onTap: openSignUpUrl,
+                        child: Text("Sign Up",style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w400.copyWith(decoration: TextDecoration.underline,decorationColor: AppTheme.mainAppColor),))
                   ],
                 )
               ],
@@ -143,5 +146,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         }));
   }
 
+  void openSignUpUrl(){
+    final signUpUrlLink = Uri.parse(signUpUrl);
+    launchUrl(signUpUrlLink,mode: LaunchMode.externalApplication);
+  }
 
 }

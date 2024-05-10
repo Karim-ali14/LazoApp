@@ -64,8 +64,9 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
                   textEditingController: passwordController,
                   mode: AutovalidateMode.onUserInteraction,
                   validate: (value){
-                    if(value?.isEmpty == true){
-                      return "Enter your password";
+                    var validatePassword = _validatePassword(value ?? "");
+                    if(validatePassword.isNotEmpty){
+                      return validatePassword;
                     }else {
                       return null;
                     }
@@ -80,8 +81,9 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
                   textEditingController: confirmPasswordController,
                   mode: AutovalidateMode.onUserInteraction,
                   validate: (value){
-                    if(value?.isEmpty == true){
-                      return "Enter confirm password";
+                    var validatePassword = _validatePassword(value ?? "");
+                    if(validatePassword.isNotEmpty){
+                      return validatePassword;
                     }else if(passwordController.value.text != confirmPasswordController.value.text){
                       return "password and confirm password not match";
                     } else {
@@ -108,4 +110,32 @@ class _ChangePasswordScreenState extends ConsumerState<ChangePasswordScreen> {
           confirmPasswordController.value.text);
     }
   }
+
+  String _validatePassword(String password) {
+    // Reset error message
+    var _errorMessage = '';
+    // Password length greater than 6
+    if (password.length < 8) {
+      _errorMessage += 'Password must be longer than 7 characters.\n';
+    }
+    // Contains at least one uppercase letter
+    if (!password.contains(RegExp(r'[A-Z]'))) {
+      _errorMessage += '• Uppercase letter is missing.\n';
+    }
+    // Contains at least one lowercase letter
+    if (!password.contains(RegExp(r'[a-z]'))) {
+      _errorMessage += '• Lowercase letter is missing.\n';
+    }
+    // Contains at least one digit
+    if (!password.contains(RegExp(r'[0-9]'))) {
+      _errorMessage += '• Digit is missing.\n';
+    }
+    // Contains at least one special character
+    // if (!password.contains(RegExp(r'[!@#%^&*(),.?":{}|<>]'))) {
+    //   _errorMessage += '• Special character is missing.\n';
+    // }
+    // If there are no error messages, the password is valid
+    return _errorMessage;
+  }
+
 }
