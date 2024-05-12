@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **providerId** | **int** |  | [optional] 
 **location** | **String** |  | [optional] 
+**address** | **String** |  | [optional] 
 **createdAt** | **String** |  | [optional] 
 **updatedAt** | **String** |  | [optional] 
 

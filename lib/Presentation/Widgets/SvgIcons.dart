@@ -72,6 +72,14 @@ class SVGIcons {
     );
   }
 
+  static Widget defaultUserIcon(){
+    return SvgPicture.asset(
+      defaultUserImg,
+      width: 43,
+      height: 43,
+    );
+  }
+
   Widget networkSVG(link){
     return SvgPicture.network(
       link,

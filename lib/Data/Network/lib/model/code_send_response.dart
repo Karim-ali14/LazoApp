@@ -16,6 +16,7 @@ class CodeSendResponse {
     this.status,
     this.message,
     this.isExist,
+    this.isVerified,
   });
 
   ///
@@ -42,21 +43,31 @@ class CodeSendResponse {
   ///
   bool? isExist;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isVerified;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CodeSendResponse &&
      other.status == status &&
      other.message == message &&
-     other.isExist == isExist;
+     other.isExist == isExist &&
+     other.isVerified == isVerified;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (status == null ? 0 : status!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
-    (isExist == null ? 0 : isExist!.hashCode);
+    (isExist == null ? 0 : isExist!.hashCode) +
+    (isVerified == null ? 0 : isVerified!.hashCode);
 
   @override
-  String toString() => 'CodeSendResponse[status=$status, message=$message, isExist=$isExist]';
+  String toString() => 'CodeSendResponse[status=$status, message=$message, isExist=$isExist, isVerified=$isVerified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -74,6 +85,11 @@ class CodeSendResponse {
       json[r'is_exist'] = this.isExist;
     } else {
       json[r'is_exist'] = null;
+    }
+    if (this.isVerified != null) {
+      json[r'is_verified'] = this.isVerified;
+    } else {
+      json[r'is_verified'] = null;
     }
     return json;
   }
@@ -100,6 +116,7 @@ class CodeSendResponse {
         status: mapValueOfType<bool>(json, r'status'),
         message: mapValueOfType<String>(json, r'message'),
         isExist: mapValueOfType<bool>(json, r'is_exist'),
+        isVerified: mapValueOfType<bool>(json, r'is_verified'),
       );
     }
     return null;

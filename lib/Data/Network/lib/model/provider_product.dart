@@ -21,6 +21,7 @@ class ProviderProduct {
     this.price,
     this.priceAfterDiscount,
     this.amount,
+    this.isVisible,
     this.expectedProcessingTime,
     this.providerId,
     this.type,
@@ -98,6 +99,14 @@ class ProviderProduct {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  int? isVisible;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? expectedProcessingTime;
 
   ///
@@ -142,6 +151,7 @@ class ProviderProduct {
      other.price == price &&
      other.priceAfterDiscount == priceAfterDiscount &&
      other.amount == amount &&
+     other.isVisible == isVisible &&
      other.expectedProcessingTime == expectedProcessingTime &&
      other.providerId == providerId &&
      other.type == type &&
@@ -159,6 +169,7 @@ class ProviderProduct {
     (price == null ? 0 : price!.hashCode) +
     (priceAfterDiscount == null ? 0 : priceAfterDiscount!.hashCode) +
     (amount == null ? 0 : amount!.hashCode) +
+    (isVisible == null ? 0 : isVisible!.hashCode) +
     (expectedProcessingTime == null ? 0 : expectedProcessingTime!.hashCode) +
     (providerId == null ? 0 : providerId!.hashCode) +
     (type == null ? 0 : type!.hashCode) +
@@ -166,7 +177,7 @@ class ProviderProduct {
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'ProviderProduct[id=$id, nameEn=$nameEn, nameAr=$nameAr, descriptionEn=$descriptionEn, descriptionAr=$descriptionAr, price=$price, priceAfterDiscount=$priceAfterDiscount, amount=$amount, expectedProcessingTime=$expectedProcessingTime, providerId=$providerId, type=$type, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'ProviderProduct[id=$id, nameEn=$nameEn, nameAr=$nameAr, descriptionEn=$descriptionEn, descriptionAr=$descriptionAr, price=$price, priceAfterDiscount=$priceAfterDiscount, amount=$amount, isVisible=$isVisible, expectedProcessingTime=$expectedProcessingTime, providerId=$providerId, type=$type, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -209,6 +220,11 @@ class ProviderProduct {
       json[r'amount'] = this.amount;
     } else {
       json[r'amount'] = null;
+    }
+    if (this.isVisible != null) {
+      json[r'is_visible'] = this.isVisible;
+    } else {
+      json[r'is_visible'] = null;
     }
     if (this.expectedProcessingTime != null) {
       json[r'expected_processing_time'] = this.expectedProcessingTime;
@@ -273,6 +289,7 @@ class ProviderProduct {
         amount: json[r'amount'] == null
             ? null
             : num.parse(json[r'amount'].toString()),
+        isVisible: mapValueOfType<int>(json, r'is_visible'),
         expectedProcessingTime: mapValueOfType<String>(json, r'expected_processing_time'),
         providerId: json[r'provider_id'] == null
             ? null

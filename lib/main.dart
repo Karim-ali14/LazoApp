@@ -15,7 +15,7 @@ import '../../../../../Presentation/Screens/SplashScreen.dart';
 
 import 'Presentation/Screens/Auth/forgetpassword/ChangePasswordScreen.dart';
 import 'Presentation/Screens/Auth/login/LoginScreen.dart';
-import 'Presentation/Screens/HomeScreen.dart';
+import 'Presentation/Screens/Home/HomeScreen.dart';
 import 'Presentation/Theme/AppTheme.dart';
 
 

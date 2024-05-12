@@ -6,5 +6,6 @@
   "arabic" : "اللغة العربية",
   "phoneNumberAndEmailAddress" : "Phone Number / Email Address",
   "password" : "Password",
-  "forgetPassword" : "Forget Password?"
+  "forgetPassword" : "Forget Password?",
+  "clientName" : "Client Name"
 }

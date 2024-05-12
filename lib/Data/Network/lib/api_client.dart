@@ -207,24 +207,24 @@ class ApiClient {
           return Color.fromJson(value);
         case 'ColorsResponse':
           return ColorsResponse.fromJson(value);
-        case 'ExtraItem':
-          return ExtraItem.fromJson(value);
-        case 'ListItems':
-          return ListItems.fromJson(value);
+        case 'ImageItem':
+          return ImageItem.fromJson(value);
         case 'Occasion':
           return Occasion.fromJson(value);
         case 'OccasionsResponse':
           return OccasionsResponse.fromJson(value);
-        case 'ProductShowResponse':
-          return ProductShowResponse.fromJson(value);
-        case 'ProductShowResponseData':
-          return ProductShowResponseData.fromJson(value);
+        case 'ProductDetails':
+          return ProductDetails.fromJson(value);
+        case 'ProductDetailsResponse':
+          return ProductDetailsResponse.fromJson(value);
+        case 'ProductListItem':
+          return ProductListItem.fromJson(value);
+        case 'ProductListItemDetail':
+          return ProductListItemDetail.fromJson(value);
         case 'ProductsListResponse':
           return ProductsListResponse.fromJson(value);
         case 'ProductsListResponseData':
           return ProductsListResponseData.fromJson(value);
-        case 'ProductsListResponseDataLinksInner':
-          return ProductsListResponseDataLinksInner.fromJson(value);
         case 'PromocodeDetails':
           return PromocodeDetails.fromJson(value);
         case 'ProviderCategoryMenuResponse':
@@ -271,6 +271,22 @@ class ApiClient {
           return ResetPasswordRequest.fromJson(value);
         case 'ResetPasswordResponse':
           return ResetPasswordResponse.fromJson(value);
+        case 'ServiceList':
+          return ServiceList.fromJson(value);
+        case 'ServiceListItem':
+          return ServiceListItem.fromJson(value);
+        case 'ServiceShowData':
+          return ServiceShowData.fromJson(value);
+        case 'ServiceShowResponse':
+          return ServiceShowResponse.fromJson(value);
+        case 'ShowAllServicesWithFilter200Response':
+          return ShowAllServicesWithFilter200Response.fromJson(value);
+        case 'ShowAllServicesWithFilter200ResponseData':
+          return ShowAllServicesWithFilter200ResponseData.fromJson(value);
+        case 'ShowAllServicesWithFilter200ResponseDataDataInner':
+          return ShowAllServicesWithFilter200ResponseDataDataInner.fromJson(value);
+        case 'ShowAllServicesWithFilter200ResponseDataLinksInner':
+          return ShowAllServicesWithFilter200ResponseDataLinksInner.fromJson(value);
         case 'ShowPromocodeDetails200Response':
           return ShowPromocodeDetails200Response.fromJson(value);
         case 'ShowPromocodeDetails200ResponseData':

@@ -17,6 +17,7 @@ class ProviderLoginResponseData {
     this.tokenType,
     this.provider,
     this.isExist,
+    this.isVerified,
   });
 
   ///
@@ -51,12 +52,21 @@ class ProviderLoginResponseData {
   ///
   bool? isExist;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isVerified;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProviderLoginResponseData &&
      other.accessToken == accessToken &&
      other.tokenType == tokenType &&
      other.provider == provider &&
-     other.isExist == isExist;
+     other.isExist == isExist &&
+     other.isVerified == isVerified;
 
   @override
   int get hashCode =>
@@ -64,10 +74,11 @@ class ProviderLoginResponseData {
     (accessToken == null ? 0 : accessToken!.hashCode) +
     (tokenType == null ? 0 : tokenType!.hashCode) +
     (provider == null ? 0 : provider!.hashCode) +
-    (isExist == null ? 0 : isExist!.hashCode);
+    (isExist == null ? 0 : isExist!.hashCode) +
+    (isVerified == null ? 0 : isVerified!.hashCode);
 
   @override
-  String toString() => 'ProviderLoginResponseData[accessToken=$accessToken, tokenType=$tokenType, provider=$provider, isExist=$isExist]';
+  String toString() => 'ProviderLoginResponseData[accessToken=$accessToken, tokenType=$tokenType, provider=$provider, isExist=$isExist, isVerified=$isVerified]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -90,6 +101,11 @@ class ProviderLoginResponseData {
       json[r'is_exist'] = this.isExist;
     } else {
       json[r'is_exist'] = null;
+    }
+    if (this.isVerified != null) {
+      json[r'is_verified'] = this.isVerified;
+    } else {
+      json[r'is_verified'] = null;
     }
     return json;
   }
@@ -117,6 +133,7 @@ class ProviderLoginResponseData {
         tokenType: mapValueOfType<String>(json, r'token_type'),
         provider: ProviderData.fromJson(json[r'provider']),
         isExist: mapValueOfType<bool>(json, r'is_exist'),
+        isVerified: mapValueOfType<bool>(json, r'is_verified'),
       );
     }
     return null;

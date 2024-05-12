@@ -16,6 +16,7 @@ class ProviderDataLocationsInner {
     this.id,
     this.providerId,
     this.location,
+    this.address,
     this.createdAt,
     this.updatedAt,
   });
@@ -50,6 +51,14 @@ class ProviderDataLocationsInner {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  String? address;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? createdAt;
 
   ///
@@ -65,6 +74,7 @@ class ProviderDataLocationsInner {
      other.id == id &&
      other.providerId == providerId &&
      other.location == location &&
+     other.address == address &&
      other.createdAt == createdAt &&
      other.updatedAt == updatedAt;
 
@@ -74,11 +84,12 @@ class ProviderDataLocationsInner {
     (id == null ? 0 : id!.hashCode) +
     (providerId == null ? 0 : providerId!.hashCode) +
     (location == null ? 0 : location!.hashCode) +
+    (address == null ? 0 : address!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'ProviderDataLocationsInner[id=$id, providerId=$providerId, location=$location, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'ProviderDataLocationsInner[id=$id, providerId=$providerId, location=$location, address=$address, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -96,6 +107,11 @@ class ProviderDataLocationsInner {
       json[r'location'] = this.location;
     } else {
       json[r'location'] = null;
+    }
+    if (this.address != null) {
+      json[r'address'] = this.address;
+    } else {
+      json[r'address'] = null;
     }
     if (this.createdAt != null) {
       json[r'created_at'] = this.createdAt;
@@ -132,6 +148,7 @@ class ProviderDataLocationsInner {
         id: mapValueOfType<int>(json, r'id'),
         providerId: mapValueOfType<int>(json, r'provider_id'),
         location: mapValueOfType<String>(json, r'location'),
+        address: mapValueOfType<String>(json, r'address'),
         createdAt: mapValueOfType<String>(json, r'created_at'),
         updatedAt: mapValueOfType<String>(json, r'updated_at'),
       );

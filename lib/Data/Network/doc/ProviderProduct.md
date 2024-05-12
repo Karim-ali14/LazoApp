@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **price** | **num** |  | [optional] 
 **priceAfterDiscount** | **num** |  | [optional] 
 **amount** | **num** |  | [optional] 
+**isVisible** | **int** |  | [optional] 
 **expectedProcessingTime** | **String** |  | [optional] 
 **providerId** | **num** |  | [optional] 
 **type** | **String** |  | [optional] 

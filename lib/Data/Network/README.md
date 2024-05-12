@@ -70,9 +70,12 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**showAllCategories**](doc//PublicApi.md#showallcategories) | **GET** /categories | show all categories
 *PublicApi* | [**showAllColors**](doc//PublicApi.md#showallcolors) | **GET** /colors | show all colors
 *PublicApi* | [**showAllOccasions**](doc//PublicApi.md#showalloccasions) | **GET** /occasions | show all occasions
-*PublicApi* | [**showAllProducts**](doc//PublicApi.md#showallproducts) | **GET** /products/all | show all products
+*PublicApi* | [**showAllProducts**](doc//PublicApi.md#showallproducts) | **GET** /products/filter | show all products
+*PublicApi* | [**showAllServicesWithFilter**](doc//PublicApi.md#showallserviceswithfilter) | **GET** /services/filter | show all services (with filter)
 *PublicApi* | [**showAllSizes**](doc//PublicApi.md#showallsizes) | **GET** /sizes | show all sizes
+*PublicApi* | [**showProductDetails**](doc//PublicApi.md#showproductdetails) | **GET** /product/show | show product details
 *PublicApi* | [**showPromocodeDetails**](doc//PublicApi.md#showpromocodedetails) | **GET** /promocode/show | show promocode details
+*PublicApi* | [**showServiceDetails**](doc//PublicApi.md#showservicedetails) | **GET** /service/show | show service details
 *PublicApi* | [**tagsGet**](doc//PublicApi.md#tagsget) | **GET** /tags | show all tags
 *PublicApi* | [**uploadFilesPost**](doc//PublicApi.md#uploadfilespost) | **POST** /upload/files | upload file(s)
 *PublicAuthApi* | [**codeConfirmPost**](doc//PublicAuthApi.md#codeconfirmpost) | **POST** /code/confirm | confirm code
@@ -99,15 +102,15 @@ Class | Method | HTTP request | Description
  - [CodeSendResponse](doc//CodeSendResponse.md)
  - [Color](doc//Color.md)
  - [ColorsResponse](doc//ColorsResponse.md)
- - [ExtraItem](doc//ExtraItem.md)
- - [ListItems](doc//ListItems.md)
+ - [ImageItem](doc//ImageItem.md)
  - [Occasion](doc//Occasion.md)
  - [OccasionsResponse](doc//OccasionsResponse.md)
- - [ProductShowResponse](doc//ProductShowResponse.md)
- - [ProductShowResponseData](doc//ProductShowResponseData.md)
+ - [ProductDetails](doc//ProductDetails.md)
+ - [ProductDetailsResponse](doc//ProductDetailsResponse.md)
+ - [ProductListItem](doc//ProductListItem.md)
+ - [ProductListItemDetail](doc//ProductListItemDetail.md)
  - [ProductsListResponse](doc//ProductsListResponse.md)
  - [ProductsListResponseData](doc//ProductsListResponseData.md)
- - [ProductsListResponseDataLinksInner](doc//ProductsListResponseDataLinksInner.md)
  - [PromocodeDetails](doc//PromocodeDetails.md)
  - [ProviderCategoryMenuResponse](doc//ProviderCategoryMenuResponse.md)
  - [ProviderData](doc//ProviderData.md)
@@ -131,6 +134,14 @@ Class | Method | HTTP request | Description
  - [ResetCodeSendResponse](doc//ResetCodeSendResponse.md)
  - [ResetPasswordRequest](doc//ResetPasswordRequest.md)
  - [ResetPasswordResponse](doc//ResetPasswordResponse.md)
+ - [ServiceList](doc//ServiceList.md)
+ - [ServiceListItem](doc//ServiceListItem.md)
+ - [ServiceShowData](doc//ServiceShowData.md)
+ - [ServiceShowResponse](doc//ServiceShowResponse.md)
+ - [ShowAllServicesWithFilter200Response](doc//ShowAllServicesWithFilter200Response.md)
+ - [ShowAllServicesWithFilter200ResponseData](doc//ShowAllServicesWithFilter200ResponseData.md)
+ - [ShowAllServicesWithFilter200ResponseDataDataInner](doc//ShowAllServicesWithFilter200ResponseDataDataInner.md)
+ - [ShowAllServicesWithFilter200ResponseDataLinksInner](doc//ShowAllServicesWithFilter200ResponseDataLinksInner.md)
  - [ShowPromocodeDetails200Response](doc//ShowPromocodeDetails200Response.md)
  - [ShowPromocodeDetails200ResponseData](doc//ShowPromocodeDetails200ResponseData.md)
  - [Size](doc//Size.md)

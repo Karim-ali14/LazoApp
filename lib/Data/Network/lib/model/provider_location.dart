@@ -16,6 +16,7 @@ class ProviderLocation {
     this.createdAt,
     this.id,
     this.location,
+    this.address,
     this.providerId,
     this.updatedAt,
   });
@@ -50,6 +51,14 @@ class ProviderLocation {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  String? address;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? providerId;
 
   ///
@@ -65,6 +74,7 @@ class ProviderLocation {
      other.createdAt == createdAt &&
      other.id == id &&
      other.location == location &&
+     other.address == address &&
      other.providerId == providerId &&
      other.updatedAt == updatedAt;
 
@@ -74,11 +84,12 @@ class ProviderLocation {
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (id == null ? 0 : id!.hashCode) +
     (location == null ? 0 : location!.hashCode) +
+    (address == null ? 0 : address!.hashCode) +
     (providerId == null ? 0 : providerId!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'ProviderLocation[createdAt=$createdAt, id=$id, location=$location, providerId=$providerId, updatedAt=$updatedAt]';
+  String toString() => 'ProviderLocation[createdAt=$createdAt, id=$id, location=$location, address=$address, providerId=$providerId, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -96,6 +107,11 @@ class ProviderLocation {
       json[r'location'] = this.location;
     } else {
       json[r'location'] = null;
+    }
+    if (this.address != null) {
+      json[r'address'] = this.address;
+    } else {
+      json[r'address'] = null;
     }
     if (this.providerId != null) {
       json[r'provider_id'] = this.providerId;
@@ -134,6 +150,7 @@ class ProviderLocation {
             ? null
             : num.parse(json[r'id'].toString()),
         location: mapValueOfType<String>(json, r'location'),
+        address: mapValueOfType<String>(json, r'address'),
         providerId: json[r'provider_id'] == null
             ? null
             : num.parse(json[r'provider_id'].toString()),

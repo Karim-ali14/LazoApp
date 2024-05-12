@@ -150,7 +150,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **providerRegisterPost**
-> ProviderRegisterResponse providerRegisterPost(nameEn, nameAr, ownerName, email, phone, accountType, password, confirmPassword, cityId, tagsIdsLeftSquareBracket0RightSquareBracket, tagsIdsLeftSquareBracket1RightSquareBracket, hasOfflineStores, offlineStoresNumber, locationsLeftSquareBracket0RightSquareBracket, locationsLeftSquareBracket1RightSquareBracket, provideDelivery, businessType, image, instagramLink, snapchatLink, tiktokLink, xLink, startTime, endTime, workingDaysIndicesLeftSquareBracket0RightSquareBracket, workingDaysIndicesLeftSquareBracket1RightSquareBracket, workingDaysIndicesLeftSquareBracket2RightSquareBracket, selfEmploymentDocument, commercialRegisterImage, bankName, beneficiaryName, bankAccountNumber, iban, ibanImage)
+> ProviderRegisterResponse providerRegisterPost(nameEn, nameAr, ownerName, email, phone, accountType, password, confirmPassword, cityId, tagsIdsLeftSquareBracket0RightSquareBracket, tagsIdsLeftSquareBracket1RightSquareBracket, hasOfflineStores, offlineStoresNumber, locationsLeftSquareBracket0RightSquareBracket, locationsLeftSquareBracket1RightSquareBracket, addressesLeftSquareBracket0RightSquareBracket, addressesLeftSquareBracket1RightSquareBracket, provideDelivery, businessType, image, instagramLink, snapchatLink, tiktokLink, xLink, startTime, endTime, workingDaysIndicesLeftSquareBracket0RightSquareBracket, workingDaysIndicesLeftSquareBracket1RightSquareBracket, workingDaysIndicesLeftSquareBracket2RightSquareBracket, selfEmploymentDocument, commercialRegisterImage, bankName, beneficiaryName, bankAccountNumber, iban, ibanImage)
 
 provider signup
 
@@ -172,8 +172,10 @@ final tagsIdsLeftSquareBracket0RightSquareBracket = 56; // int |
 final tagsIdsLeftSquareBracket1RightSquareBracket = 56; // int | 
 final hasOfflineStores = 56; // int | take 0 or 1
 final offlineStoresNumber = 56; // int | required incase of has_offline_stores=1
-final locationsLeftSquareBracket0RightSquareBracket = 8.14; // num | required incase of has_offline_stores=1
-final locationsLeftSquareBracket1RightSquareBracket = 8.14; // num | required incase of has_offline_stores=1
+final locationsLeftSquareBracket0RightSquareBracket = locationsLeftSquareBracket0RightSquareBracket_example; // String | required incase of has_offline_stores=1
+final locationsLeftSquareBracket1RightSquareBracket = locationsLeftSquareBracket1RightSquareBracket_example; // String | required incase of has_offline_stores=1
+final addressesLeftSquareBracket0RightSquareBracket = addressesLeftSquareBracket0RightSquareBracket_example; // String | required incase of has_offline_stores=1
+final addressesLeftSquareBracket1RightSquareBracket = addressesLeftSquareBracket1RightSquareBracket_example; // String | required incase of has_offline_stores=1
 final provideDelivery = 56; // int | take 0 or 1
 final businessType = businessType_example; // String | individual or cooperation
 final image = image_example; // String | 
@@ -195,7 +197,7 @@ final iban = 56; // int |
 final ibanImage = ibanImage_example; // String | optional
 
 try {
-    final result = api_instance.providerRegisterPost(nameEn, nameAr, ownerName, email, phone, accountType, password, confirmPassword, cityId, tagsIdsLeftSquareBracket0RightSquareBracket, tagsIdsLeftSquareBracket1RightSquareBracket, hasOfflineStores, offlineStoresNumber, locationsLeftSquareBracket0RightSquareBracket, locationsLeftSquareBracket1RightSquareBracket, provideDelivery, businessType, image, instagramLink, snapchatLink, tiktokLink, xLink, startTime, endTime, workingDaysIndicesLeftSquareBracket0RightSquareBracket, workingDaysIndicesLeftSquareBracket1RightSquareBracket, workingDaysIndicesLeftSquareBracket2RightSquareBracket, selfEmploymentDocument, commercialRegisterImage, bankName, beneficiaryName, bankAccountNumber, iban, ibanImage);
+    final result = api_instance.providerRegisterPost(nameEn, nameAr, ownerName, email, phone, accountType, password, confirmPassword, cityId, tagsIdsLeftSquareBracket0RightSquareBracket, tagsIdsLeftSquareBracket1RightSquareBracket, hasOfflineStores, offlineStoresNumber, locationsLeftSquareBracket0RightSquareBracket, locationsLeftSquareBracket1RightSquareBracket, addressesLeftSquareBracket0RightSquareBracket, addressesLeftSquareBracket1RightSquareBracket, provideDelivery, businessType, image, instagramLink, snapchatLink, tiktokLink, xLink, startTime, endTime, workingDaysIndicesLeftSquareBracket0RightSquareBracket, workingDaysIndicesLeftSquareBracket1RightSquareBracket, workingDaysIndicesLeftSquareBracket2RightSquareBracket, selfEmploymentDocument, commercialRegisterImage, bankName, beneficiaryName, bankAccountNumber, iban, ibanImage);
     print(result);
 } catch (e) {
     print('Exception when calling PublicAuthApi->providerRegisterPost: $e\n');
@@ -219,8 +221,10 @@ Name | Type | Description  | Notes
  **tagsIdsLeftSquareBracket1RightSquareBracket** | **int**|  | [optional] 
  **hasOfflineStores** | **int**| take 0 or 1 | [optional] 
  **offlineStoresNumber** | **int**| required incase of has_offline_stores=1 | [optional] 
- **locationsLeftSquareBracket0RightSquareBracket** | **num**| required incase of has_offline_stores=1 | [optional] 
- **locationsLeftSquareBracket1RightSquareBracket** | **num**| required incase of has_offline_stores=1 | [optional] 
+ **locationsLeftSquareBracket0RightSquareBracket** | **String**| required incase of has_offline_stores=1 | [optional] 
+ **locationsLeftSquareBracket1RightSquareBracket** | **String**| required incase of has_offline_stores=1 | [optional] 
+ **addressesLeftSquareBracket0RightSquareBracket** | **String**| required incase of has_offline_stores=1 | [optional] 
+ **addressesLeftSquareBracket1RightSquareBracket** | **String**| required incase of has_offline_stores=1 | [optional] 
  **provideDelivery** | **int**| take 0 or 1 | [optional] 
  **businessType** | **String**| individual or cooperation | [optional] 
  **image** | **String**|  | [optional] 

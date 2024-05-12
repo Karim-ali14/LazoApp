@@ -33,6 +33,10 @@ class ProviderData {
     this.hasOfflineStores,
     this.offlineStoresNumber,
     this.provideDelivery,
+    this.overallRating,
+    this.ratingsCount,
+    this.isEmailVerified,
+    this.isPhoneVerified,
     this.businessType,
     this.commercialRegisterImage,
     this.selfEmploymentDocument,
@@ -222,6 +226,38 @@ class ProviderData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  num? overallRating;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? ratingsCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isEmailVerified;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isPhoneVerified;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? businessType;
 
   ///
@@ -388,6 +424,10 @@ class ProviderData {
      other.hasOfflineStores == hasOfflineStores &&
      other.offlineStoresNumber == offlineStoresNumber &&
      other.provideDelivery == provideDelivery &&
+     other.overallRating == overallRating &&
+     other.ratingsCount == ratingsCount &&
+     other.isEmailVerified == isEmailVerified &&
+     other.isPhoneVerified == isPhoneVerified &&
      other.businessType == businessType &&
      other.commercialRegisterImage == commercialRegisterImage &&
      other.selfEmploymentDocument == selfEmploymentDocument &&
@@ -433,6 +473,10 @@ class ProviderData {
     (hasOfflineStores == null ? 0 : hasOfflineStores!.hashCode) +
     (offlineStoresNumber == null ? 0 : offlineStoresNumber!.hashCode) +
     (provideDelivery == null ? 0 : provideDelivery!.hashCode) +
+    (overallRating == null ? 0 : overallRating!.hashCode) +
+    (ratingsCount == null ? 0 : ratingsCount!.hashCode) +
+    (isEmailVerified == null ? 0 : isEmailVerified!.hashCode) +
+    (isPhoneVerified == null ? 0 : isPhoneVerified!.hashCode) +
     (businessType == null ? 0 : businessType!.hashCode) +
     (commercialRegisterImage == null ? 0 : commercialRegisterImage!.hashCode) +
     (selfEmploymentDocument == null ? 0 : selfEmploymentDocument!.hashCode) +
@@ -456,7 +500,7 @@ class ProviderData {
     (tags.hashCode);
 
   @override
-  String toString() => 'ProviderData[id=$id, nameEn=$nameEn, nameAr=$nameAr, ownerName=$ownerName, email=$email, phone=$phone, image=$image, cityId=$cityId, accountType=$accountType, deviceType=$deviceType, fcmToken=$fcmToken, lang=$lang, status=$status, instagramLink=$instagramLink, snapchatLink=$snapchatLink, tiktokLink=$tiktokLink, xLink=$xLink, hasOfflineStores=$hasOfflineStores, offlineStoresNumber=$offlineStoresNumber, provideDelivery=$provideDelivery, businessType=$businessType, commercialRegisterImage=$commercialRegisterImage, selfEmploymentDocument=$selfEmploymentDocument, startTime=$startTime, endTime=$endTime, workingDaysIndices=$workingDaysIndices, bankName=$bankName, beneficiaryName=$beneficiaryName, bankAccountNumber=$bankAccountNumber, iban=$iban, ibanImage=$ibanImage, createdAt=$createdAt, updatedAt=$updatedAt, name=$name, imagePath=$imagePath, workingDaysIndicesList=$workingDaysIndicesList, selfEmploymentDocumentPath=$selfEmploymentDocumentPath, commercialRegisterImagePath=$commercialRegisterImagePath, city=$city, locations=$locations, tags=$tags]';
+  String toString() => 'ProviderData[id=$id, nameEn=$nameEn, nameAr=$nameAr, ownerName=$ownerName, email=$email, phone=$phone, image=$image, cityId=$cityId, accountType=$accountType, deviceType=$deviceType, fcmToken=$fcmToken, lang=$lang, status=$status, instagramLink=$instagramLink, snapchatLink=$snapchatLink, tiktokLink=$tiktokLink, xLink=$xLink, hasOfflineStores=$hasOfflineStores, offlineStoresNumber=$offlineStoresNumber, provideDelivery=$provideDelivery, overallRating=$overallRating, ratingsCount=$ratingsCount, isEmailVerified=$isEmailVerified, isPhoneVerified=$isPhoneVerified, businessType=$businessType, commercialRegisterImage=$commercialRegisterImage, selfEmploymentDocument=$selfEmploymentDocument, startTime=$startTime, endTime=$endTime, workingDaysIndices=$workingDaysIndices, bankName=$bankName, beneficiaryName=$beneficiaryName, bankAccountNumber=$bankAccountNumber, iban=$iban, ibanImage=$ibanImage, createdAt=$createdAt, updatedAt=$updatedAt, name=$name, imagePath=$imagePath, workingDaysIndicesList=$workingDaysIndicesList, selfEmploymentDocumentPath=$selfEmploymentDocumentPath, commercialRegisterImagePath=$commercialRegisterImagePath, city=$city, locations=$locations, tags=$tags]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -559,6 +603,26 @@ class ProviderData {
       json[r'provide_delivery'] = this.provideDelivery;
     } else {
       json[r'provide_delivery'] = null;
+    }
+    if (this.overallRating != null) {
+      json[r'overall_rating'] = this.overallRating;
+    } else {
+      json[r'overall_rating'] = null;
+    }
+    if (this.ratingsCount != null) {
+      json[r'ratings_count'] = this.ratingsCount;
+    } else {
+      json[r'ratings_count'] = null;
+    }
+    if (this.isEmailVerified != null) {
+      json[r'is_email_verified'] = this.isEmailVerified;
+    } else {
+      json[r'is_email_verified'] = null;
+    }
+    if (this.isPhoneVerified != null) {
+      json[r'is_phone_verified'] = this.isPhoneVerified;
+    } else {
+      json[r'is_phone_verified'] = null;
     }
     if (this.businessType != null) {
       json[r'business_type'] = this.businessType;
@@ -695,6 +759,12 @@ class ProviderData {
         hasOfflineStores: mapValueOfType<int>(json, r'has_offline_stores'),
         offlineStoresNumber: mapValueOfType<int>(json, r'offline_stores_number'),
         provideDelivery: mapValueOfType<String>(json, r'provide_delivery'),
+        overallRating: json[r'overall_rating'] == null
+            ? null
+            : num.parse(json[r'overall_rating'].toString()),
+        ratingsCount: mapValueOfType<int>(json, r'ratings_count'),
+        isEmailVerified: mapValueOfType<bool>(json, r'is_email_verified'),
+        isPhoneVerified: mapValueOfType<bool>(json, r'is_phone_verified'),
         businessType: mapValueOfType<String>(json, r'business_type'),
         commercialRegisterImage: mapValueOfType<String>(json, r'commercial_register_image'),
         selfEmploymentDocument: mapValueOfType<String>(json, r'self_employment_document'),

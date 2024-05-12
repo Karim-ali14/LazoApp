@@ -42,6 +42,10 @@ class ProviderProfileUpdateResponseData {
     this.offlineStoresNumber,
     this.ownerName,
     this.phone,
+    this.overallRating,
+    this.ratingsCount,
+    this.isEmailVerified,
+    this.isPhoneVerified,
     this.provideDelivery,
     this.selfEmploymentDocument,
     this.selfEmploymentDocumentPath,
@@ -258,6 +262,38 @@ class ProviderProfileUpdateResponseData {
   ///
   String? phone;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? overallRating;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? ratingsCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isEmailVerified;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isPhoneVerified;
+
   Object? provideDelivery;
 
   ///
@@ -367,6 +403,10 @@ class ProviderProfileUpdateResponseData {
      other.offlineStoresNumber == offlineStoresNumber &&
      other.ownerName == ownerName &&
      other.phone == phone &&
+     other.overallRating == overallRating &&
+     other.ratingsCount == ratingsCount &&
+     other.isEmailVerified == isEmailVerified &&
+     other.isPhoneVerified == isPhoneVerified &&
      other.provideDelivery == provideDelivery &&
      other.selfEmploymentDocument == selfEmploymentDocument &&
      other.selfEmploymentDocumentPath == selfEmploymentDocumentPath &&
@@ -412,6 +452,10 @@ class ProviderProfileUpdateResponseData {
     (offlineStoresNumber == null ? 0 : offlineStoresNumber!.hashCode) +
     (ownerName == null ? 0 : ownerName!.hashCode) +
     (phone == null ? 0 : phone!.hashCode) +
+    (overallRating == null ? 0 : overallRating!.hashCode) +
+    (ratingsCount == null ? 0 : ratingsCount!.hashCode) +
+    (isEmailVerified == null ? 0 : isEmailVerified!.hashCode) +
+    (isPhoneVerified == null ? 0 : isPhoneVerified!.hashCode) +
     (provideDelivery == null ? 0 : provideDelivery!.hashCode) +
     (selfEmploymentDocument == null ? 0 : selfEmploymentDocument!.hashCode) +
     (selfEmploymentDocumentPath == null ? 0 : selfEmploymentDocumentPath!.hashCode) +
@@ -426,7 +470,7 @@ class ProviderProfileUpdateResponseData {
     (xLink == null ? 0 : xLink!.hashCode);
 
   @override
-  String toString() => 'ProviderProfileUpdateResponseData[accountType=$accountType, bankAccountNumber=$bankAccountNumber, bankName=$bankName, beneficiaryName=$beneficiaryName, businessType=$businessType, city=$city, cityId=$cityId, commercialRegisterImage=$commercialRegisterImage, commercialRegisterImagePath=$commercialRegisterImagePath, createdAt=$createdAt, deviceType=$deviceType, email=$email, endTime=$endTime, fcmToken=$fcmToken, hasOfflineStores=$hasOfflineStores, iban=$iban, ibanImage=$ibanImage, id=$id, image=$image, imagePath=$imagePath, instagramLink=$instagramLink, lang=$lang, locations=$locations, name=$name, nameAr=$nameAr, nameEn=$nameEn, offlineStoresNumber=$offlineStoresNumber, ownerName=$ownerName, phone=$phone, provideDelivery=$provideDelivery, selfEmploymentDocument=$selfEmploymentDocument, selfEmploymentDocumentPath=$selfEmploymentDocumentPath, snapchatLink=$snapchatLink, startTime=$startTime, status=$status, tags=$tags, tiktokLink=$tiktokLink, updatedAt=$updatedAt, workingDaysIndices=$workingDaysIndices, workingDaysIndicesList=$workingDaysIndicesList, xLink=$xLink]';
+  String toString() => 'ProviderProfileUpdateResponseData[accountType=$accountType, bankAccountNumber=$bankAccountNumber, bankName=$bankName, beneficiaryName=$beneficiaryName, businessType=$businessType, city=$city, cityId=$cityId, commercialRegisterImage=$commercialRegisterImage, commercialRegisterImagePath=$commercialRegisterImagePath, createdAt=$createdAt, deviceType=$deviceType, email=$email, endTime=$endTime, fcmToken=$fcmToken, hasOfflineStores=$hasOfflineStores, iban=$iban, ibanImage=$ibanImage, id=$id, image=$image, imagePath=$imagePath, instagramLink=$instagramLink, lang=$lang, locations=$locations, name=$name, nameAr=$nameAr, nameEn=$nameEn, offlineStoresNumber=$offlineStoresNumber, ownerName=$ownerName, phone=$phone, overallRating=$overallRating, ratingsCount=$ratingsCount, isEmailVerified=$isEmailVerified, isPhoneVerified=$isPhoneVerified, provideDelivery=$provideDelivery, selfEmploymentDocument=$selfEmploymentDocument, selfEmploymentDocumentPath=$selfEmploymentDocumentPath, snapchatLink=$snapchatLink, startTime=$startTime, status=$status, tags=$tags, tiktokLink=$tiktokLink, updatedAt=$updatedAt, workingDaysIndices=$workingDaysIndices, workingDaysIndicesList=$workingDaysIndicesList, xLink=$xLink]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -571,6 +615,26 @@ class ProviderProfileUpdateResponseData {
     } else {
       json[r'phone'] = null;
     }
+    if (this.overallRating != null) {
+      json[r'overall_rating'] = this.overallRating;
+    } else {
+      json[r'overall_rating'] = null;
+    }
+    if (this.ratingsCount != null) {
+      json[r'ratings_count'] = this.ratingsCount;
+    } else {
+      json[r'ratings_count'] = null;
+    }
+    if (this.isEmailVerified != null) {
+      json[r'is_email_verified'] = this.isEmailVerified;
+    } else {
+      json[r'is_email_verified'] = null;
+    }
+    if (this.isPhoneVerified != null) {
+      json[r'is_phone_verified'] = this.isPhoneVerified;
+    } else {
+      json[r'is_phone_verified'] = null;
+    }
     if (this.provideDelivery != null) {
       json[r'provide_delivery'] = this.provideDelivery;
     } else {
@@ -682,6 +746,12 @@ class ProviderProfileUpdateResponseData {
             : num.parse(json[r'offline_stores_number'].toString()),
         ownerName: mapValueOfType<String>(json, r'owner_name'),
         phone: mapValueOfType<String>(json, r'phone'),
+        overallRating: json[r'overall_rating'] == null
+            ? null
+            : num.parse(json[r'overall_rating'].toString()),
+        ratingsCount: mapValueOfType<int>(json, r'ratings_count'),
+        isEmailVerified: mapValueOfType<bool>(json, r'is_email_verified'),
+        isPhoneVerified: mapValueOfType<bool>(json, r'is_phone_verified'),
         provideDelivery: mapValueOfType<Object>(json, r'provide_delivery'),
         selfEmploymentDocument: mapValueOfType<String>(json, r'self_employment_document'),
         selfEmploymentDocumentPath: mapValueOfType<String>(json, r'self_employment_document_path'),

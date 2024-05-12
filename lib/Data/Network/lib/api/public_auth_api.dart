@@ -268,10 +268,16 @@ class PublicAuthApi {
   /// * [int] offlineStoresNumber:
   ///   required incase of has_offline_stores=1
   ///
-  /// * [num] locationsLeftSquareBracket0RightSquareBracket:
+  /// * [String] locationsLeftSquareBracket0RightSquareBracket:
   ///   required incase of has_offline_stores=1
   ///
-  /// * [num] locationsLeftSquareBracket1RightSquareBracket:
+  /// * [String] locationsLeftSquareBracket1RightSquareBracket:
+  ///   required incase of has_offline_stores=1
+  ///
+  /// * [String] addressesLeftSquareBracket0RightSquareBracket:
+  ///   required incase of has_offline_stores=1
+  ///
+  /// * [String] addressesLeftSquareBracket1RightSquareBracket:
   ///   required incase of has_offline_stores=1
   ///
   /// * [int] provideDelivery:
@@ -328,7 +334,7 @@ class PublicAuthApi {
   ///
   /// * [String] ibanImage:
   ///   optional
-  Future<Response> providerRegisterPostWithHttpInfo({ String? nameEn, String? nameAr, String? ownerName, String? email, int? phone, String? accountType, int? password, int? confirmPassword, int? cityId, int? tagsIdsLeftSquareBracket0RightSquareBracket, int? tagsIdsLeftSquareBracket1RightSquareBracket, int? hasOfflineStores, int? offlineStoresNumber, num? locationsLeftSquareBracket0RightSquareBracket, num? locationsLeftSquareBracket1RightSquareBracket, int? provideDelivery, String? businessType, String? image, String? instagramLink, String? snapchatLink, String? tiktokLink, String? xLink, String? startTime, String? endTime, int? workingDaysIndicesLeftSquareBracket0RightSquareBracket, int? workingDaysIndicesLeftSquareBracket1RightSquareBracket, int? workingDaysIndicesLeftSquareBracket2RightSquareBracket, String? selfEmploymentDocument, String? commercialRegisterImage, String? bankName, String? beneficiaryName, int? bankAccountNumber, int? iban, String? ibanImage, }) async {
+  Future<Response> providerRegisterPostWithHttpInfo({ String? nameEn, String? nameAr, String? ownerName, String? email, int? phone, String? accountType, int? password, int? confirmPassword, int? cityId, int? tagsIdsLeftSquareBracket0RightSquareBracket, int? tagsIdsLeftSquareBracket1RightSquareBracket, int? hasOfflineStores, int? offlineStoresNumber, String? locationsLeftSquareBracket0RightSquareBracket, String? locationsLeftSquareBracket1RightSquareBracket, String? addressesLeftSquareBracket0RightSquareBracket, String? addressesLeftSquareBracket1RightSquareBracket, int? provideDelivery, String? businessType, String? image, String? instagramLink, String? snapchatLink, String? tiktokLink, String? xLink, String? startTime, String? endTime, int? workingDaysIndicesLeftSquareBracket0RightSquareBracket, int? workingDaysIndicesLeftSquareBracket1RightSquareBracket, int? workingDaysIndicesLeftSquareBracket2RightSquareBracket, String? selfEmploymentDocument, String? commercialRegisterImage, String? bankName, String? beneficiaryName, int? bankAccountNumber, int? iban, String? ibanImage, }) async {
     // ignore: prefer_const_declarations
     final path = r'/provider/register';
 
@@ -402,6 +408,14 @@ class PublicAuthApi {
     if (locationsLeftSquareBracket1RightSquareBracket != null) {
       hasFields = true;
       mp.fields[r'locations[1]'] = parameterToString(locationsLeftSquareBracket1RightSquareBracket);
+    }
+    if (addressesLeftSquareBracket0RightSquareBracket != null) {
+      hasFields = true;
+      mp.fields[r'addresses[0]'] = parameterToString(addressesLeftSquareBracket0RightSquareBracket);
+    }
+    if (addressesLeftSquareBracket1RightSquareBracket != null) {
+      hasFields = true;
+      mp.fields[r'addresses[1]'] = parameterToString(addressesLeftSquareBracket1RightSquareBracket);
     }
     if (provideDelivery != null) {
       hasFields = true;
@@ -527,10 +541,16 @@ class PublicAuthApi {
   /// * [int] offlineStoresNumber:
   ///   required incase of has_offline_stores=1
   ///
-  /// * [num] locationsLeftSquareBracket0RightSquareBracket:
+  /// * [String] locationsLeftSquareBracket0RightSquareBracket:
   ///   required incase of has_offline_stores=1
   ///
-  /// * [num] locationsLeftSquareBracket1RightSquareBracket:
+  /// * [String] locationsLeftSquareBracket1RightSquareBracket:
+  ///   required incase of has_offline_stores=1
+  ///
+  /// * [String] addressesLeftSquareBracket0RightSquareBracket:
+  ///   required incase of has_offline_stores=1
+  ///
+  /// * [String] addressesLeftSquareBracket1RightSquareBracket:
   ///   required incase of has_offline_stores=1
   ///
   /// * [int] provideDelivery:
@@ -587,8 +607,8 @@ class PublicAuthApi {
   ///
   /// * [String] ibanImage:
   ///   optional
-  Future<ProviderRegisterResponse?> providerRegisterPost({ String? nameEn, String? nameAr, String? ownerName, String? email, int? phone, String? accountType, int? password, int? confirmPassword, int? cityId, int? tagsIdsLeftSquareBracket0RightSquareBracket, int? tagsIdsLeftSquareBracket1RightSquareBracket, int? hasOfflineStores, int? offlineStoresNumber, num? locationsLeftSquareBracket0RightSquareBracket, num? locationsLeftSquareBracket1RightSquareBracket, int? provideDelivery, String? businessType, String? image, String? instagramLink, String? snapchatLink, String? tiktokLink, String? xLink, String? startTime, String? endTime, int? workingDaysIndicesLeftSquareBracket0RightSquareBracket, int? workingDaysIndicesLeftSquareBracket1RightSquareBracket, int? workingDaysIndicesLeftSquareBracket2RightSquareBracket, String? selfEmploymentDocument, String? commercialRegisterImage, String? bankName, String? beneficiaryName, int? bankAccountNumber, int? iban, String? ibanImage, }) async {
-    final response = await providerRegisterPostWithHttpInfo( nameEn: nameEn, nameAr: nameAr, ownerName: ownerName, email: email, phone: phone, accountType: accountType, password: password, confirmPassword: confirmPassword, cityId: cityId, tagsIdsLeftSquareBracket0RightSquareBracket: tagsIdsLeftSquareBracket0RightSquareBracket, tagsIdsLeftSquareBracket1RightSquareBracket: tagsIdsLeftSquareBracket1RightSquareBracket, hasOfflineStores: hasOfflineStores, offlineStoresNumber: offlineStoresNumber, locationsLeftSquareBracket0RightSquareBracket: locationsLeftSquareBracket0RightSquareBracket, locationsLeftSquareBracket1RightSquareBracket: locationsLeftSquareBracket1RightSquareBracket, provideDelivery: provideDelivery, businessType: businessType, image: image, instagramLink: instagramLink, snapchatLink: snapchatLink, tiktokLink: tiktokLink, xLink: xLink, startTime: startTime, endTime: endTime, workingDaysIndicesLeftSquareBracket0RightSquareBracket: workingDaysIndicesLeftSquareBracket0RightSquareBracket, workingDaysIndicesLeftSquareBracket1RightSquareBracket: workingDaysIndicesLeftSquareBracket1RightSquareBracket, workingDaysIndicesLeftSquareBracket2RightSquareBracket: workingDaysIndicesLeftSquareBracket2RightSquareBracket, selfEmploymentDocument: selfEmploymentDocument, commercialRegisterImage: commercialRegisterImage, bankName: bankName, beneficiaryName: beneficiaryName, bankAccountNumber: bankAccountNumber, iban: iban, ibanImage: ibanImage, );
+  Future<ProviderRegisterResponse?> providerRegisterPost({ String? nameEn, String? nameAr, String? ownerName, String? email, int? phone, String? accountType, int? password, int? confirmPassword, int? cityId, int? tagsIdsLeftSquareBracket0RightSquareBracket, int? tagsIdsLeftSquareBracket1RightSquareBracket, int? hasOfflineStores, int? offlineStoresNumber, String? locationsLeftSquareBracket0RightSquareBracket, String? locationsLeftSquareBracket1RightSquareBracket, String? addressesLeftSquareBracket0RightSquareBracket, String? addressesLeftSquareBracket1RightSquareBracket, int? provideDelivery, String? businessType, String? image, String? instagramLink, String? snapchatLink, String? tiktokLink, String? xLink, String? startTime, String? endTime, int? workingDaysIndicesLeftSquareBracket0RightSquareBracket, int? workingDaysIndicesLeftSquareBracket1RightSquareBracket, int? workingDaysIndicesLeftSquareBracket2RightSquareBracket, String? selfEmploymentDocument, String? commercialRegisterImage, String? bankName, String? beneficiaryName, int? bankAccountNumber, int? iban, String? ibanImage, }) async {
+    final response = await providerRegisterPostWithHttpInfo( nameEn: nameEn, nameAr: nameAr, ownerName: ownerName, email: email, phone: phone, accountType: accountType, password: password, confirmPassword: confirmPassword, cityId: cityId, tagsIdsLeftSquareBracket0RightSquareBracket: tagsIdsLeftSquareBracket0RightSquareBracket, tagsIdsLeftSquareBracket1RightSquareBracket: tagsIdsLeftSquareBracket1RightSquareBracket, hasOfflineStores: hasOfflineStores, offlineStoresNumber: offlineStoresNumber, locationsLeftSquareBracket0RightSquareBracket: locationsLeftSquareBracket0RightSquareBracket, locationsLeftSquareBracket1RightSquareBracket: locationsLeftSquareBracket1RightSquareBracket, addressesLeftSquareBracket0RightSquareBracket: addressesLeftSquareBracket0RightSquareBracket, addressesLeftSquareBracket1RightSquareBracket: addressesLeftSquareBracket1RightSquareBracket, provideDelivery: provideDelivery, businessType: businessType, image: image, instagramLink: instagramLink, snapchatLink: snapchatLink, tiktokLink: tiktokLink, xLink: xLink, startTime: startTime, endTime: endTime, workingDaysIndicesLeftSquareBracket0RightSquareBracket: workingDaysIndicesLeftSquareBracket0RightSquareBracket, workingDaysIndicesLeftSquareBracket1RightSquareBracket: workingDaysIndicesLeftSquareBracket1RightSquareBracket, workingDaysIndicesLeftSquareBracket2RightSquareBracket: workingDaysIndicesLeftSquareBracket2RightSquareBracket, selfEmploymentDocument: selfEmploymentDocument, commercialRegisterImage: commercialRegisterImage, bankName: bankName, beneficiaryName: beneficiaryName, bankAccountNumber: bankAccountNumber, iban: iban, ibanImage: ibanImage, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
