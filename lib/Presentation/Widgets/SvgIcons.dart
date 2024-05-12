@@ -80,6 +80,30 @@ class SVGIcons {
     );
   }
 
+  static Widget calendarIcon(){
+    return SvgPicture.asset(
+      calendarImg,
+    );
+  }
+
+  static Widget documentIcon(){
+    return SvgPicture.asset(
+      documentImg,
+    );
+  }
+
+  static Widget numberOfItemsIcon(){
+    return SvgPicture.asset(
+      numberOfItemsImg,
+    );
+  }
+
+  static Widget totalPriceIcon(){
+    return SvgPicture.asset(
+      totalPriceImg,
+    );
+  }
+
   Widget networkSVG(link){
     return SvgPicture.network(
       link,

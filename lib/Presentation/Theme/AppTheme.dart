@@ -5,6 +5,7 @@ class AppTheme {
 
   static const Color mainAppColor = Color(0xFFE21B33);
   static const Color mainAppColorLight = Color(0xFFF7DBDE);
+  static const Color mainAppColorLight2 = Color(0xFFFDE9EB);
   static const Color mainAppColorBright = Color(0xFFe6f4ff);
   static const Color mainAppColorDark = Color(0xFF003A59);
   static const Color secondaryAppColorLight = Color(0xFF4FC2FF);

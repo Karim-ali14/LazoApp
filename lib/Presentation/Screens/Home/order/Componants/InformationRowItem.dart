@@ -11,7 +11,8 @@ class InformationRowItem extends StatelessWidget {
   final Widget? icon;
   final String? title;
   final String? value;
-  const InformationRowItem({super.key, this.icon, this.title, this.value});
+  final bool? hasDivider;
+  const InformationRowItem({super.key, this.icon, this.title, this.value, this.hasDivider = true});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class InformationRowItem extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 16),
-        const Divider(color: AppTheme.appGrey8, height: 1)
+        if (hasDivider == true) const Divider(color: AppTheme.appGrey8, height: 1) else const SizedBox()
       ]),
     );
   }
