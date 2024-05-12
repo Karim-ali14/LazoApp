@@ -8,46 +8,35 @@ import '../../../../../Localization/keys.dart';
 import '../../../../Widgets/SvgIcons.dart';
 
 class InformationRowItem extends StatelessWidget {
-  const InformationRowItem({super.key});
+  final Widget? icon;
+  final String? title;
+  final String? value;
+  const InformationRowItem({super.key, this.icon, this.title, this.value});
 
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
-      child: Row(
-        children: [
-          SVGIcons.defaultUserIcon(),
-          const SizedBox(width: 8),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                context.tr(clientNameKey),
-                style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts12w400,
-              ),
-              const SizedBox(height: 6),
-              Text(
-                "Mohamed Farag",
-                style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w700,
-              ),
-
-            ],
-          ),
-          const Spacer(),
-          DecoratedBox(
-            decoration: BoxDecoration(
-              color: AppTheme.appGrey3,
-              borderRadius: BorderRadius.circular(2),
+      child: Column(children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            icon ?? const SizedBox(),
+            const SizedBox(width: 12),
+            Text(
+              context.tr("Total Price"),
+              style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts14w500,
             ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 11,vertical: 8),
-              child: Text(
-                "Pending",
-                style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts12w400,
-              ),
-            ),
-          )
-        ],
-      ),
+            const Spacer(),
+            const Text(
+              "SAR 250",
+              style:
+                  AppTheme.styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
+            )
+          ],
+        ),
+        const SizedBox(height: 16),
+        const Divider(color: AppTheme.appGrey8, height: 1)
+      ]),
     );
   }
 }

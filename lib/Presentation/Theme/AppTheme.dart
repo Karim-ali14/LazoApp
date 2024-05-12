@@ -19,6 +19,7 @@ class AppTheme {
   static const Color appGrey5 = Color(0xFFCECECE);
   static const Color appGrey6 = Color(0xFFE6E9EC);
   static const Color appGrey7 = Color(0xFF8088A4);
+  static const Color appGrey8 = Color(0xFFE9EAEF);
   static const Color appLightGrey = Color(0xFFe5e5e5);
   static const Color appLightGreyV2 = Color(0xFFF0F0F0);
   static const Color appDarkerGrey = Color(0xFF898989);
@@ -149,8 +150,15 @@ class AppTheme {
   static const TextStyle styleWithTextBlackAdelleSansExtendedFonts14w400 = TextStyle(
       color: Colors.black , fontSize: 14, fontWeight: FontWeight.w400);
 
+  static const TextStyle styleWithTextBlackAdelleSansExtendedFonts14w500 = TextStyle(
+      color: Colors.black , fontSize: 14, fontWeight: FontWeight.w500);
+
   static const TextStyle styleWithTextWhiteAdelleSansExtendedFonts14w400 = TextStyle(
       color: Colors.white , fontSize: 14, fontWeight: FontWeight.w400);
+
+
+  static const TextStyle styleWithTextAppGrey7AdelleSansExtendedFonts14w400 = TextStyle(
+      color: appGrey7 , fontSize: 14, fontWeight: FontWeight.w400);
 
 
   static ThemeData darkTheme = ThemeData(
