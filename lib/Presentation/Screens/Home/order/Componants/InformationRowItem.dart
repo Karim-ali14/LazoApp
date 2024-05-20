@@ -35,7 +35,7 @@ class InformationRowItem extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(height: 16),
+        if (hasDivider == true) const SizedBox(height: 16) else const SizedBox(),
         if (hasDivider == true) const Divider(color: AppTheme.appGrey8, height: 1) else const SizedBox()
       ]),
     );

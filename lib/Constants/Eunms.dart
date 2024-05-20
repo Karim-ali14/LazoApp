@@ -4,3 +4,9 @@ enum OTPType {
   Login,
   Update
 }
+enum ButtonsType {
+  ViewDetails,
+  ShowAcceptOrCancel,
+  Finish,
+  ReadyToShipping
+}

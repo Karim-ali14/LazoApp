@@ -7,6 +7,7 @@ const String phoneNumberAndEmailAddressKey = "phoneNumberAndEmailAddress";
 const String passwordKey = "password";
 const String forgetPasswordKey = "forgetPassword";
 const String clientNameKey = "clientName";
+const String orderDetailsKey = "orderDetails";
 
 // Params Keys
 const String doneLandingKey = "doneLanding";

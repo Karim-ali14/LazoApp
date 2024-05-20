@@ -104,6 +104,52 @@ class SVGIcons {
     );
   }
 
+  static Widget langIcon(){
+    return SvgPicture.asset(
+      langImg,
+    );
+  }
+  static Widget deleteAccountIcon(){
+    return SvgPicture.asset(
+      deleteAccountImg,
+    );
+  }
+  static Widget signOutIcon(){
+    return SvgPicture.asset(
+      signOutImg,
+    );
+  }
+  static Widget privacyPolicyIcon(){
+    return SvgPicture.asset(
+      privacyPolicyImg,
+    );
+  }
+  static Widget termsConditionsImgIcon(){
+    return SvgPicture.asset(
+      termsConditionsImg,
+    );
+  }
+  static Widget shareImgIcon(){
+    return SvgPicture.asset(
+      shareImg,
+    );
+  }
+  static Widget faqIcon(){
+    return SvgPicture.asset(
+      faqImg,
+    );
+  }
+  static Widget contactUsIcon(){
+    return SvgPicture.asset(
+      contactUsImg,
+    );
+  }
+  static Widget rightArrowWithBackgroundIcon(){
+    return SvgPicture.asset(
+      rightArrowWithBackgroundImg,
+    );
+  }
+
   Widget networkSVG(link){
     return SvgPicture.network(
       link,

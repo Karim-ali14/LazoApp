@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/Opt/OtpScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/forgetpassword/ForgetPasswordScreen.dart';
+import 'package:lazo_provider/Presentation/Screens/Home/order/OrderDetailsScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/OnboardingPage/OnboardingScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as ago;
@@ -16,6 +17,7 @@ import '../../../../../Presentation/Screens/SplashScreen.dart';
 import 'Presentation/Screens/Auth/forgetpassword/ChangePasswordScreen.dart';
 import 'Presentation/Screens/Auth/login/LoginScreen.dart';
 import 'Presentation/Screens/Home/HomeScreen.dart';
+import 'Presentation/Screens/More/MoreScreen.dart';
 import 'Presentation/Theme/AppTheme.dart';
 
 
@@ -182,6 +184,17 @@ class MyApp extends ConsumerWidget {
           path: R_Home,
           builder: (BuildContext context, GoRouterState state) => const HomeScreen()
       ),
+      GoRoute(
+          path: R_MoreScreen,
+          builder: (BuildContext context, GoRouterState state) => const MoreScreen()
+      ),
+      GoRoute(
+          path: R_OrderDetails,
+          builder: (BuildContext context,GoRouterState state) {
+            var extra = state.extra as Map;
+            return OrderDetailsScreen(orderId: extra[orderIdKey]);
+          }
+      )
     ],
   );
 }

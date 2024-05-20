@@ -136,7 +136,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with SingleTickerProvid
               child: Center(
                 child:
                 // AppButton(onPress: logout ,text: "Logout"),
-                OrderCardItem()
+                OrderCardItem(onOrderItemClick: (orderId) {
+                  context.push(R_OrderDetails,extra: {orderIdKey : orderId});
+                },)
               ),
             ),
           ],

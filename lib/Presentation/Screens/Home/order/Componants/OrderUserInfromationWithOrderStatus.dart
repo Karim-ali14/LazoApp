@@ -8,12 +8,14 @@ import '../../../../../Localization/keys.dart';
 import '../../../../Widgets/SvgIcons.dart';
 
 class OrderUserInformationWithOrderStatus extends StatelessWidget {
+
   const OrderUserInformationWithOrderStatus({super.key});
 
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SVGIcons.defaultUserIcon(),
           const SizedBox(width: 8),
@@ -39,7 +41,7 @@ class OrderUserInformationWithOrderStatus extends StatelessWidget {
               borderRadius: BorderRadius.circular(2),
             ),
             child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 11,vertical: 8),
+              padding: EdgeInsets.symmetric(horizontal: 11,vertical: 6),
               child: Text(
                 "Pending",
                 style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts12w400,

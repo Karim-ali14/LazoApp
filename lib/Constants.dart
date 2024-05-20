@@ -16,6 +16,10 @@ const R_ChangePasswordScreen = 'changePasswordScreen';
 const R_MainScreen = '/mainScreen';
 const R_OTP = 'otp';
 const R_Home = '/home';
+const R_MoreScreen = '/more';
+const R_OrderDetails = "/orderDetailsScreen";
 
 //EXTRAS
 const userKey = "user";
+const emailOrPhoneKey = "emailOrPhone";
+const orderIdKey = "orderId";

@@ -5,16 +5,17 @@ import 'package:flutter/widgets.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
 
+import '../../../../../Constants/Eunms.dart';
 import '../../../../Widgets/AppButton.dart';
 
 class OrderButtons extends StatelessWidget {
-  final bool showViewDetails;
-  const OrderButtons({super.key, required this.showViewDetails});
+  final ButtonsType type;
+  const OrderButtons({super.key, required this.type});
 
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      if (showViewDetails)
+      if (type == ButtonsType.ViewDetails)
         AppButton(
                   onPress: viewDetails,
                   child: Center(
@@ -24,7 +25,7 @@ class OrderButtons extends StatelessWidget {
             .copyWith(color: Colors.white),
                   )),
                 )
-      else
+      else if(type == ButtonsType.ShowAcceptOrCancel)
         Row(
           children: [
             Expanded(
@@ -50,7 +51,27 @@ class OrderButtons extends StatelessWidget {
               )),
             ))
           ],
-        ),
+        )
+      else if(type == ButtonsType.Finish)
+          AppButton(
+            onPress: viewDetails,
+            child: Center(
+                child: Text(
+                  "Finished",
+                  style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts16w400
+                      .copyWith(color: Colors.white),
+                )),
+          )
+        else if(type == ButtonsType.ReadyToShipping)
+          AppButton(
+            onPress: viewDetails,
+            backColor: AppTheme.mainAppColorLight2,
+            child: const Center(
+                child: Text(
+                  "Ready to shipping",
+                  style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w400,
+                )),
+          )
     ]);
   }
 
