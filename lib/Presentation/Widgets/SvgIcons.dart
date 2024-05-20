@@ -144,6 +144,26 @@ class SVGIcons {
       contactUsImg,
     );
   }
+  static Widget whatsAppImgIcon(){
+    return SvgPicture.asset(
+      whatsAppImg,
+    );
+  }
+  static Widget redFaqIcon(){
+    return SvgPicture.asset(
+      redFaqImg,
+    );
+  }
+  static Widget messageIcon(){
+    return SvgPicture.asset(
+      messageImg,
+    );
+  }
+  static Widget callingIcon(){
+    return SvgPicture.asset(
+      callingImg,
+    );
+  }
   static Widget rightArrowWithBackgroundIcon(){
     return SvgPicture.asset(
       rightArrowWithBackgroundImg,
