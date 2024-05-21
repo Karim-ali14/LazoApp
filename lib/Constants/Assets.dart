@@ -25,3 +25,5 @@ const redFaqImg = "assets/images/red_faq_img.svg";
 const messageImg = "assets/images/message_img.svg";
 const callingImg = "assets/images/calling_img.svg";
 const rightArrowWithBackgroundImg = "assets/images/right_arrow_with_background.svg";
+const downArrowWithBackgroundImg = "assets/images/down_arrow_ic.svg";
+const upArrowWithBackgroundImg = "assets/images/up_arrow_ic.svg";

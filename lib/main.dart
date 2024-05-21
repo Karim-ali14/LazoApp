@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/Opt/OtpScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/forgetpassword/ForgetPasswordScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/OrderDetailsScreen.dart';
+import 'package:lazo_provider/Presentation/Screens/More/FAQScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/OnboardingPage/OnboardingScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timeago/timeago.dart' as ago;
@@ -187,6 +188,10 @@ class MyApp extends ConsumerWidget {
       GoRoute(
           path: R_MoreScreen,
           builder: (BuildContext context, GoRouterState state) => const MoreScreen()
+      ),
+      GoRoute(
+          path: R_FAQScreen,
+          builder: (BuildContext context, GoRouterState state) => const FAQScreen()
       ),
       GoRoute(
           path: R_OrderDetails,

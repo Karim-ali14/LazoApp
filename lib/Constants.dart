@@ -17,6 +17,7 @@ const R_MainScreen = '/mainScreen';
 const R_OTP = 'otp';
 const R_Home = '/home';
 const R_MoreScreen = '/more';
+const R_FAQScreen = '/faqScreen';
 const R_OrderDetails = "/orderDetailsScreen";
 
 //EXTRAS

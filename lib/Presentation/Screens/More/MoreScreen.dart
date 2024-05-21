@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Constants/Constants.dart';
 import 'package:lazo_provider/Presentation/Dialogs/ContactUsBottomSheet.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
@@ -51,12 +54,17 @@ class _MoreScreenState extends State<MoreScreen> {
           SizedBox(
             height: defaultPaddingHorizontal,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: MoreItemCard(
-              startIcon: SVGIcons.faqIcon(),
-              text: "FAQ",
-              endIcon: SVGIcons.rightArrowWithBackgroundIcon(),
+          InkWell(
+            onTap: (){
+              context.push(R_FAQScreen);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: MoreItemCard(
+                startIcon: SVGIcons.faqIcon(),
+                text: "FAQ",
+                endIcon: SVGIcons.rightArrowWithBackgroundIcon(),
+              ),
             ),
           ),
           SizedBox(

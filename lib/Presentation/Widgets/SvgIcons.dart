@@ -169,6 +169,16 @@ class SVGIcons {
       rightArrowWithBackgroundImg,
     );
   }
+  static Widget downArrowWithBackgroundIcon(){
+    return SvgPicture.asset(
+      downArrowWithBackgroundImg,
+    );
+  }
+  static Widget upArrowWithBackgroundIcon(){
+    return SvgPicture.asset(
+      upArrowWithBackgroundImg,
+    );
+  }
 
   Widget networkSVG(link){
     return SvgPicture.network(
