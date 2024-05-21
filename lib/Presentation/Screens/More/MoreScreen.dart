@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Constants/Constants.dart';
+import 'package:lazo_provider/Presentation/Dialogs/AskBottomSheet.dart';
 import 'package:lazo_provider/Presentation/Dialogs/ContactUsBottomSheet.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
@@ -103,29 +104,35 @@ class _MoreScreenState extends State<MoreScreen> {
           SizedBox(
             height: defaultPaddingHorizontal,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: MoreItemCard(
-              startIcon: SVGIcons.signOutIcon(),
-              textWidget: Text(
-                "Sign out",
-                style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w500,
+          InkWell(
+            onTap: showSignOutBottomSheet,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: MoreItemCard(
+                startIcon: SVGIcons.signOutIcon(),
+                textWidget: Text(
+                  "Sign out",
+                  style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w500,
+                ),
+                endIcon: SVGIcons.rightArrowWithBackgroundIcon(),
               ),
-              endIcon: SVGIcons.rightArrowWithBackgroundIcon(),
             ),
           ),
           SizedBox(
             height: defaultPaddingHorizontal,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: MoreItemCard(
-              startIcon: SVGIcons.deleteAccountIcon(),
-              textWidget: Text(
-                "Sign out",
-                style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w500,
+          InkWell(
+            onTap: showDeleteAccountBottomSheet,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: MoreItemCard(
+                startIcon: SVGIcons.deleteAccountIcon(),
+                textWidget: Text(
+                  "Delete Account",
+                  style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w500,
+                ),
+                endIcon: SVGIcons.rightArrowWithBackgroundIcon(),
               ),
-              endIcon: SVGIcons.rightArrowWithBackgroundIcon(),
             ),
           ),
           SizedBox(
@@ -144,5 +151,35 @@ class _MoreScreenState extends State<MoreScreen> {
                 topLeft: Radius.circular(10), topRight: Radius.circular(10))),
         isScrollControlled: true, // Set isScrollControlled to true
         builder: (content) => ContactUsBottomSheet());
+  }
+
+  void showSignOutBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+        builder: (builder) =>
+        AskBottomSheet(
+          title: "Sign Out",
+          description: "Are you sure you want to sign out?",
+          icon: SVGIcons.sadFaceIcon()
+        )
+    );
+  }
+
+  void showDeleteAccountBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+        builder: (builder) =>
+        AskBottomSheet(
+          title: "Delete Account",
+          description: "Are you sure you want to delete account?",
+          icon: SVGIcons.deleteAccountIcIcon()
+        )
+    );
   }
 }

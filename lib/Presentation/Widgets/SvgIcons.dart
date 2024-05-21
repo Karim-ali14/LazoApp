@@ -164,6 +164,16 @@ class SVGIcons {
       callingImg,
     );
   }
+  static Widget sadFaceIcon(){
+    return SvgPicture.asset(
+      sadFaceImg,
+    );
+  }
+  static Widget deleteAccountIcIcon(){
+    return SvgPicture.asset(
+      deleteAccountIc,
+    );
+  }
   static Widget rightArrowWithBackgroundIcon(){
     return SvgPicture.asset(
       rightArrowWithBackgroundImg,
