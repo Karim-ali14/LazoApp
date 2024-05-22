@@ -6,6 +6,13 @@ import '../Presentation/Theme/AppTheme.dart';
 
 typedef OnDateValue = Function(DateTime?);
 
+extension DateExtension on DateTime {
+  String yMD([Locale? locale]) {
+    DateFormat formatter = DateFormat.yMd(locale?.languageCode ?? 'en');
+    return formatter.format(this);
+  }
+}
+
 Future<DateTime> selectDate(BuildContext context,
     {DateTime? withInitialDate}) async {
   final DateTime? picked = await showDatePicker(
