@@ -8,5 +8,9 @@
   "password" : "Password",
   "forgetPassword" : "Forget Password?",
   "clientName" : "Client Name",
-  "orderDetails" : "Order Details"
+  "orderDetails" : "Order Details",
+  "home" : "Home",
+  "yourOrders" : "Your Orders",
+  "notifications" : "Notifications",
+  "more" : "More"
 }

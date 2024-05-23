@@ -189,6 +189,41 @@ class SVGIcons {
       upArrowWithBackgroundImg,
     );
   }
+  static Widget homeActiveIcon(){
+    return SvgPicture.asset(
+      homeActiveImg,
+    );
+  }
+
+  static Widget homeUnActiveIcon(){
+    return SvgPicture.asset(
+      homeUnActiveImg
+    );
+  }
+
+  static Widget notificationActiveIcon(){
+    return SvgPicture.asset(
+      notificationActiveImg
+    );
+  }
+
+  static Widget notificationUnActiveIcon(){
+    return SvgPicture.asset(
+      notificationUnActiveImg
+    );
+  }
+
+  static Widget moreActiveIcon(){
+    return SvgPicture.asset(
+      moreActiveImg
+    );
+  }
+
+  static Widget moreUnActiveIcon(){
+    return SvgPicture.asset(
+      moreUnActiveImg
+    );
+  }
 
   Widget networkSVG(link){
     return SvgPicture.network(

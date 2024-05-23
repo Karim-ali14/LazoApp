@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/Opt/OtpScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/forgetpassword/ForgetPasswordScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/OrderDetailsScreen.dart';
+import 'package:lazo_provider/Presentation/Screens/MainScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/More/FAQScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Notification/NotificationScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/OnboardingPage/OnboardingScreen.dart';
@@ -183,11 +184,18 @@ class MyApp extends ConsumerWidget {
           ]
       ),
       GoRoute(
+          path: R_MainScreen,
+          builder: (BuildContext context, GoRouterState state) => const MainScreen()
+      ),
+      GoRoute(
           path: R_Home,
           builder: (BuildContext context, GoRouterState state) => const HomeScreen()
       ),
       GoRoute(
           path: R_MoreScreen,
+          builder: (BuildContext context, GoRouterState state) => const MoreScreen()
+      ), GoRoute(
+          path: R_NotificationScreen,
           builder: (BuildContext context, GoRouterState state) => const NotificationScreen()
       ),
       GoRoute(

@@ -34,7 +34,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     handleState(providerLoginStateProvider,showLoading: true,showToast: true,onSuccess: (state){
-      context.go(R_Home);
+      context.go(R_MainScreen);
     });
 
     return Scaffold(

@@ -40,13 +40,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       print("Usersfsdfsdfsd $user");
       print("Usersfsdfsdfsd ${user == null}");
       // if(user != null){
-      //   context.go(R_Home);
+      //   context.go(R_MainScreen);
       // }else if(prefs.getBool("doneLanding") == true){
       //   context.go(R_LoginScreen);
       // }else {
       //   context.push(R_Onboarding);
       // }
-        context.go(R_MoreScreen);
+      context.go(R_MainScreen);
     });
     //setupInteractedMessage(context);
     super.initState();
