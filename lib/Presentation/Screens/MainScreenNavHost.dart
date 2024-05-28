@@ -38,19 +38,22 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                 currentTab == 0 ? context.tr(yourOrdersKey) : tabs[currentTab],
           )),
       body: currentScreen,
-      bottomNavigationBar: Container(
+      bottomNavigationBar:  Container(
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
-              color: Colors.grey[100]!,
-              spreadRadius: 2,
+              color: AppTheme.appGrey14,
+              spreadRadius: 1,
               blurRadius: 20,
               offset: const Offset(0, -1))
         ]),
         child: BottomAppBar(
+          elevation: 25,
+          color: Colors.white,
+          surfaceTintColor: Colors.white,
           child: SizedBox(
             height: 60,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 MaterialButton(
                   onPressed: () {
@@ -64,6 +67,9 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                       currentTab == 0 ?
                           SVGIcons.homeActiveIcon()
                           : SVGIcons.homeUnActiveIcon(),
+                      SizedBox(
+                        height: 6,
+                      ),
                       Text(
                         tabs[0],
                         style: currentTab == 0 ?
@@ -74,6 +80,7 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                     ],
                   ),
                 ),
+                Spacer(),
                 MaterialButton(
                   onPressed: () {
                     setState(() {
@@ -86,6 +93,9 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                       currentTab == 1 ?
                           SVGIcons.notificationActiveIcon()
                           : SVGIcons.notificationUnActiveIcon(),
+                      SizedBox(
+                        height: 6,
+                      ),
                       Text(
                         tabs[1],
                         style: currentTab == 1 ?
@@ -96,6 +106,7 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                     ],
                   ),
                 ),
+                Spacer(),
                 MaterialButton(
                   onPressed: () {
                     setState(() {
@@ -108,6 +119,9 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                       currentTab == 2 ?
                           SVGIcons.moreActiveIcon()
                           : SVGIcons.moreUnActiveIcon(),
+                      SizedBox(
+                        height: 6,
+                      ),
                       Text(
                         tabs[1],
                         style: currentTab == 2 ?

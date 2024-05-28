@@ -26,11 +26,13 @@ class AppTheme {
   static const Color appGrey11 = Color(0x839B9B9B);
   static const Color appGrey12 = Color(0xFFEBECEF);
   static const Color appGrey13 = Color(0xFF667085);
+  static const Color appGrey14 = Color(0x14000000); // box-shadow: 0px -6px 16px 0px #00000014;
   static const Color appLightGrey = Color(0xFFe5e5e5);
   static const Color appLightGreyV2 = Color(0xFFF0F0F0);
   static const Color appDarkerGrey = Color(0xFF898989);
 
   static const Color failureColor = Color(0xFFc61313);
+
   static const Color successColor = Color(0xFF7cbf2b);
   static const Color pendingColor = Color(0xFFff904a);
   static const Color lightAlert = Color(0xFFeb6866);
