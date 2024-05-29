@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../Localization/keys.dart';
 import '../../../../Widgets/SvgIcons.dart';
@@ -21,15 +22,15 @@ class InformationRowItem extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            icon ?? const SizedBox(),
+            Skeleton.replace(child: icon ?? SizedBox(),replacement: Icon(Icons.ac_unit, size: 20),) ,
             const SizedBox(width: 12),
             Text(
-              context.tr("Total Price"),
+              title??"",
               style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts14w500,
             ),
             const Spacer(),
-            const Text(
-              "SAR 250",
+            Text(
+              "$value",
               style:
                   AppTheme.styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
             )

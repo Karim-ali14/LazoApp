@@ -39,19 +39,15 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:athletix/api.dart';
 
-// TODO Configure HTTP Bearer authorization: bearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ProviderApi();
+final api_instance = AuthApi();
+final phone = phone_example; // String | 
 
 try {
-    api_instance.providerLogoutGet();
+    final result = api_instance.clientLogin(phone);
+    print(result);
 } catch (e) {
-    print('Exception when calling ProviderApi->providerLogoutGet: $e\n');
+    print('Exception when calling AuthApi->clientLogin: $e\n');
 }
 
 ```
@@ -62,10 +58,29 @@ All URIs are relative to *http://}*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AuthApi* | [**clientLogin**](doc//AuthApi.md#clientlogin) | **POST** /client/login | client login
+*AuthApi* | [**clientSignup**](doc//AuthApi.md#clientsignup) | **POST** /client/register | client signup
+*CartApi* | [**showCartDetails**](doc//CartApi.md#showcartdetails) | **GET** /client/cart/show | show cart details
+*ClientApi* | [**showProfile**](doc//ClientApi.md#showprofile) | **GET** /client/profile/show | show profile
+*ClientApi* | [**updateProfile**](doc//ClientApi.md#updateprofile) | **POST** /client/profile/update | update profile
+*Notifications1Api* | [**readANotification1**](doc//Notifications1Api.md#readanotification1) | **POST** /provider/notification/read | read a notification
+*Notifications1Api* | [**showNotifications1**](doc//Notifications1Api.md#shownotifications1) | **GET** /provider/notifications | show notifications
+*Notifications1Api* | [**updateFcmTokenAndDeviceType1**](doc//Notifications1Api.md#updatefcmtokenanddevicetype1) | **POST** /provider/update/device-data | update fcm_token and device_type
+*Orders12Api* | [**manageOrders1**](doc//Orders12Api.md#manageorders1) | **POST** /provider/order/manage | manage orders
+*Orders12Api* | [**showAllProviderSOrders**](doc//Orders12Api.md#showallprovidersorders) | **GET** /provider/orders | show all provider's orders
+*Orders12Api* | [**showOrderDetails2**](doc//Orders12Api.md#showorderdetails2) | **GET** /provider/order/show | show order details
+*ProviderApi* | [**manageOrders1**](doc//ProviderApi.md#manageorders1) | **POST** /provider/order/manage | manage orders
 *ProviderApi* | [**providerLogoutGet**](doc//ProviderApi.md#providerlogoutget) | **GET** /provider/logout | provider logout
 *ProviderApi* | [**providerProfileShowGet**](doc//ProviderApi.md#providerprofileshowget) | **GET** /provider/profile/show | show profile
 *ProviderApi* | [**providerProfileUpdatePost**](doc//ProviderApi.md#providerprofileupdatepost) | **POST** /provider/profile/update | update profile main data
+*ProviderApi* | [**readANotification1**](doc//ProviderApi.md#readanotification1) | **POST** /provider/notification/read | read a notification
+*ProviderApi* | [**showAllProviderSOrders**](doc//ProviderApi.md#showallprovidersorders) | **GET** /provider/orders | show all provider's orders
+*ProviderApi* | [**showNotifications1**](doc//ProviderApi.md#shownotifications1) | **GET** /provider/notifications | show notifications
+*ProviderApi* | [**showOrderDetails2**](doc//ProviderApi.md#showorderdetails2) | **GET** /provider/order/show | show order details
+*ProviderApi* | [**updateFcmTokenAndDeviceType1**](doc//ProviderApi.md#updatefcmtokenanddevicetype1) | **POST** /provider/update/device-data | update fcm_token and device_type
 *PublicApi* | [**citiesGet**](doc//PublicApi.md#citiesget) | **GET** /cities | show all cities
+*PublicApi* | [**clientLogin**](doc//PublicApi.md#clientlogin) | **POST** /client/login | client login
+*PublicApi* | [**clientSignup**](doc//PublicApi.md#clientsignup) | **POST** /client/register | client signup
 *PublicApi* | [**showAllBanners**](doc//PublicApi.md#showallbanners) | **GET** /banners | show all banners
 *PublicApi* | [**showAllCategories**](doc//PublicApi.md#showallcategories) | **GET** /categories | show all categories
 *PublicApi* | [**showAllColors**](doc//PublicApi.md#showallcolors) | **GET** /colors | show all colors
@@ -96,6 +111,12 @@ Class | Method | HTTP request | Description
  - [CategoryMenu](doc//CategoryMenu.md)
  - [CitiesResponse](doc//CitiesResponse.md)
  - [City](doc//City.md)
+ - [ClientLogin200Response](doc//ClientLogin200Response.md)
+ - [ClientLogin200ResponseData](doc//ClientLogin200ResponseData.md)
+ - [ClientSignup200Response](doc//ClientSignup200Response.md)
+ - [ClientSignup200ResponseData](doc//ClientSignup200ResponseData.md)
+ - [ClientSignup200ResponseDataUser](doc//ClientSignup200ResponseDataUser.md)
+ - [ClientSignup200ResponseDataUserCity](doc//ClientSignup200ResponseDataUserCity.md)
  - [CodeConfirmRequest](doc//CodeConfirmRequest.md)
  - [CodeConfirmResponse](doc//CodeConfirmResponse.md)
  - [CodeSendRequest](doc//CodeSendRequest.md)
@@ -103,6 +124,12 @@ Class | Method | HTTP request | Description
  - [Color](doc//Color.md)
  - [ColorsResponse](doc//ColorsResponse.md)
  - [ImageItem](doc//ImageItem.md)
+ - [ManageOrders1200Response](doc//ManageOrders1200Response.md)
+ - [ManageOrders1200ResponseData](doc//ManageOrders1200ResponseData.md)
+ - [ManageOrders1200ResponseDataOrderItemsInner](doc//ManageOrders1200ResponseDataOrderItemsInner.md)
+ - [ManageOrders1200ResponseDataOrderItemsInnerProduct](doc//ManageOrders1200ResponseDataOrderItemsInnerProduct.md)
+ - [ManageOrders1200ResponseDataOrderItemsInnerProductListsInner](doc//ManageOrders1200ResponseDataOrderItemsInnerProductListsInner.md)
+ - [ManageOrders1200ResponseDataOrderItemsInnerProductListsInnerItemsInner](doc//ManageOrders1200ResponseDataOrderItemsInnerProductListsInnerItemsInner.md)
  - [Occasion](doc//Occasion.md)
  - [OccasionsResponse](doc//OccasionsResponse.md)
  - [ProductDetails](doc//ProductDetails.md)
@@ -128,6 +155,8 @@ Class | Method | HTTP request | Description
  - [ProviderRegisterRequest](doc//ProviderRegisterRequest.md)
  - [ProviderRegisterResponse](doc//ProviderRegisterResponse.md)
  - [ProviderRegisterResponseData](doc//ProviderRegisterResponseData.md)
+ - [ReadANotification1200Response](doc//ReadANotification1200Response.md)
+ - [ReadANotification1200ResponseData](doc//ReadANotification1200ResponseData.md)
  - [ResetCodeConfirmRequest](doc//ResetCodeConfirmRequest.md)
  - [ResetCodeConfirmResponse](doc//ResetCodeConfirmResponse.md)
  - [ResetCodeSendRequest](doc//ResetCodeSendRequest.md)
@@ -138,16 +167,40 @@ Class | Method | HTTP request | Description
  - [ServiceListItem](doc//ServiceListItem.md)
  - [ServiceShowData](doc//ServiceShowData.md)
  - [ServiceShowResponse](doc//ServiceShowResponse.md)
+ - [ShowAllProviderSOrders200Response](doc//ShowAllProviderSOrders200Response.md)
+ - [ShowAllProviderSOrders200ResponseData](doc//ShowAllProviderSOrders200ResponseData.md)
+ - [ShowAllProviderSOrders200ResponseDataDataInner](doc//ShowAllProviderSOrders200ResponseDataDataInner.md)
+ - [ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInner](doc//ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInner.md)
+ - [ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerService](doc//ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerService.md)
+ - [ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerServiceListsInner](doc//ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerServiceListsInner.md)
+ - [ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerServiceListsInnerItemsInner](doc//ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerServiceListsInnerItemsInner.md)
+ - [ShowAllProviderSOrders200ResponseDataDataInnerPromocode](doc//ShowAllProviderSOrders200ResponseDataDataInnerPromocode.md)
+ - [ShowAllProviderSOrders200ResponseDataDataInnerUser](doc//ShowAllProviderSOrders200ResponseDataDataInnerUser.md)
  - [ShowAllServicesWithFilter200Response](doc//ShowAllServicesWithFilter200Response.md)
  - [ShowAllServicesWithFilter200ResponseData](doc//ShowAllServicesWithFilter200ResponseData.md)
  - [ShowAllServicesWithFilter200ResponseDataDataInner](doc//ShowAllServicesWithFilter200ResponseDataDataInner.md)
  - [ShowAllServicesWithFilter200ResponseDataLinksInner](doc//ShowAllServicesWithFilter200ResponseDataLinksInner.md)
+ - [ShowCartDetails200Response](doc//ShowCartDetails200Response.md)
+ - [ShowCartDetails200ResponseData](doc//ShowCartDetails200ResponseData.md)
+ - [ShowCartDetails200ResponseDataCartItemsInner](doc//ShowCartDetails200ResponseDataCartItemsInner.md)
+ - [ShowCartDetails200ResponseDataCartItemsInnerProduct](doc//ShowCartDetails200ResponseDataCartItemsInnerProduct.md)
+ - [ShowCartDetails200ResponseDataCartItemsInnerService](doc//ShowCartDetails200ResponseDataCartItemsInnerService.md)
+ - [ShowNotifications1200Response](doc//ShowNotifications1200Response.md)
+ - [ShowNotifications1200ResponseDataInner](doc//ShowNotifications1200ResponseDataInner.md)
+ - [ShowNotifications1200ResponseDataInnerProvider](doc//ShowNotifications1200ResponseDataInnerProvider.md)
+ - [ShowOrderDetails2200Response](doc//ShowOrderDetails2200Response.md)
+ - [ShowOrderDetails2200ResponseData](doc//ShowOrderDetails2200ResponseData.md)
+ - [ShowOrderDetails2200ResponseDataOrderItemsInner](doc//ShowOrderDetails2200ResponseDataOrderItemsInner.md)
+ - [ShowProfile200Response](doc//ShowProfile200Response.md)
  - [ShowPromocodeDetails200Response](doc//ShowPromocodeDetails200Response.md)
  - [ShowPromocodeDetails200ResponseData](doc//ShowPromocodeDetails200ResponseData.md)
  - [Size](doc//Size.md)
  - [SizesResponse](doc//SizesResponse.md)
  - [Tag](doc//Tag.md)
  - [TagsResponse](doc//TagsResponse.md)
+ - [UpdateProfile200Response](doc//UpdateProfile200Response.md)
+ - [UpdateProfile200ResponseData](doc//UpdateProfile200ResponseData.md)
+ - [UpdateProfile200ResponseDataCity](doc//UpdateProfile200ResponseDataCity.md)
  - [UploadFiles](doc//UploadFiles.md)
 
 

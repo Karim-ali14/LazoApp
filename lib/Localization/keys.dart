@@ -12,6 +12,8 @@ const String homeKey = "home";
 const String yourOrdersKey = "yourOrders";
 const String notificationsKey = "notifications";
 const String moreKey = "more";
+const String SARKey = "SAR";
+const String itemsKey = "items";
 
 // Params Keys
 const String doneLandingKey = "doneLanding";

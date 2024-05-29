@@ -5,10 +5,14 @@ import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/InformationRowItem.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/OrderCardItem.dart';
+import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserOrdersStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Presentation/Widgets/AppButton.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../Data/Models/StateModel.dart';
 import '../../StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
+import 'OrderPlaceHolder.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -17,22 +21,35 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends ConsumerState<HomeScreen>
+    with SingleTickerProviderStateMixin {
   late TabController tabController;
-  int activeTabIndex = 1;
+  int activeTabIndex = 0;
 
   @override
   void initState() {
-    tabController = TabController(length: 4, vsync: this,initialIndex: 1);
+    tabController = TabController(length: 4, vsync: this);
     tabController.addListener(() {
       setState(() {
         activeTabIndex = tabController.index;
       });
     });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(getNewOrderStateProvider.notifier).getOrders();
+      ref.read(getCurrentOrderStateProvider.notifier).getOrders();
+      ref.read(getFinishOrderStateProvider.notifier).getOrders();
+      ref.read(getCanselOrderStateProvider.notifier).getOrders();
+    });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
+    final newOrders = ref.watch(getNewOrderStateProvider);
+    final currentOrders = ref.watch(getCurrentOrderStateProvider);
+    final finishOrders = ref.watch(getFinishOrderStateProvider);
+    final cancelOrders = ref.watch(getCanselOrderStateProvider);
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -45,6 +62,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with SingleTickerProvid
               labelPadding: const EdgeInsetsDirectional.only(end: 10),
               physics: const ClampingScrollPhysics(),
               isScrollable: true,
+              dividerColor: Colors.transparent,
               indicatorColor: Colors.transparent,
               tabs: [
                 Tab(
@@ -55,14 +73,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with SingleTickerProvid
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       border: Border.all(
-                        color: activeTabIndex == 0 ? AppTheme.mainAppColor : AppTheme.appGrey8,
+                        color: activeTabIndex == 0
+                            ? AppTheme.mainAppColor
+                            : AppTheme.appGrey8,
                       ),
-                      color: activeTabIndex == 0 ? AppTheme.mainAppColor : AppTheme.appGrey9,
+                      color: activeTabIndex == 0
+                          ? AppTheme.mainAppColor
+                          : AppTheme.appGrey9,
                     ),
                     child: Center(
                       child: Text(
                         "New Order",
-                        style: activeTabIndex == 0 ? AppTheme.styleWithTextWhiteAdelleSansExtendedFonts14w400 : AppTheme.styleWithTextWhiteAdelleSansExtendedFonts14w400.copyWith(color: AppTheme.appGrey10),
+                        style: activeTabIndex == 0
+                            ? AppTheme
+                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                            : AppTheme
+                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                                .copyWith(color: AppTheme.appGrey10),
                       ),
                     ),
                   ),
@@ -75,14 +102,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with SingleTickerProvid
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       border: Border.all(
-                        color: activeTabIndex == 1 ? AppTheme.mainAppColor : AppTheme.appGrey8,
+                        color: activeTabIndex == 1
+                            ? AppTheme.mainAppColor
+                            : AppTheme.appGrey8,
                       ),
-                      color: activeTabIndex == 1 ? AppTheme.mainAppColor : AppTheme.appGrey9,
+                      color: activeTabIndex == 1
+                          ? AppTheme.mainAppColor
+                          : AppTheme.appGrey9,
                     ),
                     child: Center(
                       child: Text(
                         "Current Order",
-                        style: activeTabIndex == 1 ? AppTheme.styleWithTextWhiteAdelleSansExtendedFonts14w400 : AppTheme.styleWithTextWhiteAdelleSansExtendedFonts14w400.copyWith(color: AppTheme.appGrey10),
+                        style: activeTabIndex == 1
+                            ? AppTheme
+                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                            : AppTheme
+                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                                .copyWith(color: AppTheme.appGrey10),
                       ),
                     ),
                   ),
@@ -95,14 +131,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with SingleTickerProvid
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       border: Border.all(
-                        color: activeTabIndex == 2 ? AppTheme.mainAppColor : AppTheme.appGrey8,
+                        color: activeTabIndex == 2
+                            ? AppTheme.mainAppColor
+                            : AppTheme.appGrey8,
                       ),
-                      color: activeTabIndex == 2 ? AppTheme.mainAppColor : AppTheme.appGrey9,
+                      color: activeTabIndex == 2
+                          ? AppTheme.mainAppColor
+                          : AppTheme.appGrey9,
                     ),
                     child: Center(
                       child: Text(
-                        "New Order",
-                        style: activeTabIndex == 2 ? AppTheme.styleWithTextWhiteAdelleSansExtendedFonts14w400 : AppTheme.styleWithTextWhiteAdelleSansExtendedFonts14w400.copyWith(color: AppTheme.appGrey10),
+                        "Finish Order",
+                        style: activeTabIndex == 2
+                            ? AppTheme
+                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                            : AppTheme
+                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                                .copyWith(color: AppTheme.appGrey10),
                       ),
                     ),
                   ),
@@ -115,39 +160,107 @@ class _HomeScreenState extends ConsumerState<HomeScreen> with SingleTickerProvid
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       border: Border.all(
-                        color: activeTabIndex == 3 ? AppTheme.mainAppColor : AppTheme.appGrey8,
+                        color: activeTabIndex == 3
+                            ? AppTheme.mainAppColor
+                            : AppTheme.appGrey8,
                       ),
-                      color: activeTabIndex == 3 ? AppTheme.mainAppColor : AppTheme.appGrey9,
+                      color: activeTabIndex == 3
+                          ? AppTheme.mainAppColor
+                          : AppTheme.appGrey9,
                     ),
                     child: Center(
                       child: Text(
-                        "Current Order",
-                        style: activeTabIndex == 3 ? AppTheme.styleWithTextWhiteAdelleSansExtendedFonts14w400 : AppTheme.styleWithTextWhiteAdelleSansExtendedFonts14w400.copyWith(color: AppTheme.appGrey10),
+                        "Cancel Order",
+                        style: activeTabIndex == 3
+                            ? AppTheme
+                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                            : AppTheme
+                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                                .copyWith(color: AppTheme.appGrey10),
                       ),
                     ),
                   ),
                 ),
-              ],controller: tabController,),
+              ],
+              controller: tabController,
+            ),
             SizedBox(
               height: 20,
             ),
-            Container(
-              color: Colors.white,
-              child: Center(
-                child:
-                // AppButton(onPress: logout ,text: "Logout"),
-                OrderCardItem(onOrderItemClick: (orderId) {
-                  context.push(R_OrderDetails,extra: {orderIdKey : orderId});
-                },)
-              ),
-            ),
+            Expanded(
+                child: TabBarView(
+                controller: tabController,
+                children: [
+                  newOrders.state == DataState.EMPTY ? OrderPlaceHolder(
+                      onAddOrderClick: (){})
+                      : Skeletonizer(
+                      enabled: newOrders.state == DataState.LOADING,
+                      child: ListView.builder(
+                          itemCount: newOrders.data?.data?.data.length ?? 5,
+                          itemBuilder: (context,index){
+                            return OrderCardItem(onOrderItemClick: (orderId) {
+                              navigateToOrderDetails(orderId);
+                            }, orderModel: newOrders.data?.data!.data[index],
+                            );
+                          })
+                  ),
+
+                  currentOrders.state == DataState.EMPTY ? OrderPlaceHolder(
+                      onAddOrderClick: (){})
+                      : Skeletonizer(
+                      enabled: currentOrders.state == DataState.LOADING,
+                      child: ListView.builder(
+                          itemCount: currentOrders.data?.data?.data.length ?? 5,
+                          itemBuilder: (context,index){
+                            return OrderCardItem(onOrderItemClick: (orderId) {
+                              navigateToOrderDetails(orderId);
+                            }, orderModel: currentOrders.data?.data!.data[index],
+                            );
+                          })
+                  ),
+
+                  finishOrders.state == DataState.EMPTY ? OrderPlaceHolder(
+                      onAddOrderClick: (){})
+                      : Skeletonizer(
+                      enabled: finishOrders.state == DataState.LOADING,
+                      child: ListView.builder(
+                          itemCount: finishOrders.data?.data?.data.length ?? 0,
+                          itemBuilder: (context,index){
+                            return OrderCardItem(onOrderItemClick: (orderId) {
+                              navigateToOrderDetails(orderId);
+                            }, orderModel: finishOrders.data?.data!.data[index],
+                            );
+                          })
+                  ),
+
+                  cancelOrders.state == DataState.EMPTY ? OrderPlaceHolder(
+                      onAddOrderClick: (){})
+                      : Skeletonizer(
+                      enabled: cancelOrders.state == DataState.LOADING,
+                      child: ListView.builder(
+                          itemCount: cancelOrders.data?.data?.data.length ?? 0,
+                          itemBuilder: (context,index){
+                            return OrderCardItem(onOrderItemClick: (orderId) {
+                              navigateToOrderDetails(orderId);
+                            }, orderModel: cancelOrders.data?.data!.data[index],
+                            );
+                          })
+                  ),
+                ],
+            ))
           ],
         ),
       ),
-    ) ;
+    );
   }
+
   void logout() async {
     await ref.read(providerTokenStateProvider.notifier).logout();
     context.go(R_LoginScreen);
   }
+
+  void navigateToOrderDetails(String orderId) {
+    context.go(R_OrderDetails,extra: {orderIdKey : orderId});
+  }
+
 }

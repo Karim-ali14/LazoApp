@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **nameEn** | **String** |  | [optional] 
 **nameAr** | **String** |  | [optional] 
 **providerId** | **num** |  | [optional] 
+**servicesCount** | **num** |  | [optional] 
+**productsCount** | **num** |  | [optional] 
 **createdAt** | **String** |  | [optional] 
 **updatedAt** | **String** |  | [optional] 
 

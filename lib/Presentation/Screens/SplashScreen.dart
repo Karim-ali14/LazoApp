@@ -39,14 +39,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       ProviderLoginResponseData? user = ref.read(userProvider);
       print("Usersfsdfsdfsd $user");
       print("Usersfsdfsdfsd ${user == null}");
-      // if(user != null){
-      //   context.go(R_MainScreen);
-      // }else if(prefs.getBool("doneLanding") == true){
-      //   context.go(R_LoginScreen);
-      // }else {
-      //   context.push(R_Onboarding);
-      // }
-      context.go(R_MainScreen);
+      if(user != null){
+        context.go(R_MainScreen);
+      }else if(prefs.getBool("doneLanding") == true){
+        context.go(R_LoginScreen);
+      }else {
+        context.push(R_Onboarding);
+      }
     });
     //setupInteractedMessage(context);
     super.initState();

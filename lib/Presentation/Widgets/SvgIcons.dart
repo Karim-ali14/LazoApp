@@ -104,6 +104,12 @@ class SVGIcons {
     );
   }
 
+  static Widget orderPlaceHolderSvgIcon({double? size}){
+    return SvgPicture.asset(
+      orderPlaceHolderIconSvg,
+    );
+  }
+
   static Widget langIcon(){
     return SvgPicture.asset(
       langImg,

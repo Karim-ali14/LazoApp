@@ -17,6 +17,8 @@ class Category {
     this.nameEn,
     this.nameAr,
     this.image,
+    this.servicesCount,
+    this.productsCount,
     this.imagePath,
     this.createdAt,
     this.updatedAt,
@@ -60,6 +62,22 @@ class Category {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  num? servicesCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? productsCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? imagePath;
 
   ///
@@ -84,6 +102,8 @@ class Category {
      other.nameEn == nameEn &&
      other.nameAr == nameAr &&
      other.image == image &&
+     other.servicesCount == servicesCount &&
+     other.productsCount == productsCount &&
      other.imagePath == imagePath &&
      other.createdAt == createdAt &&
      other.updatedAt == updatedAt;
@@ -95,12 +115,14 @@ class Category {
     (nameEn == null ? 0 : nameEn!.hashCode) +
     (nameAr == null ? 0 : nameAr!.hashCode) +
     (image == null ? 0 : image!.hashCode) +
+    (servicesCount == null ? 0 : servicesCount!.hashCode) +
+    (productsCount == null ? 0 : productsCount!.hashCode) +
     (imagePath == null ? 0 : imagePath!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'Category[id=$id, nameEn=$nameEn, nameAr=$nameAr, image=$image, imagePath=$imagePath, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Category[id=$id, nameEn=$nameEn, nameAr=$nameAr, image=$image, servicesCount=$servicesCount, productsCount=$productsCount, imagePath=$imagePath, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -123,6 +145,16 @@ class Category {
       json[r'image'] = this.image;
     } else {
       json[r'image'] = null;
+    }
+    if (this.servicesCount != null) {
+      json[r'services_count'] = this.servicesCount;
+    } else {
+      json[r'services_count'] = null;
+    }
+    if (this.productsCount != null) {
+      json[r'products_count'] = this.productsCount;
+    } else {
+      json[r'products_count'] = null;
     }
     if (this.imagePath != null) {
       json[r'imagePath'] = this.imagePath;
@@ -167,6 +199,12 @@ class Category {
         nameEn: mapValueOfType<String>(json, r'name_en'),
         nameAr: mapValueOfType<String>(json, r'name_ar'),
         image: mapValueOfType<String>(json, r'image'),
+        servicesCount: json[r'services_count'] == null
+            ? null
+            : num.parse(json[r'services_count'].toString()),
+        productsCount: json[r'products_count'] == null
+            ? null
+            : num.parse(json[r'products_count'].toString()),
         imagePath: mapValueOfType<String>(json, r'imagePath'),
         createdAt: mapValueOfType<String>(json, r'created_at'),
         updatedAt: mapValueOfType<String>(json, r'updated_at'),

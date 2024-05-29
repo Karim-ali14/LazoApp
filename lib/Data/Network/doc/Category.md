@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **nameEn** | **String** |  | [optional] 
 **nameAr** | **String** |  | [optional] 
 **image** | **String** |  | [optional] 
+**servicesCount** | **num** |  | [optional] 
+**productsCount** | **num** |  | [optional] 
 **imagePath** | **String** |  | [optional] 
 **createdAt** | **String** |  | [optional] 
 **updatedAt** | **String** |  | [optional] 

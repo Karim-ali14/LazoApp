@@ -50,7 +50,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             border: Border.all(color: AppTheme.appGrey8, width: 1)),
                         padding:
                             const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                        child: OrderUserInformationWithOrderStatus()),
+                        child: OrderUserInformationWithOrderStatus(user: null,)),
                     const SizedBox(
                       height: 32,
                     ),

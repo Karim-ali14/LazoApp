@@ -17,6 +17,8 @@ class CategoryMenu {
     this.nameEn,
     this.nameAr,
     this.providerId,
+    this.servicesCount,
+    this.productsCount,
     this.createdAt,
     this.updatedAt,
   });
@@ -59,6 +61,22 @@ class CategoryMenu {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  num? servicesCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? productsCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   String? createdAt;
 
   ///
@@ -75,6 +93,8 @@ class CategoryMenu {
      other.nameEn == nameEn &&
      other.nameAr == nameAr &&
      other.providerId == providerId &&
+     other.servicesCount == servicesCount &&
+     other.productsCount == productsCount &&
      other.createdAt == createdAt &&
      other.updatedAt == updatedAt;
 
@@ -85,11 +105,13 @@ class CategoryMenu {
     (nameEn == null ? 0 : nameEn!.hashCode) +
     (nameAr == null ? 0 : nameAr!.hashCode) +
     (providerId == null ? 0 : providerId!.hashCode) +
+    (servicesCount == null ? 0 : servicesCount!.hashCode) +
+    (productsCount == null ? 0 : productsCount!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'CategoryMenu[id=$id, nameEn=$nameEn, nameAr=$nameAr, providerId=$providerId, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'CategoryMenu[id=$id, nameEn=$nameEn, nameAr=$nameAr, providerId=$providerId, servicesCount=$servicesCount, productsCount=$productsCount, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -112,6 +134,16 @@ class CategoryMenu {
       json[r'provider_id'] = this.providerId;
     } else {
       json[r'provider_id'] = null;
+    }
+    if (this.servicesCount != null) {
+      json[r'services_count'] = this.servicesCount;
+    } else {
+      json[r'services_count'] = null;
+    }
+    if (this.productsCount != null) {
+      json[r'products_count'] = this.productsCount;
+    } else {
+      json[r'products_count'] = null;
     }
     if (this.createdAt != null) {
       json[r'created_at'] = this.createdAt;
@@ -153,6 +185,12 @@ class CategoryMenu {
         providerId: json[r'provider_id'] == null
             ? null
             : num.parse(json[r'provider_id'].toString()),
+        servicesCount: json[r'services_count'] == null
+            ? null
+            : num.parse(json[r'services_count'].toString()),
+        productsCount: json[r'products_count'] == null
+            ? null
+            : num.parse(json[r'products_count'].toString()),
         createdAt: mapValueOfType<String>(json, r'created_at'),
         updatedAt: mapValueOfType<String>(json, r'updated_at'),
       );

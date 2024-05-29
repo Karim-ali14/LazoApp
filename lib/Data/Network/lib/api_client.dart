@@ -195,6 +195,18 @@ class ApiClient {
           return CitiesResponse.fromJson(value);
         case 'City':
           return City.fromJson(value);
+        case 'ClientLogin200Response':
+          return ClientLogin200Response.fromJson(value);
+        case 'ClientLogin200ResponseData':
+          return ClientLogin200ResponseData.fromJson(value);
+        case 'ClientSignup200Response':
+          return ClientSignup200Response.fromJson(value);
+        case 'ClientSignup200ResponseData':
+          return ClientSignup200ResponseData.fromJson(value);
+        case 'ClientSignup200ResponseDataUser':
+          return ClientSignup200ResponseDataUser.fromJson(value);
+        case 'ClientSignup200ResponseDataUserCity':
+          return ClientSignup200ResponseDataUserCity.fromJson(value);
         case 'CodeConfirmRequest':
           return CodeConfirmRequest.fromJson(value);
         case 'CodeConfirmResponse':
@@ -209,6 +221,18 @@ class ApiClient {
           return ColorsResponse.fromJson(value);
         case 'ImageItem':
           return ImageItem.fromJson(value);
+        case 'ManageOrders1200Response':
+          return ManageOrders1200Response.fromJson(value);
+        case 'ManageOrders1200ResponseData':
+          return ManageOrders1200ResponseData.fromJson(value);
+        case 'ManageOrders1200ResponseDataOrderItemsInner':
+          return ManageOrders1200ResponseDataOrderItemsInner.fromJson(value);
+        case 'ManageOrders1200ResponseDataOrderItemsInnerProduct':
+          return ManageOrders1200ResponseDataOrderItemsInnerProduct.fromJson(value);
+        case 'ManageOrders1200ResponseDataOrderItemsInnerProductListsInner':
+          return ManageOrders1200ResponseDataOrderItemsInnerProductListsInner.fromJson(value);
+        case 'ManageOrders1200ResponseDataOrderItemsInnerProductListsInnerItemsInner':
+          return ManageOrders1200ResponseDataOrderItemsInnerProductListsInnerItemsInner.fromJson(value);
         case 'Occasion':
           return Occasion.fromJson(value);
         case 'OccasionsResponse':
@@ -259,6 +283,10 @@ class ApiClient {
           return ProviderRegisterResponse.fromJson(value);
         case 'ProviderRegisterResponseData':
           return ProviderRegisterResponseData.fromJson(value);
+        case 'ReadANotification1200Response':
+          return ReadANotification1200Response.fromJson(value);
+        case 'ReadANotification1200ResponseData':
+          return ReadANotification1200ResponseData.fromJson(value);
         case 'ResetCodeConfirmRequest':
           return ResetCodeConfirmRequest.fromJson(value);
         case 'ResetCodeConfirmResponse':
@@ -279,6 +307,24 @@ class ApiClient {
           return ServiceShowData.fromJson(value);
         case 'ServiceShowResponse':
           return ServiceShowResponse.fromJson(value);
+        case 'ShowAllProviderSOrders200Response':
+          return ShowAllProviderSOrders200Response.fromJson(value);
+        case 'ShowAllProviderSOrders200ResponseData':
+          return ShowAllProviderSOrders200ResponseData.fromJson(value);
+        case 'ShowAllProviderSOrders200ResponseDataDataInner':
+          return ShowAllProviderSOrders200ResponseDataDataInner.fromJson(value);
+        case 'ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInner':
+          return ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInner.fromJson(value);
+        case 'ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerService':
+          return ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerService.fromJson(value);
+        case 'ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerServiceListsInner':
+          return ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerServiceListsInner.fromJson(value);
+        case 'ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerServiceListsInnerItemsInner':
+          return ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerServiceListsInnerItemsInner.fromJson(value);
+        case 'ShowAllProviderSOrders200ResponseDataDataInnerPromocode':
+          return ShowAllProviderSOrders200ResponseDataDataInnerPromocode.fromJson(value);
+        case 'ShowAllProviderSOrders200ResponseDataDataInnerUser':
+          return ShowAllProviderSOrders200ResponseDataDataInnerUser.fromJson(value);
         case 'ShowAllServicesWithFilter200Response':
           return ShowAllServicesWithFilter200Response.fromJson(value);
         case 'ShowAllServicesWithFilter200ResponseData':
@@ -287,6 +333,30 @@ class ApiClient {
           return ShowAllServicesWithFilter200ResponseDataDataInner.fromJson(value);
         case 'ShowAllServicesWithFilter200ResponseDataLinksInner':
           return ShowAllServicesWithFilter200ResponseDataLinksInner.fromJson(value);
+        case 'ShowCartDetails200Response':
+          return ShowCartDetails200Response.fromJson(value);
+        case 'ShowCartDetails200ResponseData':
+          return ShowCartDetails200ResponseData.fromJson(value);
+        case 'ShowCartDetails200ResponseDataCartItemsInner':
+          return ShowCartDetails200ResponseDataCartItemsInner.fromJson(value);
+        case 'ShowCartDetails200ResponseDataCartItemsInnerProduct':
+          return ShowCartDetails200ResponseDataCartItemsInnerProduct.fromJson(value);
+        case 'ShowCartDetails200ResponseDataCartItemsInnerService':
+          return ShowCartDetails200ResponseDataCartItemsInnerService.fromJson(value);
+        case 'ShowNotifications1200Response':
+          return ShowNotifications1200Response.fromJson(value);
+        case 'ShowNotifications1200ResponseDataInner':
+          return ShowNotifications1200ResponseDataInner.fromJson(value);
+        case 'ShowNotifications1200ResponseDataInnerProvider':
+          return ShowNotifications1200ResponseDataInnerProvider.fromJson(value);
+        case 'ShowOrderDetails2200Response':
+          return ShowOrderDetails2200Response.fromJson(value);
+        case 'ShowOrderDetails2200ResponseData':
+          return ShowOrderDetails2200ResponseData.fromJson(value);
+        case 'ShowOrderDetails2200ResponseDataOrderItemsInner':
+          return ShowOrderDetails2200ResponseDataOrderItemsInner.fromJson(value);
+        case 'ShowProfile200Response':
+          return ShowProfile200Response.fromJson(value);
         case 'ShowPromocodeDetails200Response':
           return ShowPromocodeDetails200Response.fromJson(value);
         case 'ShowPromocodeDetails200ResponseData':
@@ -299,6 +369,12 @@ class ApiClient {
           return Tag.fromJson(value);
         case 'TagsResponse':
           return TagsResponse.fromJson(value);
+        case 'UpdateProfile200Response':
+          return UpdateProfile200Response.fromJson(value);
+        case 'UpdateProfile200ResponseData':
+          return UpdateProfile200ResponseData.fromJson(value);
+        case 'UpdateProfile200ResponseDataCity':
+          return UpdateProfile200ResponseDataCity.fromJson(value);
         case 'UploadFiles':
           return UploadFiles.fromJson(value);
         default:

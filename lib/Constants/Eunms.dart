@@ -4,6 +4,12 @@ enum OTPType {
   Login,
   Update
 }
+enum MainOrderStatus {
+  New,
+  Current,
+  Finished,
+  Cancelled
+}
 enum ButtonsType {
   ViewDetails,
   ShowAcceptOrCancel,

@@ -10,6 +10,8 @@ All URIs are relative to *http://}*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**citiesGet**](PublicApi.md#citiesget) | **GET** /cities | show all cities
+[**clientLogin**](PublicApi.md#clientlogin) | **POST** /client/login | client login
+[**clientSignup**](PublicApi.md#clientsignup) | **POST** /client/register | client signup
 [**showAllBanners**](PublicApi.md#showallbanners) | **GET** /banners | show all banners
 [**showAllCategories**](PublicApi.md#showallcategories) | **GET** /categories | show all categories
 [**showAllColors**](PublicApi.md#showallcolors) | **GET** /colors | show all colors
@@ -61,6 +63,100 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clientLogin**
+> ClientLogin200Response clientLogin(phone)
+
+client login
+
+client login
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+final phone = phone_example; // String | 
+
+try {
+    final result = api_instance.clientLogin(phone);
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->clientLogin: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **phone** | **String**|  | [optional] 
+
+### Return type
+
+[**ClientLogin200Response**](ClientLogin200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clientSignup**
+> ClientSignup200Response clientSignup(cityId, email, image, name, phone)
+
+client signup
+
+client signup
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+final cityId = cityId_example; // String | 
+final email = email_example; // String | optional
+final image = image_example; // String | optional
+final name = name_example; // String | 
+final phone = phone_example; // String | 
+
+try {
+    final result = api_instance.clientSignup(cityId, email, image, name, phone);
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->clientSignup: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cityId** | **String**|  | [optional] 
+ **email** | **String**| optional | [optional] 
+ **image** | **String**| optional | [optional] 
+ **name** | **String**|  | [optional] 
+ **phone** | **String**|  | [optional] 
+
+### Return type
+
+[**ClientSignup200Response**](ClientSignup200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
