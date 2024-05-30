@@ -123,7 +123,7 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                         height: 6,
                       ),
                       Text(
-                        tabs[1],
+                        tabs[2],
                         style: currentTab == 2 ?
                         AppTheme.styleWithTextRedAdelleSansExtendedFonts11w500
                         : AppTheme.styleWithTextGray7AdelleSansExtendedFonts11w500

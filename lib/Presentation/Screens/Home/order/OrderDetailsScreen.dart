@@ -2,10 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lazo_provider/Constants/Constants.dart';
 import 'package:lazo_provider/Constants/Eunms.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/OrderButtons.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/OrderUserInfromationWithOrderStatus.dart';
+import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserOrdersStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
 
 import '../../../../Localization/keys.dart';
@@ -14,17 +16,28 @@ import '../../../Widgets/SvgIcons.dart';
 import 'Componants/InformationRowItem.dart';
 import 'Componants/ProductItemCard.dart';
 
-class OrderDetailsScreen extends StatefulWidget {
+class OrderDetailsScreen extends ConsumerStatefulWidget {
   final String orderId;
   const OrderDetailsScreen({super.key, required this.orderId});
 
   @override
-  State<OrderDetailsScreen> createState() => _OrderDetailsScreenState();
+  ConsumerState<OrderDetailsScreen> createState() => _OrderDetailsScreenState();
 }
 
-class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
+class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
+
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(getOrderDetailsStateProvider.notifier).getOrderDetails(widget.orderId);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final orderDetails = ref.watch(getOrderDetailsStateProvider);
     return Scaffold(
       appBar: CustomAppBar(
         navigated: true,
@@ -50,7 +63,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             border: Border.all(color: AppTheme.appGrey8, width: 1)),
                         padding:
                             const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-                        child: OrderUserInformationWithOrderStatus(user: null,)),
+                        child: OrderUserInformationWithOrderStatus(orderModel: null,)),
                     const SizedBox(
                       height: 32,
                     ),

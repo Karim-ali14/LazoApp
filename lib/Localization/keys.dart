@@ -14,6 +14,12 @@ const String notificationsKey = "notifications";
 const String moreKey = "more";
 const String SARKey = "SAR";
 const String itemsKey = "items";
+const String paddingKey = "padding";
+const String waitingKey = "waiting";
+const String preparingKey = "preparing";
+const String readyToShippingKey = "readyToShipping";
+const String finishedKey = "finished";
+const String canceledKey = "canceled";
 
 // Params Keys
 const String doneLandingKey = "doneLanding";

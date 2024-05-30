@@ -22,3 +22,14 @@ class OrderUseCase extends StateNotifier<StateModel<ShowAllProviderSOrders200Res
     });
   }
 }
+
+class OrderDetailsUseCase extends StateNotifier<StateModel<ShowOrderDetails2200Response>>{
+  final Ref ref;
+  final Orders12Api api;
+  OrderDetailsUseCase(this.ref, this.api):super(StateModel());
+
+  void getOrderDetails(String orderId) async{
+    state = StateModel.loading();
+    request(()=> api.showOrderDetails2(orderId: orderId),onComplete: (res){});
+  }
+}

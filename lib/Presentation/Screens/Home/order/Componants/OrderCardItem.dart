@@ -9,6 +9,8 @@ import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/OrderBu
 import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/OrderUserInfromationWithOrderStatus.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Presentation/Widgets/SvgIcons.dart';
+import 'package:lazo_provider/Utils/DateUtils.dart';
+import 'package:lazo_provider/Utils/OrderEx.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../Localization/keys.dart';
@@ -18,7 +20,8 @@ typedef OnOrderItemClick = void Function(String);
 class OrderCardItem extends StatefulWidget {
   final OnOrderItemClick onOrderItemClick;
   final ShowAllProviderSOrders200ResponseDataDataInner? orderModel;
-  const OrderCardItem({super.key, required this.onOrderItemClick, required this.orderModel});
+  const OrderCardItem(
+      {super.key, required this.onOrderItemClick, required this.orderModel});
 
   @override
   State<OrderCardItem> createState() => _OrderCardItemState();
@@ -42,12 +45,15 @@ class _OrderCardItemState extends State<OrderCardItem> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
             child: Column(
               children: [
-                OrderUserInformationWithOrderStatus(user: widget.orderModel?.user,),
+                OrderUserInformationWithOrderStatus(
+                  orderModel: widget.orderModel,
+                ),
                 const SizedBox(height: 24),
                 InformationRowItem(
                   icon: SVGIcons.totalPriceIcon(),
                   title: "Total Price",
-                  value: "${context.tr(SARKey)} ${widget.orderModel?.total ?? 0}",
+                  value:
+                      "${context.tr(SARKey)} ${widget.orderModel?.total ?? 0}",
                 ),
                 const SizedBox(height: 16),
                 InformationRowItem(
@@ -59,19 +65,25 @@ class _OrderCardItemState extends State<OrderCardItem> {
                 InformationRowItem(
                   icon: SVGIcons.numberOfItemsIcon(),
                   title: "No. of items",
-                  value: "${widget.orderModel?.orderItems.length} ${context.tr(itemsKey)}",
+                  value:
+                      "${widget.orderModel?.orderItems.length} ${context.tr(itemsKey)}",
                 ),
                 const SizedBox(height: 16),
                 InformationRowItem(
                   icon: SVGIcons.calendarIcon(),
                   title: "Date / Time",
-                  value: "${widget.orderModel?.deliveryTime}, ${widget.orderModel?.deliveryDate}",
+                  value:
+                      "${widget.orderModel?.createdAt?.hhMm()}, ${widget.orderModel?.createdAt?.ddMmYyyy()}",
                   hasDivider: false,
                 ),
                 const SizedBox(
                   height: defaultPaddingHorizontal,
                 ),
-                Skeleton.leaf(child: OrderButtons(type: ButtonsType.ReadyToShipping,))
+                Skeleton.leaf(
+                    child: OrderButtons(
+                  type: "${widget.orderModel?.statusId}"
+                      .getOrderStatusForShowButtons(context),
+                ))
               ],
             ),
           ),

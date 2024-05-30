@@ -34,9 +34,13 @@ class AppTheme {
   static const Color failureColor = Color(0xFFc61313);
 
   static const Color successColor = Color(0xFF7cbf2b);
+  static const Color preparingColor = Color(0xFF02B730B7);
   static const Color pendingColor = Color(0xFFff904a);
+  static const Color readyToShippingColor = Color(0xFFFFB58B);
+  static const Color finishColor = Color(0xFF02B730);
   static const Color lightAlert = Color(0xFFeb6866);
   static const Color blue = Color(0xFF1256d2);
+  static const Color appBlue = Color(0xFF0582D2);
 
   static const Color selectedBackgroundColor = Color(0xFF23B574);
   static const Color mainBackgroundLightColor = Color(0xFFFCFCFC);
@@ -53,6 +57,7 @@ class AppTheme {
   static const kContentColorDarkTheme = Color(0xFFF5FCF9);
   static const kWarninngColor = Color(0xFFF3BB1C);
   static const kYellow = Color(0xFFEC9922);
+  static const appYellow = Color(0xFFCDCB02);
   static const kErrorColor = Color(0xFFF03738);
 
   static const kDefaultPadding = 20.0;

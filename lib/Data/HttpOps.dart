@@ -141,6 +141,7 @@ class HttpOps {
   Future<ResponseModel> postFormData({required String endPoint,bool authorized = false,required Map<String,String> data,List<http.MultipartFile>? files, String params = ""}) async {
     try{
       var postUri = Uri.parse(mainAppUrl + endPoint + params);
+      print(postUri.toString());
       http.MultipartRequest request =  http.MultipartRequest("POST", postUri);
       print("User Token 3 ${_userModel?.accessToken}");
       request.headers.addAll(authorized ? <String, String> {

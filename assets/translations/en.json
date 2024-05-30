@@ -14,5 +14,11 @@
   "notifications" : "Notifications",
   "more" : "More",
   "SAR" : "SAR",
-  "items" : "Items"
+  "items" : "Items",
+  "padding" : "Padding",
+  "waiting" : "Waiting",
+  "preparing" : "Preparing",
+  "readyToShipping" : "Ready to shipping",
+  "finished" : "Finished",
+  "canceled" : "Canceled"
 }
