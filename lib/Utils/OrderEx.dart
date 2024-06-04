@@ -9,10 +9,12 @@ extension OrderEx on String{
   String getOrderStatus(BuildContext context){
     String orderStatus = "";
     switch (this){
-      case "0" : {
+      case "1" : {
         orderStatus = context.tr(paddingKey);
         break;
-      }case "1" : {
+      }
+      case "3" :
+      case "2" : {
         orderStatus = context.tr(waitingKey);
         break;
       }case "4" : {
@@ -31,10 +33,12 @@ extension OrderEx on String{
   Color getOrderStatusColor(BuildContext context){
     Color orderStatusColor = AppTheme.appYellow;
     switch (this){
-      case "0" : {
+      case "1" : {
         orderStatusColor = AppTheme.appYellow;
         break;
-      }case "1" : {
+      }
+      case "3" :
+      case "2" : {
         orderStatusColor = AppTheme.appBlue;
         break;
       }case "4" : {
@@ -52,12 +56,15 @@ extension OrderEx on String{
   }
 
   ButtonsType getOrderStatusForShowButtons(BuildContext context){
+
     ButtonsType orderStatusColor = ButtonsType.ViewDetails;
     switch (this){
-      case "0" : {
+      case "1" : {
         orderStatusColor = ButtonsType.ShowAcceptOrCancel;
         break;
-      }case "1" : {
+      }
+      case "3" :
+      case "2" : {
         orderStatusColor =  ButtonsType.ViewDetails;
         break;
       }case "4" : {

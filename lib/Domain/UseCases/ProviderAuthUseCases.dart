@@ -153,8 +153,8 @@ class UserProvider extends StateNotifier<ProviderLoginResponseData?> {
   final Ref ref;
   UserProvider(this.ref) : super(null);
 
-  String? checkIfSavedUser(){
-    return prefs.getString(userKey);
+  ProviderLoginResponseData? checkIfSavedUser(){
+    return prefs.getString(userKey) != null ? ProviderLoginResponseData.fromJson(prefs.getString(userKey)) : null;
   }
 
   void setUser(ProviderLoginResponseData? providerObject){

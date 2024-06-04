@@ -8,16 +8,23 @@ import 'package:lazo_provider/Utils/Extintions.dart';
 import '../../../../../Constants/Eunms.dart';
 import '../../../../Widgets/AppButton.dart';
 
+typedef OnButtonClickListener = Function(ButtonsClickType?);
+
 class OrderButtons extends StatelessWidget {
+  final bool isOrderDetail;
   final ButtonsType type;
-  const OrderButtons({super.key, required this.type});
+  final OnButtonClickListener? onButtonClickListener;
+  const OrderButtons( this.type,this.onButtonClickListener,{this.isOrderDetail = false,super.key,});
 
   @override
   Widget build(BuildContext context) {
+    print("handle show buttons : ${(type == ButtonsType.ViewDetails && !isOrderDetail)}");
     return Column(children: [
-      if (type == ButtonsType.ViewDetails)
+      if (type == ButtonsType.ViewDetails && !isOrderDetail)
         AppButton(
-                  onPress: viewDetails,
+                  onPress: () {
+                    onButtonClickListener?.call(ButtonsClickType.ViewDetails);
+                  },
                   child: Center(
           child: Text(
         "View Details",
@@ -30,7 +37,9 @@ class OrderButtons extends StatelessWidget {
           children: [
             Expanded(
                 child: AppButton(
-              onPress: viewDetails,
+              onPress: (){
+                onButtonClickListener?.call(ButtonsClickType.Accept);
+              },
               child: Center(
                   child: Text(
                 "Accept",
@@ -41,7 +50,9 @@ class OrderButtons extends StatelessWidget {
             SizedBox(width: 8),
             Expanded(
                 child: AppButton(
-              onPress: viewDetails,
+              onPress:(){
+                onButtonClickListener?.call(ButtonsClickType.Cancel);
+              },
               backColor: AppTheme.mainAppColorLight2,
               child: Center(
                   child: Text(
@@ -54,7 +65,9 @@ class OrderButtons extends StatelessWidget {
         )
       else if(type == ButtonsType.Finish)
           AppButton(
-            onPress: viewDetails,
+            onPress:(){
+              onButtonClickListener?.call(ButtonsClickType.Finish);
+            },
             child: Center(
                 child: Text(
                   "Finished",
@@ -64,7 +77,9 @@ class OrderButtons extends StatelessWidget {
           )
         else if(type == ButtonsType.ReadyToShipping)
           AppButton(
-            onPress: viewDetails,
+            onPress:(){
+              onButtonClickListener?.call(ButtonsClickType.ReadyToShipping);
+            },
             backColor: AppTheme.mainAppColorLight2,
             child: const Center(
                 child: Text(
@@ -72,8 +87,10 @@ class OrderButtons extends StatelessWidget {
                   style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w400,
                 )),
           )
+      else
+        const SizedBox()
     ]);
   }
-
   void viewDetails() {}
+
 }

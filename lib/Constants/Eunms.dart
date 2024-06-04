@@ -16,3 +16,11 @@ enum ButtonsType {
   Finish,
   ReadyToShipping
 }
+
+enum ButtonsClickType {
+  ViewDetails,
+  Accept,
+  Cancel,
+  Finish,
+  ReadyToShipping
+}

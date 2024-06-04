@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:lazo_provider/Data/Network/lib/api.dart';
+import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Widgets/SvgIcons.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
 
@@ -36,7 +37,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           statusBarColor:
           AppTheme.mainAppColor,statusBarIconBrightness: Brightness.dark)
       );
-      ProviderLoginResponseData? user = ref.read(userProvider);
+      final user = ref.read(providerTokenStateProvider.notifier).checkIfSavedUser();
       print("Usersfsdfsdfsd $user");
       print("Usersfsdfsdfsd ${user == null}");
       if(user != null){

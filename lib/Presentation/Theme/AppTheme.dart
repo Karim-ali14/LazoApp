@@ -34,7 +34,7 @@ class AppTheme {
   static const Color failureColor = Color(0xFFc61313);
 
   static const Color successColor = Color(0xFF7cbf2b);
-  static const Color preparingColor = Color(0xFF02B730B7);
+  static const Color preparingColor = Color(0xB802B730);
   static const Color pendingColor = Color(0xFFff904a);
   static const Color readyToShippingColor = Color(0xFFFFB58B);
   static const Color finishColor = Color(0xFF02B730);

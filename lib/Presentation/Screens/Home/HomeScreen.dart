@@ -260,7 +260,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
   }
 
   void navigateToOrderDetails(String orderId) {
-    context.go(R_OrderDetails,extra: {orderIdKey : orderId});
+    context.push(R_OrderDetails,extra: {orderIdKey : orderId});
   }
 
 }

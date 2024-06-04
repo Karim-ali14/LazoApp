@@ -11,8 +11,10 @@ import '../../../../../Localization/keys.dart';
 import '../../../../Widgets/SvgIcons.dart';
 
 class OrderUserInformationWithOrderStatus extends StatelessWidget {
-  final ShowAllProviderSOrders200ResponseDataDataInner? orderModel;
-  const OrderUserInformationWithOrderStatus({super.key, this.orderModel});
+  final String? clientImage;
+  final String? clientName;
+  final String? stateId;
+  const OrderUserInformationWithOrderStatus({super.key, this.clientImage, this.clientName, this.stateId});
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +24,12 @@ class OrderUserInformationWithOrderStatus extends StatelessWidget {
         children: [
           Skeleton.replace(
               replacement: const Icon(Icons.abc,size: 42,),
-              child: orderModel?.user?.imagePath != null
+              child: clientImage != null
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: Image.network(
                         fit: BoxFit.cover,
-                        orderModel?.user?.imagePath ?? "",
+                        clientImage ?? "",
                         width: 42,
                         height: 42,
                         errorBuilder: (
@@ -51,7 +53,7 @@ class OrderUserInformationWithOrderStatus extends StatelessWidget {
               const SizedBox(height: 6),
               Skeleton.replace(
                 child: Text(
-                  orderModel?.user?.name ?? "",
+                  clientName ?? "",
                   style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w700,
                 ),
                 replacement: const Text("Mohamed Farag",
@@ -63,14 +65,14 @@ class OrderUserInformationWithOrderStatus extends StatelessWidget {
           Skeleton.leaf(
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: "${orderModel?.statusId}".getOrderStatusColor(context).withOpacity(0.1),
+                color: "${stateId}".getOrderStatusColor(context).withOpacity(0.1),
                 borderRadius: BorderRadius.circular(2),
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 11, vertical: 6),
                 child: Text(
-                  "${orderModel?.statusId}".getOrderStatus(context),
-                  style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts12w400.copyWith(color: "${orderModel?.statusId}".getOrderStatusColor(context)),
+                  "${stateId}".getOrderStatus(context),
+                  style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts12w400.copyWith(color: "${stateId}".getOrderStatusColor(context)),
                 ),
               ),
             ),
