@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **createdAt** | **String** |  | [optional] 
 **deliveryDate** | **String** |  | [optional] 
 **deliveryTime** | **String** |  | [optional] 
+**cancelledAt** | **String** |  | [optional] 
 **finishedAt** | **String** |  | [optional] 
 **id** | **num** |  | [optional] 
 **orderFamily** | **String** |  | [optional] 

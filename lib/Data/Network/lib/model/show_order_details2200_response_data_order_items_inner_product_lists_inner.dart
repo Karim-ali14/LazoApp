@@ -10,31 +10,21 @@
 
 part of openapi.api;
 
-class ShowOrderDetails2200ResponseDataOrderItemsInner {
-  /// Returns a new [ShowOrderDetails2200ResponseDataOrderItemsInner] instance.
-  ShowOrderDetails2200ResponseDataOrderItemsInner({
-    this.cardPrice,
+class ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner {
+  /// Returns a new [ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner] instance.
+  ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner({
     this.createdAt,
     this.id,
-    this.listsTotalPrice,
-    this.orderId,
-    this.price,
-    this.product,
+    this.isMultiSelectable,
+    this.items = const [],
+    this.maxSelectableItemsNumber,
+    this.name,
+    this.nameAr,
+    this.nameEn,
     this.productId,
-    this.providerId,
-    this.quantity,
-    this.service,
-    this.serviceId,
+    this.totalPrice,
     this.updatedAt,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? cardPrice;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -58,7 +48,9 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? listsTotalPrice;
+  num? isMultiSelectable;
+
+  List<ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInnerItemsInner> items;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -66,7 +58,7 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? orderId;
+  num? maxSelectableItemsNumber;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -74,10 +66,30 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? price;
+  String? name;
 
-  ShowOrderDetails2200ResponseDataOrderItemsInnerProduct? product;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? nameAr;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? nameEn;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   num? productId;
 
   ///
@@ -86,31 +98,7 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? providerId;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? quantity;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerService? service;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? serviceId;
+  num? totalPrice;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -121,48 +109,39 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
   String? updatedAt;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ShowOrderDetails2200ResponseDataOrderItemsInner &&
-     other.cardPrice == cardPrice &&
+  bool operator ==(Object other) => identical(this, other) || other is ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner &&
      other.createdAt == createdAt &&
      other.id == id &&
-     other.listsTotalPrice == listsTotalPrice &&
-     other.orderId == orderId &&
-     other.price == price &&
-     other.product == product &&
+     other.isMultiSelectable == isMultiSelectable &&
+     other.items == items &&
+     other.maxSelectableItemsNumber == maxSelectableItemsNumber &&
+     other.name == name &&
+     other.nameAr == nameAr &&
+     other.nameEn == nameEn &&
      other.productId == productId &&
-     other.providerId == providerId &&
-     other.quantity == quantity &&
-     other.service == service &&
-     other.serviceId == serviceId &&
+     other.totalPrice == totalPrice &&
      other.updatedAt == updatedAt;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (cardPrice == null ? 0 : cardPrice!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (id == null ? 0 : id!.hashCode) +
-    (listsTotalPrice == null ? 0 : listsTotalPrice!.hashCode) +
-    (orderId == null ? 0 : orderId!.hashCode) +
-    (price == null ? 0 : price!.hashCode) +
-    (product == null ? 0 : product!.hashCode) +
+    (isMultiSelectable == null ? 0 : isMultiSelectable!.hashCode) +
+    (items.hashCode) +
+    (maxSelectableItemsNumber == null ? 0 : maxSelectableItemsNumber!.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (nameAr == null ? 0 : nameAr!.hashCode) +
+    (nameEn == null ? 0 : nameEn!.hashCode) +
     (productId == null ? 0 : productId!.hashCode) +
-    (providerId == null ? 0 : providerId!.hashCode) +
-    (quantity == null ? 0 : quantity!.hashCode) +
-    (service == null ? 0 : service!.hashCode) +
-    (serviceId == null ? 0 : serviceId!.hashCode) +
+    (totalPrice == null ? 0 : totalPrice!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'ShowOrderDetails2200ResponseDataOrderItemsInner[cardPrice=$cardPrice, createdAt=$createdAt, id=$id, listsTotalPrice=$listsTotalPrice, orderId=$orderId, price=$price, product=$product, productId=$productId, providerId=$providerId, quantity=$quantity, service=$service, serviceId=$serviceId, updatedAt=$updatedAt]';
+  String toString() => 'ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner[createdAt=$createdAt, id=$id, isMultiSelectable=$isMultiSelectable, items=$items, maxSelectableItemsNumber=$maxSelectableItemsNumber, name=$name, nameAr=$nameAr, nameEn=$nameEn, productId=$productId, totalPrice=$totalPrice, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.cardPrice != null) {
-      json[r'card_price'] = this.cardPrice;
-    } else {
-      json[r'card_price'] = null;
-    }
     if (this.createdAt != null) {
       json[r'created_at'] = this.createdAt;
     } else {
@@ -173,50 +152,41 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
     } else {
       json[r'id'] = null;
     }
-    if (this.listsTotalPrice != null) {
-      json[r'lists_total_price'] = this.listsTotalPrice;
+    if (this.isMultiSelectable != null) {
+      json[r'is_multi_selectable'] = this.isMultiSelectable;
     } else {
-      json[r'lists_total_price'] = null;
+      json[r'is_multi_selectable'] = null;
     }
-    if (this.orderId != null) {
-      json[r'order_id'] = this.orderId;
+      json[r'items'] = this.items;
+    if (this.maxSelectableItemsNumber != null) {
+      json[r'max_selectable_items_number'] = this.maxSelectableItemsNumber;
     } else {
-      json[r'order_id'] = null;
+      json[r'max_selectable_items_number'] = null;
     }
-    if (this.price != null) {
-      json[r'price'] = this.price;
+    if (this.name != null) {
+      json[r'name'] = this.name;
     } else {
-      json[r'price'] = null;
+      json[r'name'] = null;
     }
-    if (this.product != null) {
-      json[r'product'] = this.product;
+    if (this.nameAr != null) {
+      json[r'name_ar'] = this.nameAr;
     } else {
-      json[r'product'] = null;
+      json[r'name_ar'] = null;
+    }
+    if (this.nameEn != null) {
+      json[r'name_en'] = this.nameEn;
+    } else {
+      json[r'name_en'] = null;
     }
     if (this.productId != null) {
       json[r'product_id'] = this.productId;
     } else {
       json[r'product_id'] = null;
     }
-    if (this.providerId != null) {
-      json[r'provider_id'] = this.providerId;
+    if (this.totalPrice != null) {
+      json[r'total_price'] = this.totalPrice;
     } else {
-      json[r'provider_id'] = null;
-    }
-    if (this.quantity != null) {
-      json[r'quantity'] = this.quantity;
-    } else {
-      json[r'quantity'] = null;
-    }
-    if (this.service != null) {
-      json[r'service'] = this.service;
-    } else {
-      json[r'service'] = null;
-    }
-    if (this.serviceId != null) {
-      json[r'service_id'] = this.serviceId;
-    } else {
-      json[r'service_id'] = null;
+      json[r'total_price'] = null;
     }
     if (this.updatedAt != null) {
       json[r'updated_at'] = this.updatedAt;
@@ -226,10 +196,10 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
     return json;
   }
 
-  /// Returns a new [ShowOrderDetails2200ResponseDataOrderItemsInner] instance and imports its values from
+  /// Returns a new [ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ShowOrderDetails2200ResponseDataOrderItemsInner? fromJson(dynamic value) {
+  static ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -238,54 +208,44 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ShowOrderDetails2200ResponseDataOrderItemsInner[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ShowOrderDetails2200ResponseDataOrderItemsInner[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ShowOrderDetails2200ResponseDataOrderItemsInner(
-        cardPrice: json[r'card_price'] == null
-            ? null
-            : num.parse(json[r'card_price'].toString()),
+      return ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner(
         createdAt: mapValueOfType<String>(json, r'created_at'),
         id: json[r'id'] == null
             ? null
             : num.parse(json[r'id'].toString()),
-        listsTotalPrice: json[r'lists_total_price'] == null
+        isMultiSelectable: json[r'is_multi_selectable'] == null
             ? null
-            : num.parse(json[r'lists_total_price'].toString()),
-        orderId: json[r'order_id'] == null
+            : num.parse(json[r'is_multi_selectable'].toString()),
+        items: ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInnerItemsInner.listFromJson(json[r'items']),
+        maxSelectableItemsNumber: json[r'max_selectable_items_number'] == null
             ? null
-            : num.parse(json[r'order_id'].toString()),
-        price: json[r'price'] == null
-            ? null
-            : num.parse(json[r'price'].toString()),
-        product: ShowOrderDetails2200ResponseDataOrderItemsInnerProduct.fromJson(json[r'product']),
+            : num.parse(json[r'max_selectable_items_number'].toString()),
+        name: mapValueOfType<String>(json, r'name'),
+        nameAr: mapValueOfType<String>(json, r'name_ar'),
+        nameEn: mapValueOfType<String>(json, r'name_en'),
         productId: json[r'product_id'] == null
             ? null
             : num.parse(json[r'product_id'].toString()),
-        providerId: json[r'provider_id'] == null
+        totalPrice: json[r'total_price'] == null
             ? null
-            : num.parse(json[r'provider_id'].toString()),
-        quantity: json[r'quantity'] == null
-            ? null
-            : num.parse(json[r'quantity'].toString()),
-        service: ShowAllProviderSOrders200ResponseDataDataInnerOrderItemsInnerService.fromJson(json[r'service']),
-        serviceId: json[r'service_id'] == null
-            ? null
-            : num.parse(json[r'service_id'].toString()),
+            : num.parse(json[r'total_price'].toString()),
         updatedAt: mapValueOfType<String>(json, r'updated_at'),
       );
     }
     return null;
   }
 
-  static List<ShowOrderDetails2200ResponseDataOrderItemsInner> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ShowOrderDetails2200ResponseDataOrderItemsInner>[];
+  static List<ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ShowOrderDetails2200ResponseDataOrderItemsInner.fromJson(row);
+        final value = ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -294,12 +254,12 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ShowOrderDetails2200ResponseDataOrderItemsInner> mapFromJson(dynamic json) {
-    final map = <String, ShowOrderDetails2200ResponseDataOrderItemsInner>{};
+  static Map<String, ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner> mapFromJson(dynamic json) {
+    final map = <String, ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ShowOrderDetails2200ResponseDataOrderItemsInner.fromJson(entry.value);
+        final value = ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -308,14 +268,14 @@ class ShowOrderDetails2200ResponseDataOrderItemsInner {
     return map;
   }
 
-  // maps a json object with a list of ShowOrderDetails2200ResponseDataOrderItemsInner-objects as value to a dart map
-  static Map<String, List<ShowOrderDetails2200ResponseDataOrderItemsInner>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ShowOrderDetails2200ResponseDataOrderItemsInner>>{};
+  // maps a json object with a list of ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner-objects as value to a dart map
+  static Map<String, List<ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ShowOrderDetails2200ResponseDataOrderItemsInner.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -17,6 +17,7 @@ class ManageOrders1200ResponseData {
     this.createdAt,
     this.deliveryDate,
     this.deliveryTime,
+    this.cancelledAt,
     this.finishedAt,
     this.id,
     this.orderFamily,
@@ -60,7 +61,9 @@ class ManageOrders1200ResponseData {
 
   Object? deliveryTime;
 
-  Object? finishedAt;
+  String? cancelledAt;
+
+  String? finishedAt;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -204,6 +207,7 @@ class ManageOrders1200ResponseData {
      other.createdAt == createdAt &&
      other.deliveryDate == deliveryDate &&
      other.deliveryTime == deliveryTime &&
+     other.cancelledAt == cancelledAt &&
      other.finishedAt == finishedAt &&
      other.id == id &&
      other.orderFamily == orderFamily &&
@@ -233,6 +237,7 @@ class ManageOrders1200ResponseData {
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (deliveryDate == null ? 0 : deliveryDate!.hashCode) +
     (deliveryTime == null ? 0 : deliveryTime!.hashCode) +
+    (cancelledAt == null ? 0 : cancelledAt!.hashCode) +
     (finishedAt == null ? 0 : finishedAt!.hashCode) +
     (id == null ? 0 : id!.hashCode) +
     (orderFamily == null ? 0 : orderFamily!.hashCode) +
@@ -256,7 +261,7 @@ class ManageOrders1200ResponseData {
     (userId == null ? 0 : userId!.hashCode);
 
   @override
-  String toString() => 'ManageOrders1200ResponseData[cancellationReason=$cancellationReason, createdAt=$createdAt, deliveryDate=$deliveryDate, deliveryTime=$deliveryTime, finishedAt=$finishedAt, id=$id, orderFamily=$orderFamily, orderItems=$orderItems, packagingProviderId=$packagingProviderId, paymentMethod=$paymentMethod, promocodeDiscountType=$promocodeDiscountType, promocodeDiscountValue=$promocodeDiscountValue, promocodeId=$promocodeId, rating=$rating, ratingComment=$ratingComment, receiverAddress=$receiverAddress, receiverPhoneNumber=$receiverPhoneNumber, referenceNumber=$referenceNumber, shippingFee=$shippingFee, statusId=$statusId, total=$total, totalWithShippingFee=$totalWithShippingFee, type=$type, updatedAt=$updatedAt, userId=$userId]';
+  String toString() => 'ManageOrders1200ResponseData[cancellationReason=$cancellationReason, createdAt=$createdAt, deliveryDate=$deliveryDate, deliveryTime=$deliveryTime, cancelledAt=$cancelledAt, finishedAt=$finishedAt, id=$id, orderFamily=$orderFamily, orderItems=$orderItems, packagingProviderId=$packagingProviderId, paymentMethod=$paymentMethod, promocodeDiscountType=$promocodeDiscountType, promocodeDiscountValue=$promocodeDiscountValue, promocodeId=$promocodeId, rating=$rating, ratingComment=$ratingComment, receiverAddress=$receiverAddress, receiverPhoneNumber=$receiverPhoneNumber, referenceNumber=$referenceNumber, shippingFee=$shippingFee, statusId=$statusId, total=$total, totalWithShippingFee=$totalWithShippingFee, type=$type, updatedAt=$updatedAt, userId=$userId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -279,6 +284,11 @@ class ManageOrders1200ResponseData {
       json[r'delivery_time'] = this.deliveryTime;
     } else {
       json[r'delivery_time'] = null;
+    }
+    if (this.cancelledAt != null) {
+      json[r'cancelled_at'] = this.cancelledAt;
+    } else {
+      json[r'cancelled_at'] = null;
     }
     if (this.finishedAt != null) {
       json[r'finished_at'] = this.finishedAt;
@@ -407,7 +417,8 @@ class ManageOrders1200ResponseData {
         createdAt: mapValueOfType<String>(json, r'created_at'),
         deliveryDate: mapValueOfType<Object>(json, r'delivery_date'),
         deliveryTime: mapValueOfType<Object>(json, r'delivery_time'),
-        finishedAt: mapValueOfType<Object>(json, r'finished_at'),
+        cancelledAt: mapValueOfType<String>(json, r'cancelled_at'),
+        finishedAt: mapValueOfType<String>(json, r'finished_at'),
         id: json[r'id'] == null
             ? null
             : num.parse(json[r'id'].toString()),

@@ -355,6 +355,12 @@ class ApiClient {
           return ShowOrderDetails2200ResponseData.fromJson(value);
         case 'ShowOrderDetails2200ResponseDataOrderItemsInner':
           return ShowOrderDetails2200ResponseDataOrderItemsInner.fromJson(value);
+        case 'ShowOrderDetails2200ResponseDataOrderItemsInnerProduct':
+          return ShowOrderDetails2200ResponseDataOrderItemsInnerProduct.fromJson(value);
+        case 'ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner':
+          return ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInner.fromJson(value);
+        case 'ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInnerItemsInner':
+          return ShowOrderDetails2200ResponseDataOrderItemsInnerProductListsInnerItemsInner.fromJson(value);
         case 'ShowProfile200Response':
           return ShowProfile200Response.fromJson(value);
         case 'ShowPromocodeDetails200Response':

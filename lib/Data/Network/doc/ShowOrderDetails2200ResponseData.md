@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **deliveryDate** | **String** |  | [optional] 
 **deliveryTime** | **String** |  | [optional] 
 **finishedAt** | **String** |  | [optional] 
+**cancelledAt** | **String** |  | [optional] 
 **id** | **num** |  | [optional] 
 **orderFamily** | **String** |  | [optional] 
 **orderItems** | [**List<ShowOrderDetails2200ResponseDataOrderItemsInner>**](ShowOrderDetails2200ResponseDataOrderItemsInner.md) |  | [optional] [default to const []]

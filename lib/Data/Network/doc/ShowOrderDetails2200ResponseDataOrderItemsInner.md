@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **listsTotalPrice** | **num** |  | [optional] 
 **orderId** | **num** |  | [optional] 
 **price** | **num** |  | [optional] 
-**product** | [**Object**](.md) |  | [optional] 
+**product** | [**ShowOrderDetails2200ResponseDataOrderItemsInnerProduct**](ShowOrderDetails2200ResponseDataOrderItemsInnerProduct.md) |  | [optional] 
 **productId** | **num** |  | [optional] 
 **providerId** | **num** |  | [optional] 
 **quantity** | **num** |  | [optional] 

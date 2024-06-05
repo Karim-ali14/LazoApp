@@ -43,7 +43,7 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     final orderDetails = ref.watch(getOrderDetailsStateProvider);
-    handleState(updateOrderStatusStateProvider,showLoading: true);
+    handleState(updateOrderStatusStateProvider, showLoading: true);
     return Scaffold(
       appBar: CustomAppBar(
         navigated: true,
@@ -77,9 +77,11 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 24),
                               child: OrderUserInformationWithOrderStatus(
-                                clientImage: orderDetails.data?.data?.user?.imagePath,
+                                clientImage:
+                                    orderDetails.data?.data?.user?.imagePath,
                                 clientName: orderDetails.data?.data?.user?.name,
-                                stateId: orderDetails.data?.data?.statusId.toString(),
+                                stateId: orderDetails.data?.data?.statusId
+                                    .toString(),
                               )),
                           const SizedBox(
                             height: 32,
@@ -104,7 +106,7 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
                                   icon: SVGIcons.totalPriceIcon(),
                                   title: "Total Price",
                                   value:
-                                  "${context.tr(SARKey)} ${orderDetails.data?.data?.total ?? 0}",
+                                      "${context.tr(SARKey)} ${orderDetails.data?.data?.total ?? 0}",
                                 ),
                                 const SizedBox(height: 16),
                                 InformationRowItem(
@@ -117,13 +119,14 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
                                   icon: SVGIcons.numberOfItemsIcon(),
                                   title: "No. of items",
                                   value:
-                                  "${orderDetails.data?.data?.orderItems.length} ${context.tr(itemsKey)}",
+                                      "${orderDetails.data?.data?.orderItems.length} ${context.tr(itemsKey)}",
                                 ),
                                 const SizedBox(height: 16),
                                 InformationRowItem(
                                   icon: SVGIcons.calendarIcon(),
                                   title: "Date / Time",
-                                  value: "${(orderDetails.data?.data?.createdAt??"").hhMm()}, ${(orderDetails.data?.data?.createdAt??"").ddMmYyyy()}",
+                                  value:
+                                      "${(orderDetails.data?.data?.createdAt ?? "").hhMm()}, ${(orderDetails.data?.data?.createdAt ?? "").ddMmYyyy()}",
                                   hasDivider: false,
                                 ),
                               ],
@@ -132,13 +135,27 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
                           const SizedBox(
                             height: 32,
                           ),
-                          Text("Products",
-                              style: AppTheme
-                                  .styleWithTextBlackAdelleSansExtendedFonts18w700),
+                          orderDetails.data?.data?.orderItems.isNotEmpty == true
+                              ? Text(
+                                  orderDetails.data?.data?.orderItems.first
+                                              .product !=
+                                          null
+                                      ? "Product"
+                                      : "Service",
+                                  style: AppTheme
+                                      .styleWithTextBlackAdelleSansExtendedFonts18w700)
+                              : const SizedBox(),
                           const SizedBox(
-                            height: 24,
+                            height: 18,
                           ),
-                          ProductItemCard()
+                          ...(List.generate(
+                              orderDetails.data?.data?.orderItems.length ?? 0,
+                                  (index) => Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                    child: ProductItemCard(
+                                    item: orderDetails
+                                        .data?.data?.orderItems[index]),
+                                  )))
                         ],
                       ),
                     ),
@@ -187,7 +204,8 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
               orderModel?.orderFamily == "ready_made" ? "10" : "11", () {
             ref
                 .read(getOrderDetailsStateProvider.notifier)
-                .updateOrderDetailsState(orderModel?.orderFamily == "ready_made" ? 10 : 11);
+                .updateOrderDetailsState(
+                    orderModel?.orderFamily == "ready_made" ? 10 : 11);
           });
           break;
         }
