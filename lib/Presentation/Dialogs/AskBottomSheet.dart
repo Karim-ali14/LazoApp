@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -6,11 +8,19 @@ import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 
 import '../Widgets/AppButton.dart';
 
+typedef OnPositiveButtonClick = Function();
+
 class AskBottomSheet extends StatefulWidget {
   final String title;
   final String description;
   final Widget icon;
-  const AskBottomSheet({super.key, required this.title, required this.description, required this.icon});
+  final OnPositiveButtonClick onPositiveButtonClick;
+  const AskBottomSheet(
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.icon,
+      required this.onPositiveButtonClick});
 
   @override
   State<AskBottomSheet> createState() => _AskBottomSheetState();
@@ -20,7 +30,8 @@ class _AskBottomSheetState extends State<AskBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal,vertical: 24),
+      padding: EdgeInsets.symmetric(
+          horizontal: defaultPaddingHorizontal, vertical: 24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -46,33 +57,36 @@ class _AskBottomSheetState extends State<AskBottomSheet> {
             children: [
               Expanded(
                   child: AppButton(
-                    onPress: onPositiveButtonClick,
-                    child: Center(
-                        child: Text(
-                          "Yes",
-                          style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts16w400
-                              .copyWith(color: Colors.white),
-                        )),
-                  )),
+                onPress: () {
+                  widget.onPositiveButtonClick.call();
+                },
+                child: Center(
+                    child: Text(
+                  "Yes",
+                  style: AppTheme
+                      .styleWithTextGray7AdelleSansExtendedFonts16w400
+                      .copyWith(color: Colors.white),
+                )),
+              )),
               SizedBox(width: 8),
               Expanded(
                   child: AppButton(
-                    onPress: (){context.pop();},
-                    backColor: AppTheme.mainAppColorLight2,
-                    child: Center(
-                        child: Text(
-                          "No",
-                          style: AppTheme.styleWithTextGray7AdelleSansExtendedFonts16w400
-                              .copyWith(color: AppTheme.mainAppColor),
-                        )),
-                  ))
+                onPress: () {
+                  context.pop();
+                },
+                backColor: AppTheme.mainAppColorLight2,
+                child: Center(
+                    child: Text(
+                  "No",
+                  style: AppTheme
+                      .styleWithTextGray7AdelleSansExtendedFonts16w400
+                      .copyWith(color: AppTheme.mainAppColor),
+                )),
+              ))
             ],
           )
         ],
       ),
     );
-  }
-  void onPositiveButtonClick(){
-
   }
 }

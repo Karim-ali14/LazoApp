@@ -1,27 +1,45 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Constants/Constants.dart';
+import 'package:lazo_provider/Data/Models/StateModel.dart';
+import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
 import 'package:lazo_provider/Presentation/Dialogs/AskBottomSheet.dart';
 import 'package:lazo_provider/Presentation/Dialogs/ContactUsBottomSheet.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
 import 'package:lazo_provider/Presentation/Widgets/SvgIcons.dart';
 
+import '../../StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import 'Componants/MoreItemCard.dart';
 
-class MoreScreen extends StatefulWidget {
+class MoreScreen extends ConsumerStatefulWidget {
   const MoreScreen({super.key});
 
   @override
-  State<MoreScreen> createState() => _MoreScreenState();
+  ConsumerState<MoreScreen> createState() => _MoreScreenState();
 }
 
-class _MoreScreenState extends State<MoreScreen> {
+class _MoreScreenState extends ConsumerState<MoreScreen> {
+
   @override
   Widget build(BuildContext context) {
+
+    handleState(providerLogoutStateProvider,showLoading: true , onSuccess: (res){
+      if(res.state == DataState.SUCCESS){
+        navigateToLogin();
+      }
+    });
+
+    handleState(providerDeleteAccountStateProvider,showLoading: true , onSuccess: (res){
+      if(res.state == DataState.SUCCESS){
+        navigateToLogin();
+      }
+    });
+
     return Scaffold(
       body: SafeArea(
           child: Column(
@@ -163,7 +181,9 @@ class _MoreScreenState extends State<MoreScreen> {
         AskBottomSheet(
           title: "Sign Out",
           description: "Are you sure you want to sign out?",
-          icon: SVGIcons.sadFaceIcon()
+          icon: SVGIcons.sadFaceIcon(), onPositiveButtonClick: () {
+            ref.read(providerLogoutStateProvider.notifier).logout();
+        },
         )
     );
   }
@@ -178,8 +198,14 @@ class _MoreScreenState extends State<MoreScreen> {
         AskBottomSheet(
           title: "Delete Account",
           description: "Are you sure you want to delete account?",
-          icon: SVGIcons.deleteAccountIcIcon()
+          icon: SVGIcons.deleteAccountIcIcon(), onPositiveButtonClick: () {
+            ref.read(providerDeleteAccountStateProvider.notifier).delete();
+        },
         )
     );
+  }
+
+  void navigateToLogin() {
+    context.go(R_LoginScreen);
   }
 }

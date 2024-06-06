@@ -35,7 +35,9 @@ class _NotificationScreenState extends ConsumerState<NotificationScreen> {
   Widget build(BuildContext context) {
     final notificationState = ref.watch(showNotificationStateNotifiers);
     handleState(makeNotificationReadStateNotifiers,showLoading: true,onSuccess: (res){
-      navigateToOrderDetails(res.data?.data?.orderId.toString() ?? "");
+      if(res.data?.data?.type == "order") {
+        navigateToOrderDetails(res.data?.data?.orderId.toString() ?? "");
+      }
     });
     handleState(showNotificationStateNotifiers,showLoading: true,onSuccess: (res){
       notificationList.clear();

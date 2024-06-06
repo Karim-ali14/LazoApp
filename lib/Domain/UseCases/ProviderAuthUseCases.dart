@@ -72,7 +72,19 @@ class LogoutUseCase extends StateNotifier<StateModel<String>> {
       ref.read(providerTokenStateProvider.notifier).logout();
     });
   }
+}
 
+class ProviderDeleteAccountUseCase extends StateNotifier<StateModel<bool>> {
+  final Ref ref;
+  final ProviderApi providerApi;
+  ProviderDeleteAccountUseCase(this.ref, this.providerApi) : super(StateModel());
+
+  void delete() async {
+    state = StateModel.loading();
+    request(()=> providerApi.providerAccountDeleteGet(),onComplete: (resp){
+      ref.read(providerTokenStateProvider.notifier).logout();
+    });
+  }
 }
 //
 // class UserSignInUseCase extends StateNotifier<StateModel<UserRegisterResponse>> {
