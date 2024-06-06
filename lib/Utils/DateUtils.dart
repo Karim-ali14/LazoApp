@@ -11,6 +11,19 @@ extension DateExtension on DateTime {
     DateFormat formatter = DateFormat.yMd(locale?.languageCode ?? 'en');
     return formatter.format(this);
   }
+
+  String ddMmYyyy([Locale? locale]) {
+    DateFormat format2 = DateFormat("dd/MM/yyyy", "en");
+    return format2.format(this);
+  }
+}
+extension StringToDate on String {
+  String stringToDate({String format = "dd/MM/yyyy", String locale = "en"}) {
+    DateFormat format1 = DateFormat("yyyy-MM-dd'T'HH:mm:ss", locale);
+    DateTime date = format1.parse(this);
+    DateFormat format2 = DateFormat(format, locale);
+    return format2.format(date);
+  }
 }
 extension FormattedDate on String {
   String ddMmYyyy() {

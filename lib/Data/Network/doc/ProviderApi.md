@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**manageOrders1**](ProviderApi.md#manageorders1) | **POST** /provider/order/manage | manage orders
+[**providerAccountDeleteGet**](ProviderApi.md#provideraccountdeleteget) | **GET** /provider/account-delete | provider\\'s account deleted successfully
 [**providerLogoutGet**](ProviderApi.md#providerlogoutget) | **GET** /provider/logout | provider logout
 [**providerProfileShowGet**](ProviderApi.md#providerprofileshowget) | **GET** /provider/profile/show | show profile
 [**providerProfileUpdatePost**](ProviderApi.md#providerprofileupdatepost) | **POST** /provider/profile/update | update profile main data
@@ -69,6 +70,48 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **providerAccountDeleteGet**
+> providerAccountDeleteGet()
+
+provider\\'s account deleted successfully
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = ProviderApi();
+
+try {
+    api_instance.providerAccountDeleteGet();
+} catch (e) {
+    print('Exception when calling ProviderApi->providerAccountDeleteGet: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

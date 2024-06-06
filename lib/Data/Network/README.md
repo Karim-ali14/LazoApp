@@ -70,6 +70,7 @@ Class | Method | HTTP request | Description
 *Orders12Api* | [**showAllProviderSOrders**](doc\/Orders12Api.md#showallprovidersorders) | **GET** /provider/orders | show all provider's orders
 *Orders12Api* | [**showOrderDetails2**](doc\/Orders12Api.md#showorderdetails2) | **GET** /provider/order/show | show order details
 *ProviderApi* | [**manageOrders1**](doc\/ProviderApi.md#manageorders1) | **POST** /provider/order/manage | manage orders
+*ProviderApi* | [**providerAccountDeleteGet**](doc\/ProviderApi.md#provideraccountdeleteget) | **GET** /provider/account-delete | provider\\'s account deleted successfully
 *ProviderApi* | [**providerLogoutGet**](doc\/ProviderApi.md#providerlogoutget) | **GET** /provider/logout | provider logout
 *ProviderApi* | [**providerProfileShowGet**](doc\/ProviderApi.md#providerprofileshowget) | **GET** /provider/profile/show | show profile
 *ProviderApi* | [**providerProfileUpdatePost**](doc\/ProviderApi.md#providerprofileupdatepost) | **POST** /provider/profile/update | update profile main data
@@ -188,6 +189,7 @@ Class | Method | HTTP request | Description
  - [ShowNotifications1200Response](doc\/ShowNotifications1200Response.md)
  - [ShowNotifications1200ResponseDataInner](doc\/ShowNotifications1200ResponseDataInner.md)
  - [ShowNotifications1200ResponseDataInnerProvider](doc\/ShowNotifications1200ResponseDataInnerProvider.md)
+ - [ShowNotifications1200ResponseDataInnerUser](doc\/ShowNotifications1200ResponseDataInnerUser.md)
  - [ShowOrderDetails2200Response](doc\/ShowOrderDetails2200Response.md)
  - [ShowOrderDetails2200ResponseData](doc\/ShowOrderDetails2200ResponseData.md)
  - [ShowOrderDetails2200ResponseDataOrderItemsInner](doc\/ShowOrderDetails2200ResponseDataOrderItemsInner.md)

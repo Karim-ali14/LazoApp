@@ -3345,6 +3345,19 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /provider/account-delete:
+    get:
+      tags:
+        - provider
+      summary: provider\'s account deleted successfully
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
   /client/register:
     post:
       tags:
@@ -6524,6 +6537,10 @@ paths:
                         is_read:
                           type: number
                           example: 0
+                        type:
+                          type: string
+                        order_id:
+                          type: number
                         notification:
                           type: string
                           example: طلب جديد برقم 80SDJ4تم تنفيذه بنجاح من خلال العميل first client
@@ -6686,7 +6703,36 @@ paths:
                           example: '2024-05-19T14:45:32.000000Z'
                         user:
                           nullable: true
-                          example: null
+                          type: object
+                          properties:
+                            id:
+                              type: number
+                            name:
+                              type: string
+                            email:
+                              type: string
+                            phone:
+                              type: string
+                            image:
+                              type: string
+                            imagePath:
+                              type: string
+                            balance:
+                              type: number
+                            device_type:
+                              type: string
+                            lang:
+                              type: string
+                            status:
+                              type: string
+                            created_at:
+                              type: string
+                            updated_at:
+                              type: string
+                            city_id:
+                              type: number
+                            fcm_token:
+                              type: string
                         user_id:
                           nullable: true
                           example: null
@@ -6907,6 +6953,10 @@ paths:
                       is_read:
                         type: number
                         example: 1
+                      order_id:
+                        type: number
+                      type:
+                        type: string
                       notification:
                         type: string
                         example: طلب جديد برقم 80SDJ4تم تنفيذه بنجاح من خلال العميل first client
@@ -7175,4 +7225,3 @@ paths:
           description: ''
       security:
         - bearerAuth: []
-

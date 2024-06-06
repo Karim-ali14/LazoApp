@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **image** | **String** |  | [optional] 
 **imagePath** | **String** |  | [optional] 
 **isRead** | **num** |  | [optional] 
+**orderId** | **num** |  | [optional] 
+**type** | **String** |  | [optional] 
 **notification** | **String** |  | [optional] 
 **notificationAr** | **String** |  | [optional] 
 **notificationEn** | **String** |  | [optional] 

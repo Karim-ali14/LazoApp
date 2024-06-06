@@ -59,21 +59,21 @@ class ChangePasswordUseCase extends StateNotifier<StateModel<Object>>{
     request(() => authApi.resetPasswordPost(emailOrPhone: emailOrPhone,newPassword: newPassword,confirmNewPassword: confirmNewPassword ,accountType : "provider"));
   }
 }
-// class UserSignUpUseCase extends StateNotifier<StateModel<String>> {
-//
-//   final Ref ref;
-//   final PublicAuthApi _authenticationApi;
-//   UserSignUpUseCase(this.ref, this._authenticationApi) : super(StateModel());
-//
-//   void signUp(SignUpRequest signUpRequest) async {
-//     state = StateModel.loading();
-//     print("Request $signUpRequest");
-//     request(()=> _authenticationApi.clientRegisterPost(lang: "en",name: signUpRequest.fullName,email: signUpRequest.email,countryCode: signUpRequest.countryCode,phone: int.tryParse(signUpRequest.phone),termsAndConditions: 1),onComplete: (resp){
-//       ref.read(userState.notifier).setUser(resp.data!);
-//     });
-//   }
-//
-// }
+
+class LogoutUseCase extends StateNotifier<StateModel<String>> {
+
+  final Ref ref;
+  final ProviderApi providerApi;
+  LogoutUseCase(this.ref, this.providerApi) : super(StateModel());
+
+  void logout() async {
+    state = StateModel.loading();
+    request(()=> providerApi.providerLogoutGet(),onComplete: (resp){
+      ref.read(providerTokenStateProvider.notifier).logout();
+    });
+  }
+
+}
 //
 // class UserSignInUseCase extends StateNotifier<StateModel<UserRegisterResponse>> {
 //

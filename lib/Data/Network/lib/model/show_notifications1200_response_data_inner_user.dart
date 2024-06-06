@@ -10,27 +10,23 @@
 
 part of openapi.api;
 
-class ReadANotification1200ResponseData {
-  /// Returns a new [ReadANotification1200ResponseData] instance.
-  ReadANotification1200ResponseData({
-    this.createdAt,
+class ShowNotifications1200ResponseDataInnerUser {
+  /// Returns a new [ShowNotifications1200ResponseDataInnerUser] instance.
+  ShowNotifications1200ResponseDataInnerUser({
     this.id,
+    this.name,
+    this.email,
+    this.phone,
     this.image,
     this.imagePath,
-    this.isRead,
-    this.orderId,
-    this.type,
-    this.notification,
-    this.notificationAr,
-    this.notificationEn,
-    this.provider,
-    this.providerId,
-    this.title,
-    this.titleAr,
-    this.titleEn,
+    this.balance,
+    this.deviceType,
+    this.lang,
+    this.status,
+    this.createdAt,
     this.updatedAt,
-    this.user,
-    this.userId,
+    this.cityId,
+    this.fcmToken,
   });
 
   ///
@@ -39,7 +35,7 @@ class ReadANotification1200ResponseData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? createdAt;
+  num? id;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -47,7 +43,23 @@ class ReadANotification1200ResponseData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? id;
+  String? name;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? email;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? phone;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -71,7 +83,7 @@ class ReadANotification1200ResponseData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? isRead;
+  num? balance;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -79,7 +91,7 @@ class ReadANotification1200ResponseData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? orderId;
+  String? deviceType;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -87,7 +99,7 @@ class ReadANotification1200ResponseData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? type;
+  String? lang;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -95,7 +107,7 @@ class ReadANotification1200ResponseData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? notification;
+  String? status;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -103,55 +115,7 @@ class ReadANotification1200ResponseData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? notificationAr;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? notificationEn;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ShowNotifications1200ResponseDataInnerProvider? provider;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? providerId;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? title;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? titleAr;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? titleEn;
+  String? createdAt;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -161,67 +125,81 @@ class ReadANotification1200ResponseData {
   ///
   String? updatedAt;
 
-  Object? user;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? cityId;
 
-  Object? userId;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? fcmToken;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ReadANotification1200ResponseData &&
-     other.createdAt == createdAt &&
+  bool operator ==(Object other) => identical(this, other) || other is ShowNotifications1200ResponseDataInnerUser &&
      other.id == id &&
+     other.name == name &&
+     other.email == email &&
+     other.phone == phone &&
      other.image == image &&
      other.imagePath == imagePath &&
-     other.isRead == isRead &&
-     other.orderId == orderId &&
-     other.type == type &&
-     other.notification == notification &&
-     other.notificationAr == notificationAr &&
-     other.notificationEn == notificationEn &&
-     other.provider == provider &&
-     other.providerId == providerId &&
-     other.title == title &&
-     other.titleAr == titleAr &&
-     other.titleEn == titleEn &&
+     other.balance == balance &&
+     other.deviceType == deviceType &&
+     other.lang == lang &&
+     other.status == status &&
+     other.createdAt == createdAt &&
      other.updatedAt == updatedAt &&
-     other.user == user &&
-     other.userId == userId;
+     other.cityId == cityId &&
+     other.fcmToken == fcmToken;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (createdAt == null ? 0 : createdAt!.hashCode) +
     (id == null ? 0 : id!.hashCode) +
+    (name == null ? 0 : name!.hashCode) +
+    (email == null ? 0 : email!.hashCode) +
+    (phone == null ? 0 : phone!.hashCode) +
     (image == null ? 0 : image!.hashCode) +
     (imagePath == null ? 0 : imagePath!.hashCode) +
-    (isRead == null ? 0 : isRead!.hashCode) +
-    (orderId == null ? 0 : orderId!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (notification == null ? 0 : notification!.hashCode) +
-    (notificationAr == null ? 0 : notificationAr!.hashCode) +
-    (notificationEn == null ? 0 : notificationEn!.hashCode) +
-    (provider == null ? 0 : provider!.hashCode) +
-    (providerId == null ? 0 : providerId!.hashCode) +
-    (title == null ? 0 : title!.hashCode) +
-    (titleAr == null ? 0 : titleAr!.hashCode) +
-    (titleEn == null ? 0 : titleEn!.hashCode) +
+    (balance == null ? 0 : balance!.hashCode) +
+    (deviceType == null ? 0 : deviceType!.hashCode) +
+    (lang == null ? 0 : lang!.hashCode) +
+    (status == null ? 0 : status!.hashCode) +
+    (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (user == null ? 0 : user!.hashCode) +
-    (userId == null ? 0 : userId!.hashCode);
+    (cityId == null ? 0 : cityId!.hashCode) +
+    (fcmToken == null ? 0 : fcmToken!.hashCode);
 
   @override
-  String toString() => 'ReadANotification1200ResponseData[createdAt=$createdAt, id=$id, image=$image, imagePath=$imagePath, isRead=$isRead, orderId=$orderId, type=$type, notification=$notification, notificationAr=$notificationAr, notificationEn=$notificationEn, provider=$provider, providerId=$providerId, title=$title, titleAr=$titleAr, titleEn=$titleEn, updatedAt=$updatedAt, user=$user, userId=$userId]';
+  String toString() => 'ShowNotifications1200ResponseDataInnerUser[id=$id, name=$name, email=$email, phone=$phone, image=$image, imagePath=$imagePath, balance=$balance, deviceType=$deviceType, lang=$lang, status=$status, createdAt=$createdAt, updatedAt=$updatedAt, cityId=$cityId, fcmToken=$fcmToken]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.createdAt != null) {
-      json[r'created_at'] = this.createdAt;
-    } else {
-      json[r'created_at'] = null;
-    }
     if (this.id != null) {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
+    }
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    } else {
+      json[r'name'] = null;
+    }
+    if (this.email != null) {
+      json[r'email'] = this.email;
+    } else {
+      json[r'email'] = null;
+    }
+    if (this.phone != null) {
+      json[r'phone'] = this.phone;
+    } else {
+      json[r'phone'] = null;
     }
     if (this.image != null) {
       json[r'image'] = this.image;
@@ -233,83 +211,53 @@ class ReadANotification1200ResponseData {
     } else {
       json[r'imagePath'] = null;
     }
-    if (this.isRead != null) {
-      json[r'is_read'] = this.isRead;
+    if (this.balance != null) {
+      json[r'balance'] = this.balance;
     } else {
-      json[r'is_read'] = null;
+      json[r'balance'] = null;
     }
-    if (this.orderId != null) {
-      json[r'order_id'] = this.orderId;
+    if (this.deviceType != null) {
+      json[r'device_type'] = this.deviceType;
     } else {
-      json[r'order_id'] = null;
+      json[r'device_type'] = null;
     }
-    if (this.type != null) {
-      json[r'type'] = this.type;
+    if (this.lang != null) {
+      json[r'lang'] = this.lang;
     } else {
-      json[r'type'] = null;
+      json[r'lang'] = null;
     }
-    if (this.notification != null) {
-      json[r'notification'] = this.notification;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'notification'] = null;
+      json[r'status'] = null;
     }
-    if (this.notificationAr != null) {
-      json[r'notification_ar'] = this.notificationAr;
+    if (this.createdAt != null) {
+      json[r'created_at'] = this.createdAt;
     } else {
-      json[r'notification_ar'] = null;
-    }
-    if (this.notificationEn != null) {
-      json[r'notification_en'] = this.notificationEn;
-    } else {
-      json[r'notification_en'] = null;
-    }
-    if (this.provider != null) {
-      json[r'provider'] = this.provider;
-    } else {
-      json[r'provider'] = null;
-    }
-    if (this.providerId != null) {
-      json[r'provider_id'] = this.providerId;
-    } else {
-      json[r'provider_id'] = null;
-    }
-    if (this.title != null) {
-      json[r'title'] = this.title;
-    } else {
-      json[r'title'] = null;
-    }
-    if (this.titleAr != null) {
-      json[r'title_ar'] = this.titleAr;
-    } else {
-      json[r'title_ar'] = null;
-    }
-    if (this.titleEn != null) {
-      json[r'title_en'] = this.titleEn;
-    } else {
-      json[r'title_en'] = null;
+      json[r'created_at'] = null;
     }
     if (this.updatedAt != null) {
       json[r'updated_at'] = this.updatedAt;
     } else {
       json[r'updated_at'] = null;
     }
-    if (this.user != null) {
-      json[r'user'] = this.user;
+    if (this.cityId != null) {
+      json[r'city_id'] = this.cityId;
     } else {
-      json[r'user'] = null;
+      json[r'city_id'] = null;
     }
-    if (this.userId != null) {
-      json[r'user_id'] = this.userId;
+    if (this.fcmToken != null) {
+      json[r'fcm_token'] = this.fcmToken;
     } else {
-      json[r'user_id'] = null;
+      json[r'fcm_token'] = null;
     }
     return json;
   }
 
-  /// Returns a new [ReadANotification1200ResponseData] instance and imports its values from
+  /// Returns a new [ShowNotifications1200ResponseDataInnerUser] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ReadANotification1200ResponseData? fromJson(dynamic value) {
+  static ShowNotifications1200ResponseDataInnerUser? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -318,49 +266,43 @@ class ReadANotification1200ResponseData {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ReadANotification1200ResponseData[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ReadANotification1200ResponseData[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ShowNotifications1200ResponseDataInnerUser[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ShowNotifications1200ResponseDataInnerUser[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ReadANotification1200ResponseData(
-        createdAt: mapValueOfType<String>(json, r'created_at'),
+      return ShowNotifications1200ResponseDataInnerUser(
         id: json[r'id'] == null
             ? null
             : num.parse(json[r'id'].toString()),
+        name: mapValueOfType<String>(json, r'name'),
+        email: mapValueOfType<String>(json, r'email'),
+        phone: mapValueOfType<String>(json, r'phone'),
         image: mapValueOfType<String>(json, r'image'),
         imagePath: mapValueOfType<String>(json, r'imagePath'),
-        isRead: json[r'is_read'] == null
+        balance: json[r'balance'] == null
             ? null
-            : num.parse(json[r'is_read'].toString()),
-        orderId: json[r'order_id'] == null
-            ? null
-            : num.parse(json[r'order_id'].toString()),
-        type: mapValueOfType<String>(json, r'type'),
-        notification: mapValueOfType<String>(json, r'notification'),
-        notificationAr: mapValueOfType<String>(json, r'notification_ar'),
-        notificationEn: mapValueOfType<String>(json, r'notification_en'),
-        provider: ShowNotifications1200ResponseDataInnerProvider.fromJson(json[r'provider']),
-        providerId: json[r'provider_id'] == null
-            ? null
-            : num.parse(json[r'provider_id'].toString()),
-        title: mapValueOfType<String>(json, r'title'),
-        titleAr: mapValueOfType<String>(json, r'title_ar'),
-        titleEn: mapValueOfType<String>(json, r'title_en'),
+            : num.parse(json[r'balance'].toString()),
+        deviceType: mapValueOfType<String>(json, r'device_type'),
+        lang: mapValueOfType<String>(json, r'lang'),
+        status: mapValueOfType<String>(json, r'status'),
+        createdAt: mapValueOfType<String>(json, r'created_at'),
         updatedAt: mapValueOfType<String>(json, r'updated_at'),
-        user: mapValueOfType<Object>(json, r'user'),
-        userId: mapValueOfType<Object>(json, r'user_id'),
+        cityId: json[r'city_id'] == null
+            ? null
+            : num.parse(json[r'city_id'].toString()),
+        fcmToken: mapValueOfType<String>(json, r'fcm_token'),
       );
     }
     return null;
   }
 
-  static List<ReadANotification1200ResponseData> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ReadANotification1200ResponseData>[];
+  static List<ShowNotifications1200ResponseDataInnerUser> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ShowNotifications1200ResponseDataInnerUser>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ReadANotification1200ResponseData.fromJson(row);
+        final value = ShowNotifications1200ResponseDataInnerUser.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -369,12 +311,12 @@ class ReadANotification1200ResponseData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ReadANotification1200ResponseData> mapFromJson(dynamic json) {
-    final map = <String, ReadANotification1200ResponseData>{};
+  static Map<String, ShowNotifications1200ResponseDataInnerUser> mapFromJson(dynamic json) {
+    final map = <String, ShowNotifications1200ResponseDataInnerUser>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ReadANotification1200ResponseData.fromJson(entry.value);
+        final value = ShowNotifications1200ResponseDataInnerUser.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -383,14 +325,14 @@ class ReadANotification1200ResponseData {
     return map;
   }
 
-  // maps a json object with a list of ReadANotification1200ResponseData-objects as value to a dart map
-  static Map<String, List<ReadANotification1200ResponseData>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ReadANotification1200ResponseData>>{};
+  // maps a json object with a list of ShowNotifications1200ResponseDataInnerUser-objects as value to a dart map
+  static Map<String, List<ShowNotifications1200ResponseDataInnerUser>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ShowNotifications1200ResponseDataInnerUser>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ReadANotification1200ResponseData.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ShowNotifications1200ResponseDataInnerUser.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

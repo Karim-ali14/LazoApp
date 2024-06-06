@@ -349,6 +349,8 @@ class ApiClient {
           return ShowNotifications1200ResponseDataInner.fromJson(value);
         case 'ShowNotifications1200ResponseDataInnerProvider':
           return ShowNotifications1200ResponseDataInnerProvider.fromJson(value);
+        case 'ShowNotifications1200ResponseDataInnerUser':
+          return ShowNotifications1200ResponseDataInnerUser.fromJson(value);
         case 'ShowOrderDetails2200Response':
           return ShowOrderDetails2200Response.fromJson(value);
         case 'ShowOrderDetails2200ResponseData':

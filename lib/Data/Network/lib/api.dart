@@ -120,6 +120,7 @@ part 'model/show_cart_details200_response_data_cart_items_inner_service.dart';
 part 'model/show_notifications1200_response.dart';
 part 'model/show_notifications1200_response_data_inner.dart';
 part 'model/show_notifications1200_response_data_inner_provider.dart';
+part 'model/show_notifications1200_response_data_inner_user.dart';
 part 'model/show_order_details2200_response.dart';
 part 'model/show_order_details2200_response_data.dart';
 part 'model/show_order_details2200_response_data_order_items_inner.dart';

@@ -18,6 +18,8 @@ class ShowNotifications1200ResponseDataInner {
     this.image,
     this.imagePath,
     this.isRead,
+    this.type,
+    this.orderId,
     this.notification,
     this.notificationAr,
     this.notificationEn,
@@ -70,6 +72,22 @@ class ShowNotifications1200ResponseDataInner {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   num? isRead;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? type;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? orderId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -143,7 +161,7 @@ class ShowNotifications1200ResponseDataInner {
   ///
   String? updatedAt;
 
-  Object? user;
+  ShowNotifications1200ResponseDataInnerUser? user;
 
   Object? userId;
 
@@ -154,6 +172,8 @@ class ShowNotifications1200ResponseDataInner {
      other.image == image &&
      other.imagePath == imagePath &&
      other.isRead == isRead &&
+     other.type == type &&
+     other.orderId == orderId &&
      other.notification == notification &&
      other.notificationAr == notificationAr &&
      other.notificationEn == notificationEn &&
@@ -174,6 +194,8 @@ class ShowNotifications1200ResponseDataInner {
     (image == null ? 0 : image!.hashCode) +
     (imagePath == null ? 0 : imagePath!.hashCode) +
     (isRead == null ? 0 : isRead!.hashCode) +
+    (type == null ? 0 : type!.hashCode) +
+    (orderId == null ? 0 : orderId!.hashCode) +
     (notification == null ? 0 : notification!.hashCode) +
     (notificationAr == null ? 0 : notificationAr!.hashCode) +
     (notificationEn == null ? 0 : notificationEn!.hashCode) +
@@ -187,7 +209,7 @@ class ShowNotifications1200ResponseDataInner {
     (userId == null ? 0 : userId!.hashCode);
 
   @override
-  String toString() => 'ShowNotifications1200ResponseDataInner[createdAt=$createdAt, id=$id, image=$image, imagePath=$imagePath, isRead=$isRead, notification=$notification, notificationAr=$notificationAr, notificationEn=$notificationEn, provider=$provider, providerId=$providerId, title=$title, titleAr=$titleAr, titleEn=$titleEn, updatedAt=$updatedAt, user=$user, userId=$userId]';
+  String toString() => 'ShowNotifications1200ResponseDataInner[createdAt=$createdAt, id=$id, image=$image, imagePath=$imagePath, isRead=$isRead, type=$type, orderId=$orderId, notification=$notification, notificationAr=$notificationAr, notificationEn=$notificationEn, provider=$provider, providerId=$providerId, title=$title, titleAr=$titleAr, titleEn=$titleEn, updatedAt=$updatedAt, user=$user, userId=$userId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -215,6 +237,16 @@ class ShowNotifications1200ResponseDataInner {
       json[r'is_read'] = this.isRead;
     } else {
       json[r'is_read'] = null;
+    }
+    if (this.type != null) {
+      json[r'type'] = this.type;
+    } else {
+      json[r'type'] = null;
+    }
+    if (this.orderId != null) {
+      json[r'order_id'] = this.orderId;
+    } else {
+      json[r'order_id'] = null;
     }
     if (this.notification != null) {
       json[r'notification'] = this.notification;
@@ -302,6 +334,10 @@ class ShowNotifications1200ResponseDataInner {
         isRead: json[r'is_read'] == null
             ? null
             : num.parse(json[r'is_read'].toString()),
+        type: mapValueOfType<String>(json, r'type'),
+        orderId: json[r'order_id'] == null
+            ? null
+            : num.parse(json[r'order_id'].toString()),
         notification: mapValueOfType<String>(json, r'notification'),
         notificationAr: mapValueOfType<String>(json, r'notification_ar'),
         notificationEn: mapValueOfType<String>(json, r'notification_en'),
@@ -313,7 +349,7 @@ class ShowNotifications1200ResponseDataInner {
         titleAr: mapValueOfType<String>(json, r'title_ar'),
         titleEn: mapValueOfType<String>(json, r'title_en'),
         updatedAt: mapValueOfType<String>(json, r'updated_at'),
-        user: mapValueOfType<Object>(json, r'user'),
+        user: ShowNotifications1200ResponseDataInnerUser.fromJson(json[r'user']),
         userId: mapValueOfType<Object>(json, r'user_id'),
       );
     }

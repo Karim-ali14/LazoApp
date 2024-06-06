@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **image** | **String** |  | [optional] 
 **imagePath** | **String** |  | [optional] 
 **isRead** | **num** |  | [optional] 
+**type** | **String** |  | [optional] 
+**orderId** | **num** |  | [optional] 
 **notification** | **String** |  | [optional] 
 **notificationAr** | **String** |  | [optional] 
 **notificationEn** | **String** |  | [optional] 
@@ -22,7 +24,7 @@ Name | Type | Description | Notes
 **titleAr** | **String** |  | [optional] 
 **titleEn** | **String** |  | [optional] 
 **updatedAt** | **String** |  | [optional] 
-**user** | [**Object**](.md) |  | [optional] 
+**user** | [**ShowNotifications1200ResponseDataInnerUser**](ShowNotifications1200ResponseDataInnerUser.md) |  | [optional] 
 **userId** | [**Object**](.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

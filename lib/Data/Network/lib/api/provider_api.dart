@@ -101,6 +101,42 @@ class ProviderApi {
     return null;
   }
 
+  /// provider\\'s account deleted successfully
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> providerAccountDeleteGetWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/provider/account-delete';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// provider\\'s account deleted successfully
+  Future<void> providerAccountDeleteGet() async {
+    final response = await providerAccountDeleteGetWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// provider logout
   ///
   /// Note: This method returns the HTTP [Response].
