@@ -8,19 +8,28 @@ import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
 import '../../Constants/Eunms.dart';
 
 class OrderUseCase
-    extends StateNotifier<StateModel<ShowAllProviderSOrders200Response>> {
+    extends StateNotifier<StateModel<ShowAllProviderSOrders200Response?>> {
   final Ref ref;
   final Orders12Api api;
   final MainOrderStatus orderState;
   OrderUseCase(this.orderState, this.ref, this.api) : super(StateModel());
 
-  void getOrders() async {
-    state = StateModel.loading();
-    request(
-        () => api.showAllProviderSOrders(status: orderState.name.toLowerCase()),
+  void getOrders({int? page = 1}) async {
+
+    state = page != 1 ? StateModel(data: state.data,state: DataState.MORE_LOADING) : StateModel.loading();
+    requestForPagination(
+        () => api.showAllProviderSOrders(status: orderState.name.toLowerCase(), page: page),
         onComplete: (res) {
-      print("getOrders Size for ${orderState.name} ${res.data?.data.isEmpty}");
-      if (res.data?.data.isEmpty == true) {
+      print("getOrders Size for ${orderState.name} ${res?.data?.data.isEmpty}");
+      if(page != 1){
+        List<ShowAllProviderSOrders200ResponseDataDataInner> data = state.data?.data?.data ?? [];
+        state.data?.data?.data = [...data,...(res?.data?.data??[])];
+        state = StateModel.success(state.data);
+      }else {
+        state = StateModel.success(res);
+      }
+
+      if (res?.data?.data.isEmpty == true) {
         state = StateModel.empty();
       }
     });
