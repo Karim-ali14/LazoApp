@@ -200,8 +200,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                 child: TabBarView(
               controller: tabController,
               children: [
+
+                newOrders.state == DataState.EMPTY ?
+                OrderPlaceHolder(onAddOrderClick: (){}) :
                 DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
-                    dataList: newOrders.data?.data?.data ?? [...List.generate(5, (index) => ShowAllProviderSOrders200ResponseDataDataInner())],
+                    dataList: newOrders.data?.data?.data ??
+                        (
+                            newOrders.state == DataState.LOADING ?
+                            [
+                              ...List.generate(
+                                  5,
+                                      (index) =>
+                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                            ] : []
+                        ),
                     paginated: true,
                     pageLoading: currentPageForNewOrder <
                         (newOrders.data?.data?.lastPage ?? 0),
@@ -214,62 +226,117 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                       }
                     },
                     builder: (item) => Skeletonizer(
-                      enabled: newOrders.state == DataState.LOADING,
-                      child: OrderCardItem(
+                          enabled: newOrders.state == DataState.LOADING,
+                          child: OrderCardItem(
                             onOrderItemClick: (orderId) {
                               navigateToOrderDetails(orderId);
                             },
                             orderModel: item,
                           ),
+                        )),
+
+                currentOrders.state == DataState.EMPTY ?
+                OrderPlaceHolder(onAddOrderClick: (){}) :
+                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                    dataList: currentOrders.data?.data?.data ??
+                        (
+                            currentOrders.state == DataState.LOADING ?
+                            [
+                              ...List.generate(
+                                  5,
+                                      (index) =>
+                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                            ] : []
+                        ),
+                    paginated: true,
+                    pageLoading: currentPageForCurrentOrder <
+                        (currentOrders.data?.data?.lastPage ?? 0),
+                    onBottomReached: () {
+                      if (currentPageForCurrentOrder <
+                          (currentOrders.data?.data?.lastPage ?? 0)) {
+                        ref
+                            .read(getCurrentOrderStateProvider.notifier)
+                            .getOrders(page: ++currentPageForCurrentOrder);
+                      }
+                    },
+                    builder: (item) => Skeletonizer(
+                          enabled: currentOrders.state == DataState.LOADING,
+                          child: OrderCardItem(
+                            onOrderItemClick: (orderId) {
+                              navigateToOrderDetails(orderId);
+                            },
+                            orderModel: item,
+                          ),
+                        )),
+
+                finishOrders.state == DataState.EMPTY ?
+                OrderPlaceHolder(onAddOrderClick: (){}) :
+                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                    dataList: finishOrders.data?.data?.data ??
+                        (
+                        finishOrders.state == DataState.LOADING ?
+                            [
+                              ...List.generate(
+                                  5,
+                                      (index) =>
+                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                            ] : []
+                        ),
+                    paginated: true,
+                    pageLoading: currentPageForFinishOrder <
+                        (finishOrders.data?.data?.lastPage ?? 0),
+                    onBottomReached: () {
+                      if (currentPageForFinishOrder <
+                          (finishOrders.data?.data?.lastPage ?? 0)) {
+                        ref
+                            .read(getFinishOrderStateProvider.notifier)
+                            .getOrders(page: ++currentPageForFinishOrder);
+                      }
+                    },
+                    builder: (item) => Skeletonizer(
+                      enabled: finishOrders.state == DataState.LOADING,
+                      child: OrderCardItem(
+                        onOrderItemClick: (orderId) {
+                          navigateToOrderDetails(orderId);
+                        },
+                        orderModel: item,
+                      ),
                     )),
-                currentOrders.state == DataState.EMPTY
-                    ? OrderPlaceHolder(onAddOrderClick: () {})
-                    : Skeletonizer(
-                        enabled: currentOrders.state == DataState.LOADING,
-                        child: ListView.builder(
-                            itemCount:
-                                currentOrders.data?.data?.data.length ?? 5,
-                            itemBuilder: (context, index) {
-                              return OrderCardItem(
-                                onOrderItemClick: (orderId) {
-                                  navigateToOrderDetails(orderId);
-                                },
-                                orderModel:
-                                    currentOrders.data?.data!.data[index],
-                              );
-                            })),
-                finishOrders.state == DataState.EMPTY
-                    ? OrderPlaceHolder(onAddOrderClick: () {})
-                    : Skeletonizer(
-                        enabled: finishOrders.state == DataState.LOADING,
-                        child: ListView.builder(
-                            itemCount:
-                                finishOrders.data?.data?.data.length ?? 0,
-                            itemBuilder: (context, index) {
-                              return OrderCardItem(
-                                onOrderItemClick: (orderId) {
-                                  navigateToOrderDetails(orderId);
-                                },
-                                orderModel:
-                                    finishOrders.data?.data!.data[index],
-                              );
-                            })),
-                cancelOrders.state == DataState.EMPTY
-                    ? OrderPlaceHolder(onAddOrderClick: () {})
-                    : Skeletonizer(
-                        enabled: cancelOrders.state == DataState.LOADING,
-                        child: ListView.builder(
-                            itemCount:
-                                cancelOrders.data?.data?.data.length ?? 0,
-                            itemBuilder: (context, index) {
-                              return OrderCardItem(
-                                onOrderItemClick: (orderId) {
-                                  navigateToOrderDetails(orderId);
-                                },
-                                orderModel:
-                                    cancelOrders.data?.data!.data[index],
-                              );
-                            })),
+
+                cancelOrders.state == DataState.EMPTY ?
+                OrderPlaceHolder(onAddOrderClick: (){}) :
+                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                    dataList: cancelOrders.data?.data?.data ??
+                        (
+                            cancelOrders.state == DataState.LOADING ?
+                            [
+                              ...List.generate(
+                                  5,
+                                      (index) =>
+                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                            ] : []
+                        ),
+                    paginated: true,
+                    pageLoading: currentPageForCanceledOrder <
+                        (cancelOrders.data?.data?.lastPage ?? 0),
+                    onBottomReached: () {
+                      if (currentPageForCanceledOrder <
+                          (cancelOrders.data?.data?.lastPage ?? 0)) {
+                        ref
+                            .read(getCanselOrderStateProvider.notifier)
+                            .getOrders(page: ++currentPageForCanceledOrder);
+                      }
+                    },
+                    builder: (item) => Skeletonizer(
+                      enabled: cancelOrders.state == DataState.LOADING,
+                      child: OrderCardItem(
+                        onOrderItemClick: (orderId) {
+                          navigateToOrderDetails(orderId);
+                        },
+                        orderModel: item,
+                      ),
+                    )),
+
               ],
             ))
           ],

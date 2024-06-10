@@ -20,7 +20,7 @@ class DataListView<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NotificationListener<ScrollEndNotification>(
-      child: dataList.isNotEmpty ? (withDivider == true ? ListView.separated(
+      child: dataList.isNotEmpty ?(withDivider == true ? ListView.separated(
         physics: scrollPhysics ?? const BouncingScrollPhysics(),
         shrinkWrap: true,
         padding: padding ?? const EdgeInsets.only(left: 0,right: 0,bottom: 50),

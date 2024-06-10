@@ -29,7 +29,7 @@ class OrderUseCase
         state = StateModel.success(res);
       }
 
-      if (res?.data?.data.isEmpty == true) {
+      if (state.data?.data?.data.isEmpty == true) {
         state = StateModel.empty();
       }
     });
