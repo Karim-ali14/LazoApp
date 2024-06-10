@@ -74,31 +74,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
               dividerColor: Colors.transparent,
               indicatorColor: Colors.transparent,
               tabs: [
-                Tab(
-                  child: Container(
-                    width: 150,
-                    height: 40,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      border: Border.all(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Tab(
+                    child: Container(
+                      width: 150,
+                      height: 40,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        border: Border.all(
+                          color: activeTabIndex == 0
+                              ? AppTheme.mainAppColor
+                              : AppTheme.appGrey8,
+                        ),
                         color: activeTabIndex == 0
                             ? AppTheme.mainAppColor
-                            : AppTheme.appGrey8,
+                            : AppTheme.appGrey9,
                       ),
-                      color: activeTabIndex == 0
-                          ? AppTheme.mainAppColor
-                          : AppTheme.appGrey9,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "New Order",
-                        style: activeTabIndex == 0
-                            ? AppTheme
-                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
-                            : AppTheme
-                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
-                                .copyWith(color: AppTheme.appGrey10),
+                      child: Center(
+                        child: Text(
+                          "New Order",
+                          style: activeTabIndex == 0
+                              ? AppTheme
+                                  .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                              : AppTheme
+                                  .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                                  .copyWith(color: AppTheme.appGrey10),
+                        ),
                       ),
                     ),
                   ),

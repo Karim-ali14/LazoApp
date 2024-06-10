@@ -20,8 +20,8 @@ class NotificationScreen extends ConsumerStatefulWidget {
 }
 
 class _NotificationScreenState extends ConsumerState<NotificationScreen> {
-  var notificationDates = <dynamic>[];
-  var notificationList = <ShowNotifications1200ResponseDataInner>[]; // todo this will be notification model
+  // var notificationDates = <dynamic>[];
+  // var notificationList = <ShowNotifications1200ResponseDataInner>[];
 
   @override
   void initState() {
@@ -36,16 +36,17 @@ class _NotificationScreenState extends ConsumerState<NotificationScreen> {
     final notificationState = ref.watch(showNotificationStateNotifiers);
     handleState(makeNotificationReadStateNotifiers,showLoading: true,onSuccess: (res){
       if(res.data?.data?.type == "order") {
+        ref.read(showNotificationStateNotifiers.notifier).getNotification();
         navigateToOrderDetails(res.data?.data?.orderId.toString() ?? "");
       }
     });
-    handleState(showNotificationStateNotifiers,showLoading: true,onSuccess: (res){
-      notificationList.clear();
-      notificationList.addAll(
-        res.data?.data ?? []
-      );
-      spiltNotificationsDates();
-    });
+    // handleState(showNotificationStateNotifiers,showLoading: true,onSuccess: (res){
+    //   // notificationList.clear();
+    //   // notificationList.addAll(
+    //   //   res.data?.data ?? []
+    //   // );
+    //   // spiltNotificationsDates();
+    // });
     return Scaffold(
         body: SafeArea(
             child: notificationState.data?.status == DataState.LOADING
@@ -54,59 +55,59 @@ class _NotificationScreenState extends ConsumerState<NotificationScreen> {
                     child: CircularProgressIndicator(),
                   ))
                 : ListView.builder(
-                itemCount: notificationDates.length,
+                itemCount: ref.watch(showNotificationStateNotifiers.notifier).notificationDates.length,
                 itemBuilder: (context, index) {
-                  if(notificationDates[index] is String){
+                  if(ref.watch(showNotificationStateNotifiers.notifier).notificationDates[index] is String){
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 20.0),
-                      child: NotificationDateView(date: notificationDates[index]),
+                      child: NotificationDateView(date: ref.watch(showNotificationStateNotifiers.notifier).notificationDates[index]),
                     );
-                  } else if(notificationDates[index] is ShowNotifications1200ResponseDataInner){
+                  } else if(ref.watch(showNotificationStateNotifiers.notifier).notificationDates[index] is ShowNotifications1200ResponseDataInner){
                     return NotificationItemView(
-                        notification: ( notificationDates[index]! as ShowNotifications1200ResponseDataInner), onNotificationItemClick: (notificationItem ) {
+                        notification: ( ref.watch(showNotificationStateNotifiers.notifier).notificationDates[index]! as ShowNotifications1200ResponseDataInner), onNotificationItemClick: (notificationItem ) {
                           if(notificationItem.type == "order"){
                             if(notificationItem.isRead == 0){
                               ref.read(makeNotificationReadStateNotifiers.notifier).readANotification(notificationItem.id.toString());
                             }else {
-                              navigateToOrderDetails(notificationItem.id.toString());
+                              navigateToOrderDetails(notificationItem.orderId.toString());
                             }
                           }
                     },);}
                   })));
   }
 
-  void spiltNotificationsDates() {
-    notificationDates.clear();
-    List<String> dates = [];
-    notificationList.forEach((notificationModel) {
-      notificationList.asMap().forEach((index, notifyModel) {
-        if (notificationModel.createdAt?.stringToDate() ==
-            notifyModel.createdAt?.stringToDate()) {
-          if (dates.contains(notificationModel.createdAt?.stringToDate())) {
-            if (!notificationDates.contains(notifyModel))
-              notificationDates.add(notifyModel);
-          } else {
-            dates.add(notificationModel.createdAt!.stringToDate());
-            notificationDates.add(
-                checkTodayOrYesterday(notificationModel.createdAt!.stringToDate()));
-            if (!notificationDates.contains(notifyModel))
-              notificationDates.add(notifyModel);
-          }
-        }
-      });
-    });
-  }
-
-  String checkTodayOrYesterday(String date) {
-    DateTime today = DateTime.now();
-    DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
-    print("dafsdfasdf $date ${today.ddMmYyyy()}");
-    return date == today.ddMmYyyy()
-        ? "Today"
-        : date == yesterday.ddMmYyyy()
-            ? "Yesterday"
-            : date;
-  }
+  // void spiltNotificationsDates() {
+  //   notificationDates.clear();
+  //   List<String> dates = [];
+  //   notificationList.forEach((notificationModel) {
+  //     notificationList.asMap().forEach((index, notifyModel) {
+  //       if (notificationModel.createdAt?.stringToDate() ==
+  //           notifyModel.createdAt?.stringToDate()) {
+  //         if (dates.contains(notificationModel.createdAt?.stringToDate())) {
+  //           if (!notificationDates.contains(notifyModel))
+  //             notificationDates.add(notifyModel);
+  //         } else {
+  //           dates.add(notificationModel.createdAt!.stringToDate());
+  //           notificationDates.add(
+  //               checkTodayOrYesterday(notificationModel.createdAt!.stringToDate()));
+  //           if (!notificationDates.contains(notifyModel))
+  //             notificationDates.add(notifyModel);
+  //         }
+  //       }
+  //     });
+  //   });
+  // }
+  //
+  // String checkTodayOrYesterday(String date) {
+  //   DateTime today = DateTime.now();
+  //   DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
+  //   print("dafsdfasdf $date ${today.ddMmYyyy()}");
+  //   return date == today.ddMmYyyy()
+  //       ? "Today"
+  //       : date == yesterday.ddMmYyyy()
+  //           ? "Yesterday"
+  //           : date;
+  // }
 
   void navigateToOrderDetails(String orderId) {
     context.push(
