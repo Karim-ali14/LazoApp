@@ -9,6 +9,7 @@ import 'package:lazo_provider/Presentation/Screens/Notification/componants/Notif
 import 'package:lazo_provider/Presentation/Screens/Notification/componants/NotificationItemView.dart';
 import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/NotificationStateNotifiers.dart';
 import 'package:lazo_provider/Utils/DateUtils.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../Data/Network/lib/api.dart';
 
@@ -49,15 +50,21 @@ class _NotificationScreenState extends ConsumerState<NotificationScreen> {
     // });
     return Scaffold(
         body: SafeArea(
-            child: notificationState.data?.status == DataState.LOADING
-                ? const Expanded(
-                    child: Center(
-                    child: CircularProgressIndicator(),
-                  ))
-                : ListView.builder(
-                itemCount: ref.watch(showNotificationStateNotifiers.notifier).notificationDates.length,
+            child: ListView.builder(
+                itemCount: notificationState.state == DataState.LOADING ? 10 : ref.watch(showNotificationStateNotifiers.notifier).notificationDates.length,
                 itemBuilder: (context, index) {
-                  if(ref.watch(showNotificationStateNotifiers.notifier).notificationDates[index] is String){
+                  if(notificationState.state == DataState.LOADING){
+                    return Skeletonizer(
+                      enabled: notificationState.state == DataState.LOADING,
+                      child: NotificationItemView(
+                        notification: ShowNotifications1200ResponseDataInner(
+                          isRead: 1
+                        ), onNotificationItemClick: (notificationItem ) {
+                      }
+                        ,),
+                    );
+                  }
+                  else if(ref.watch(showNotificationStateNotifiers.notifier).notificationDates[index] is String){
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0,vertical: 20.0),
                       child: NotificationDateView(date: ref.watch(showNotificationStateNotifiers.notifier).notificationDates[index]),
@@ -65,14 +72,15 @@ class _NotificationScreenState extends ConsumerState<NotificationScreen> {
                   } else if(ref.watch(showNotificationStateNotifiers.notifier).notificationDates[index] is ShowNotifications1200ResponseDataInner){
                     return NotificationItemView(
                         notification: ( ref.watch(showNotificationStateNotifiers.notifier).notificationDates[index]! as ShowNotifications1200ResponseDataInner), onNotificationItemClick: (notificationItem ) {
-                          if(notificationItem.type == "order"){
-                            if(notificationItem.isRead == 0){
-                              ref.read(makeNotificationReadStateNotifiers.notifier).readANotification(notificationItem.id.toString());
+                          if(notificationItem?.type == "order"){
+                            if(notificationItem?.isRead == 0){
+                              ref.read(makeNotificationReadStateNotifiers.notifier).readANotification(notificationItem?.id.toString()??"0");
                             }else {
-                              navigateToOrderDetails(notificationItem.orderId.toString());
+                              navigateToOrderDetails(notificationItem?.orderId.toString() ??"0");
                             }
                           }
-                    },);}
+                    }
+                    ,);}
                   })));
   }
 
