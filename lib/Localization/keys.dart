@@ -20,6 +20,9 @@ const String preparingKey = "preparing";
 const String readyToShippingKey = "readyToShipping";
 const String finishedKey = "finished";
 const String canceledKey = "canceled";
+const enterYourPhoneKey = "enterYourPhone";
+const dontHaveAnAccountKey = "dontHaveAnAccount";
+const signUpKey = "signUp";
 
 // Params Keys
 const String doneLandingKey = "doneLanding";

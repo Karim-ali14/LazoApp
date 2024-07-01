@@ -33,32 +33,41 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    handleState(providerLoginStateProvider,showLoading: true,showToast: true,onSuccess: (state){
+    handleState(providerLoginStateProvider, showLoading: true, showToast: true,
+        onSuccess: (state) {
       context.go(R_MainScreen);
     });
 
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal),
+          padding:
+              const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal),
           child: Form(
             key: fromKey,
             child: Column(
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: defaultPaddingHorizontal,
-                    vertical: 20
-                  ),
+                      horizontal: defaultPaddingHorizontal, vertical: 20),
                   child: Row(
                     children: [
-                      Text(context.tr(loginKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts20w700,),
+                      Text(
+                        context.tr(loginKey),
+                        style: AppTheme
+                            .styleWithTextBlackAdelleSansExtendedFonts20w700,
+                      ),
                       const Expanded(child: SizedBox()),
-                      Text(context.tr(arabicKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,),
+                      Text(
+                        context.tr(arabicKey),
+                        style: AppTheme
+                            .styleWithTextBlackAdelleSansExtendedFonts16w400,
+                      ),
                     ],
                   ),
                 ),
-                SVGIcons.appLogoIcon(width: 113,height: 95,color: Colors.black),
+                SVGIcons.appLogoIcon(
+                    width: 113, height: 95, color: Colors.black),
                 const SizedBox(
                   height: 40,
                 ),
@@ -67,10 +76,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   hint: context.tr(phoneNumberAndEmailAddressKey),
                   label: context.tr(phoneNumberAndEmailAddressKey),
                   textEditingController: phoneAndEmailController,
-                  validate: (value){
-                    if(value?.isEmpty == true){
+                  validate: (value) {
+                    if (value?.isEmpty == true) {
                       return 'You should select phone or email';
-                    }else {
+                    } else {
                       return null;
                     }
                   },
@@ -78,42 +87,62 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 const SizedBox(
                   height: 5,
                 ),
-                AppTextField (
+                AppTextField(
                     mode: AutovalidateMode.onUserInteraction,
                     hint: context.tr(passwordKey),
-                  label: context.tr(passwordKey),
-                  textEditingController: passwordController,
-                    validate: (value){
-                      if(value?.isEmpty == true){
-                        return 'You should select password';
-                      }else {
+                    label: context.tr(passwordKey),
+                    textEditingController: passwordController,
+                    validate: (value) {
+                      if (value?.isEmpty == true) {
+                        return context.tr(enterYourPhoneKey);
+                      } else {
                         return null;
                       }
-                    }
-                ),
+                    }),
                 const SizedBox(
                   height: 10,
                 ),
                 Row(
                   children: [
                     const Spacer(),
-                    InkWell(onTap: forgetPassword,child: Text(context.tr(forgetPasswordKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts14w400,))
+                    InkWell(
+                        onTap: forgetPassword,
+                        child: Text(
+                          context.tr(forgetPasswordKey),
+                          style: AppTheme
+                              .styleWithTextBlackAdelleSansExtendedFonts14w400,
+                        ))
                   ],
                 ),
                 SizedBox(
                   height: 16,
                 ),
-                AppButton(onPress: login,text: context.tr(loginKey),width: context.getScreenSize.width,),
+                AppButton(
+                  onPress: login,
+                  text: context.tr(loginKey),
+                  width: context.getScreenSize.width,
+                ),
                 SizedBox(
                   height: 16,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don’t have an account?",style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,),
+                    Text(
+                      context.tr(dontHaveAnAccountKey),
+                      style: AppTheme
+                          .styleWithTextBlackAdelleSansExtendedFonts16w400,
+                    ),
                     InkWell(
                         onTap: openSignUpUrl,
-                        child: Text("Sign Up",style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w400.copyWith(decoration: TextDecoration.underline,decorationColor: AppTheme.mainAppColor),))
+                        child: Text(
+                          context.tr(signUpKey),
+                          style: AppTheme
+                              .styleWithTextRedAdelleSansExtendedFonts16w400
+                              .copyWith(
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: AppTheme.mainAppColor),
+                        ))
                   ],
                 )
               ],
@@ -123,9 +152,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       ),
     );
   }
+
   void login() async {
-    if(fromKey.currentState?.validate() == true){
-      ref.read(providerLoginStateProvider.notifier).login(phoneAndEmailController.value.text, passwordController.value.text);
+    if (fromKey.currentState?.validate() == true) {
+      ref.read(providerLoginStateProvider.notifier).login(
+          phoneAndEmailController.value.text, passwordController.value.text);
     }
   }
 
@@ -135,20 +166,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     // }
   }
 
-  void showBlockBottomSheet(){
+  void showBlockBottomSheet() {
     showModalBottomSheet(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10), topRight: Radius.circular(10))),
         context: context,
         builder: (context) => BlockProviderBottomSheet(onContentUsClick: () {
-          Navigator.pop(context);
-        }));
+              Navigator.pop(context);
+            }));
   }
 
-  void openSignUpUrl(){
+  void openSignUpUrl() {
     final signUpUrlLink = Uri.parse(signUpUrl);
-    launchUrl(signUpUrlLink,mode: LaunchMode.externalApplication);
+    launchUrl(signUpUrlLink, mode: LaunchMode.externalApplication);
   }
-
 }

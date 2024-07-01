@@ -20,5 +20,8 @@
   "preparing" : "Preparing",
   "readyToShipping" : "Ready to shipping",
   "finished" : "Finished",
-  "canceled" : "Canceled"
+  "canceled" : "Canceled",
+  "enterYourPhone" : "Enter your phone",
+  "signUp" : "Sign Up",
+  "dontHaveAnAccount" : "Don’t have an account?"
 }

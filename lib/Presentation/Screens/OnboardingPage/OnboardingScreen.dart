@@ -69,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           isLastPage = false;
                         });
                       }
-                      return true;
+                        return true;
                     },
                     child: PageView.builder(
                       itemCount: 4,
