@@ -27,6 +27,11 @@ extension OrderEx on String{
         orderStatus = context.tr(finishedKey);
         break;
       }
+      case "10" :
+      case "11" : {
+        orderStatus = context.tr(canceledKey);
+        break;
+      }
     }
     return orderStatus;
   }
@@ -49,6 +54,11 @@ extension OrderEx on String{
         break;
       }case "7" : {
         orderStatusColor = AppTheme.finishColor;
+        break;
+      }
+      case "10" :
+      case "11" : {
+        orderStatusColor = AppTheme.mainAppColor;
         break;
       }
     }

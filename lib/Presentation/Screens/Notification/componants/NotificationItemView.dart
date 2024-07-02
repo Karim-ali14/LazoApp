@@ -4,13 +4,14 @@ import 'package:flutter/widgets.dart';
 import 'package:lazo_provider/Constants/Constants.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Utils/DateUtils.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../Data/Network/lib/api.dart';
 import '../../../Widgets/SvgIcons.dart';
 
-typedef OnNotificationItemClick = Function(ShowNotifications1200ResponseDataInner);
+typedef OnNotificationItemClick = Function(ShowNotifications1200ResponseDataInner?);
 class NotificationItemView extends StatefulWidget {
-  final ShowNotifications1200ResponseDataInner notification;
+  final ShowNotifications1200ResponseDataInner? notification;
   final OnNotificationItemClick onNotificationItemClick;
   const NotificationItemView(
       {super.key, required this.notification, required this.onNotificationItemClick});
@@ -25,12 +26,14 @@ class _NotificationItemViewState extends State<NotificationItemView> {
     return IntrinsicHeight(
       child: InkWell(
         onTap: (){
-          widget.onNotificationItemClick.call(widget.notification);
+          if(widget.notification != null ){
+            widget.onNotificationItemClick.call(widget.notification);
+          }
         },
         child: Container(
           padding:
               const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal),
-          color: widget.notification.isRead == 1 ? Colors.white : AppTheme.appGrey12,
+          color: widget.notification?.isRead == 1 ? Colors.white : AppTheme.appGrey12,
           child: Column(
             children: [
               const SizedBox(
@@ -39,26 +42,28 @@ class _NotificationItemViewState extends State<NotificationItemView> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: Image.network(
-                        fit: BoxFit.cover,
-                        widget.notification.imagePath ??"",
-                        width: 42,
-                        height: 42, errorBuilder: (
-                      BuildContext context,
-                      Object error,
-                      StackTrace? stackTrace,
-                    ) {
-                      return SVGIcons.defaultUserIcon();
-                    }),
+                  Skeleton.replace(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: Image.network(
+                          fit: BoxFit.cover,
+                          widget.notification?.imagePath ??"",
+                          width: 42,
+                          height: 42, errorBuilder: (
+                        BuildContext context,
+                        Object error,
+                        StackTrace? stackTrace,
+                      ) {
+                        return SVGIcons.defaultUserIcon();
+                      }),
+                    ),replacement: Icon(Icons.abc,size: 42,),
                   ),
                   const SizedBox(
                     width: 8,
                   ),
                   Expanded(
                     child: Text(
-                      "${widget.notification.notification}",
+                      "${(widget.notification?.notification?? "lskdjflksadjflk sdf sdjf kjd fkjsa dlkfj sldfsl dfjjsdf lajs dfljsdflkj ")}",
                       style: AppTheme
                           .styleWithTextBlackAdelleSansExtendedFonts16w400,
                       maxLines: 3,
@@ -69,7 +74,7 @@ class _NotificationItemViewState extends State<NotificationItemView> {
                     width: 8,
                   ),
                   Text(
-                    "${widget.notification.createdAt?.hhMm()}",
+                    "${(widget.notification?.createdAt?.hhMm()??"sklj")}",
                     style:
                         AppTheme.styleWithTextGray13AdelleSansExtendedFonts11w400,
                   )

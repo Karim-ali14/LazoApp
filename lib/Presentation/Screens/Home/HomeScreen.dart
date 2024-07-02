@@ -8,9 +8,11 @@ import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/OrderCa
 import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserOrdersStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Presentation/Widgets/AppButton.dart';
+import 'package:lazo_provider/Presentation/Widgets/DataListView.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../Data/Models/StateModel.dart';
+import '../../../Data/Network/lib/api.dart';
 import '../../StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import 'OrderPlaceHolder.dart';
 
@@ -43,9 +45,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     super.initState();
   }
 
+  var currentPageForNewOrder = 1;
+  var currentPageForCurrentOrder = 1;
+  var currentPageForFinishOrder = 1;
+  var currentPageForCanceledOrder = 1;
+
   @override
   Widget build(BuildContext context) {
     final newOrders = ref.watch(getNewOrderStateProvider);
+    List<ShowAllProviderSOrders200ResponseDataDataInner> newOrderList = [];
+
     final currentOrders = ref.watch(getCurrentOrderStateProvider);
     final finishOrders = ref.watch(getFinishOrderStateProvider);
     final cancelOrders = ref.watch(getCanselOrderStateProvider);
@@ -65,31 +74,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
               dividerColor: Colors.transparent,
               indicatorColor: Colors.transparent,
               tabs: [
-                Tab(
-                  child: Container(
-                    width: 150,
-                    height: 40,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      border: Border.all(
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Tab(
+                    child: Container(
+                      width: 150,
+                      height: 40,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        border: Border.all(
+                          color: activeTabIndex == 0
+                              ? AppTheme.mainAppColor
+                              : AppTheme.appGrey8,
+                        ),
                         color: activeTabIndex == 0
                             ? AppTheme.mainAppColor
-                            : AppTheme.appGrey8,
+                            : AppTheme.appGrey9,
                       ),
-                      color: activeTabIndex == 0
-                          ? AppTheme.mainAppColor
-                          : AppTheme.appGrey9,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "New Order",
-                        style: activeTabIndex == 0
-                            ? AppTheme
-                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
-                            : AppTheme
-                                .styleWithTextWhiteAdelleSansExtendedFonts14w400
-                                .copyWith(color: AppTheme.appGrey10),
+                      child: Center(
+                        child: Text(
+                          "New Order",
+                          style: activeTabIndex == 0
+                              ? AppTheme
+                                  .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                              : AppTheme
+                                  .styleWithTextWhiteAdelleSansExtendedFonts14w400
+                                  .copyWith(color: AppTheme.appGrey10),
+                        ),
                       ),
                     ),
                   ),
@@ -189,64 +201,146 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
             ),
             Expanded(
                 child: TabBarView(
-                controller: tabController,
-                children: [
-                  newOrders.state == DataState.EMPTY ? OrderPlaceHolder(
-                      onAddOrderClick: (){})
-                      : Skeletonizer(
-                      enabled: newOrders.state == DataState.LOADING,
-                      child: ListView.builder(
-                          itemCount: newOrders.data?.data?.data.length ?? 5,
-                          itemBuilder: (context,index){
-                            return OrderCardItem(onOrderItemClick: (orderId) {
-                              navigateToOrderDetails(orderId);
-                            }, orderModel: newOrders.data?.data!.data[index],
-                            );
-                          })
-                  ),
+              controller: tabController,
+              children: [
 
-                  currentOrders.state == DataState.EMPTY ? OrderPlaceHolder(
-                      onAddOrderClick: (){})
-                      : Skeletonizer(
-                      enabled: currentOrders.state == DataState.LOADING,
-                      child: ListView.builder(
-                          itemCount: currentOrders.data?.data?.data.length ?? 5,
-                          itemBuilder: (context,index){
-                            return OrderCardItem(onOrderItemClick: (orderId) {
+                newOrders.state == DataState.EMPTY ?
+                OrderPlaceHolder(onAddOrderClick: (){}) :
+                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                    dataList: newOrders.data?.data?.data ??
+                        (
+                            newOrders.state == DataState.LOADING ?
+                            [
+                              ...List.generate(
+                                  5,
+                                      (index) =>
+                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                            ] : []
+                        ),
+                    paginated: true,
+                    pageLoading: currentPageForNewOrder <
+                        (newOrders.data?.data?.lastPage ?? 0),
+                    onBottomReached: () {
+                      if (currentPageForNewOrder <
+                          (newOrders.data?.data?.lastPage ?? 0)) {
+                        ref
+                            .read(getNewOrderStateProvider.notifier)
+                            .getOrders(page: ++currentPageForNewOrder);
+                      }
+                    },
+                    builder: (item) => Skeletonizer(
+                          enabled: newOrders.state == DataState.LOADING,
+                          child: OrderCardItem(
+                            onOrderItemClick: (orderId) {
                               navigateToOrderDetails(orderId);
-                            }, orderModel: currentOrders.data?.data!.data[index],
-                            );
-                          })
-                  ),
+                            },
+                            orderModel: item,
+                          ),
+                        )),
 
-                  finishOrders.state == DataState.EMPTY ? OrderPlaceHolder(
-                      onAddOrderClick: (){})
-                      : Skeletonizer(
+                currentOrders.state == DataState.EMPTY ?
+                OrderPlaceHolder(onAddOrderClick: (){}) :
+                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                    dataList: currentOrders.data?.data?.data ??
+                        (
+                            currentOrders.state == DataState.LOADING ?
+                            [
+                              ...List.generate(
+                                  5,
+                                      (index) =>
+                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                            ] : []
+                        ),
+                    paginated: true,
+                    pageLoading: currentPageForCurrentOrder <
+                        (currentOrders.data?.data?.lastPage ?? 0),
+                    onBottomReached: () {
+                      if (currentPageForCurrentOrder <
+                          (currentOrders.data?.data?.lastPage ?? 0)) {
+                        ref
+                            .read(getCurrentOrderStateProvider.notifier)
+                            .getOrders(page: ++currentPageForCurrentOrder);
+                      }
+                    },
+                    builder: (item) => Skeletonizer(
+                          enabled: currentOrders.state == DataState.LOADING,
+                          child: OrderCardItem(
+                            onOrderItemClick: (orderId) {
+                              navigateToOrderDetails(orderId);
+                            },
+                            orderModel: item,
+                          ),
+                        )),
+
+                finishOrders.state == DataState.EMPTY ?
+                OrderPlaceHolder(onAddOrderClick: (){}) :
+                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                    dataList: finishOrders.data?.data?.data ??
+                        (
+                        finishOrders.state == DataState.LOADING ?
+                            [
+                              ...List.generate(
+                                  5,
+                                      (index) =>
+                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                            ] : []
+                        ),
+                    paginated: true,
+                    pageLoading: currentPageForFinishOrder <
+                        (finishOrders.data?.data?.lastPage ?? 0),
+                    onBottomReached: () {
+                      if (currentPageForFinishOrder <
+                          (finishOrders.data?.data?.lastPage ?? 0)) {
+                        ref
+                            .read(getFinishOrderStateProvider.notifier)
+                            .getOrders(page: ++currentPageForFinishOrder);
+                      }
+                    },
+                    builder: (item) => Skeletonizer(
                       enabled: finishOrders.state == DataState.LOADING,
-                      child: ListView.builder(
-                          itemCount: finishOrders.data?.data?.data.length ?? 0,
-                          itemBuilder: (context,index){
-                            return OrderCardItem(onOrderItemClick: (orderId) {
-                              navigateToOrderDetails(orderId);
-                            }, orderModel: finishOrders.data?.data!.data[index],
-                            );
-                          })
-                  ),
+                      child: OrderCardItem(
+                        onOrderItemClick: (orderId) {
+                          navigateToOrderDetails(orderId);
+                        },
+                        orderModel: item,
+                      ),
+                    )),
 
-                  cancelOrders.state == DataState.EMPTY ? OrderPlaceHolder(
-                      onAddOrderClick: (){})
-                      : Skeletonizer(
+                cancelOrders.state == DataState.EMPTY ?
+                OrderPlaceHolder(onAddOrderClick: (){}) :
+                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                    dataList: cancelOrders.data?.data?.data ??
+                        (
+                            cancelOrders.state == DataState.LOADING ?
+                            [
+                              ...List.generate(
+                                  5,
+                                      (index) =>
+                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                            ] : []
+                        ),
+                    paginated: true,
+                    pageLoading: currentPageForCanceledOrder <
+                        (cancelOrders.data?.data?.lastPage ?? 0),
+                    onBottomReached: () {
+                      if (currentPageForCanceledOrder <
+                          (cancelOrders.data?.data?.lastPage ?? 0)) {
+                        ref
+                            .read(getCanselOrderStateProvider.notifier)
+                            .getOrders(page: ++currentPageForCanceledOrder);
+                      }
+                    },
+                    builder: (item) => Skeletonizer(
                       enabled: cancelOrders.state == DataState.LOADING,
-                      child: ListView.builder(
-                          itemCount: cancelOrders.data?.data?.data.length ?? 0,
-                          itemBuilder: (context,index){
-                            return OrderCardItem(onOrderItemClick: (orderId) {
-                              navigateToOrderDetails(orderId);
-                            }, orderModel: cancelOrders.data?.data!.data[index],
-                            );
-                          })
-                  ),
-                ],
+                      child: OrderCardItem(
+                        onOrderItemClick: (orderId) {
+                          navigateToOrderDetails(orderId);
+                        },
+                        orderModel: item,
+                      ),
+                    )),
+
+              ],
             ))
           ],
         ),
@@ -260,7 +354,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
   }
 
   void navigateToOrderDetails(String orderId) {
-    context.push(R_OrderDetails,extra: {orderIdKey : orderId});
+    context.push(R_OrderDetails, extra: {orderIdKey: orderId});
   }
-
 }

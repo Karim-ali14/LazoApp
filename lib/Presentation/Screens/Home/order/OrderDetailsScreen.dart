@@ -43,7 +43,9 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     final orderDetails = ref.watch(getOrderDetailsStateProvider);
-    handleState(updateOrderStatusStateProvider, showLoading: true);
+    handleState(updateOrderStatusStateProvider, showLoading: true,onSuccess: (res) {
+      updateData();
+    });
     return Scaffold(
       appBar: CustomAppBar(
         navigated: true,
@@ -234,5 +236,11 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
       case ButtonsClickType.ViewDetails:
         {}
     }
+  }
+  void updateData() {
+    ref.read(getNewOrderStateProvider.notifier).getOrders();
+    ref.read(getCurrentOrderStateProvider.notifier).getOrders();
+    ref.read(getFinishOrderStateProvider.notifier).getOrders();
+    ref.read(getCanselOrderStateProvider.notifier).getOrders();
   }
 }

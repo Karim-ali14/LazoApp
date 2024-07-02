@@ -63,6 +63,7 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                     });
                   },
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       currentTab == 0 ?
                           SVGIcons.homeActiveIcon()
@@ -89,6 +90,7 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                     });
                   },
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       currentTab == 1 ?
                           SVGIcons.notificationActiveIcon()
@@ -115,6 +117,7 @@ class _MainScreenNavHostState extends State<MainScreenNavHost> {
                     });
                   },
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       currentTab == 2 ?
                           SVGIcons.moreActiveIcon()

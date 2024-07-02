@@ -125,12 +125,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
                     decoration: TextDecoration.underline, // Underline the text
                   ),
                   recognizer: TapGestureRecognizer()..onTap = !readyToResendOtp ? null : (){
-                    // if(widget.otpType == OTPType.SignUp){
-                    //   ref.read(resendOTPStateNotifier.notifier).sendSignUpOtp(widget.emailOrPhone??"");
-                    // }
-                    // if(widget.otpType == OTPType.Login){
-                    //   ref.read(resendOTPStateNotifier.notifier).sendLoginOtp(widget.emailOrPhone??"");
-                    // }
+                    sendOtp(widget.emailOrPhone);
                     setState(() {
                       readyToResendOtp = false;
                     });
@@ -151,4 +146,5 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
   void verifyPhoneOrEmail(String emailOrPhone,String? code) async {
     ref.read(confirmResetCodeStateProvider.notifier).confirmReset(emailOrPhone, code);
   }
+
 }

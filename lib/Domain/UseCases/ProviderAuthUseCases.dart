@@ -166,7 +166,11 @@ class UserProvider extends StateNotifier<ProviderLoginResponseData?> {
   UserProvider(this.ref) : super(null);
 
   ProviderLoginResponseData? checkIfSavedUser(){
-    return prefs.getString(userKey) != null ? ProviderLoginResponseData.fromJson(prefs.getString(userKey)) : null;
+    ProviderLoginResponseData? user = prefs.getString(userKey) != null ? ProviderLoginResponseData.fromJson(json.decode(prefs.getString(userKey) ?? "")) : null;
+    if(user != null){
+      ref.read(apiClient).defaultHeaderMap.update("Authorization", (value) => "Bearer ${user.accessToken}",ifAbsent: ()=> "Bearer ${user.accessToken}");
+    }
+    return user;
   }
 
   void setUser(ProviderLoginResponseData? providerObject){

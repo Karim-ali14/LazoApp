@@ -30,7 +30,7 @@ final ordersApi = Provider((ref) => Orders12Api(ref.read(apiClient)));
 
 final notificationApi = Provider((ref) => Notifications1Api(ref.read(apiClient)));
 
-final providerApi = Provider((ref) => ProviderApi());
+final providerApi = Provider((ref) => ProviderApi(ref.read(apiClient)));
 
 // final userAuthApi = Provider((ref) => PublicAuthenticationApi(ref.read(apiClient)));
 //
@@ -50,8 +50,33 @@ extension GenericRequest<T> on StateNotifier<StateModel<T>> {
     var response;
     try{
       response = await asyncFunc();
-      Map<String, dynamic>  responseJson = response.toJson();
-      state = StateModel(state: DataState.SUCCESS, data: response is T ? response : null ,message: response.message );
+      state = StateModel(state: DataState.SUCCESS, data: response is T ? response : null ,message: response?.message );
+      onComplete?.call(response);
+    }on ApiException catch (e) {
+      print("Error Response $e");
+      onFailure?.call(e);
+      Map? error = json.tryDecode(e.message??"");
+      var message = error?.containsKey("errors") == true ? (error!["errors"] as List).first : "Something wrong happen please try again later";
+      if(e.code == 401 || e.code == 403){
+        print("Not Authed Here");
+        Future.delayed(const Duration(milliseconds: 20),(){
+          print("Will Retry");
+          request(asyncFunc);
+        });
+      }else{
+        state = StateModel(state: DataState.ERROR,data: response?.data, message: message);
+      }
+    } on Exception catch(e){
+      print("Some Err Here");
+      onFailure?.call(ApiException(500, e.toString()));
+      state = StateModel(state: DataState.ERROR,data: response?.data, message: (e).toString());
+    }
+  }
+  Future<void> requestForPagination(Future<dynamic> Function() asyncFunc , {Function(T)? onComplete,Function(ApiException)? onFailure}) async {
+    var response;
+    try{
+      response = await asyncFunc();
+      // state = StateModel(state: DataState.SUCCESS, data: response is T ? response : null ,message: response?.message );
       onComplete?.call(response);
     }on ApiException catch (e) {
       print("Error Response $e");
