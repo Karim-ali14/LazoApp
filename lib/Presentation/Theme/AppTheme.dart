@@ -116,14 +116,11 @@ class AppTheme {
       ),
       primaryColorLight: mainAppColor,
       scaffoldBackgroundColor: mainBackgroundLightColor,
-      bottomAppBarColor: Colors.white,
-      backgroundColor: Colors.white,
       dividerColor:Colors.transparent,
       expansionTileTheme: const ExpansionTileThemeData(backgroundColor: Colors.transparent,collapsedBackgroundColor: Colors.transparent),
       radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(appSwatch)),
       hintColor: Colors.grey,
       fontFamily: 'Proxima',
-      primarySwatch: appSwatch,
       elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(backgroundColor: MaterialStateProperty.all(mainBackgroundDarkColor))),
       popupMenuTheme: const PopupMenuThemeData(color: Colors.white),
       checkboxTheme: CheckboxThemeData(checkColor: MaterialStateProperty.all(Colors.white),fillColor: MaterialStateProperty.all(appSwatch)),
@@ -132,7 +129,7 @@ class AppTheme {
           indicatorColor:mainAppColor,
           unselectedLabelColor:appGrey2,
           labelColor: mainAppColor
-      )
+      ), bottomAppBarTheme: BottomAppBarTheme(color: Colors.white), colorScheme: ColorScheme.fromSwatch(primarySwatch: appSwatch).copyWith(background: Colors.white)
   );
 
   // Text style
@@ -210,8 +207,6 @@ class AppTheme {
     dividerColor:Colors.transparent,
     scaffoldBackgroundColor: mainBackgroundDarkColor,
     fontFamily: 'Proxima',
-    backgroundColor: mainBackgroundSemiDarkColor,
-    bottomAppBarColor: mainBackgroundSemiDarkColor,
     elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle(backgroundColor: MaterialStateProperty.all(mainBackgroundDarkColor))),
     checkboxTheme: CheckboxThemeData(checkColor: MaterialStateProperty.all(Colors.white),fillColor: MaterialStateProperty.all(appSwatch)),
     popupMenuTheme: const PopupMenuThemeData(color:mainBackgroundSemiDarkColor),

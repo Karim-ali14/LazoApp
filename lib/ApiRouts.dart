@@ -15,3 +15,4 @@ const updateUserContactInfoEndpoint = "member/updateUserContactInfo";
 const deleteUserContactInfoEndpoint = "member/deleteUserAllContactInfo";
 const getUserContactInfoEndpoint = "member/getUserContactInfo";
 const getOtherUserContactInfoEndpoint = "userContactInfoProfile";
+
