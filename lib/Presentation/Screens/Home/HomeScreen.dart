@@ -63,7 +63,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     final cancelOrders = ref.watch(getCanselOrderStateProvider);
 
 
-    handleState(updateOrderStatusStateProvider,showLoading: true,onSuccess: (res){
+    handleState(updateOrderStatusStateProvider,showLoading: true,showToast: true,
+        onSuccess: (res){
       if(actionType == OrderStateActionType.Accepte){
         ref.read(getNewOrderStateProvider.notifier).updateOrder(res.data!.data!);
       }

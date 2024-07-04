@@ -23,11 +23,16 @@ extension OrderEx on String{
       }case "5" : {
         orderStatus = context.tr(readyToShippingKey);
         break;
-      }case "5.5" : {
+      }
+      case "6" :
+      case "7" :
+      case "8" :
+      case "5.5" : {
         orderStatus = context.tr(finishedKey);
         break;
       }
       case "10" :
+      case "12" :
       case "11" : {
         orderStatus = context.tr(canceledKey);
         break;
@@ -52,11 +57,16 @@ extension OrderEx on String{
       }case "5" : {
         orderStatusColor = AppTheme.readyToShippingColor;
         break;
-      }case "5.5" : {
+      }
+      case "6" :
+      case "7" :
+      case "8" :
+      case "5.5" : {
         orderStatusColor = AppTheme.finishColor;
         break;
       }
       case "10" :
+      case "12" :
       case "11" : {
         orderStatusColor = AppTheme.mainAppColor;
         break;
@@ -82,7 +92,13 @@ extension OrderEx on String{
       }case "5" : {
         orderStatusColor =  ButtonsType.Finish;
         break;
-      }case "5.5" : {
+      }
+      case "5.5" :
+      case "6" :
+      case "7" :
+      case "8" :
+      case "12" :
+      {
         orderStatusColor =  ButtonsType.ViewDetails;
         break;
       }

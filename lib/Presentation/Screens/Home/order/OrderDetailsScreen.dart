@@ -33,6 +33,7 @@ class OrderDetailsScreen extends ConsumerStatefulWidget {
 }
 
 class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
+  OrderStateActionType? actionType = null;
   @override
   void initState() {
     super.initState();
@@ -46,10 +47,42 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     final orderDetails = ref.watch(getOrderDetailsStateProvider);
-    handleState(updateOrderStatusStateProvider, showLoading: true,
-        onSuccess: (res) {
-      updateData();
+
+    handleState(getOrderDetailsStateProvider, onSuccess: (res) {
+      actionType = res.data?.data?.statusId?.toString().getOrderAction();
     });
+
+    handleState(updateOrderStatusStateProvider, showLoading: true,showToast: true,
+        onSuccess: (res) {
+      if (actionType == OrderStateActionType.Accepte) {
+        ref
+            .read(getNewOrderStateProvider.notifier)
+            .updateOrder(res.data!.data!);
+      } else if (actionType == OrderStateActionType.Cancel) {
+        ref
+            .read(getNewOrderStateProvider.notifier)
+            .deleteOrder(res.data!.data!);
+        ref
+            .read(getCanselOrderStateProvider.notifier)
+            .updateList(res.data!.data!);
+      } else if (actionType == OrderStateActionType.ReadyToShipping) {
+        ref
+            .read(getCurrentOrderStateProvider.notifier)
+            .updateOrder(res.data!.data!);
+      } else if (actionType == OrderStateActionType.Finish) {
+        ref
+            .read(getCurrentOrderStateProvider.notifier)
+            .deleteOrder(res.data!.data!);
+        ref
+            .read(getFinishOrderStateProvider.notifier)
+            .updateList(res.data!.data!);
+      }
+
+      ref
+          .read(getOrderDetailsStateProvider.notifier)
+          .getOrderDetails(widget.orderId);
+    });
+
     return Scaffold(
       appBar: CustomAppBar(
         navigated: true,
@@ -195,125 +228,142 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
       case ButtonsClickType.Accept:
         {
           ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-            cancellationReason:
-              null, orderId:  orderModel?.id.toString(),statusId:  "2", onSuccess: (res) {
-            ref
-                .read(getOrderDetailsStateProvider.notifier)
-                .updateOrderDetailsState(2);
-            if (context.isThereCurrentDialogShowing()) {
-              try {
-                context.pop();
-              } catch (e) {
-                print("NAV cannont pop");
-              }
-            }
-          }, onLoading: () {
-            context.showLoadingDialog();
-          }, onFailureRequest: () {
-            if (context.isThereCurrentDialogShowing()) {
-              try {
-                context.pop();
-              } catch (e) {
-                print("NAV cannont pop");
-              }
-            }
-          });
+              orderId: orderModel?.id.toString(), statusId: "2");
+
+          // ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+          //   cancellationReason:
+          //     null, orderId:  orderModel?.id.toString(),statusId:  "2", onSuccess: (res) {
+          //   ref
+          //       .read(getOrderDetailsStateProvider.notifier)
+          //       .updateOrderDetailsState(2);
+          //   if (context.isThereCurrentDialogShowing()) {
+          //     try {
+          //       context.pop();
+          //     } catch (e) {
+          //       print("NAV cannont pop");
+          //     }
+          //   }
+          // }, onLoading: () {
+          //   context.showLoadingDialog();
+          // }, onFailureRequest: () {
+          //   if (context.isThereCurrentDialogShowing()) {
+          //     try {
+          //       context.pop();
+          //     } catch (e) {
+          //       print("NAV cannont pop");
+          //     }
+          //   }
+          // });
           break;
         }
       case ButtonsClickType.Cancel:
         {
           ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-              cancellationReason: null,
-              orderId:  orderModel?.id.toString(),
-              statusId:  orderModel?.orderFamily == "ready_made" ? "10" : "11",
-              onSuccess: (res) {
-            ref
-                .read(getOrderDetailsStateProvider.notifier)
-                .updateOrderDetailsState(
-                    orderModel?.orderFamily == "ready_made" ? 10 : 11);
-            if (context.isThereCurrentDialogShowing()) {
-              try {
-                context.pop();
-              } catch (e) {
-                print("NAV cannont pop");
-              }
-            }
-          }, onLoading: () {
-            context.showLoadingDialog();
-          }, onFailureRequest: () {
-            if (context.isThereCurrentDialogShowing()) {
-              try {
-                context.pop();
-              } catch (e) {
-                print("NAV cannont pop");
-              }
-            }
-          });
+              orderId: orderModel?.id.toString(),
+              statusId: orderModel?.orderFamily == "ready_made" ? "10" : "11");
+
+          // ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+          //     cancellationReason: null,
+          //     orderId:  orderModel?.id.toString(),
+          //     statusId:  orderModel?.orderFamily == "ready_made" ? "10" : "11",
+          //     onSuccess: (res) {
+          //   ref
+          //       .read(getOrderDetailsStateProvider.notifier)
+          //       .updateOrderDetailsState(
+          //           orderModel?.orderFamily == "ready_made" ? 10 : 11);
+          //   if (context.isThereCurrentDialogShowing()) {
+          //     try {
+          //       context.pop();
+          //     } catch (e) {
+          //       print("NAV cannont pop");
+          //     }
+          //   }
+          // }, onLoading: () {
+          //   context.showLoadingDialog();
+          // }, onFailureRequest: () {
+          //   if (context.isThereCurrentDialogShowing()) {
+          //     try {
+          //       context.pop();
+          //     } catch (e) {
+          //       print("NAV cannont pop");
+          //     }
+          //   }
+          // });
           break;
         }
       case ButtonsClickType.ReadyToShipping:
         {
           ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-              cancellationReason: null, orderId:  orderModel?.id.toString(), statusId:  "5", onSuccess: (res) {
-            ref
-                .read(getOrderDetailsStateProvider.notifier)
-                .updateOrderDetailsState(5);
-            if (context.isThereCurrentDialogShowing()) {
-              try {
-                context.pop();
-              } catch (e) {
-                print("NAV cannont pop");
-              }
-            }
-          }, onLoading: () {
-            context.showLoadingDialog();
-          }, onFailureRequest: () {
-            if (context.isThereCurrentDialogShowing()) {
-              try {
-                context.pop();
-              } catch (e) {
-                print("NAV cannont pop");
-              }
-            }
-          });
+              orderId: orderModel?.id.toString(),
+              statusId: "5");
+
+          // ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+          //     cancellationReason: null,
+          //     orderId: orderModel?.id.toString(),
+          //     statusId: "5",
+          //     onSuccess: (res) {
+          //       ref
+          //           .read(getOrderDetailsStateProvider.notifier)
+          //           .updateOrderDetailsState(5);
+          //       if (context.isThereCurrentDialogShowing()) {
+          //         try {
+          //           context.pop();
+          //         } catch (e) {
+          //           print("NAV cannont pop");
+          //         }
+          //       }
+          //     },
+          //     onLoading: () {
+          //       context.showLoadingDialog();
+          //     },
+          //     onFailureRequest: () {
+          //       if (context.isThereCurrentDialogShowing()) {
+          //         try {
+          //           context.pop();
+          //         } catch (e) {
+          //           print("NAV cannont pop");
+          //         }
+          //       }
+          //     });
           break;
         }
       case ButtonsClickType.Finish:
         {
           ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-              cancellationReason: null, orderId:  orderModel?.id.toString(),statusId:  "7", onSuccess: (res) {
-            ref
-                .read(getOrderDetailsStateProvider.notifier)
-                .updateOrderDetailsState(7);
-            if (context.isThereCurrentDialogShowing()) {
-              try {
-                context.pop();
-              } catch (e) {
-                print("NAV cannont pop");
-              }
-            }
-          }, onLoading: () {
-            context.showLoadingDialog();
-          }, onFailureRequest: () {
-            if (context.isThereCurrentDialogShowing()) {
-              try {
-                context.pop();
-              } catch (e) {
-                print("NAV cannont pop");
-              }
-            }
-          });
+              orderId: orderModel?.id.toString(),
+              statusId: "5.5");
+          // ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+          //     cancellationReason: null,
+          //     orderId: orderModel?.id.toString(),
+          //     statusId: "7",
+          //     onSuccess: (res) {
+          //       ref
+          //           .read(getOrderDetailsStateProvider.notifier)
+          //           .updateOrderDetailsState(7);
+          //       if (context.isThereCurrentDialogShowing()) {
+          //         try {
+          //           context.pop();
+          //         } catch (e) {
+          //           print("NAV cannont pop");
+          //         }
+          //       }
+          //     },
+          //     onLoading: () {
+          //       context.showLoadingDialog();
+          //     },
+          //     onFailureRequest: () {
+          //       if (context.isThereCurrentDialogShowing()) {
+          //         try {
+          //           context.pop();
+          //         } catch (e) {
+          //           print("NAV cannont pop");
+          //         }
+          //       }
+          //     });
           break;
         }
       case ButtonsClickType.ViewDetails:
         {}
     }
-  }
-
-  void updateData() {
-    ref.read(getNewOrderStateProvider.notifier).getOrders();
-    ref.read(getCurrentOrderStateProvider.notifier).getOrders();
-    ref.read(getFinishOrderStateProvider.notifier).getOrders();
-    ref.read(getCanselOrderStateProvider.notifier).getOrders();
   }
 }
