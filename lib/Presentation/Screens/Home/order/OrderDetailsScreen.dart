@@ -3,15 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Constants/Constants.dart';
 import 'package:lazo_provider/Constants/Eunms.dart';
 import 'package:lazo_provider/Data/Models/StateModel.dart';
 import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
+import 'package:lazo_provider/Presentation/Dialogs/LoadingDialog.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/OrderButtons.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/OrderUserInfromationWithOrderStatus.dart';
 import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserOrdersStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
 import 'package:lazo_provider/Utils/DateUtils.dart';
+import 'package:lazo_provider/Utils/Extintions.dart';
 import 'package:lazo_provider/Utils/OrderEx.dart';
 
 import '../../../../Data/Network/lib/api.dart';
@@ -43,7 +46,8 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     final orderDetails = ref.watch(getOrderDetailsStateProvider);
-    handleState(updateOrderStatusStateProvider, showLoading: true,onSuccess: (res) {
+    handleState(updateOrderStatusStateProvider, showLoading: true,
+        onSuccess: (res) {
       updateData();
     });
     return Scaffold(
@@ -152,11 +156,12 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
                           ),
                           ...(List.generate(
                               orderDetails.data?.data?.orderItems.length ?? 0,
-                                  (index) => Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                              (index) => Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 8.0),
                                     child: ProductItemCard(
-                                    item: orderDetails
-                                        .data?.data?.orderItems[index]),
+                                        item: orderDetails
+                                            .data?.data?.orderItems[index]),
                                   )))
                         ],
                       ),
@@ -185,51 +190,118 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
   }
 
   void handleOnButtonsClicks(
-      ButtonsClickType type, ShowOrderDetails2200ResponseData? orderModel) {
+      ButtonsClickType type, ProviderOrderDetails? orderModel) {
     switch (type) {
       case ButtonsClickType.Accept:
         {
-          ref
-              .read(updateOrderStatusStateProvider.notifier)
-              .updateOrderStatus(null, orderModel?.id.toString(), "2", () {
+          ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+            cancellationReason:
+              null, orderId:  orderModel?.id.toString(),statusId:  "2", onSuccess: (res) {
             ref
                 .read(getOrderDetailsStateProvider.notifier)
                 .updateOrderDetailsState(2);
+            if (context.isThereCurrentDialogShowing()) {
+              try {
+                context.pop();
+              } catch (e) {
+                print("NAV cannont pop");
+              }
+            }
+          }, onLoading: () {
+            context.showLoadingDialog();
+          }, onFailureRequest: () {
+            if (context.isThereCurrentDialogShowing()) {
+              try {
+                context.pop();
+              } catch (e) {
+                print("NAV cannont pop");
+              }
+            }
           });
           break;
         }
       case ButtonsClickType.Cancel:
         {
           ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-              null,
-              orderModel?.id.toString(),
-              orderModel?.orderFamily == "ready_made" ? "10" : "11", () {
+              cancellationReason: null,
+              orderId:  orderModel?.id.toString(),
+              statusId:  orderModel?.orderFamily == "ready_made" ? "10" : "11",
+              onSuccess: (res) {
             ref
                 .read(getOrderDetailsStateProvider.notifier)
                 .updateOrderDetailsState(
                     orderModel?.orderFamily == "ready_made" ? 10 : 11);
+            if (context.isThereCurrentDialogShowing()) {
+              try {
+                context.pop();
+              } catch (e) {
+                print("NAV cannont pop");
+              }
+            }
+          }, onLoading: () {
+            context.showLoadingDialog();
+          }, onFailureRequest: () {
+            if (context.isThereCurrentDialogShowing()) {
+              try {
+                context.pop();
+              } catch (e) {
+                print("NAV cannont pop");
+              }
+            }
           });
           break;
         }
       case ButtonsClickType.ReadyToShipping:
         {
-          ref
-              .read(updateOrderStatusStateProvider.notifier)
-              .updateOrderStatus(null, orderModel?.id.toString(), "5", () {
+          ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+              cancellationReason: null, orderId:  orderModel?.id.toString(), statusId:  "5", onSuccess: (res) {
             ref
                 .read(getOrderDetailsStateProvider.notifier)
                 .updateOrderDetailsState(5);
+            if (context.isThereCurrentDialogShowing()) {
+              try {
+                context.pop();
+              } catch (e) {
+                print("NAV cannont pop");
+              }
+            }
+          }, onLoading: () {
+            context.showLoadingDialog();
+          }, onFailureRequest: () {
+            if (context.isThereCurrentDialogShowing()) {
+              try {
+                context.pop();
+              } catch (e) {
+                print("NAV cannont pop");
+              }
+            }
           });
           break;
         }
       case ButtonsClickType.Finish:
         {
-          ref
-              .read(updateOrderStatusStateProvider.notifier)
-              .updateOrderStatus(null, orderModel?.id.toString(), "7", () {
+          ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+              cancellationReason: null, orderId:  orderModel?.id.toString(),statusId:  "7", onSuccess: (res) {
             ref
                 .read(getOrderDetailsStateProvider.notifier)
                 .updateOrderDetailsState(7);
+            if (context.isThereCurrentDialogShowing()) {
+              try {
+                context.pop();
+              } catch (e) {
+                print("NAV cannont pop");
+              }
+            }
+          }, onLoading: () {
+            context.showLoadingDialog();
+          }, onFailureRequest: () {
+            if (context.isThereCurrentDialogShowing()) {
+              try {
+                context.pop();
+              } catch (e) {
+                print("NAV cannont pop");
+              }
+            }
           });
           break;
         }
@@ -237,6 +309,7 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
         {}
     }
   }
+
   void updateData() {
     ref.read(getNewOrderStateProvider.notifier).getOrders();
     ref.read(getCurrentOrderStateProvider.notifier).getOrders();

@@ -10,7 +10,7 @@ import '../../../../Theme/AppTheme.dart';
 import '../../../../Widgets/CircleImage.dart';
 
 class ProductItemCard extends StatefulWidget {
-  final ShowOrderDetails2200ResponseDataOrderItemsInner? item;
+  final ProviderOrderDetailsOrderItemsInner? item;
   const ProductItemCard({super.key, this.item});
 
   @override

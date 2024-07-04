@@ -50,6 +50,7 @@ extension GenericRequest<T> on StateNotifier<StateModel<T>> {
     var response;
     try{
       response = await asyncFunc();
+      print("$response");
       state = StateModel(state: DataState.SUCCESS, data: response is T ? response : null ,message: response?.message );
       onComplete?.call(response);
     }on ApiException catch (e) {
@@ -57,19 +58,21 @@ extension GenericRequest<T> on StateNotifier<StateModel<T>> {
       onFailure?.call(e);
       Map? error = json.tryDecode(e.message??"");
       var message = error?.containsKey("errors") == true ? (error!["errors"] as List).first : "Something wrong happen please try again later";
+      print("Error Response $message");
       if(e.code == 401 || e.code == 403){
         print("Not Authed Here");
         Future.delayed(const Duration(milliseconds: 20),(){
           print("Will Retry");
           request(asyncFunc);
         });
-      }else{
-        state = StateModel(state: DataState.ERROR,data: response?.data, message: message);
+      }
+      else{
+        state = StateModel(state: DataState.ERROR,data: null, message: message);
       }
     } on Exception catch(e){
-      print("Some Err Here");
+      print("Some Err Here $e");
       onFailure?.call(ApiException(500, e.toString()));
-      state = StateModel(state: DataState.ERROR,data: response?.data, message: (e).toString());
+      state = StateModel(state: DataState.ERROR,data: null, message: (e).toString());
     }
   }
   Future<void> requestForPagination(Future<dynamic> Function() asyncFunc , {Function(T)? onComplete,Function(ApiException)? onFailure}) async {

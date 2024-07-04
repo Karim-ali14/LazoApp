@@ -9,11 +9,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**assignChatNotificationToAClient**](ProviderApi.md#assignchatnotificationtoaclient) | **POST** /provider/chat/notification/assign | Assign chat notification to a client
 [**manageOrders1**](ProviderApi.md#manageorders1) | **POST** /provider/order/manage | manage orders
 [**providerAccountDeleteGet**](ProviderApi.md#provideraccountdeleteget) | **GET** /provider/account-delete | provider\\'s account deleted successfully
 [**providerLogoutGet**](ProviderApi.md#providerlogoutget) | **GET** /provider/logout | provider logout
 [**providerProfileShowGet**](ProviderApi.md#providerprofileshowget) | **GET** /provider/profile/show | show profile
 [**providerProfileUpdatePost**](ProviderApi.md#providerprofileupdatepost) | **POST** /provider/profile/update | update profile main data
+[**providerchangePassword**](ProviderApi.md#providerchangepassword) | **POST** /provider/change-password | Change Password
 [**readANotification1**](ProviderApi.md#readanotification1) | **POST** /provider/notification/read | read a notification
 [**showAllProviderSOrders**](ProviderApi.md#showallprovidersorders) | **GET** /provider/orders | show all provider's orders
 [**showNotifications1**](ProviderApi.md#shownotifications1) | **GET** /provider/notifications | show notifications
@@ -21,8 +23,60 @@ Method | HTTP request | Description
 [**updateFcmTokenAndDeviceType1**](ProviderApi.md#updatefcmtokenanddevicetype1) | **POST** /provider/update/device-data | update fcm_token and device_type
 
 
+# **assignChatNotificationToAClient**
+> assignChatNotificationToAClient(chatroomId, notificationMessage, userId)
+
+Assign chat notification to a client
+
+Assign chat notification to a client
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = ProviderApi();
+final chatroomId = chatroomId_example; // String | 
+final notificationMessage = notificationMessage_example; // String | 
+final userId = userId_example; // String | User ID of the client
+
+try {
+    api_instance.assignChatNotificationToAClient(chatroomId, notificationMessage, userId);
+} catch (e) {
+    print('Exception when calling ProviderApi->assignChatNotificationToAClient: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chatroomId** | **String**|  | [optional] 
+ **notificationMessage** | **String**|  | [optional] 
+ **userId** | **String**| User ID of the client | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **manageOrders1**
-> ManageOrders1200Response manageOrders1(cancellationReason, orderId, statusId)
+> ProviderOrderDetailsResponse manageOrders1(cancellationReason, orderId, statusId)
 
 manage orders
 
@@ -61,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ManageOrders1200Response**](ManageOrders1200Response.md)
+[**ProviderOrderDetailsResponse**](ProviderOrderDetailsResponse.md)
 
 ### Authorization
 
@@ -254,6 +308,54 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **providerchangePassword**
+> providerchangePassword(providerchangePasswordRequest)
+
+Change Password
+
+Change the password of the provider
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = ProviderApi();
+final providerchangePasswordRequest = ProviderchangePasswordRequest(); // ProviderchangePasswordRequest | 
+
+try {
+    api_instance.providerchangePassword(providerchangePasswordRequest);
+} catch (e) {
+    print('Exception when calling ProviderApi->providerchangePassword: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **providerchangePasswordRequest** | [**ProviderchangePasswordRequest**](ProviderchangePasswordRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **readANotification1**
 > ReadANotification1200Response readANotification1(notificationId)
 
@@ -404,7 +506,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **showOrderDetails2**
-> ShowOrderDetails2200Response showOrderDetails2(orderId)
+> ProviderOrderDetailsResponse showOrderDetails2(orderId)
 
 show order details
 
@@ -439,7 +541,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowOrderDetails2200Response**](ShowOrderDetails2200Response.md)
+[**ProviderOrderDetailsResponse**](ProviderOrderDetailsResponse.md)
 
 ### Authorization
 

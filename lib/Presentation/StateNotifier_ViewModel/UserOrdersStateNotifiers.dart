@@ -11,8 +11,6 @@ final getNewOrderStateProvider = StateNotifierProvider.autoDispose<OrderUseCase,
         StateModel<ShowAllProviderSOrders200Response?>>(
     (ref) => OrderUseCase(MainOrderStatus.New, ref, ref.read(ordersApi)));
 
-
-
 final getCurrentOrderStateProvider = StateNotifierProvider.autoDispose<
         OrderUseCase, StateModel<ShowAllProviderSOrders200Response?>>(
     (ref) => OrderUseCase(MainOrderStatus.Current, ref, ref.read(ordersApi)));
@@ -24,9 +22,9 @@ final getCanselOrderStateProvider = StateNotifierProvider.autoDispose<
     (ref) => OrderUseCase(MainOrderStatus.Cancelled, ref, ref.read(ordersApi)));
 
 final getOrderDetailsStateProvider = StateNotifierProvider.autoDispose<
-        OrderDetailsUseCase, StateModel<ShowOrderDetails2200Response>>(
+        OrderDetailsUseCase, StateModel<ProviderOrderDetailsResponse>>(
     (ref) => OrderDetailsUseCase(ref, ref.read(ordersApi)));
 
 final updateOrderStatusStateProvider = StateNotifierProvider.autoDispose<
-        UpdateOrderStatusUseCase, StateModel<ManageOrders1200Response>>(
+        UpdateOrderStatusUseCase, StateModel<ProviderOrderDetailsResponse>>(
     (ref) => UpdateOrderStatusUseCase(ref, ref.read(ordersApi)));

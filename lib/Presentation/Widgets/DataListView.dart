@@ -59,7 +59,7 @@ class DataListView<T> extends StatelessWidget {
         builder(
           dataList[index],
         ),
-      )) : Center(child: SingleChildScrollView(controller: _paginatedListController ,physics : const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),child: Text("",style: Theme.of(context).textTheme.bodyText2,),)),
+      )) : Center(child: SingleChildScrollView(controller: _paginatedListController ,physics : const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),child: Text("",style: Theme.of(context).textTheme.bodyMedium,),)),
       onNotification: (scrollEnded){
         if (_paginatedListController!.position.pixels >= 0 &&
             _paginatedListController!.position.pixels ==

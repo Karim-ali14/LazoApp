@@ -23,7 +23,7 @@ extension OrderEx on String{
       }case "5" : {
         orderStatus = context.tr(readyToShippingKey);
         break;
-      }case "7" : {
+      }case "5.5" : {
         orderStatus = context.tr(finishedKey);
         break;
       }
@@ -52,7 +52,7 @@ extension OrderEx on String{
       }case "5" : {
         orderStatusColor = AppTheme.readyToShippingColor;
         break;
-      }case "7" : {
+      }case "5.5" : {
         orderStatusColor = AppTheme.finishColor;
         break;
       }
@@ -64,7 +64,6 @@ extension OrderEx on String{
     }
     return orderStatusColor;
   }
-
   ButtonsType getOrderStatusForShowButtons(BuildContext context){
 
     ButtonsType orderStatusColor = ButtonsType.ViewDetails;
@@ -83,8 +82,30 @@ extension OrderEx on String{
       }case "5" : {
         orderStatusColor =  ButtonsType.Finish;
         break;
-      }case "7" : {
+      }case "5.5" : {
         orderStatusColor =  ButtonsType.ViewDetails;
+        break;
+      }
+    }
+    return orderStatusColor;
+  }
+  OrderStateActionType getOrderAction(){
+
+    OrderStateActionType orderStatusColor = OrderStateActionType.Accepte;
+    switch (this){
+      case "2" : {
+        orderStatusColor = OrderStateActionType.Accepte;
+        break;
+      }case "5" : {
+        orderStatusColor =  OrderStateActionType.ReadyToShipping;
+        break;
+      }case "5.5" : {
+        orderStatusColor =  OrderStateActionType.Finish;
+        break;
+      }
+      case "10":
+      case "11": {
+        orderStatusColor =  OrderStateActionType.Cancel;
         break;
       }
     }

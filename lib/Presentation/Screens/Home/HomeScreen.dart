@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Constants.dart';
+import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/InformationRowItem.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/OrderCardItem.dart';
 import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserOrdersStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Presentation/Widgets/AppButton.dart';
 import 'package:lazo_provider/Presentation/Widgets/DataListView.dart';
+import 'package:lazo_provider/Utils/OrderEx.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../Constants/Eunms.dart';
 import '../../../Data/Models/StateModel.dart';
 import '../../../Data/Network/lib/api.dart';
 import '../../StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
@@ -27,6 +30,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
   int activeTabIndex = 0;
+  OrderStateActionType? actionType = null;
 
   @override
   void initState() {
@@ -52,12 +56,30 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    final newOrders = ref.watch(getNewOrderStateProvider);
-    List<ShowAllProviderSOrders200ResponseDataDataInner> newOrderList = [];
 
+    final newOrders = ref.watch(getNewOrderStateProvider);
     final currentOrders = ref.watch(getCurrentOrderStateProvider);
     final finishOrders = ref.watch(getFinishOrderStateProvider);
     final cancelOrders = ref.watch(getCanselOrderStateProvider);
+
+
+    handleState(updateOrderStatusStateProvider,showLoading: true,onSuccess: (res){
+      if(actionType == OrderStateActionType.Accepte){
+        ref.read(getNewOrderStateProvider.notifier).updateOrder(res.data!.data!);
+      }
+      else if(actionType == OrderStateActionType.Cancel){
+        ref.read(getNewOrderStateProvider.notifier).deleteOrder(res.data!.data!);
+        ref.read(getCanselOrderStateProvider.notifier).updateList(res.data!.data!);
+      }
+      else if(actionType == OrderStateActionType.ReadyToShipping){
+        ref.read(getCurrentOrderStateProvider.notifier).updateOrder(res.data!.data!);
+      }
+      else if(actionType == OrderStateActionType.Finish){
+        ref.read(getCurrentOrderStateProvider.notifier).deleteOrder(res.data!.data!);
+        ref.read(getFinishOrderStateProvider.notifier).updateList(res.data!.data!);
+      }
+    });
+
 
     return Scaffold(
       body: SafeArea(
@@ -203,10 +225,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                 child: TabBarView(
               controller: tabController,
               children: [
-
                 newOrders.state == DataState.EMPTY ?
                 OrderPlaceHolder(onAddOrderClick: (){}) :
-                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                DataListView<ProviderOrderDetails>(
                     dataList: newOrders.data?.data?.data ??
                         (
                             newOrders.state == DataState.LOADING ?
@@ -214,7 +235,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                               ...List.generate(
                                   5,
                                       (index) =>
-                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                                      ProviderOrderDetails())
                             ] : []
                         ),
                     paginated: true,
@@ -231,6 +252,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                     builder: (item) => Skeletonizer(
                           enabled: newOrders.state == DataState.LOADING,
                           child: OrderCardItem(
+                            onOrderItemActionClick: (orderId,statusId,cancellationReason){
+                              actionType = statusId.getOrderAction();
+                              print("make oder state = ${actionType?.name}");
+                              if(actionType == OrderStateActionType.Accepte){
+                                ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+                                    orderId: orderId , statusId: statusId
+                                );
+                              }else if(actionType == OrderStateActionType.Cancel){
+                                ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+                                    orderId: orderId , statusId: statusId ,cancellationReason: cancellationReason
+                                );
+                              }
+
+                            },
                             onOrderItemClick: (orderId) {
                               navigateToOrderDetails(orderId);
                             },
@@ -240,7 +275,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
                 currentOrders.state == DataState.EMPTY ?
                 OrderPlaceHolder(onAddOrderClick: (){}) :
-                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                DataListView<ProviderOrderDetails>(
                     dataList: currentOrders.data?.data?.data ??
                         (
                             currentOrders.state == DataState.LOADING ?
@@ -248,7 +283,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                               ...List.generate(
                                   5,
                                       (index) =>
-                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                                      ProviderOrderDetails())
                             ] : []
                         ),
                     paginated: true,
@@ -265,6 +300,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                     builder: (item) => Skeletonizer(
                           enabled: currentOrders.state == DataState.LOADING,
                           child: OrderCardItem(
+                            onOrderItemActionClick: (orderId,statusId,cancellationReason){
+                              actionType = statusId.getOrderAction();
+                              print("make oder state = ${actionType?.name}");
+                              ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+                                  orderId: orderId , statusId: statusId
+                              );
+                            },
                             onOrderItemClick: (orderId) {
                               navigateToOrderDetails(orderId);
                             },
@@ -274,7 +316,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
                 finishOrders.state == DataState.EMPTY ?
                 OrderPlaceHolder(onAddOrderClick: (){}) :
-                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                DataListView<ProviderOrderDetails>(
                     dataList: finishOrders.data?.data?.data ??
                         (
                         finishOrders.state == DataState.LOADING ?
@@ -282,7 +324,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                               ...List.generate(
                                   5,
                                       (index) =>
-                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                                      ProviderOrderDetails())
                             ] : []
                         ),
                     paginated: true,
@@ -308,7 +350,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
                 cancelOrders.state == DataState.EMPTY ?
                 OrderPlaceHolder(onAddOrderClick: (){}) :
-                DataListView<ShowAllProviderSOrders200ResponseDataDataInner>(
+                DataListView<ProviderOrderDetails>(
                     dataList: cancelOrders.data?.data?.data ??
                         (
                             cancelOrders.state == DataState.LOADING ?
@@ -316,7 +358,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                               ...List.generate(
                                   5,
                                       (index) =>
-                                      ShowAllProviderSOrders200ResponseDataDataInner())
+                                      ProviderOrderDetails())
                             ] : []
                         ),
                     paginated: true,
@@ -355,5 +397,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
   void navigateToOrderDetails(String orderId) {
     context.push(R_OrderDetails, extra: {orderIdKey: orderId});
+  }
+
+  void updateData() {
+    ref.read(getNewOrderStateProvider.notifier).getOrders();
+    ref.read(getCurrentOrderStateProvider.notifier).getOrders();
+    ref.read(getFinishOrderStateProvider.notifier).getOrders();
+    ref.read(getCanselOrderStateProvider.notifier).getOrders();
   }
 }

@@ -22,7 +22,7 @@ class OrderUseCase
         onComplete: (res) {
       print("getOrders Size for ${orderState.name} ${res?.data?.data.isEmpty}");
       if(page != 1){
-        List<ShowAllProviderSOrders200ResponseDataDataInner> data = state.data?.data?.data ?? [];
+        List<ProviderOrderDetails> data = state.data?.data?.data ?? [];
         state.data?.data?.data = [...data,...(res?.data?.data??[])];
         state = StateModel.success(state.data);
       }else {
@@ -34,10 +34,41 @@ class OrderUseCase
       }
     });
   }
+
+  void updateList(ProviderOrderDetails order){
+    List<ProviderOrderDetails> data = state.data?.data?.data ?? [];
+    state.data?.data?.data = [...data,...([order])];
+    state = StateModel.success(state.data);
+  }
+
+  void updateOrder(ProviderOrderDetails order){
+    List<ProviderOrderDetails> data = state.data?.data?.data ?? [];
+    var indexWhere = data.indexWhere((item) => item.id == order.id);
+    data[indexWhere] = order;
+    state.data?.data?.data = [...data];
+    state = StateModel.success(state.data);
+  }
+
+  void deleteOrder(ProviderOrderDetails order){
+    try{
+      List<ProviderOrderDetails> data = (state.data?.data?.data ?? []).toList(growable: true);
+      print(data.length);
+      var index = data.indexWhere((item) => item.id == order.id);
+      print(index);
+      data.removeAt(index);
+      print(data.length);
+
+      state.data?.data?.data = data;
+      state = StateModel.success(state.data);
+    }catch(e){
+      print(e);
+    }
+
+  }
 }
 
 class OrderDetailsUseCase
-    extends StateNotifier<StateModel<ShowOrderDetails2200Response>> {
+    extends StateNotifier<StateModel<ProviderOrderDetailsResponse>> {
   final Ref ref;
   final Orders12Api api;
   OrderDetailsUseCase(this.ref, this.api) : super(StateModel());
@@ -50,31 +81,24 @@ class OrderDetailsUseCase
 
   void updateOrderDetailsState(int stateId){
     state.data?.data?.statusId = stateId;
-    state = StateModel<ShowOrderDetails2200Response>(state: DataState.SUCCESS, data: state.data ,message: "" );
+    state = StateModel<ProviderOrderDetailsResponse>(state: DataState.SUCCESS, data: state.data ,message: "" );
   }
 }
 
 class UpdateOrderStatusUseCase
-    extends StateNotifier<StateModel<ManageOrders1200Response>> {
+    extends StateNotifier<StateModel<ProviderOrderDetailsResponse>> {
   final Ref ref;
   final Orders12Api orders12api;
   UpdateOrderStatusUseCase(this.ref, this.orders12api) : super(StateModel());
 
-  void updateOrderStatus(String? cancellationReason, String? orderId,
-      String? statusId, Function onSuccess) async {
+  void updateOrderStatus( {String? cancellationReason, String? orderId,
+        String? statusId,Function? onLoading, Function(ProviderOrderDetailsResponse)? onSuccess,Function? onFailureRequest}) async {
+    onLoading?.call();
     state = StateModel.loading();
     request(
         () => orders12api.manageOrders1(
             cancellationReason: cancellationReason,
             orderId: orderId,
-            statusId: statusId),
-        onComplete: (res) {
-          print(res);
-          if(res.status == true){
-            onSuccess.call();
-          }else{
-            print(res.message);
-          }
-        });
+            statusId: statusId),);
   }
 }

@@ -16,6 +16,81 @@ class ProviderApi {
 
   final ApiClient apiClient;
 
+  /// Assign chat notification to a client
+  ///
+  /// Assign chat notification to a client
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] chatroomId:
+  ///
+  /// * [String] notificationMessage:
+  ///
+  /// * [String] userId:
+  ///   User ID of the client
+  Future<Response> assignChatNotificationToAClientWithHttpInfo({ String? chatroomId, String? notificationMessage, String? userId, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/provider/chat/notification/assign';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['multipart/form-data'];
+
+    bool hasFields = false;
+    final mp = MultipartRequest('POST', Uri.parse(path));
+    if (chatroomId != null) {
+      hasFields = true;
+      mp.fields[r'chatroom_id'] = parameterToString(chatroomId);
+    }
+    if (notificationMessage != null) {
+      hasFields = true;
+      mp.fields[r'notification_message'] = parameterToString(notificationMessage);
+    }
+    if (userId != null) {
+      hasFields = true;
+      mp.fields[r'user_id'] = parameterToString(userId);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Assign chat notification to a client
+  ///
+  /// Assign chat notification to a client
+  ///
+  /// Parameters:
+  ///
+  /// * [String] chatroomId:
+  ///
+  /// * [String] notificationMessage:
+  ///
+  /// * [String] userId:
+  ///   User ID of the client
+  Future<void> assignChatNotificationToAClient({ String? chatroomId, String? notificationMessage, String? userId, }) async {
+    final response = await assignChatNotificationToAClientWithHttpInfo( chatroomId: chatroomId, notificationMessage: notificationMessage, userId: userId, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// manage orders
   ///
   /// manage orders
@@ -86,7 +161,7 @@ class ProviderApi {
   ///
   /// * [String] statusId:
   ///   2-accept, 4-preparing, 5-read_to_shipping, 10-cancel_ready_made_order, 11-cancel_collective_order
-  Future<ManageOrders1200Response?> manageOrders1({ String? cancellationReason, String? orderId, String? statusId, }) async {
+  Future<ProviderOrderDetailsResponse?> manageOrders1({ String? cancellationReason, String? orderId, String? statusId, }) async {
     final response = await manageOrders1WithHttpInfo( cancellationReason: cancellationReason, orderId: orderId, statusId: statusId, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -95,7 +170,7 @@ class ProviderApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ManageOrders1200Response',) as ManageOrders1200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProviderOrderDetailsResponse',) as ProviderOrderDetailsResponse;
     
     }
     return null;
@@ -300,6 +375,54 @@ class ProviderApi {
     
     }
     return null;
+  }
+
+  /// Change Password
+  ///
+  /// Change the password of the provider
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ProviderchangePasswordRequest] providerchangePasswordRequest (required):
+  Future<Response> providerchangePasswordWithHttpInfo(ProviderchangePasswordRequest providerchangePasswordRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/provider/change-password';
+
+    // ignore: prefer_final_locals
+    Object? postBody = providerchangePasswordRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Change Password
+  ///
+  /// Change the password of the provider
+  ///
+  /// Parameters:
+  ///
+  /// * [ProviderchangePasswordRequest] providerchangePasswordRequest (required):
+  Future<void> providerchangePassword(ProviderchangePasswordRequest providerchangePasswordRequest,) async {
+    final response = await providerchangePasswordWithHttpInfo(providerchangePasswordRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// read a notification
@@ -541,7 +664,7 @@ class ProviderApi {
   /// Parameters:
   ///
   /// * [String] orderId:
-  Future<ShowOrderDetails2200Response?> showOrderDetails2({ String? orderId, }) async {
+  Future<ProviderOrderDetailsResponse?> showOrderDetails2({ String? orderId, }) async {
     final response = await showOrderDetails2WithHttpInfo( orderId: orderId, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -550,7 +673,7 @@ class ProviderApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ShowOrderDetails2200Response',) as ShowOrderDetails2200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ProviderOrderDetailsResponse',) as ProviderOrderDetailsResponse;
     
     }
     return null;

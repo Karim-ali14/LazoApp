@@ -12,13 +12,18 @@ Method | HTTP request | Description
 [**citiesGet**](PublicApi.md#citiesget) | **GET** /cities | show all cities
 [**clientLogin**](PublicApi.md#clientlogin) | **POST** /client/login | client login
 [**clientSignup**](PublicApi.md#clientsignup) | **POST** /client/register | client signup
+[**filterTopProductsServices**](PublicApi.md#filtertopproductsservices) | **POST** /top-products-services/filter | Filter top products & services
+[**filterTopSellers**](PublicApi.md#filtertopsellers) | **POST** /top-sellers/filter | Filter top sellers
 [**showAllBanners**](PublicApi.md#showallbanners) | **GET** /banners | show all banners
 [**showAllCategories**](PublicApi.md#showallcategories) | **GET** /categories | show all categories
 [**showAllColors**](PublicApi.md#showallcolors) | **GET** /colors | show all colors
+[**showAllGiftBoxes**](PublicApi.md#showallgiftboxes) | **GET** /gift-boxes | Show all gift boxes
+[**showAllGiftCards**](PublicApi.md#showallgiftcards) | **GET** /gift-cards | Show all gift cards
 [**showAllOccasions**](PublicApi.md#showalloccasions) | **GET** /occasions | show all occasions
 [**showAllProducts**](PublicApi.md#showallproducts) | **GET** /products/filter | show all products
 [**showAllServicesWithFilter**](PublicApi.md#showallserviceswithfilter) | **GET** /services/filter | show all services (with filter)
 [**showAllSizes**](PublicApi.md#showallsizes) | **GET** /sizes | show all sizes
+[**showHome**](PublicApi.md#showhome) | **GET** /home | Show home
 [**showProductDetails**](PublicApi.md#showproductdetails) | **GET** /product/show | show product details
 [**showPromocodeDetails**](PublicApi.md#showpromocodedetails) | **GET** /promocode/show | show promocode details
 [**showServiceDetails**](PublicApi.md#showservicedetails) | **GET** /service/show | show service details
@@ -68,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **clientLogin**
-> ClientLogin200Response clientLogin(phone)
+> ClientAuthResponse clientLogin(phone)
 
 client login
 
@@ -97,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClientLogin200Response**](ClientLogin200Response.md)
+[**ClientAuthResponse**](ClientAuthResponse.md)
 
 ### Authorization
 
@@ -111,7 +116,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **clientSignup**
-> ClientSignup200Response clientSignup(cityId, email, image, name, phone)
+> ClientAuthResponse clientSignup(cityId, email, image, name, phone)
 
 client signup
 
@@ -148,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClientSignup200Response**](ClientSignup200Response.md)
+[**ClientAuthResponse**](ClientAuthResponse.md)
 
 ### Authorization
 
@@ -158,6 +163,106 @@ No authorization required
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **filterTopProductsServices**
+> filterTopProductsServices(categoriesIds, occasionsIds, priceFrom, priceTo, ratings, type)
+
+Filter top products & services
+
+Filter top products & services
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+final categoriesIds = []; // List<String> | 
+final occasionsIds = []; // List<String> | 
+final priceFrom = priceFrom_example; // String | 
+final priceTo = priceTo_example; // String | 
+final ratings = []; // List<String> | 
+final type = type_example; // String | products or services
+
+try {
+    api_instance.filterTopProductsServices(categoriesIds, occasionsIds, priceFrom, priceTo, ratings, type);
+} catch (e) {
+    print('Exception when calling PublicApi->filterTopProductsServices: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **categoriesIds** | [**List<String>**](String.md)|  | [optional] 
+ **occasionsIds** | [**List<String>**](String.md)|  | [optional] 
+ **priceFrom** | **String**|  | [optional] 
+ **priceTo** | **String**|  | [optional] 
+ **ratings** | [**List<String>**](String.md)|  | [optional] 
+ **type** | **String**| products or services | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **filterTopSellers**
+> filterTopSellers(categoriesIds, isPromoted, occasionsIds, ratings)
+
+Filter top sellers
+
+Filter top sellers
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+final categoriesIds = []; // List<String> | 
+final isPromoted = isPromoted_example; // String | 0-not_promoted, 1-promoted
+final occasionsIds = []; // List<String> | 
+final ratings = []; // List<String> | 
+
+try {
+    api_instance.filterTopSellers(categoriesIds, isPromoted, occasionsIds, ratings);
+} catch (e) {
+    print('Exception when calling PublicApi->filterTopSellers: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **categoriesIds** | [**List<String>**](String.md)|  | [optional] 
+ **isPromoted** | **String**| 0-not_promoted, 1-promoted | [optional] 
+ **occasionsIds** | [**List<String>**](String.md)|  | [optional] 
+ **ratings** | [**List<String>**](String.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -266,6 +371,84 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ColorsResponse**](ColorsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showAllGiftBoxes**
+> ShowAllGiftBoxes200Response showAllGiftBoxes()
+
+Show all gift boxes
+
+Retrieve a list of all available gift boxes
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+
+try {
+    final result = api_instance.showAllGiftBoxes();
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showAllGiftBoxes: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ShowAllGiftBoxes200Response**](ShowAllGiftBoxes200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showAllGiftCards**
+> ShowAllGiftCards200Response showAllGiftCards()
+
+Show all gift cards
+
+Retrieve a list of all available gift cards
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+
+final api_instance = PublicApi();
+
+try {
+    final result = api_instance.showAllGiftCards();
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showAllGiftCards: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ShowAllGiftCards200Response**](ShowAllGiftCards200Response.md)
 
 ### Authorization
 
@@ -434,6 +617,51 @@ This endpoint does not need any parameter.
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **showHome**
+> ShowHome200Response showHome()
+
+Show home
+
+Show home
+
+### Example
+```dart
+import 'package:athletix/api.dart';
+// TODO Configure HTTP Bearer authorization: bearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = PublicApi();
+
+try {
+    final result = api_instance.showHome();
+    print(result);
+} catch (e) {
+    print('Exception when calling PublicApi->showHome: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ShowHome200Response**](ShowHome200Response.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -615,7 +843,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **uploadFilesPost**
-> UploadFiles uploadFilesPost(filesLeftSquareBracket0RightSquareBracket)
+> UploadFilesResponse uploadFilesPost(files)
 
 upload file(s)
 
@@ -624,10 +852,10 @@ upload file(s)
 import 'package:athletix/api.dart';
 
 final api_instance = PublicApi();
-final filesLeftSquareBracket0RightSquareBracket = BINARY_DATA_HERE; // MultipartFile | 
+final files = [/path/to/file.txt]; // List<MultipartFile> | 
 
 try {
-    final result = api_instance.uploadFilesPost(filesLeftSquareBracket0RightSquareBracket);
+    final result = api_instance.uploadFilesPost(files);
     print(result);
 } catch (e) {
     print('Exception when calling PublicApi->uploadFilesPost: $e\n');
@@ -638,11 +866,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filesLeftSquareBracket0RightSquareBracket** | **MultipartFile**|  | [optional] 
+ **files** | [**List<MultipartFile>**](MultipartFile.md)|  | [optional] 
 
 ### Return type
 
-[**UploadFiles**](UploadFiles.md)
+[**UploadFilesResponse**](UploadFilesResponse.md)
 
 ### Authorization
 

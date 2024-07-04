@@ -10,6 +10,13 @@ enum MainOrderStatus {
   Finished,
   Cancelled
 }
+enum OrderStateActionType {
+  Accepte,
+  Cancel,
+  Finish,
+  ReadyToShipping
+}
+
 enum ButtonsType {
   ViewDetails,
   ShowAcceptOrCancel,

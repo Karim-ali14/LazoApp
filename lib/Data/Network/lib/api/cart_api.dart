@@ -16,6 +16,232 @@ class CartApi {
 
   final ApiClient apiClient;
 
+  /// Add product/service to cart (cart-item)
+  ///
+  /// Add product/service to cart (cart-item)
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] productId:
+  ///   Optional (insert a product or a service)
+  ///
+  /// * [String] productQuantity:
+  ///   Required with product_id
+  ///
+  /// * [String] productSelectedListIds:
+  ///   Optional, but required with product_id if provided
+  ///
+  /// * [String] productSelectedListItemsIds:
+  ///   Optional, but required with product_id if provided
+  ///
+  /// * [String] serviceId:
+  ///   Optional (insert a product or a service)
+  ///
+  /// * [String] serviceQuantity:
+  ///   Required with service_id
+  ///
+  /// * [String] serviceSelectedListIds:
+  ///   Optional, but required with service_id if provided
+  ///
+  /// * [String] serviceSelectedListItemsIds:
+  ///   Optional, but required with service_id if provided
+  Future<Response> addProductServiceToCartCartItemWithHttpInfo({ String? productId, String? productQuantity, String? productSelectedListIds, String? productSelectedListItemsIds, String? serviceId, String? serviceQuantity, String? serviceSelectedListIds, String? serviceSelectedListItemsIds, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/client/cart/create';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['multipart/form-data'];
+
+    bool hasFields = false;
+    final mp = MultipartRequest('POST', Uri.parse(path));
+    if (productId != null) {
+      hasFields = true;
+      mp.fields[r'product_id'] = parameterToString(productId);
+    }
+    if (productQuantity != null) {
+      hasFields = true;
+      mp.fields[r'product_quantity'] = parameterToString(productQuantity);
+    }
+    if (productSelectedListIds != null) {
+      hasFields = true;
+      mp.fields[r'product_selected_list_ids'] = parameterToString(productSelectedListIds);
+    }
+    if (productSelectedListItemsIds != null) {
+      hasFields = true;
+      mp.fields[r'product_selected_list_items_ids'] = parameterToString(productSelectedListItemsIds);
+    }
+    if (serviceId != null) {
+      hasFields = true;
+      mp.fields[r'service_id'] = parameterToString(serviceId);
+    }
+    if (serviceQuantity != null) {
+      hasFields = true;
+      mp.fields[r'service_quantity'] = parameterToString(serviceQuantity);
+    }
+    if (serviceSelectedListIds != null) {
+      hasFields = true;
+      mp.fields[r'service_selected_list_ids'] = parameterToString(serviceSelectedListIds);
+    }
+    if (serviceSelectedListItemsIds != null) {
+      hasFields = true;
+      mp.fields[r'service_selected_list_items_ids'] = parameterToString(serviceSelectedListItemsIds);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Add product/service to cart (cart-item)
+  ///
+  /// Add product/service to cart (cart-item)
+  ///
+  /// Parameters:
+  ///
+  /// * [String] productId:
+  ///   Optional (insert a product or a service)
+  ///
+  /// * [String] productQuantity:
+  ///   Required with product_id
+  ///
+  /// * [String] productSelectedListIds:
+  ///   Optional, but required with product_id if provided
+  ///
+  /// * [String] productSelectedListItemsIds:
+  ///   Optional, but required with product_id if provided
+  ///
+  /// * [String] serviceId:
+  ///   Optional (insert a product or a service)
+  ///
+  /// * [String] serviceQuantity:
+  ///   Required with service_id
+  ///
+  /// * [String] serviceSelectedListIds:
+  ///   Optional, but required with service_id if provided
+  ///
+  /// * [String] serviceSelectedListItemsIds:
+  ///   Optional, but required with service_id if provided
+  Future<void> addProductServiceToCartCartItem({ String? productId, String? productQuantity, String? productSelectedListIds, String? productSelectedListItemsIds, String? serviceId, String? serviceQuantity, String? serviceSelectedListIds, String? serviceSelectedListItemsIds, }) async {
+    final response = await addProductServiceToCartCartItemWithHttpInfo( productId: productId, productQuantity: productQuantity, productSelectedListIds: productSelectedListIds, productSelectedListItemsIds: productSelectedListItemsIds, serviceId: serviceId, serviceQuantity: serviceQuantity, serviceSelectedListIds: serviceSelectedListIds, serviceSelectedListItemsIds: serviceSelectedListItemsIds, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Delete cart item
+  ///
+  /// Delete cart item
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] cartItemId:
+  Future<Response> deleteCartItemWithHttpInfo({ String? cartItemId, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/client/cart-item/delete';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['multipart/form-data'];
+
+    bool hasFields = false;
+    final mp = MultipartRequest('POST', Uri.parse(path));
+    if (cartItemId != null) {
+      hasFields = true;
+      mp.fields[r'cart_item_id'] = parameterToString(cartItemId);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Delete cart item
+  ///
+  /// Delete cart item
+  ///
+  /// Parameters:
+  ///
+  /// * [String] cartItemId:
+  Future<void> deleteCartItem({ String? cartItemId, }) async {
+    final response = await deleteCartItemWithHttpInfo( cartItemId: cartItemId, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Reset cart for client
+  ///
+  /// Reset cart for client
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> resetCartForClientWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/client/cart/delete';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Reset cart for client
+  ///
+  /// Reset cart for client
+  Future<void> resetCartForClient() async {
+    final response = await resetCartForClientWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
   /// show cart details
   ///
   /// show cart details
@@ -62,5 +288,70 @@ class CartApi {
     
     }
     return null;
+  }
+
+  /// Update cart item quantity
+  ///
+  /// Update cart item quantity
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] cartItemId:
+  ///
+  /// * [String] quantity:
+  Future<Response> updateCartItemQuantityWithHttpInfo({ String? cartItemId, String? quantity, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/client/cart/update';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['multipart/form-data'];
+
+    bool hasFields = false;
+    final mp = MultipartRequest('POST', Uri.parse(path));
+    if (cartItemId != null) {
+      hasFields = true;
+      mp.fields[r'cart_item_id'] = parameterToString(cartItemId);
+    }
+    if (quantity != null) {
+      hasFields = true;
+      mp.fields[r'quantity'] = parameterToString(quantity);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Update cart item quantity
+  ///
+  /// Update cart item quantity
+  ///
+  /// Parameters:
+  ///
+  /// * [String] cartItemId:
+  ///
+  /// * [String] quantity:
+  Future<void> updateCartItemQuantity({ String? cartItemId, String? quantity, }) async {
+    final response = await updateCartItemQuantityWithHttpInfo( cartItemId: cartItemId, quantity: quantity, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 }

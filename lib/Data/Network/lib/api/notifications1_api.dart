@@ -209,4 +209,71 @@ class Notifications1Api {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
+
+  /// update fcm_token and device_type
+  ///
+  /// update fcm_token and device_type
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] deviceType:
+  ///   android|ios
+  ///
+  /// * [String] fcmToken:
+  Future<Response> updateFcmTokenAndDeviceType2WithHttpInfo({ String? deviceType, String? fcmToken, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/client/update/device-data';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['multipart/form-data'];
+
+    bool hasFields = false;
+    final mp = MultipartRequest('POST', Uri.parse(path));
+    if (deviceType != null) {
+      hasFields = true;
+      mp.fields[r'device_type'] = parameterToString(deviceType);
+    }
+    if (fcmToken != null) {
+      hasFields = true;
+      mp.fields[r'fcm_token'] = parameterToString(fcmToken);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// update fcm_token and device_type
+  ///
+  /// update fcm_token and device_type
+  ///
+  /// Parameters:
+  ///
+  /// * [String] deviceType:
+  ///   android|ios
+  ///
+  /// * [String] fcmToken:
+  Future<void> updateFcmTokenAndDeviceType2({ String? deviceType, String? fcmToken, }) async {
+    final response = await updateFcmTokenAndDeviceType2WithHttpInfo( deviceType: deviceType, fcmToken: fcmToken, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
 }

@@ -122,7 +122,7 @@ class PublicApi {
   /// Parameters:
   ///
   /// * [String] phone:
-  Future<ClientLogin200Response?> clientLogin({ String? phone, }) async {
+  Future<ClientAuthResponse?> clientLogin({ String? phone, }) async {
     final response = await clientLoginWithHttpInfo( phone: phone, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -131,7 +131,7 @@ class PublicApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ClientLogin200Response',) as ClientLogin200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ClientAuthResponse',) as ClientAuthResponse;
     
     }
     return null;
@@ -223,7 +223,7 @@ class PublicApi {
   /// * [String] name:
   ///
   /// * [String] phone:
-  Future<ClientSignup200Response?> clientSignup({ String? cityId, String? email, String? image, String? name, String? phone, }) async {
+  Future<ClientAuthResponse?> clientSignup({ String? cityId, String? email, String? image, String? name, String? phone, }) async {
     final response = await clientSignupWithHttpInfo( cityId: cityId, email: email, image: image, name: name, phone: phone, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -232,10 +232,192 @@ class PublicApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ClientSignup200Response',) as ClientSignup200Response;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ClientAuthResponse',) as ClientAuthResponse;
     
     }
     return null;
+  }
+
+  /// Filter top products & services
+  ///
+  /// Filter top products & services
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [List<String>] categoriesIds:
+  ///
+  /// * [List<String>] occasionsIds:
+  ///
+  /// * [String] priceFrom:
+  ///
+  /// * [String] priceTo:
+  ///
+  /// * [List<String>] ratings:
+  ///
+  /// * [String] type:
+  ///   products or services
+  Future<Response> filterTopProductsServicesWithHttpInfo({ List<String>? categoriesIds, List<String>? occasionsIds, String? priceFrom, String? priceTo, List<String>? ratings, String? type, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/top-products-services/filter';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['multipart/form-data'];
+
+    bool hasFields = false;
+    final mp = MultipartRequest('POST', Uri.parse(path));
+    if (categoriesIds != null) {
+      hasFields = true;
+      mp.fields[r'categories_ids'] = parameterToString(categoriesIds);
+    }
+    if (occasionsIds != null) {
+      hasFields = true;
+      mp.fields[r'occasions_ids'] = parameterToString(occasionsIds);
+    }
+    if (priceFrom != null) {
+      hasFields = true;
+      mp.fields[r'price_from'] = parameterToString(priceFrom);
+    }
+    if (priceTo != null) {
+      hasFields = true;
+      mp.fields[r'price_to'] = parameterToString(priceTo);
+    }
+    if (ratings != null) {
+      hasFields = true;
+      mp.fields[r'ratings'] = parameterToString(ratings);
+    }
+    if (type != null) {
+      hasFields = true;
+      mp.fields[r'type'] = parameterToString(type);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Filter top products & services
+  ///
+  /// Filter top products & services
+  ///
+  /// Parameters:
+  ///
+  /// * [List<String>] categoriesIds:
+  ///
+  /// * [List<String>] occasionsIds:
+  ///
+  /// * [String] priceFrom:
+  ///
+  /// * [String] priceTo:
+  ///
+  /// * [List<String>] ratings:
+  ///
+  /// * [String] type:
+  ///   products or services
+  Future<void> filterTopProductsServices({ List<String>? categoriesIds, List<String>? occasionsIds, String? priceFrom, String? priceTo, List<String>? ratings, String? type, }) async {
+    final response = await filterTopProductsServicesWithHttpInfo( categoriesIds: categoriesIds, occasionsIds: occasionsIds, priceFrom: priceFrom, priceTo: priceTo, ratings: ratings, type: type, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+  }
+
+  /// Filter top sellers
+  ///
+  /// Filter top sellers
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [List<String>] categoriesIds:
+  ///
+  /// * [String] isPromoted:
+  ///   0-not_promoted, 1-promoted
+  ///
+  /// * [List<String>] occasionsIds:
+  ///
+  /// * [List<String>] ratings:
+  Future<Response> filterTopSellersWithHttpInfo({ List<String>? categoriesIds, String? isPromoted, List<String>? occasionsIds, List<String>? ratings, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/top-sellers/filter';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['multipart/form-data'];
+
+    bool hasFields = false;
+    final mp = MultipartRequest('POST', Uri.parse(path));
+    if (categoriesIds != null) {
+      hasFields = true;
+      mp.fields[r'categories_ids'] = parameterToString(categoriesIds);
+    }
+    if (isPromoted != null) {
+      hasFields = true;
+      mp.fields[r'is_promoted'] = parameterToString(isPromoted);
+    }
+    if (occasionsIds != null) {
+      hasFields = true;
+      mp.fields[r'occasions_ids'] = parameterToString(occasionsIds);
+    }
+    if (ratings != null) {
+      hasFields = true;
+      mp.fields[r'ratings'] = parameterToString(ratings);
+    }
+    if (hasFields) {
+      postBody = mp;
+    }
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Filter top sellers
+  ///
+  /// Filter top sellers
+  ///
+  /// Parameters:
+  ///
+  /// * [List<String>] categoriesIds:
+  ///
+  /// * [String] isPromoted:
+  ///   0-not_promoted, 1-promoted
+  ///
+  /// * [List<String>] occasionsIds:
+  ///
+  /// * [List<String>] ratings:
+  Future<void> filterTopSellers({ List<String>? categoriesIds, String? isPromoted, List<String>? occasionsIds, List<String>? ratings, }) async {
+    final response = await filterTopSellersWithHttpInfo( categoriesIds: categoriesIds, isPromoted: isPromoted, occasionsIds: occasionsIds, ratings: ratings, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
   }
 
   /// show all banners
@@ -377,6 +559,102 @@ class PublicApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ColorsResponse',) as ColorsResponse;
+    
+    }
+    return null;
+  }
+
+  /// Show all gift boxes
+  ///
+  /// Retrieve a list of all available gift boxes
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> showAllGiftBoxesWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/gift-boxes';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Show all gift boxes
+  ///
+  /// Retrieve a list of all available gift boxes
+  Future<ShowAllGiftBoxes200Response?> showAllGiftBoxes() async {
+    final response = await showAllGiftBoxesWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ShowAllGiftBoxes200Response',) as ShowAllGiftBoxes200Response;
+    
+    }
+    return null;
+  }
+
+  /// Show all gift cards
+  ///
+  /// Retrieve a list of all available gift cards
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> showAllGiftCardsWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/gift-cards';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Show all gift cards
+  ///
+  /// Retrieve a list of all available gift cards
+  Future<ShowAllGiftCards200Response?> showAllGiftCards() async {
+    final response = await showAllGiftCardsWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ShowAllGiftCards200Response',) as ShowAllGiftCards200Response;
     
     }
     return null;
@@ -595,6 +873,54 @@ class PublicApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SizesResponse',) as SizesResponse;
+    
+    }
+    return null;
+  }
+
+  /// Show home
+  ///
+  /// Show home
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> showHomeWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/home';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Show home
+  ///
+  /// Show home
+  Future<ShowHome200Response?> showHome() async {
+    final response = await showHomeWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ShowHome200Response',) as ShowHome200Response;
     
     }
     return null;
@@ -853,8 +1179,8 @@ class PublicApi {
   ///
   /// Parameters:
   ///
-  /// * [MultipartFile] filesLeftSquareBracket0RightSquareBracket:
-  Future<Response> uploadFilesPostWithHttpInfo({ MultipartFile? filesLeftSquareBracket0RightSquareBracket, }) async {
+  /// * [List<MultipartFile>] files:
+  Future<Response> uploadFilesPostWithHttpInfo({ List<MultipartFile>? files, }) async {
     // ignore: prefer_const_declarations
     final path = r'/upload/files';
 
@@ -869,10 +1195,9 @@ class PublicApi {
 
     bool hasFields = false;
     final mp = MultipartRequest('POST', Uri.parse(path));
-    if (filesLeftSquareBracket0RightSquareBracket != null) {
+    if (files != null) {
       hasFields = true;
-      mp.fields[r'files[0]'] = filesLeftSquareBracket0RightSquareBracket.field;
-      mp.files.add(filesLeftSquareBracket0RightSquareBracket);
+      mp.files.addAll(files);
     }
     if (hasFields) {
       postBody = mp;
@@ -893,9 +1218,9 @@ class PublicApi {
   ///
   /// Parameters:
   ///
-  /// * [MultipartFile] filesLeftSquareBracket0RightSquareBracket:
-  Future<UploadFiles?> uploadFilesPost({ MultipartFile? filesLeftSquareBracket0RightSquareBracket, }) async {
-    final response = await uploadFilesPostWithHttpInfo( filesLeftSquareBracket0RightSquareBracket: filesLeftSquareBracket0RightSquareBracket, );
+  /// * [List<MultipartFile>] files:
+  Future<UploadFilesResponse?> uploadFilesPost({ List<MultipartFile>? files, }) async {
+    final response = await uploadFilesPostWithHttpInfo( files: files, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -903,7 +1228,7 @@ class PublicApi {
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UploadFiles',) as UploadFiles;
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'UploadFilesResponse',) as UploadFilesResponse;
     
     }
     return null;
