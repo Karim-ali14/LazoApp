@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ProviderOrderDetailsData {
-  /// Returns a new [ProviderOrderDetailsData] instance.
-  ProviderOrderDetailsData({
+class ClientOrderDetailsData {
+  /// Returns a new [ClientOrderDetailsData] instance.
+  ClientOrderDetailsData({
     this.cancellationReason,
     this.createdAt,
     this.deliveryDate,
@@ -39,7 +39,6 @@ class ProviderOrderDetailsData {
     this.totalWithShippingFee,
     this.type,
     this.updatedAt,
-    this.user,
     this.userId,
     this.giftBox,
     this.giftCard,
@@ -79,7 +78,7 @@ class ProviderOrderDetailsData {
   ///
   String? orderFamily;
 
-  List<ProviderOrderDetailsDataOrderItemsInner> orderItems;
+  List<ClientOrderDetailsDataOrderItemsInner> orderItems;
 
   num? packagingProviderId;
 
@@ -217,14 +216,6 @@ class ProviderOrderDetailsData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ProviderOrderDetailsDataUser? user;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? userId;
 
   ProviderOrderDetailsDataGiftBox? giftBox;
@@ -232,7 +223,7 @@ class ProviderOrderDetailsData {
   ProviderOrderDetailsDataGiftBox? giftCard;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProviderOrderDetailsData &&
+  bool operator ==(Object other) => identical(this, other) || other is ClientOrderDetailsData &&
      other.cancellationReason == cancellationReason &&
      other.createdAt == createdAt &&
      other.deliveryDate == deliveryDate &&
@@ -259,7 +250,6 @@ class ProviderOrderDetailsData {
      other.totalWithShippingFee == totalWithShippingFee &&
      other.type == type &&
      other.updatedAt == updatedAt &&
-     other.user == user &&
      other.userId == userId &&
      other.giftBox == giftBox &&
      other.giftCard == giftCard;
@@ -293,13 +283,12 @@ class ProviderOrderDetailsData {
     (totalWithShippingFee == null ? 0 : totalWithShippingFee!.hashCode) +
     (type == null ? 0 : type!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (user == null ? 0 : user!.hashCode) +
     (userId == null ? 0 : userId!.hashCode) +
     (giftBox == null ? 0 : giftBox!.hashCode) +
     (giftCard == null ? 0 : giftCard!.hashCode);
 
   @override
-  String toString() => 'ProviderOrderDetailsData[cancellationReason=$cancellationReason, createdAt=$createdAt, deliveryDate=$deliveryDate, deliveryTime=$deliveryTime, finishedAt=$finishedAt, cancelledAt=$cancelledAt, id=$id, orderFamily=$orderFamily, orderItems=$orderItems, packagingProviderId=$packagingProviderId, paymentMethod=$paymentMethod, promocode=$promocode, promocodeDiscountType=$promocodeDiscountType, promocodeDiscountValue=$promocodeDiscountValue, promocodeId=$promocodeId, rating=$rating, ratingComment=$ratingComment, receiverAddress=$receiverAddress, receiverPhoneNumber=$receiverPhoneNumber, referenceNumber=$referenceNumber, shippingFee=$shippingFee, statusId=$statusId, total=$total, totalWithShippingFee=$totalWithShippingFee, type=$type, updatedAt=$updatedAt, user=$user, userId=$userId, giftBox=$giftBox, giftCard=$giftCard]';
+  String toString() => 'ClientOrderDetailsData[cancellationReason=$cancellationReason, createdAt=$createdAt, deliveryDate=$deliveryDate, deliveryTime=$deliveryTime, finishedAt=$finishedAt, cancelledAt=$cancelledAt, id=$id, orderFamily=$orderFamily, orderItems=$orderItems, packagingProviderId=$packagingProviderId, paymentMethod=$paymentMethod, promocode=$promocode, promocodeDiscountType=$promocodeDiscountType, promocodeDiscountValue=$promocodeDiscountValue, promocodeId=$promocodeId, rating=$rating, ratingComment=$ratingComment, receiverAddress=$receiverAddress, receiverPhoneNumber=$receiverPhoneNumber, referenceNumber=$referenceNumber, shippingFee=$shippingFee, statusId=$statusId, total=$total, totalWithShippingFee=$totalWithShippingFee, type=$type, updatedAt=$updatedAt, userId=$userId, giftBox=$giftBox, giftCard=$giftCard]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -429,11 +418,6 @@ class ProviderOrderDetailsData {
     } else {
       json[r'updated_at'] = null;
     }
-    if (this.user != null) {
-      json[r'user'] = this.user;
-    } else {
-      json[r'user'] = null;
-    }
     if (this.userId != null) {
       json[r'user_id'] = this.userId;
     } else {
@@ -452,10 +436,10 @@ class ProviderOrderDetailsData {
     return json;
   }
 
-  /// Returns a new [ProviderOrderDetailsData] instance and imports its values from
+  /// Returns a new [ClientOrderDetailsData] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProviderOrderDetailsData? fromJson(dynamic value) {
+  static ClientOrderDetailsData? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -464,13 +448,13 @@ class ProviderOrderDetailsData {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProviderOrderDetailsData[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProviderOrderDetailsData[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ClientOrderDetailsData[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ClientOrderDetailsData[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProviderOrderDetailsData(
+      return ClientOrderDetailsData(
         cancellationReason: mapValueOfType<Object>(json, r'cancellation_reason'),
         createdAt: mapValueOfType<String>(json, r'created_at'),
         deliveryDate: mapValueOfType<String>(json, r'delivery_date'),
@@ -481,7 +465,7 @@ class ProviderOrderDetailsData {
             ? null
             : num.parse(json[r'id'].toString()),
         orderFamily: mapValueOfType<String>(json, r'order_family'),
-        orderItems: ProviderOrderDetailsDataOrderItemsInner.listFromJson(json[r'order_items']),
+        orderItems: ClientOrderDetailsDataOrderItemsInner.listFromJson(json[r'order_items']),
         packagingProviderId: json[r'packaging_provider_id'] == null
             ? null
             : num.parse(json[r'packaging_provider_id'].toString()),
@@ -515,7 +499,6 @@ class ProviderOrderDetailsData {
             : num.parse(json[r'total_with_shipping_fee'].toString()),
         type: mapValueOfType<String>(json, r'type'),
         updatedAt: mapValueOfType<String>(json, r'updated_at'),
-        user: ProviderOrderDetailsDataUser.fromJson(json[r'user']),
         userId: json[r'user_id'] == null
             ? null
             : num.parse(json[r'user_id'].toString()),
@@ -526,11 +509,11 @@ class ProviderOrderDetailsData {
     return null;
   }
 
-  static List<ProviderOrderDetailsData> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderOrderDetailsData>[];
+  static List<ClientOrderDetailsData> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ClientOrderDetailsData>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderOrderDetailsData.fromJson(row);
+        final value = ClientOrderDetailsData.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -539,12 +522,12 @@ class ProviderOrderDetailsData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProviderOrderDetailsData> mapFromJson(dynamic json) {
-    final map = <String, ProviderOrderDetailsData>{};
+  static Map<String, ClientOrderDetailsData> mapFromJson(dynamic json) {
+    final map = <String, ClientOrderDetailsData>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProviderOrderDetailsData.fromJson(entry.value);
+        final value = ClientOrderDetailsData.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -553,14 +536,14 @@ class ProviderOrderDetailsData {
     return map;
   }
 
-  // maps a json object with a list of ProviderOrderDetailsData-objects as value to a dart map
-  static Map<String, List<ProviderOrderDetailsData>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProviderOrderDetailsData>>{};
+  // maps a json object with a list of ClientOrderDetailsData-objects as value to a dart map
+  static Map<String, List<ClientOrderDetailsData>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ClientOrderDetailsData>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProviderOrderDetailsData.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ClientOrderDetailsData.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

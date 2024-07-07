@@ -1,4 +1,4 @@
-# athletix.model.ProviderOrderDetailsDataOrderItemsInnerProduct
+# athletix.model.ClientOrderDetailsDataOrderItemsInnerProduct
 
 ## Load the model package
 ```dart
@@ -29,12 +29,6 @@ Name | Type | Description | Notes
 **priceAfterDiscount** | **num** |  | [optional] 
 **providerId** | **num** |  | [optional] 
 **updatedAt** | **String** |  | [optional] 
-**productSelectedListIds** | **String** |  | [optional] 
-**productSelectedListItemsIds** | **String** |  | [optional] 
-**serviceSelectedListIds** | **String** |  | [optional] 
-**serviceSelectedListItemsIds** | **String** |  | [optional] 
-**selectedProductsListItemsNames** | **List<String>** |  | [optional] [default to const []]
-**selectedServicesListItemsNames** | **List<String>** |  | [optional] [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

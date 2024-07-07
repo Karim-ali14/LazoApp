@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ProviderOrderDetailsDataOrderItemsInnerProduct {
-  /// Returns a new [ProviderOrderDetailsDataOrderItemsInnerProduct] instance.
-  ProviderOrderDetailsDataOrderItemsInnerProduct({
+class ClientOrderDetailsDataOrderItemsInnerProduct {
+  /// Returns a new [ClientOrderDetailsDataOrderItemsInnerProduct] instance.
+  ClientOrderDetailsDataOrderItemsInnerProduct({
     this.hasStock,
     this.amount,
     this.expectedProcessingTime,
@@ -34,12 +34,6 @@ class ProviderOrderDetailsDataOrderItemsInnerProduct {
     this.priceAfterDiscount,
     this.providerId,
     this.updatedAt,
-    this.productSelectedListIds,
-    this.productSelectedListItemsIds,
-    this.serviceSelectedListIds,
-    this.serviceSelectedListItemsIds,
-    this.selectedProductsListItemsNames = const [],
-    this.selectedServicesListItemsNames = const [],
   });
 
   ///
@@ -192,44 +186,8 @@ class ProviderOrderDetailsDataOrderItemsInnerProduct {
   ///
   String? updatedAt;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? productSelectedListIds;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? productSelectedListItemsIds;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? serviceSelectedListIds;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? serviceSelectedListItemsIds;
-
-  List<String> selectedProductsListItemsNames;
-
-  List<String> selectedServicesListItemsNames;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProviderOrderDetailsDataOrderItemsInnerProduct &&
+  bool operator ==(Object other) => identical(this, other) || other is ClientOrderDetailsDataOrderItemsInnerProduct &&
      other.hasStock == hasStock &&
      other.amount == amount &&
      other.expectedProcessingTime == expectedProcessingTime &&
@@ -250,13 +208,7 @@ class ProviderOrderDetailsDataOrderItemsInnerProduct {
      other.price == price &&
      other.priceAfterDiscount == priceAfterDiscount &&
      other.providerId == providerId &&
-     other.updatedAt == updatedAt &&
-     other.productSelectedListIds == productSelectedListIds &&
-     other.productSelectedListItemsIds == productSelectedListItemsIds &&
-     other.serviceSelectedListIds == serviceSelectedListIds &&
-     other.serviceSelectedListItemsIds == serviceSelectedListItemsIds &&
-     other.selectedProductsListItemsNames == selectedProductsListItemsNames &&
-     other.selectedServicesListItemsNames == selectedServicesListItemsNames;
+     other.updatedAt == updatedAt;
 
   @override
   int get hashCode =>
@@ -281,16 +233,10 @@ class ProviderOrderDetailsDataOrderItemsInnerProduct {
     (price == null ? 0 : price!.hashCode) +
     (priceAfterDiscount == null ? 0 : priceAfterDiscount!.hashCode) +
     (providerId == null ? 0 : providerId!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode) +
-    (productSelectedListIds == null ? 0 : productSelectedListIds!.hashCode) +
-    (productSelectedListItemsIds == null ? 0 : productSelectedListItemsIds!.hashCode) +
-    (serviceSelectedListIds == null ? 0 : serviceSelectedListIds!.hashCode) +
-    (serviceSelectedListItemsIds == null ? 0 : serviceSelectedListItemsIds!.hashCode) +
-    (selectedProductsListItemsNames.hashCode) +
-    (selectedServicesListItemsNames.hashCode);
+    (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'ProviderOrderDetailsDataOrderItemsInnerProduct[hasStock=$hasStock, amount=$amount, expectedProcessingTime=$expectedProcessingTime, colors=$colors, sizes=$sizes, coverImagePath=$coverImagePath, coverImage=$coverImage, createdAt=$createdAt, description=$description, descriptionAr=$descriptionAr, descriptionEn=$descriptionEn, id=$id, isVisible=$isVisible, lists=$lists, name=$name, nameAr=$nameAr, nameEn=$nameEn, price=$price, priceAfterDiscount=$priceAfterDiscount, providerId=$providerId, updatedAt=$updatedAt, productSelectedListIds=$productSelectedListIds, productSelectedListItemsIds=$productSelectedListItemsIds, serviceSelectedListIds=$serviceSelectedListIds, serviceSelectedListItemsIds=$serviceSelectedListItemsIds, selectedProductsListItemsNames=$selectedProductsListItemsNames, selectedServicesListItemsNames=$selectedServicesListItemsNames]';
+  String toString() => 'ClientOrderDetailsDataOrderItemsInnerProduct[hasStock=$hasStock, amount=$amount, expectedProcessingTime=$expectedProcessingTime, colors=$colors, sizes=$sizes, coverImagePath=$coverImagePath, coverImage=$coverImage, createdAt=$createdAt, description=$description, descriptionAr=$descriptionAr, descriptionEn=$descriptionEn, id=$id, isVisible=$isVisible, lists=$lists, name=$name, nameAr=$nameAr, nameEn=$nameEn, price=$price, priceAfterDiscount=$priceAfterDiscount, providerId=$providerId, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -387,35 +333,13 @@ class ProviderOrderDetailsDataOrderItemsInnerProduct {
     } else {
       json[r'updated_at'] = null;
     }
-    if (this.productSelectedListIds != null) {
-      json[r'product_selected_list_ids'] = this.productSelectedListIds;
-    } else {
-      json[r'product_selected_list_ids'] = null;
-    }
-    if (this.productSelectedListItemsIds != null) {
-      json[r'product_selected_list_items_ids'] = this.productSelectedListItemsIds;
-    } else {
-      json[r'product_selected_list_items_ids'] = null;
-    }
-    if (this.serviceSelectedListIds != null) {
-      json[r'service_selected_list_ids'] = this.serviceSelectedListIds;
-    } else {
-      json[r'service_selected_list_ids'] = null;
-    }
-    if (this.serviceSelectedListItemsIds != null) {
-      json[r'service_selected_list_items_ids'] = this.serviceSelectedListItemsIds;
-    } else {
-      json[r'service_selected_list_items_ids'] = null;
-    }
-      json[r'selected_products_list_items_names'] = this.selectedProductsListItemsNames;
-      json[r'selected_services_list_items_names'] = this.selectedServicesListItemsNames;
     return json;
   }
 
-  /// Returns a new [ProviderOrderDetailsDataOrderItemsInnerProduct] instance and imports its values from
+  /// Returns a new [ClientOrderDetailsDataOrderItemsInnerProduct] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProviderOrderDetailsDataOrderItemsInnerProduct? fromJson(dynamic value) {
+  static ClientOrderDetailsDataOrderItemsInnerProduct? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -424,13 +348,13 @@ class ProviderOrderDetailsDataOrderItemsInnerProduct {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProviderOrderDetailsDataOrderItemsInnerProduct[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProviderOrderDetailsDataOrderItemsInnerProduct[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ClientOrderDetailsDataOrderItemsInnerProduct[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ClientOrderDetailsDataOrderItemsInnerProduct[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProviderOrderDetailsDataOrderItemsInnerProduct(
+      return ClientOrderDetailsDataOrderItemsInnerProduct(
         hasStock: json[r'has_stock'] == null
             ? null
             : num.parse(json[r'has_stock'].toString()),
@@ -466,26 +390,16 @@ class ProviderOrderDetailsDataOrderItemsInnerProduct {
             ? null
             : num.parse(json[r'provider_id'].toString()),
         updatedAt: mapValueOfType<String>(json, r'updated_at'),
-        productSelectedListIds: mapValueOfType<String>(json, r'product_selected_list_ids'),
-        productSelectedListItemsIds: mapValueOfType<String>(json, r'product_selected_list_items_ids'),
-        serviceSelectedListIds: mapValueOfType<String>(json, r'service_selected_list_ids'),
-        serviceSelectedListItemsIds: mapValueOfType<String>(json, r'service_selected_list_items_ids'),
-        selectedProductsListItemsNames: json[r'selected_products_list_items_names'] is List
-            ? (json[r'selected_products_list_items_names'] as List).cast<String>()
-            : const [],
-        selectedServicesListItemsNames: json[r'selected_services_list_items_names'] is List
-            ? (json[r'selected_services_list_items_names'] as List).cast<String>()
-            : const [],
       );
     }
     return null;
   }
 
-  static List<ProviderOrderDetailsDataOrderItemsInnerProduct> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderOrderDetailsDataOrderItemsInnerProduct>[];
+  static List<ClientOrderDetailsDataOrderItemsInnerProduct> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ClientOrderDetailsDataOrderItemsInnerProduct>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderOrderDetailsDataOrderItemsInnerProduct.fromJson(row);
+        final value = ClientOrderDetailsDataOrderItemsInnerProduct.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -494,12 +408,12 @@ class ProviderOrderDetailsDataOrderItemsInnerProduct {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProviderOrderDetailsDataOrderItemsInnerProduct> mapFromJson(dynamic json) {
-    final map = <String, ProviderOrderDetailsDataOrderItemsInnerProduct>{};
+  static Map<String, ClientOrderDetailsDataOrderItemsInnerProduct> mapFromJson(dynamic json) {
+    final map = <String, ClientOrderDetailsDataOrderItemsInnerProduct>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProviderOrderDetailsDataOrderItemsInnerProduct.fromJson(entry.value);
+        final value = ClientOrderDetailsDataOrderItemsInnerProduct.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -508,14 +422,14 @@ class ProviderOrderDetailsDataOrderItemsInnerProduct {
     return map;
   }
 
-  // maps a json object with a list of ProviderOrderDetailsDataOrderItemsInnerProduct-objects as value to a dart map
-  static Map<String, List<ProviderOrderDetailsDataOrderItemsInnerProduct>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProviderOrderDetailsDataOrderItemsInnerProduct>>{};
+  // maps a json object with a list of ClientOrderDetailsDataOrderItemsInnerProduct-objects as value to a dart map
+  static Map<String, List<ClientOrderDetailsDataOrderItemsInnerProduct>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ClientOrderDetailsDataOrderItemsInnerProduct>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProviderOrderDetailsDataOrderItemsInnerProduct.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ClientOrderDetailsDataOrderItemsInnerProduct.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ProviderData {
-  /// Returns a new [ProviderData] instance.
-  ProviderData({
+class ClientOrderDetailsDataOrderItemsInnerProvider {
+  /// Returns a new [ClientOrderDetailsDataOrderItemsInnerProvider] instance.
+  ClientOrderDetailsDataOrderItemsInnerProvider({
     this.id,
     this.nameEn,
     this.nameAr,
@@ -55,9 +55,6 @@ class ProviderData {
     this.workingDaysIndicesList = const [],
     this.selfEmploymentDocumentPath,
     this.commercialRegisterImagePath,
-    this.city,
-    this.locations = const [],
-    this.tags = const [],
   });
 
   ///
@@ -390,20 +387,8 @@ class ProviderData {
   ///
   String? commercialRegisterImagePath;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  ProviderDataCity? city;
-
-  List<ProviderDataLocationsInner> locations;
-
-  List<ProviderDataTagsInner> tags;
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProviderData &&
+  bool operator ==(Object other) => identical(this, other) || other is ClientOrderDetailsDataOrderItemsInnerProvider &&
      other.id == id &&
      other.nameEn == nameEn &&
      other.nameAr == nameAr &&
@@ -445,10 +430,7 @@ class ProviderData {
      other.imagePath == imagePath &&
      other.workingDaysIndicesList == workingDaysIndicesList &&
      other.selfEmploymentDocumentPath == selfEmploymentDocumentPath &&
-     other.commercialRegisterImagePath == commercialRegisterImagePath &&
-     other.city == city &&
-     other.locations == locations &&
-     other.tags == tags;
+     other.commercialRegisterImagePath == commercialRegisterImagePath;
 
   @override
   int get hashCode =>
@@ -494,13 +476,10 @@ class ProviderData {
     (imagePath == null ? 0 : imagePath!.hashCode) +
     (workingDaysIndicesList.hashCode) +
     (selfEmploymentDocumentPath == null ? 0 : selfEmploymentDocumentPath!.hashCode) +
-    (commercialRegisterImagePath == null ? 0 : commercialRegisterImagePath!.hashCode) +
-    (city == null ? 0 : city!.hashCode) +
-    (locations.hashCode) +
-    (tags.hashCode);
+    (commercialRegisterImagePath == null ? 0 : commercialRegisterImagePath!.hashCode);
 
   @override
-  String toString() => 'ProviderData[id=$id, nameEn=$nameEn, nameAr=$nameAr, ownerName=$ownerName, email=$email, phone=$phone, image=$image, cityId=$cityId, accountType=$accountType, deviceType=$deviceType, fcmToken=$fcmToken, lang=$lang, status=$status, instagramLink=$instagramLink, snapchatLink=$snapchatLink, tiktokLink=$tiktokLink, xLink=$xLink, hasOfflineStores=$hasOfflineStores, offlineStoresNumber=$offlineStoresNumber, provideDelivery=$provideDelivery, overallRating=$overallRating, ratingsCount=$ratingsCount, isEmailVerified=$isEmailVerified, isPhoneVerified=$isPhoneVerified, businessType=$businessType, commercialRegisterImage=$commercialRegisterImage, selfEmploymentDocument=$selfEmploymentDocument, startTime=$startTime, endTime=$endTime, workingDaysIndices=$workingDaysIndices, bankName=$bankName, beneficiaryName=$beneficiaryName, bankAccountNumber=$bankAccountNumber, iban=$iban, ibanImage=$ibanImage, createdAt=$createdAt, updatedAt=$updatedAt, name=$name, imagePath=$imagePath, workingDaysIndicesList=$workingDaysIndicesList, selfEmploymentDocumentPath=$selfEmploymentDocumentPath, commercialRegisterImagePath=$commercialRegisterImagePath, city=$city, locations=$locations, tags=$tags]';
+  String toString() => 'ClientOrderDetailsDataOrderItemsInnerProvider[id=$id, nameEn=$nameEn, nameAr=$nameAr, ownerName=$ownerName, email=$email, phone=$phone, image=$image, cityId=$cityId, accountType=$accountType, deviceType=$deviceType, fcmToken=$fcmToken, lang=$lang, status=$status, instagramLink=$instagramLink, snapchatLink=$snapchatLink, tiktokLink=$tiktokLink, xLink=$xLink, hasOfflineStores=$hasOfflineStores, offlineStoresNumber=$offlineStoresNumber, provideDelivery=$provideDelivery, overallRating=$overallRating, ratingsCount=$ratingsCount, isEmailVerified=$isEmailVerified, isPhoneVerified=$isPhoneVerified, businessType=$businessType, commercialRegisterImage=$commercialRegisterImage, selfEmploymentDocument=$selfEmploymentDocument, startTime=$startTime, endTime=$endTime, workingDaysIndices=$workingDaysIndices, bankName=$bankName, beneficiaryName=$beneficiaryName, bankAccountNumber=$bankAccountNumber, iban=$iban, ibanImage=$ibanImage, createdAt=$createdAt, updatedAt=$updatedAt, name=$name, imagePath=$imagePath, workingDaysIndicesList=$workingDaysIndicesList, selfEmploymentDocumentPath=$selfEmploymentDocumentPath, commercialRegisterImagePath=$commercialRegisterImagePath]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -710,20 +689,13 @@ class ProviderData {
     } else {
       json[r'commercial_register_image_path'] = null;
     }
-    if (this.city != null) {
-      json[r'city'] = this.city;
-    } else {
-      json[r'city'] = null;
-    }
-      json[r'locations'] = this.locations;
-      json[r'tags'] = this.tags;
     return json;
   }
 
-  /// Returns a new [ProviderData] instance and imports its values from
+  /// Returns a new [ClientOrderDetailsDataOrderItemsInnerProvider] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProviderData? fromJson(dynamic value) {
+  static ClientOrderDetailsDataOrderItemsInnerProvider? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -732,13 +704,13 @@ class ProviderData {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProviderData[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProviderData[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ClientOrderDetailsDataOrderItemsInnerProvider[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ClientOrderDetailsDataOrderItemsInnerProvider[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProviderData(
+      return ClientOrderDetailsDataOrderItemsInnerProvider(
         id: mapValueOfType<int>(json, r'id'),
         nameEn: mapValueOfType<String>(json, r'name_en'),
         nameAr: mapValueOfType<String>(json, r'name_ar'),
@@ -785,19 +757,16 @@ class ProviderData {
             : const [],
         selfEmploymentDocumentPath: mapValueOfType<String>(json, r'self_employment_document_path'),
         commercialRegisterImagePath: mapValueOfType<String>(json, r'commercial_register_image_path'),
-        city: ProviderDataCity.fromJson(json[r'city']),
-        locations: ProviderDataLocationsInner.listFromJson(json[r'locations']),
-        tags: ProviderDataTagsInner.listFromJson(json[r'tags']),
       );
     }
     return null;
   }
 
-  static List<ProviderData> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProviderData>[];
+  static List<ClientOrderDetailsDataOrderItemsInnerProvider> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ClientOrderDetailsDataOrderItemsInnerProvider>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProviderData.fromJson(row);
+        final value = ClientOrderDetailsDataOrderItemsInnerProvider.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -806,12 +775,12 @@ class ProviderData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProviderData> mapFromJson(dynamic json) {
-    final map = <String, ProviderData>{};
+  static Map<String, ClientOrderDetailsDataOrderItemsInnerProvider> mapFromJson(dynamic json) {
+    final map = <String, ClientOrderDetailsDataOrderItemsInnerProvider>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProviderData.fromJson(entry.value);
+        final value = ClientOrderDetailsDataOrderItemsInnerProvider.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -820,14 +789,14 @@ class ProviderData {
     return map;
   }
 
-  // maps a json object with a list of ProviderData-objects as value to a dart map
-  static Map<String, List<ProviderData>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProviderData>>{};
+  // maps a json object with a list of ClientOrderDetailsDataOrderItemsInnerProvider-objects as value to a dart map
+  static Map<String, List<ClientOrderDetailsDataOrderItemsInnerProvider>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ClientOrderDetailsDataOrderItemsInnerProvider>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProviderData.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ClientOrderDetailsDataOrderItemsInnerProvider.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

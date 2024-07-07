@@ -100,7 +100,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       }
                     }),
                 const SizedBox(
-                  height: 10,
+                  height: defaultPaddingHorizontal,
                 ),
                 Row(
                   children: [
@@ -115,7 +115,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ],
                 ),
                 SizedBox(
-                  height: 16,
+                  height: 24,
                 ),
                 AppButton(
                   height: 48,
@@ -124,7 +124,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   width: context.getScreenSize.width,
                 ),
                 SizedBox(
-                  height: 16,
+                  height: 24,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

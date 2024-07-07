@@ -1197,7 +1197,8 @@ class PublicApi {
     final mp = MultipartRequest('POST', Uri.parse(path));
     if (files != null) {
       hasFields = true;
-      mp.files.addAll(files);
+      mp.fields[r'files'] = files.field;
+      mp.files.add(files);
     }
     if (hasFields) {
       postBody = mp;

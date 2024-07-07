@@ -78,9 +78,6 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
             .read(getCurrentOrderStateProvider.notifier)
             .updateOrder(res.data!.data!);
       } else if (actionType == OrderStateActionType.Finish) {
-        // ref
-        //     .read(getCurrentOrderStateProvider.notifier)
-        //     .deleteOrder(res.data!.data!);
         ref
             .read(getCurrentOrderStateProvider.notifier)
             .updateOrder(res.data!.data!);

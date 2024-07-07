@@ -1,4 +1,4 @@
-# athletix.model.ProviderOrderDetailsData
+# athletix.model.ClientOrderDetailsData
 
 ## Load the model package
 ```dart
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **cancelledAt** | **String** |  | [optional] 
 **id** | **num** |  | [optional] 
 **orderFamily** | **String** |  | [optional] 
-**orderItems** | [**List<ProviderOrderDetailsDataOrderItemsInner>**](ProviderOrderDetailsDataOrderItemsInner.md) |  | [optional] [default to const []]
+**orderItems** | [**List<ClientOrderDetailsDataOrderItemsInner>**](ClientOrderDetailsDataOrderItemsInner.md) |  | [optional] [default to const []]
 **packagingProviderId** | **num** |  | [optional] 
 **paymentMethod** | **String** |  | [optional] 
 **promocode** | [**ProviderOrderDetailsDataPromocode**](ProviderOrderDetailsDataPromocode.md) |  | [optional] 
@@ -34,7 +34,6 @@ Name | Type | Description | Notes
 **totalWithShippingFee** | **num** |  | [optional] 
 **type** | **String** |  | [optional] 
 **updatedAt** | **String** |  | [optional] 
-**user** | [**ProviderOrderDetailsDataUser**](ProviderOrderDetailsDataUser.md) |  | [optional] 
 **userId** | **num** |  | [optional] 
 **giftBox** | [**ProviderOrderDetailsDataGiftBox**](ProviderOrderDetailsDataGiftBox.md) |  | [optional] 
 **giftCard** | [**ProviderOrderDetailsDataGiftBox**](ProviderOrderDetailsDataGiftBox.md) |  | [optional] 

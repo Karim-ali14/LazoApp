@@ -26,7 +26,7 @@ class _ProductItemCardState extends State<ProductItemCard> {
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
               border: Border.all(color: AppTheme.appGrey8, width: 1)),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -83,7 +83,7 @@ class _ProductItemCardState extends State<ProductItemCard> {
                 ],
               ),
               const SizedBox(
-                height: 24,
+                height: 22,
               ),
               widget.item?.product != null
                   ? Row(
@@ -122,7 +122,28 @@ class _ProductItemCardState extends State<ProductItemCard> {
                         ),
                       ],
                     )
-                  : const SizedBox()
+                  : const SizedBox(),
+              const SizedBox(
+                height: 22,
+              ),
+              const Row(
+                children: [
+                  Text(
+                    "Extra items :",
+                    style: AppTheme
+                        .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
+                  ),
+                  SizedBox(
+                    width: 4,
+                  ),
+                  Text(
+                    "item 1 - item 2 - item 3 - item 4",
+                    style: AppTheme
+                        .styleWithTextBlackAdelleSansExtendedFonts14w500,
+                  )
+                ],
+              )
+
             ],
           )),
     );
