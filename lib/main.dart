@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/Opt/OtpScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/forgetpassword/ForgetPasswordScreen.dart';
+import 'package:lazo_provider/Presentation/Screens/Home/order/ItemOrderDetailsScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/OrderDetailsScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/MainScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/More/FAQScreen.dart';
@@ -208,7 +209,9 @@ class MyApp extends ConsumerWidget {
             var extra = state.extra as Map;
             return OrderDetailsScreen(orderId: extra[orderIdKey]);
           }
-      )
+      ),
+      GoRoute(path: R_ItemOrderDetails,
+          builder: (BuildContext context , GoRouterState state) => const ItemOrderDetailsScreen())
     ],
   );
 }

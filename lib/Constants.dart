@@ -20,6 +20,7 @@ const R_MoreScreen = '/more';
 const R_NotificationScreen = '/notification';
 const R_FAQScreen = '/faqScreen';
 const R_OrderDetails = "/orderDetailsScreen";
+const R_ItemOrderDetails = "/itemOrderDetailsScreen";
 
 //EXTRAS
 const userKey = "user";

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Constants/Constants.dart';
 import 'package:lazo_provider/Constants/Eunms.dart';
 import 'package:lazo_provider/Data/Models/StateModel.dart';
@@ -199,7 +200,9 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
                                         vertical: 8.0),
                                     child: ProductItemCard(
                                         item: orderDetails
-                                            .data?.data?.orderItems[index]),
+                                            .data?.data?.orderItems[index], onItemClick: (itemId) {
+                                          navigateToDetails(itemId);
+                                    },),
                                   )))
                         ],
                       ),
@@ -307,5 +310,9 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
                         cancellationReason: cancellationReason);
               }),
             ));
+  }
+
+  void navigateToDetails(int itemId) {
+    context.push(R_ItemOrderDetails);
   }
 }

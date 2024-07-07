@@ -1,0 +1,65 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+
+import '../../../../../Localization/keys.dart';
+import '../../../../Widgets/SvgIcons.dart';
+
+class ProductRowItem extends StatelessWidget {
+  final String? title;
+  final String? textValue;
+  final Widget? endWidget;
+  final bool? hasDivider;
+  const ProductRowItem(
+      {super.key,
+      this.title,
+      this.textValue,
+      this.hasDivider = true,
+      this.endWidget});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 51,
+      child: Stack(children: [
+        Align(
+          alignment: Alignment.center,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                title ?? "",
+                style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts14w500,
+              ),
+              const Spacer(),
+              Row(
+                children: [
+                  endWidget != null ? endWidget! : const SizedBox(),
+                  endWidget != null
+                      ? const SizedBox(
+                          width: 10,
+                        )
+                      : const SizedBox(),
+                  Text(
+                    "$textValue",
+                    style: AppTheme
+                        .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+        if (hasDivider == true)
+          const Align(
+              alignment: Alignment.bottomCenter,
+              child: Divider(color: AppTheme.appGrey9, height: 1))
+        else
+          const SizedBox()
+      ]),
+    );
+  }
+}
