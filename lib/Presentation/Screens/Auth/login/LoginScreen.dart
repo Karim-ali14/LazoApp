@@ -118,6 +118,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   height: 16,
                 ),
                 AppButton(
+                  height: 48,
                   onPress: login,
                   text: context.tr(loginKey),
                   width: context.getScreenSize.width,

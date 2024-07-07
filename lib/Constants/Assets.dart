@@ -36,4 +36,6 @@ const moreUnActiveImg = "assets/images/more_unactive_img.svg";
 const notificationActiveImg = "assets/images/notification_active_img.svg";
 const notificationUnActiveImg = "assets/images/notification_unactive_img.svg";
 const orderPlaceHolderIconSvg = "assets/images/orderPlaceHolderIcon.svg";
+const closeSquareSvg = "assets/images/closeSquare.svg";
+
 

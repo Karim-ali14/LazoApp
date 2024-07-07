@@ -116,7 +116,7 @@ class _ProductItemCardState extends State<ProductItemCard> {
                               .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
                         ),
                         Text(
-                          "${widget.item?.product?.amount}",
+                          "${widget.item?.quantity}",
                           style: AppTheme
                               .styleWithTextBlackAdelleSansExtendedFonts14w500,
                         ),

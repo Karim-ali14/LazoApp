@@ -25,7 +25,7 @@ class ProviderData {
     this.deviceType,
     this.fcmToken,
     this.lang,
-    this.status,
+    this.status, //pending
     this.instagramLink,
     this.snapchatLink,
     this.tiktokLink,

@@ -59,7 +59,11 @@ class OrderUseCase
       print(data.length);
 
       state.data?.data?.data = data;
-      state = StateModel.success(state.data);
+      if(data.isNotEmpty){
+        state = StateModel.success(state.data);
+      }else{
+        state = StateModel.empty(data: null);
+      }
     }catch(e){
       print(e);
     }

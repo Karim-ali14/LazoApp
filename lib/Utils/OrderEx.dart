@@ -25,6 +25,7 @@ extension OrderEx on String{
         break;
       }
       case "6" :
+      case "6.5" :
       case "7" :
       case "8" :
       case "5.5" : {
@@ -59,6 +60,7 @@ extension OrderEx on String{
         break;
       }
       case "6" :
+      case "6.5" :
       case "7" :
       case "8" :
       case "5.5" : {
@@ -95,6 +97,7 @@ extension OrderEx on String{
       }
       case "5.5" :
       case "6" :
+      case "6.5" :
       case "7" :
       case "8" :
       case "12" :

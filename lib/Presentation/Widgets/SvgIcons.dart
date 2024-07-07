@@ -20,6 +20,15 @@ class SVGIcons {
       height: height,
     );
   }
+
+  static Widget closeSquareSvgIcon(){
+    return SvgPicture.asset(
+        closeSquareSvg,
+        width: 24,
+        height: 24, fit: BoxFit.scaleDown
+    );
+  }
+
   static Widget emailIcon({double? width , double? height }){
     return SvgPicture.asset(
       emailIc,

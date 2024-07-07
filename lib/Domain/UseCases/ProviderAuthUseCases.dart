@@ -45,7 +45,7 @@ class ConfirmResetCodeUseCase extends StateNotifier<StateModel<Object>>{
 
   void confirmReset(String? emailOrPhone,String? code) async {
     state = StateModel.loading();
-    request(() => authApi.resetCodeConfirmPost(emailOrPhone: emailOrPhone,confirmCode: code ,accountType : "provider"));
+    request(() => authApi.codeConfirmPost(emailOrPhone: emailOrPhone,confirmCode: code ,accountType : "provider"));
   }
 }
 

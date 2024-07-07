@@ -19,8 +19,11 @@ import 'package:lazo_provider/Utils/OrderEx.dart';
 
 import '../../../../Data/Network/lib/api.dart';
 import '../../../../Localization/keys.dart';
+import '../../../../Utils/Snaks.dart';
+import '../../../StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import '../../../Theme/AppTheme.dart';
 import '../../../Widgets/SvgIcons.dart';
+import 'Componants/CancellationReasonBottomSheet.dart';
 import 'Componants/InformationRowItem.dart';
 import 'Componants/ProductItemCard.dart';
 
@@ -34,6 +37,7 @@ class OrderDetailsScreen extends ConsumerStatefulWidget {
 
 class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
   OrderStateActionType? actionType = null;
+  ProviderLoginResponseData? user = null;
   @override
   void initState() {
     super.initState();
@@ -48,12 +52,16 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
   Widget build(BuildContext context) {
     final orderDetails = ref.watch(getOrderDetailsStateProvider);
 
+    user = ref.read(providerTokenStateProvider.notifier).checkIfSavedUser();
+
+    ref.read(providerTokenStateProvider.notifier).checkIfSavedUser();
+
     handleState(getOrderDetailsStateProvider, onSuccess: (res) {
       actionType = res.data?.data?.statusId?.toString().getOrderAction();
     });
 
-    handleState(updateOrderStatusStateProvider, showLoading: true,showToast: true,
-        onSuccess: (res) {
+    handleState(updateOrderStatusStateProvider,
+        showLoading: true, showToast: true, onSuccess: (res) {
       if (actionType == OrderStateActionType.Accepte) {
         ref
             .read(getNewOrderStateProvider.notifier)
@@ -70,12 +78,12 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
             .read(getCurrentOrderStateProvider.notifier)
             .updateOrder(res.data!.data!);
       } else if (actionType == OrderStateActionType.Finish) {
+        // ref
+        //     .read(getCurrentOrderStateProvider.notifier)
+        //     .deleteOrder(res.data!.data!);
         ref
             .read(getCurrentOrderStateProvider.notifier)
-            .deleteOrder(res.data!.data!);
-        ref
-            .read(getFinishOrderStateProvider.notifier)
-            .updateList(res.data!.data!);
+            .updateOrder(res.data!.data!);
       }
 
       ref
@@ -227,143 +235,80 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
     switch (type) {
       case ButtonsClickType.Accept:
         {
-          ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-              orderId: orderModel?.id.toString(), statusId: "2");
-
-          // ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-          //   cancellationReason:
-          //     null, orderId:  orderModel?.id.toString(),statusId:  "2", onSuccess: (res) {
-          //   ref
-          //       .read(getOrderDetailsStateProvider.notifier)
-          //       .updateOrderDetailsState(2);
-          //   if (context.isThereCurrentDialogShowing()) {
-          //     try {
-          //       context.pop();
-          //     } catch (e) {
-          //       print("NAV cannont pop");
-          //     }
-          //   }
-          // }, onLoading: () {
-          //   context.showLoadingDialog();
-          // }, onFailureRequest: () {
-          //   if (context.isThereCurrentDialogShowing()) {
-          //     try {
-          //       context.pop();
-          //     } catch (e) {
-          //       print("NAV cannont pop");
-          //     }
-          //   }
-          // });
+          if (user?.provider?.status != "pending") {
+            actionType = OrderStateActionType.Accepte;
+            ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+                orderId: orderModel?.id.toString(), statusId: "2");
+          } else {
+            AppSnackBar.showSnackBar(context,
+                isSuccess: true, message: "Your account is still pending");
+          }
           break;
         }
       case ButtonsClickType.Cancel:
         {
-          ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-              orderId: orderModel?.id.toString(),
-              statusId: orderModel?.orderFamily == "ready_made" ? "10" : "11");
+          if (user?.provider?.status != "pending") {
+            actionType = OrderStateActionType.Cancel;
+            showCancellationBottomSheet(orderModel?.id.toString() ?? "",
+                orderModel?.orderFamily == "ready_made" ? "10" : "11");
+          } else {
+            AppSnackBar.showSnackBar(context,
+                isSuccess: true, message: "Your account is still pending");
+          }
 
-          // ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-          //     cancellationReason: null,
-          //     orderId:  orderModel?.id.toString(),
-          //     statusId:  orderModel?.orderFamily == "ready_made" ? "10" : "11",
-          //     onSuccess: (res) {
-          //   ref
-          //       .read(getOrderDetailsStateProvider.notifier)
-          //       .updateOrderDetailsState(
-          //           orderModel?.orderFamily == "ready_made" ? 10 : 11);
-          //   if (context.isThereCurrentDialogShowing()) {
-          //     try {
-          //       context.pop();
-          //     } catch (e) {
-          //       print("NAV cannont pop");
-          //     }
-          //   }
-          // }, onLoading: () {
-          //   context.showLoadingDialog();
-          // }, onFailureRequest: () {
-          //   if (context.isThereCurrentDialogShowing()) {
-          //     try {
-          //       context.pop();
-          //     } catch (e) {
-          //       print("NAV cannont pop");
-          //     }
-          //   }
-          // });
           break;
         }
       case ButtonsClickType.ReadyToShipping:
         {
-          ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-              orderId: orderModel?.id.toString(),
-              statusId: "5");
+          if (user?.provider?.status != "pending") {
+            actionType = OrderStateActionType.ReadyToShipping;
+            ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+                orderId: orderModel?.id.toString(), statusId: "5");
+          } else {
+            AppSnackBar.showSnackBar(context,
+                isSuccess: true, message: "Your account is still pending");
+          }
 
-          // ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-          //     cancellationReason: null,
-          //     orderId: orderModel?.id.toString(),
-          //     statusId: "5",
-          //     onSuccess: (res) {
-          //       ref
-          //           .read(getOrderDetailsStateProvider.notifier)
-          //           .updateOrderDetailsState(5);
-          //       if (context.isThereCurrentDialogShowing()) {
-          //         try {
-          //           context.pop();
-          //         } catch (e) {
-          //           print("NAV cannont pop");
-          //         }
-          //       }
-          //     },
-          //     onLoading: () {
-          //       context.showLoadingDialog();
-          //     },
-          //     onFailureRequest: () {
-          //       if (context.isThereCurrentDialogShowing()) {
-          //         try {
-          //           context.pop();
-          //         } catch (e) {
-          //           print("NAV cannont pop");
-          //         }
-          //       }
-          //     });
           break;
         }
       case ButtonsClickType.Finish:
         {
-          ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-              orderId: orderModel?.id.toString(),
-              statusId: "5.5");
-          // ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-          //     cancellationReason: null,
-          //     orderId: orderModel?.id.toString(),
-          //     statusId: "7",
-          //     onSuccess: (res) {
-          //       ref
-          //           .read(getOrderDetailsStateProvider.notifier)
-          //           .updateOrderDetailsState(7);
-          //       if (context.isThereCurrentDialogShowing()) {
-          //         try {
-          //           context.pop();
-          //         } catch (e) {
-          //           print("NAV cannont pop");
-          //         }
-          //       }
-          //     },
-          //     onLoading: () {
-          //       context.showLoadingDialog();
-          //     },
-          //     onFailureRequest: () {
-          //       if (context.isThereCurrentDialogShowing()) {
-          //         try {
-          //           context.pop();
-          //         } catch (e) {
-          //           print("NAV cannont pop");
-          //         }
-          //       }
-          //     });
+          if (user?.provider?.status != "pending") {
+            actionType = OrderStateActionType.Finish;
+            ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+                orderId: orderModel?.id.toString(), statusId: "5.5");
+          } else {
+            AppSnackBar.showSnackBar(context,
+                isSuccess: true, message: "Your account is still pending");
+          }
+
           break;
         }
       case ButtonsClickType.ViewDetails:
         {}
     }
+  }
+
+  void showCancellationBottomSheet(String orderId, String orderState) {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+        builder: (BuildContext builder) => Padding(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: CancellationReasonBottomSheet(
+                  onSelectItemCallback: (cancellationReason) {
+                Navigator.pop(context);
+                ref
+                    .read(updateOrderStatusStateProvider.notifier)
+                    .updateOrderStatus(
+                        orderId: orderId,
+                        statusId: orderState,
+                        cancellationReason: cancellationReason);
+              }),
+            ));
   }
 }

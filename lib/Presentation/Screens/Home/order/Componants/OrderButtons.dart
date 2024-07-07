@@ -22,6 +22,7 @@ class OrderButtons extends StatelessWidget {
     return Column(children: [
       if (type == ButtonsType.ViewDetails && !isOrderDetail)
         AppButton(
+          height: 40,
                   onPress: () {
                     onButtonClickListener?.call(ButtonsClickType.ViewDetails);
                   },
@@ -37,6 +38,7 @@ class OrderButtons extends StatelessWidget {
           children: [
             Expanded(
                 child: AppButton(
+                  height: 40,
               onPress: (){
                 onButtonClickListener?.call(ButtonsClickType.Accept);
               },
@@ -50,6 +52,7 @@ class OrderButtons extends StatelessWidget {
             SizedBox(width: 8),
             Expanded(
                 child: AppButton(
+                  height: 40,
               onPress:(){
                 onButtonClickListener?.call(ButtonsClickType.Cancel);
               },
@@ -65,6 +68,7 @@ class OrderButtons extends StatelessWidget {
         )
       else if(type == ButtonsType.Finish)
           AppButton(
+            height: 40,
             onPress:(){
               onButtonClickListener?.call(ButtonsClickType.Finish);
             },
@@ -77,6 +81,7 @@ class OrderButtons extends StatelessWidget {
           )
         else if(type == ButtonsType.ReadyToShipping)
           AppButton(
+            height: 40,
             onPress:(){
               onButtonClickListener?.call(ButtonsClickType.ReadyToShipping);
             },
