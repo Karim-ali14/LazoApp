@@ -26,6 +26,8 @@ final apiClient = Provider<ApiClient>((ref)  {
 
 final providerAuthApi = Provider((ref) => PublicAuthApi(ref.read(apiClient)));
 
+final publicApi = Provider((ref) => PublicApi(ref.read(apiClient)));
+
 final ordersApi = Provider((ref) => Orders12Api(ref.read(apiClient)));
 
 final notificationApi = Provider((ref) => Notifications1Api(ref.read(apiClient)));
