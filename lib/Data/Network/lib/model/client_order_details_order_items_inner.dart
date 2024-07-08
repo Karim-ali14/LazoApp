@@ -10,32 +10,29 @@
 
 part of openapi.api;
 
-class ProductDetails {
-  /// Returns a new [ProductDetails] instance.
-  ProductDetails({
-    this.amount,
-    this.categories = const [],
-    this.categoryMenu = const [],
-    this.colors = const [],
+class ClientOrderDetailsOrderItemsInner {
+  /// Returns a new [ClientOrderDetailsOrderItemsInner] instance.
+  ClientOrderDetailsOrderItemsInner({
+    this.cardPrice,
     this.createdAt,
-    this.description,
-    this.descriptionAr,
-    this.descriptionEn,
-    this.expectedProcessingTime,
-    this.isVisible,
     this.id,
-    this.images = const [],
-    this.lists = const [],
-    this.name,
-    this.nameAr,
-    this.nameEn,
-    this.occasions = const [],
+    this.listsTotalPrice,
+    this.orderId,
     this.price,
-    this.priceAfterDiscount,
+    this.product,
+    this.productId,
     this.providerId,
-    this.sizes = const [],
-    this.type,
+    this.provider,
+    this.quantity,
+    this.service,
+    this.serviceId,
     this.updatedAt,
+    this.productSelectedListIds,
+    this.productSelectedListItemsIds,
+    this.serviceSelectedListIds,
+    this.serviceSelectedListItemsIds,
+    this.selectedProductsListItemsNames = const [],
+    this.selectedServicesListItemsNames = const [],
   });
 
   ///
@@ -44,13 +41,7 @@ class ProductDetails {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? amount;
-
-  List<Category> categories;
-
-  List<CategoryMenu> categoryMenu;
-
-  List<Color> colors;
+  num? cardPrice;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -66,51 +57,15 @@ class ProductDetails {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? description;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? descriptionAr;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? descriptionEn;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? expectedProcessingTime;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? isVisible;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
   num? id;
 
-  List<ImageItem> images;
-
-  List<ProductListItem> lists;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? listsTotalPrice;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -118,25 +73,7 @@ class ProductDetails {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? name;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? nameAr;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? nameEn;
-
-  List<Occasion> occasions;
+  num? orderId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -146,13 +83,9 @@ class ProductDetails {
   ///
   num? price;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? priceAfterDiscount;
+  ProviderOrderDetailsOrderItemsInnerProduct? product;
+
+  num? productId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -162,7 +95,13 @@ class ProductDetails {
   ///
   num? providerId;
 
-  List<Size> sizes;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ClientOrderDetailsOrderItemsInnerProvider? provider;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -170,7 +109,23 @@ class ProductDetails {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? type;
+  num? quantity;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ProviderOrderDetailsOrderItemsInnerService? service;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? serviceId;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -180,158 +135,193 @@ class ProductDetails {
   ///
   String? updatedAt;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? productSelectedListIds;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? productSelectedListItemsIds;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? serviceSelectedListIds;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? serviceSelectedListItemsIds;
+
+  List<String> selectedProductsListItemsNames;
+
+  List<String> selectedServicesListItemsNames;
+
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ProductDetails &&
-     other.amount == amount &&
-     other.categories == categories &&
-     other.categoryMenu == categoryMenu &&
-     other.colors == colors &&
+  bool operator ==(Object other) => identical(this, other) || other is ClientOrderDetailsOrderItemsInner &&
+     other.cardPrice == cardPrice &&
      other.createdAt == createdAt &&
-     other.description == description &&
-     other.descriptionAr == descriptionAr &&
-     other.descriptionEn == descriptionEn &&
-     other.expectedProcessingTime == expectedProcessingTime &&
-     other.isVisible == isVisible &&
      other.id == id &&
-     other.images == images &&
-     other.lists == lists &&
-     other.name == name &&
-     other.nameAr == nameAr &&
-     other.nameEn == nameEn &&
-     other.occasions == occasions &&
+     other.listsTotalPrice == listsTotalPrice &&
+     other.orderId == orderId &&
      other.price == price &&
-     other.priceAfterDiscount == priceAfterDiscount &&
+     other.product == product &&
+     other.productId == productId &&
      other.providerId == providerId &&
-     other.sizes == sizes &&
-     other.type == type &&
-     other.updatedAt == updatedAt;
+     other.provider == provider &&
+     other.quantity == quantity &&
+     other.service == service &&
+     other.serviceId == serviceId &&
+     other.updatedAt == updatedAt &&
+     other.productSelectedListIds == productSelectedListIds &&
+     other.productSelectedListItemsIds == productSelectedListItemsIds &&
+     other.serviceSelectedListIds == serviceSelectedListIds &&
+     other.serviceSelectedListItemsIds == serviceSelectedListItemsIds &&
+     other.selectedProductsListItemsNames == selectedProductsListItemsNames &&
+     other.selectedServicesListItemsNames == selectedServicesListItemsNames;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (amount == null ? 0 : amount!.hashCode) +
-    (categories.hashCode) +
-    (categoryMenu.hashCode) +
-    (colors.hashCode) +
+    (cardPrice == null ? 0 : cardPrice!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (descriptionAr == null ? 0 : descriptionAr!.hashCode) +
-    (descriptionEn == null ? 0 : descriptionEn!.hashCode) +
-    (expectedProcessingTime == null ? 0 : expectedProcessingTime!.hashCode) +
-    (isVisible == null ? 0 : isVisible!.hashCode) +
     (id == null ? 0 : id!.hashCode) +
-    (images.hashCode) +
-    (lists.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (nameAr == null ? 0 : nameAr!.hashCode) +
-    (nameEn == null ? 0 : nameEn!.hashCode) +
-    (occasions.hashCode) +
+    (listsTotalPrice == null ? 0 : listsTotalPrice!.hashCode) +
+    (orderId == null ? 0 : orderId!.hashCode) +
     (price == null ? 0 : price!.hashCode) +
-    (priceAfterDiscount == null ? 0 : priceAfterDiscount!.hashCode) +
+    (product == null ? 0 : product!.hashCode) +
+    (productId == null ? 0 : productId!.hashCode) +
     (providerId == null ? 0 : providerId!.hashCode) +
-    (sizes.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (updatedAt == null ? 0 : updatedAt!.hashCode);
+    (provider == null ? 0 : provider!.hashCode) +
+    (quantity == null ? 0 : quantity!.hashCode) +
+    (service == null ? 0 : service!.hashCode) +
+    (serviceId == null ? 0 : serviceId!.hashCode) +
+    (updatedAt == null ? 0 : updatedAt!.hashCode) +
+    (productSelectedListIds == null ? 0 : productSelectedListIds!.hashCode) +
+    (productSelectedListItemsIds == null ? 0 : productSelectedListItemsIds!.hashCode) +
+    (serviceSelectedListIds == null ? 0 : serviceSelectedListIds!.hashCode) +
+    (serviceSelectedListItemsIds == null ? 0 : serviceSelectedListItemsIds!.hashCode) +
+    (selectedProductsListItemsNames.hashCode) +
+    (selectedServicesListItemsNames.hashCode);
 
   @override
-  String toString() => 'ProductDetails[amount=$amount, categories=$categories, categoryMenu=$categoryMenu, colors=$colors, createdAt=$createdAt, description=$description, descriptionAr=$descriptionAr, descriptionEn=$descriptionEn, expectedProcessingTime=$expectedProcessingTime, isVisible=$isVisible, id=$id, images=$images, lists=$lists, name=$name, nameAr=$nameAr, nameEn=$nameEn, occasions=$occasions, price=$price, priceAfterDiscount=$priceAfterDiscount, providerId=$providerId, sizes=$sizes, type=$type, updatedAt=$updatedAt]';
+  String toString() => 'ClientOrderDetailsOrderItemsInner[cardPrice=$cardPrice, createdAt=$createdAt, id=$id, listsTotalPrice=$listsTotalPrice, orderId=$orderId, price=$price, product=$product, productId=$productId, providerId=$providerId, provider=$provider, quantity=$quantity, service=$service, serviceId=$serviceId, updatedAt=$updatedAt, productSelectedListIds=$productSelectedListIds, productSelectedListItemsIds=$productSelectedListItemsIds, serviceSelectedListIds=$serviceSelectedListIds, serviceSelectedListItemsIds=$serviceSelectedListItemsIds, selectedProductsListItemsNames=$selectedProductsListItemsNames, selectedServicesListItemsNames=$selectedServicesListItemsNames]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.amount != null) {
-      json[r'amount'] = this.amount;
+    if (this.cardPrice != null) {
+      json[r'card_price'] = this.cardPrice;
     } else {
-      json[r'amount'] = null;
+      json[r'card_price'] = null;
     }
-      json[r'categories'] = this.categories;
-      json[r'category_menu'] = this.categoryMenu;
-      json[r'colors'] = this.colors;
     if (this.createdAt != null) {
       json[r'created_at'] = this.createdAt;
     } else {
       json[r'created_at'] = null;
-    }
-    if (this.description != null) {
-      json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
-    if (this.descriptionAr != null) {
-      json[r'description_ar'] = this.descriptionAr;
-    } else {
-      json[r'description_ar'] = null;
-    }
-    if (this.descriptionEn != null) {
-      json[r'description_en'] = this.descriptionEn;
-    } else {
-      json[r'description_en'] = null;
-    }
-    if (this.expectedProcessingTime != null) {
-      json[r'expected_processing_time'] = this.expectedProcessingTime;
-    } else {
-      json[r'expected_processing_time'] = null;
-    }
-    if (this.isVisible != null) {
-      json[r'is_visible'] = this.isVisible;
-    } else {
-      json[r'is_visible'] = null;
     }
     if (this.id != null) {
       json[r'id'] = this.id;
     } else {
       json[r'id'] = null;
     }
-      json[r'images'] = this.images;
-      json[r'lists'] = this.lists;
-    if (this.name != null) {
-      json[r'name'] = this.name;
+    if (this.listsTotalPrice != null) {
+      json[r'lists_total_price'] = this.listsTotalPrice;
     } else {
-      json[r'name'] = null;
+      json[r'lists_total_price'] = null;
     }
-    if (this.nameAr != null) {
-      json[r'name_ar'] = this.nameAr;
+    if (this.orderId != null) {
+      json[r'order_id'] = this.orderId;
     } else {
-      json[r'name_ar'] = null;
+      json[r'order_id'] = null;
     }
-    if (this.nameEn != null) {
-      json[r'name_en'] = this.nameEn;
-    } else {
-      json[r'name_en'] = null;
-    }
-      json[r'occasions'] = this.occasions;
     if (this.price != null) {
       json[r'price'] = this.price;
     } else {
       json[r'price'] = null;
     }
-    if (this.priceAfterDiscount != null) {
-      json[r'price_after_discount'] = this.priceAfterDiscount;
+    if (this.product != null) {
+      json[r'product'] = this.product;
     } else {
-      json[r'price_after_discount'] = null;
+      json[r'product'] = null;
+    }
+    if (this.productId != null) {
+      json[r'product_id'] = this.productId;
+    } else {
+      json[r'product_id'] = null;
     }
     if (this.providerId != null) {
       json[r'provider_id'] = this.providerId;
     } else {
       json[r'provider_id'] = null;
     }
-      json[r'sizes'] = this.sizes;
-    if (this.type != null) {
-      json[r'type'] = this.type;
+    if (this.provider != null) {
+      json[r'provider'] = this.provider;
     } else {
-      json[r'type'] = null;
+      json[r'provider'] = null;
+    }
+    if (this.quantity != null) {
+      json[r'quantity'] = this.quantity;
+    } else {
+      json[r'quantity'] = null;
+    }
+    if (this.service != null) {
+      json[r'service'] = this.service;
+    } else {
+      json[r'service'] = null;
+    }
+    if (this.serviceId != null) {
+      json[r'service_id'] = this.serviceId;
+    } else {
+      json[r'service_id'] = null;
     }
     if (this.updatedAt != null) {
       json[r'updated_at'] = this.updatedAt;
     } else {
       json[r'updated_at'] = null;
     }
+    if (this.productSelectedListIds != null) {
+      json[r'product_selected_list_ids'] = this.productSelectedListIds;
+    } else {
+      json[r'product_selected_list_ids'] = null;
+    }
+    if (this.productSelectedListItemsIds != null) {
+      json[r'product_selected_list_items_ids'] = this.productSelectedListItemsIds;
+    } else {
+      json[r'product_selected_list_items_ids'] = null;
+    }
+    if (this.serviceSelectedListIds != null) {
+      json[r'service_selected_list_ids'] = this.serviceSelectedListIds;
+    } else {
+      json[r'service_selected_list_ids'] = null;
+    }
+    if (this.serviceSelectedListItemsIds != null) {
+      json[r'service_selected_list_items_ids'] = this.serviceSelectedListItemsIds;
+    } else {
+      json[r'service_selected_list_items_ids'] = null;
+    }
+      json[r'selected_products_list_items_names'] = this.selectedProductsListItemsNames;
+      json[r'selected_services_list_items_names'] = this.selectedServicesListItemsNames;
     return json;
   }
 
-  /// Returns a new [ProductDetails] instance and imports its values from
+  /// Returns a new [ClientOrderDetailsOrderItemsInner] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ProductDetails? fromJson(dynamic value) {
+  static ClientOrderDetailsOrderItemsInner? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -340,56 +330,65 @@ class ProductDetails {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ProductDetails[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ProductDetails[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ClientOrderDetailsOrderItemsInner[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ClientOrderDetailsOrderItemsInner[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ProductDetails(
-        amount: json[r'amount'] == null
+      return ClientOrderDetailsOrderItemsInner(
+        cardPrice: json[r'card_price'] == null
             ? null
-            : num.parse(json[r'amount'].toString()),
-        categories: Category.listFromJson(json[r'categories']),
-        categoryMenu: CategoryMenu.listFromJson(json[r'category_menu']),
-        colors: Color.listFromJson(json[r'colors']),
+            : num.parse(json[r'card_price'].toString()),
         createdAt: mapValueOfType<String>(json, r'created_at'),
-        description: mapValueOfType<String>(json, r'description'),
-        descriptionAr: mapValueOfType<String>(json, r'description_ar'),
-        descriptionEn: mapValueOfType<String>(json, r'description_en'),
-        expectedProcessingTime: mapValueOfType<String>(json, r'expected_processing_time'),
-        isVisible: mapValueOfType<int>(json, r'is_visible'),
         id: json[r'id'] == null
             ? null
             : num.parse(json[r'id'].toString()),
-        images: ImageItem.listFromJson(json[r'images']),
-        lists: ProductListItem.listFromJson(json[r'lists']),
-        name: mapValueOfType<String>(json, r'name'),
-        nameAr: mapValueOfType<String>(json, r'name_ar'),
-        nameEn: mapValueOfType<String>(json, r'name_en'),
-        occasions: Occasion.listFromJson(json[r'occasions']),
+        listsTotalPrice: json[r'lists_total_price'] == null
+            ? null
+            : num.parse(json[r'lists_total_price'].toString()),
+        orderId: json[r'order_id'] == null
+            ? null
+            : num.parse(json[r'order_id'].toString()),
         price: json[r'price'] == null
             ? null
             : num.parse(json[r'price'].toString()),
-        priceAfterDiscount: json[r'price_after_discount'] == null
+        product: ProviderOrderDetailsOrderItemsInnerProduct.fromJson(json[r'product']),
+        productId: json[r'product_id'] == null
             ? null
-            : num.parse(json[r'price_after_discount'].toString()),
+            : num.parse(json[r'product_id'].toString()),
         providerId: json[r'provider_id'] == null
             ? null
             : num.parse(json[r'provider_id'].toString()),
-        sizes: Size.listFromJson(json[r'sizes']),
-        type: mapValueOfType<String>(json, r'type'),
+        provider: ClientOrderDetailsOrderItemsInnerProvider.fromJson(json[r'provider']),
+        quantity: json[r'quantity'] == null
+            ? null
+            : num.parse(json[r'quantity'].toString()),
+        service: ProviderOrderDetailsOrderItemsInnerService.fromJson(json[r'service']),
+        serviceId: json[r'service_id'] == null
+            ? null
+            : num.parse(json[r'service_id'].toString()),
         updatedAt: mapValueOfType<String>(json, r'updated_at'),
+        productSelectedListIds: mapValueOfType<String>(json, r'product_selected_list_ids'),
+        productSelectedListItemsIds: mapValueOfType<String>(json, r'product_selected_list_items_ids'),
+        serviceSelectedListIds: mapValueOfType<String>(json, r'service_selected_list_ids'),
+        serviceSelectedListItemsIds: mapValueOfType<String>(json, r'service_selected_list_items_ids'),
+        selectedProductsListItemsNames: json[r'selected_products_list_items_names'] is List
+            ? (json[r'selected_products_list_items_names'] as List).cast<String>()
+            : const [],
+        selectedServicesListItemsNames: json[r'selected_services_list_items_names'] is List
+            ? (json[r'selected_services_list_items_names'] as List).cast<String>()
+            : const [],
       );
     }
     return null;
   }
 
-  static List<ProductDetails> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ProductDetails>[];
+  static List<ClientOrderDetailsOrderItemsInner> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ClientOrderDetailsOrderItemsInner>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ProductDetails.fromJson(row);
+        final value = ClientOrderDetailsOrderItemsInner.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -398,12 +397,12 @@ class ProductDetails {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ProductDetails> mapFromJson(dynamic json) {
-    final map = <String, ProductDetails>{};
+  static Map<String, ClientOrderDetailsOrderItemsInner> mapFromJson(dynamic json) {
+    final map = <String, ClientOrderDetailsOrderItemsInner>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ProductDetails.fromJson(entry.value);
+        final value = ClientOrderDetailsOrderItemsInner.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -412,14 +411,14 @@ class ProductDetails {
     return map;
   }
 
-  // maps a json object with a list of ProductDetails-objects as value to a dart map
-  static Map<String, List<ProductDetails>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ProductDetails>>{};
+  // maps a json object with a list of ClientOrderDetailsOrderItemsInner-objects as value to a dart map
+  static Map<String, List<ClientOrderDetailsOrderItemsInner>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ClientOrderDetailsOrderItemsInner>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ProductDetails.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ClientOrderDetailsOrderItemsInner.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

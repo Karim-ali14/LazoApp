@@ -201,12 +201,10 @@ class ApiClient {
           return ClientAuthResponseData.fromJson(value);
         case 'ClientOrderDetails':
           return ClientOrderDetails.fromJson(value);
-        case 'ClientOrderDetailsData':
-          return ClientOrderDetailsData.fromJson(value);
-        case 'ClientOrderDetailsDataOrderItemsInner':
-          return ClientOrderDetailsDataOrderItemsInner.fromJson(value);
-        case 'ClientOrderDetailsDataOrderItemsInnerProvider':
-          return ClientOrderDetailsDataOrderItemsInnerProvider.fromJson(value);
+        case 'ClientOrderDetailsOrderItemsInner':
+          return ClientOrderDetailsOrderItemsInner.fromJson(value);
+        case 'ClientOrderDetailsOrderItemsInnerProvider':
+          return ClientOrderDetailsOrderItemsInnerProvider.fromJson(value);
         case 'ClientOrderDetailsResponse':
           return ClientOrderDetailsResponse.fromJson(value);
         case 'CodeConfirmRequest':

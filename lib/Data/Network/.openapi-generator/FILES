@@ -15,9 +15,8 @@ doc/ClientApi.md
 doc/ClientAuthResponse.md
 doc/ClientAuthResponseData.md
 doc/ClientOrderDetails.md
-doc/ClientOrderDetailsData.md
-doc/ClientOrderDetailsDataOrderItemsInner.md
-doc/ClientOrderDetailsDataOrderItemsInnerProvider.md
+doc/ClientOrderDetailsOrderItemsInner.md
+doc/ClientOrderDetailsOrderItemsInnerProvider.md
 doc/ClientOrderDetailsResponse.md
 doc/CodeConfirmRequest.md
 doc/CodeConfirmResponse.md
@@ -164,9 +163,8 @@ lib/model/city.dart
 lib/model/client_auth_response.dart
 lib/model/client_auth_response_data.dart
 lib/model/client_order_details.dart
-lib/model/client_order_details_data.dart
-lib/model/client_order_details_data_order_items_inner.dart
-lib/model/client_order_details_data_order_items_inner_provider.dart
+lib/model/client_order_details_order_items_inner.dart
+lib/model/client_order_details_order_items_inner_provider.dart
 lib/model/client_order_details_response.dart
 lib/model/code_confirm_request.dart
 lib/model/code_confirm_response.dart
@@ -271,3 +269,5 @@ lib/model/update_profile200_response_data_city.dart
 lib/model/upload_files.dart
 lib/model/upload_files_response.dart
 pubspec.yaml
+test/client_order_details_order_items_inner_provider_test.dart
+test/client_order_details_order_items_inner_test.dart

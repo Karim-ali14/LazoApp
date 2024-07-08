@@ -199,7 +199,7 @@ class _ItemOrderDetailsScreenState
                       ),
                       if (widget.orderItemType == OrderItemType.Product)
                         ...(List.generate(
-                            productItemState.data?.data?.productlists.length ??
+                            productItemState.data?.data?.lists.length ??
                                 0,
                             (index) => Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,7 +208,7 @@ class _ItemOrderDetailsScreenState
                                       height: 32,
                                     ),
                                     Text(
-                                      "${productItemState.data?.data?.productlists[index].name}",
+                                      "${productItemState.data?.data?.lists[index].name}",
                                       style: AppTheme
                                           .styleWithTextBlackAdelleSansExtendedFonts18w700,
                                     ),
@@ -233,16 +233,17 @@ class _ItemOrderDetailsScreenState
                                                 productItemState
                                                         .data
                                                         ?.data
-                                                        ?.productlists[index]
+                                                        ?.lists[index]
                                                         .items
                                                         .length ??
                                                     0,
                                                 (itemIndex) => ProductRowItem(
                                                       title:
-                                                          "${productItemState.data?.data?.productlists[index].items[itemIndex].name}",
+                                                          "${productItemState.data?.data?.lists[index].items[itemIndex].name}",
                                                       textValue:
-                                                          "SAR ${productItemState.data?.data?.productlists[index].items[itemIndex].price}",
-                                                      hasDivider: index != 4,
+                                                          "SAR ${productItemState.data?.data?.lists[index].items[itemIndex].price}",
+                                                      hasDivider: itemIndex != ((productItemState.data?.data?.lists[index]
+                                                          .items.asMap().keys.last ?? 0)),
                                                     )))
                                           ],
                                         ),
@@ -290,8 +291,9 @@ class _ItemOrderDetailsScreenState
                                               "${serviceItemState.data?.data?.lists[index].items[itemIndex].name}",
                                               textValue:
                                               "SAR ${serviceItemState.data?.data?.lists[index].items[itemIndex].price}",
-                                              hasDivider: index != 4,
-                                            )))
+                                                  hasDivider: itemIndex != ((serviceItemState.data?.data?.lists[index]
+                                                      .items.asMap().keys.last ?? 0)),
+                                                )))
                                       ],
                                     ),
                                   ),
