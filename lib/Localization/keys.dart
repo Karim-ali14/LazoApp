@@ -23,6 +23,7 @@ const String canceledKey = "canceled";
 const enterYourPhoneKey = "enterYourPhone";
 const dontHaveAnAccountKey = "dontHaveAnAccount";
 const signUpKey = "signUp";
+const dashesKey = "dashes";
 
 // Params Keys
 const String doneLandingKey = "doneLanding";

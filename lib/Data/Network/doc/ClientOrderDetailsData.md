@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **orderItems** | [**List<ClientOrderDetailsDataOrderItemsInner>**](ClientOrderDetailsDataOrderItemsInner.md) |  | [optional] [default to const []]
 **packagingProviderId** | **num** |  | [optional] 
 **paymentMethod** | **String** |  | [optional] 
-**promocode** | [**ProviderOrderDetailsDataPromocode**](ProviderOrderDetailsDataPromocode.md) |  | [optional] 
+**promocode** | [**ProviderOrderDetailsPromocode**](ProviderOrderDetailsPromocode.md) |  | [optional] 
 **promocodeDiscountType** | **String** |  | [optional] 
 **promocodeDiscountValue** | **num** |  | [optional] 
 **promocodeId** | **num** |  | [optional] 
@@ -35,8 +35,8 @@ Name | Type | Description | Notes
 **type** | **String** |  | [optional] 
 **updatedAt** | **String** |  | [optional] 
 **userId** | **num** |  | [optional] 
-**giftBox** | [**ProviderOrderDetailsDataGiftBox**](ProviderOrderDetailsDataGiftBox.md) |  | [optional] 
-**giftCard** | [**ProviderOrderDetailsDataGiftBox**](ProviderOrderDetailsDataGiftBox.md) |  | [optional] 
+**giftBox** | [**ProviderOrderDetailsGiftBox**](ProviderOrderDetailsGiftBox.md) |  | [optional] 
+**giftCard** | [**ProviderOrderDetailsGiftBox**](ProviderOrderDetailsGiftBox.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,5 +23,6 @@
   "canceled" : "Canceled",
   "enterYourPhone" : "Enter your phone",
   "signUp" : "Sign Up",
-  "dontHaveAnAccount" : "Don’t have an account?"
+  "dontHaveAnAccount" : "Don’t have an account?",
+  "dashes" : "----"
 }

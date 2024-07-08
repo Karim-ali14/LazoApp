@@ -14,6 +14,11 @@ doc/City.md
 doc/ClientApi.md
 doc/ClientAuthResponse.md
 doc/ClientAuthResponseData.md
+doc/ClientOrderDetails.md
+doc/ClientOrderDetailsData.md
+doc/ClientOrderDetailsDataOrderItemsInner.md
+doc/ClientOrderDetailsDataOrderItemsInnerProvider.md
+doc/ClientOrderDetailsResponse.md
 doc/CodeConfirmRequest.md
 doc/CodeConfirmResponse.md
 doc/CodeSendRequest.md
@@ -48,6 +53,7 @@ doc/ProviderLocation.md
 doc/ProviderLoginResponse.md
 doc/ProviderLoginResponseData.md
 doc/ProviderOrderDetails.md
+doc/ProviderOrderDetailsGiftBox.md
 doc/ProviderOrderDetailsOrderItemsInner.md
 doc/ProviderOrderDetailsOrderItemsInnerProduct.md
 doc/ProviderOrderDetailsOrderItemsInnerProductListsInner.md
@@ -105,6 +111,8 @@ doc/ShowNotifications1200Response.md
 doc/ShowNotifications1200ResponseDataInner.md
 doc/ShowNotifications1200ResponseDataInnerProvider.md
 doc/ShowNotifications1200ResponseDataInnerUser.md
+doc/ShowOrders200Response.md
+doc/ShowOrders200ResponseData.md
 doc/ShowProfile200Response.md
 doc/ShowProfile200ResponseData.md
 doc/ShowProfile200ResponseDataCity.md
@@ -155,6 +163,11 @@ lib/model/cities_response.dart
 lib/model/city.dart
 lib/model/client_auth_response.dart
 lib/model/client_auth_response_data.dart
+lib/model/client_order_details.dart
+lib/model/client_order_details_data.dart
+lib/model/client_order_details_data_order_items_inner.dart
+lib/model/client_order_details_data_order_items_inner_provider.dart
+lib/model/client_order_details_response.dart
 lib/model/code_confirm_request.dart
 lib/model/code_confirm_response.dart
 lib/model/code_send_request.dart
@@ -182,6 +195,7 @@ lib/model/provider_location.dart
 lib/model/provider_login_response.dart
 lib/model/provider_login_response_data.dart
 lib/model/provider_order_details.dart
+lib/model/provider_order_details_gift_box.dart
 lib/model/provider_order_details_order_items_inner.dart
 lib/model/provider_order_details_order_items_inner_product.dart
 lib/model/provider_order_details_order_items_inner_product_lists_inner.dart
@@ -237,6 +251,8 @@ lib/model/show_notifications1200_response.dart
 lib/model/show_notifications1200_response_data_inner.dart
 lib/model/show_notifications1200_response_data_inner_provider.dart
 lib/model/show_notifications1200_response_data_inner_user.dart
+lib/model/show_orders200_response.dart
+lib/model/show_orders200_response_data.dart
 lib/model/show_profile200_response.dart
 lib/model/show_profile200_response_data.dart
 lib/model/show_profile200_response_data_city.dart

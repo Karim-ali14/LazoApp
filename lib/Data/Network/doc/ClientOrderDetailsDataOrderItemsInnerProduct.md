@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **descriptionEn** | **String** |  | [optional] 
 **id** | **num** |  | [optional] 
 **isVisible** | **num** |  | [optional] 
-**lists** | [**List<ProviderOrderDetailsDataOrderItemsInnerProductListsInner>**](ProviderOrderDetailsDataOrderItemsInnerProductListsInner.md) |  | [optional] [default to const []]
+**lists** | [**List<ProviderOrderDetailsOrderItemsInnerProductListsInner>**](ProviderOrderDetailsOrderItemsInnerProductListsInner.md) |  | [optional] [default to const []]
 **name** | **String** |  | [optional] 
 **nameAr** | **String** |  | [optional] 
 **nameEn** | **String** |  | [optional] 

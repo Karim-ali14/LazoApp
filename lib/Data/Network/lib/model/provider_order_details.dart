@@ -41,6 +41,8 @@ class ProviderOrderDetails {
     this.updatedAt,
     this.user,
     this.userId,
+    this.giftBox,
+    this.giftCard,
   });
 
   Object? cancellationReason;
@@ -225,6 +227,10 @@ class ProviderOrderDetails {
   ///
   num? userId;
 
+  ProviderOrderDetailsGiftBox? giftBox;
+
+  ProviderOrderDetailsGiftBox? giftCard;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProviderOrderDetails &&
      other.cancellationReason == cancellationReason &&
@@ -254,7 +260,9 @@ class ProviderOrderDetails {
      other.type == type &&
      other.updatedAt == updatedAt &&
      other.user == user &&
-     other.userId == userId;
+     other.userId == userId &&
+     other.giftBox == giftBox &&
+     other.giftCard == giftCard;
 
   @override
   int get hashCode =>
@@ -286,10 +294,12 @@ class ProviderOrderDetails {
     (type == null ? 0 : type!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode) +
     (user == null ? 0 : user!.hashCode) +
-    (userId == null ? 0 : userId!.hashCode);
+    (userId == null ? 0 : userId!.hashCode) +
+    (giftBox == null ? 0 : giftBox!.hashCode) +
+    (giftCard == null ? 0 : giftCard!.hashCode);
 
   @override
-  String toString() => 'ProviderOrderDetails[cancellationReason=$cancellationReason, createdAt=$createdAt, deliveryDate=$deliveryDate, deliveryTime=$deliveryTime, finishedAt=$finishedAt, cancelledAt=$cancelledAt, id=$id, orderFamily=$orderFamily, orderItems=$orderItems, packagingProviderId=$packagingProviderId, paymentMethod=$paymentMethod, promocode=$promocode, promocodeDiscountType=$promocodeDiscountType, promocodeDiscountValue=$promocodeDiscountValue, promocodeId=$promocodeId, rating=$rating, ratingComment=$ratingComment, receiverAddress=$receiverAddress, receiverPhoneNumber=$receiverPhoneNumber, referenceNumber=$referenceNumber, shippingFee=$shippingFee, statusId=$statusId, total=$total, totalWithShippingFee=$totalWithShippingFee, type=$type, updatedAt=$updatedAt, user=$user, userId=$userId]';
+  String toString() => 'ProviderOrderDetails[cancellationReason=$cancellationReason, createdAt=$createdAt, deliveryDate=$deliveryDate, deliveryTime=$deliveryTime, finishedAt=$finishedAt, cancelledAt=$cancelledAt, id=$id, orderFamily=$orderFamily, orderItems=$orderItems, packagingProviderId=$packagingProviderId, paymentMethod=$paymentMethod, promocode=$promocode, promocodeDiscountType=$promocodeDiscountType, promocodeDiscountValue=$promocodeDiscountValue, promocodeId=$promocodeId, rating=$rating, ratingComment=$ratingComment, receiverAddress=$receiverAddress, receiverPhoneNumber=$receiverPhoneNumber, referenceNumber=$referenceNumber, shippingFee=$shippingFee, statusId=$statusId, total=$total, totalWithShippingFee=$totalWithShippingFee, type=$type, updatedAt=$updatedAt, user=$user, userId=$userId, giftBox=$giftBox, giftCard=$giftCard]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -429,6 +439,16 @@ class ProviderOrderDetails {
     } else {
       json[r'user_id'] = null;
     }
+    if (this.giftBox != null) {
+      json[r'gift_box'] = this.giftBox;
+    } else {
+      json[r'gift_box'] = null;
+    }
+    if (this.giftCard != null) {
+      json[r'gift_card'] = this.giftCard;
+    } else {
+      json[r'gift_card'] = null;
+    }
     return json;
   }
 
@@ -499,6 +519,8 @@ class ProviderOrderDetails {
         userId: json[r'user_id'] == null
             ? null
             : num.parse(json[r'user_id'].toString()),
+        giftBox: ProviderOrderDetailsGiftBox.fromJson(json[r'gift_box']),
+        giftCard: ProviderOrderDetailsGiftBox.fromJson(json[r'gift_card']),
       );
     }
     return null;

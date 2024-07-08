@@ -128,7 +128,7 @@ class ClientOrderDetailsDataOrderItemsInnerProduct {
   ///
   num? isVisible;
 
-  List<ProviderOrderDetailsDataOrderItemsInnerProductListsInner> lists;
+  List<ProviderOrderDetailsOrderItemsInnerProductListsInner> lists;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -376,7 +376,7 @@ class ClientOrderDetailsDataOrderItemsInnerProduct {
         isVisible: json[r'is_visible'] == null
             ? null
             : num.parse(json[r'is_visible'].toString()),
-        lists: ProviderOrderDetailsDataOrderItemsInnerProductListsInner.listFromJson(json[r'lists']),
+        lists: ProviderOrderDetailsOrderItemsInnerProductListsInner.listFromJson(json[r'lists']),
         name: mapValueOfType<String>(json, r'name'),
         nameAr: mapValueOfType<String>(json, r'name_ar'),
         nameEn: mapValueOfType<String>(json, r'name_en'),

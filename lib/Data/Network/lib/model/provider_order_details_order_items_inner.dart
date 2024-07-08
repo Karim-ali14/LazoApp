@@ -20,6 +20,12 @@ class ProviderOrderDetailsOrderItemsInner {
     this.orderId,
     this.price,
     this.product,
+    this.productSelectedListIds,
+    this.productSelectedListItemsIds,
+    this.serviceSelectedListIds,
+    this.serviceSelectedListItemsIds,
+    this.selectedProductsListItemsNames = const [],
+    this.selectedServicesListItemsNames = const [],
     this.productId,
     this.providerId,
     this.quantity,
@@ -78,6 +84,42 @@ class ProviderOrderDetailsOrderItemsInner {
 
   ProviderOrderDetailsOrderItemsInnerProduct? product;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? productSelectedListIds;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? productSelectedListItemsIds;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? serviceSelectedListIds;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? serviceSelectedListItemsIds;
+
+  List<String> selectedProductsListItemsNames;
+
+  List<String> selectedServicesListItemsNames;
+
   num? productId;
 
   ///
@@ -129,6 +171,12 @@ class ProviderOrderDetailsOrderItemsInner {
      other.orderId == orderId &&
      other.price == price &&
      other.product == product &&
+     other.productSelectedListIds == productSelectedListIds &&
+     other.productSelectedListItemsIds == productSelectedListItemsIds &&
+     other.serviceSelectedListIds == serviceSelectedListIds &&
+     other.serviceSelectedListItemsIds == serviceSelectedListItemsIds &&
+     other.selectedProductsListItemsNames == selectedProductsListItemsNames &&
+     other.selectedServicesListItemsNames == selectedServicesListItemsNames &&
      other.productId == productId &&
      other.providerId == providerId &&
      other.quantity == quantity &&
@@ -146,6 +194,12 @@ class ProviderOrderDetailsOrderItemsInner {
     (orderId == null ? 0 : orderId!.hashCode) +
     (price == null ? 0 : price!.hashCode) +
     (product == null ? 0 : product!.hashCode) +
+    (productSelectedListIds == null ? 0 : productSelectedListIds!.hashCode) +
+    (productSelectedListItemsIds == null ? 0 : productSelectedListItemsIds!.hashCode) +
+    (serviceSelectedListIds == null ? 0 : serviceSelectedListIds!.hashCode) +
+    (serviceSelectedListItemsIds == null ? 0 : serviceSelectedListItemsIds!.hashCode) +
+    (selectedProductsListItemsNames.hashCode) +
+    (selectedServicesListItemsNames.hashCode) +
     (productId == null ? 0 : productId!.hashCode) +
     (providerId == null ? 0 : providerId!.hashCode) +
     (quantity == null ? 0 : quantity!.hashCode) +
@@ -154,7 +208,7 @@ class ProviderOrderDetailsOrderItemsInner {
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'ProviderOrderDetailsOrderItemsInner[cardPrice=$cardPrice, createdAt=$createdAt, id=$id, listsTotalPrice=$listsTotalPrice, orderId=$orderId, price=$price, product=$product, productId=$productId, providerId=$providerId, quantity=$quantity, service=$service, serviceId=$serviceId, updatedAt=$updatedAt]';
+  String toString() => 'ProviderOrderDetailsOrderItemsInner[cardPrice=$cardPrice, createdAt=$createdAt, id=$id, listsTotalPrice=$listsTotalPrice, orderId=$orderId, price=$price, product=$product, productSelectedListIds=$productSelectedListIds, productSelectedListItemsIds=$productSelectedListItemsIds, serviceSelectedListIds=$serviceSelectedListIds, serviceSelectedListItemsIds=$serviceSelectedListItemsIds, selectedProductsListItemsNames=$selectedProductsListItemsNames, selectedServicesListItemsNames=$selectedServicesListItemsNames, productId=$productId, providerId=$providerId, quantity=$quantity, service=$service, serviceId=$serviceId, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -193,6 +247,28 @@ class ProviderOrderDetailsOrderItemsInner {
     } else {
       json[r'product'] = null;
     }
+    if (this.productSelectedListIds != null) {
+      json[r'product_selected_list_ids'] = this.productSelectedListIds;
+    } else {
+      json[r'product_selected_list_ids'] = null;
+    }
+    if (this.productSelectedListItemsIds != null) {
+      json[r'product_selected_list_items_ids'] = this.productSelectedListItemsIds;
+    } else {
+      json[r'product_selected_list_items_ids'] = null;
+    }
+    if (this.serviceSelectedListIds != null) {
+      json[r'service_selected_list_ids'] = this.serviceSelectedListIds;
+    } else {
+      json[r'service_selected_list_ids'] = null;
+    }
+    if (this.serviceSelectedListItemsIds != null) {
+      json[r'service_selected_list_items_ids'] = this.serviceSelectedListItemsIds;
+    } else {
+      json[r'service_selected_list_items_ids'] = null;
+    }
+      json[r'selected_products_list_items_names'] = this.selectedProductsListItemsNames;
+      json[r'selected_services_list_items_names'] = this.selectedServicesListItemsNames;
     if (this.productId != null) {
       json[r'product_id'] = this.productId;
     } else {
@@ -262,6 +338,16 @@ class ProviderOrderDetailsOrderItemsInner {
             ? null
             : num.parse(json[r'price'].toString()),
         product: ProviderOrderDetailsOrderItemsInnerProduct.fromJson(json[r'product']),
+        productSelectedListIds: mapValueOfType<String>(json, r'product_selected_list_ids'),
+        productSelectedListItemsIds: mapValueOfType<String>(json, r'product_selected_list_items_ids'),
+        serviceSelectedListIds: mapValueOfType<String>(json, r'service_selected_list_ids'),
+        serviceSelectedListItemsIds: mapValueOfType<String>(json, r'service_selected_list_items_ids'),
+        selectedProductsListItemsNames: json[r'selected_products_list_items_names'] is List
+            ? (json[r'selected_products_list_items_names'] as List).cast<String>()
+            : const [],
+        selectedServicesListItemsNames: json[r'selected_services_list_items_names'] is List
+            ? (json[r'selected_services_list_items_names'] as List).cast<String>()
+            : const [],
         productId: json[r'product_id'] == null
             ? null
             : num.parse(json[r'product_id'].toString()),

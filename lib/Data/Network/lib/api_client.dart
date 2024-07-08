@@ -199,6 +199,16 @@ class ApiClient {
           return ClientAuthResponse.fromJson(value);
         case 'ClientAuthResponseData':
           return ClientAuthResponseData.fromJson(value);
+        case 'ClientOrderDetails':
+          return ClientOrderDetails.fromJson(value);
+        case 'ClientOrderDetailsData':
+          return ClientOrderDetailsData.fromJson(value);
+        case 'ClientOrderDetailsDataOrderItemsInner':
+          return ClientOrderDetailsDataOrderItemsInner.fromJson(value);
+        case 'ClientOrderDetailsDataOrderItemsInnerProvider':
+          return ClientOrderDetailsDataOrderItemsInnerProvider.fromJson(value);
+        case 'ClientOrderDetailsResponse':
+          return ClientOrderDetailsResponse.fromJson(value);
         case 'CodeConfirmRequest':
           return CodeConfirmRequest.fromJson(value);
         case 'CodeConfirmResponse':
@@ -253,6 +263,8 @@ class ApiClient {
           return ProviderLoginResponseData.fromJson(value);
         case 'ProviderOrderDetails':
           return ProviderOrderDetails.fromJson(value);
+        case 'ProviderOrderDetailsGiftBox':
+          return ProviderOrderDetailsGiftBox.fromJson(value);
         case 'ProviderOrderDetailsOrderItemsInner':
           return ProviderOrderDetailsOrderItemsInner.fromJson(value);
         case 'ProviderOrderDetailsOrderItemsInnerProduct':
@@ -363,6 +375,10 @@ class ApiClient {
           return ShowNotifications1200ResponseDataInnerProvider.fromJson(value);
         case 'ShowNotifications1200ResponseDataInnerUser':
           return ShowNotifications1200ResponseDataInnerUser.fromJson(value);
+        case 'ShowOrders200Response':
+          return ShowOrders200Response.fromJson(value);
+        case 'ShowOrders200ResponseData':
+          return ShowOrders200ResponseData.fromJson(value);
         case 'ShowProfile200Response':
           return ShowProfile200Response.fromJson(value);
         case 'ShowProfile200ResponseData':

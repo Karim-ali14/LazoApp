@@ -96,7 +96,7 @@ class ClientOrderDetailsData {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ProviderOrderDetailsDataPromocode? promocode;
+  ProviderOrderDetailsPromocode? promocode;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -218,9 +218,9 @@ class ClientOrderDetailsData {
   ///
   num? userId;
 
-  ProviderOrderDetailsDataGiftBox? giftBox;
+  ProviderOrderDetailsGiftBox? giftBox;
 
-  ProviderOrderDetailsDataGiftBox? giftCard;
+  ProviderOrderDetailsGiftBox? giftCard;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ClientOrderDetailsData &&
@@ -470,7 +470,7 @@ class ClientOrderDetailsData {
             ? null
             : num.parse(json[r'packaging_provider_id'].toString()),
         paymentMethod: mapValueOfType<String>(json, r'payment_method'),
-        promocode: ProviderOrderDetailsDataPromocode.fromJson(json[r'promocode']),
+        promocode: ProviderOrderDetailsPromocode.fromJson(json[r'promocode']),
         promocodeDiscountType: mapValueOfType<String>(json, r'promocode_discount_type'),
         promocodeDiscountValue: json[r'promocode_discount_value'] == null
             ? null
@@ -502,8 +502,8 @@ class ClientOrderDetailsData {
         userId: json[r'user_id'] == null
             ? null
             : num.parse(json[r'user_id'].toString()),
-        giftBox: ProviderOrderDetailsDataGiftBox.fromJson(json[r'gift_box']),
-        giftCard: ProviderOrderDetailsDataGiftBox.fromJson(json[r'gift_card']),
+        giftBox: ProviderOrderDetailsGiftBox.fromJson(json[r'gift_box']),
+        giftCard: ProviderOrderDetailsGiftBox.fromJson(json[r'gift_card']),
       );
     }
     return null;

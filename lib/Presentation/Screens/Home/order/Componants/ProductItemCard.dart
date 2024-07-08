@@ -24,8 +24,8 @@ class _ProductItemCardState extends State<ProductItemCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:(){
-        widget.onItemClick.call(widget.item?.id?.toInt() ?? 0 );
+      onTap: () {
+        widget.onItemClick.call(widget.item?.id?.toInt() ?? 0);
       },
       child: IntrinsicHeight(
         child: Container(
@@ -83,7 +83,8 @@ class _ProductItemCardState extends State<ProductItemCard> {
                         Text(
                           "${context.tr(SARKey)} ${widget.item?.product != null ? widget.item?.product?.price : widget.item?.service?.price}",
                           style: AppTheme
-                              .styleWithTextAppGrey7AdelleSansExtendedFonts14w400.copyWith(height: 1.2),
+                              .styleWithTextAppGrey7AdelleSansExtendedFonts14w400
+                              .copyWith(height: 1.2),
                         )
                       ],
                     )
@@ -92,65 +93,62 @@ class _ProductItemCardState extends State<ProductItemCard> {
                 const SizedBox(
                   height: 22,
                 ),
-                widget.item?.product != null
-                    ? Row(
-                        children: [
-                          Text(
-                            "Size : ",
-                            style: AppTheme
-                                .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
-                          ),
-                          Text(
-                            "${widget.item?.product?.name}",
-                            style: AppTheme
-                                .styleWithTextBlackAdelleSansExtendedFonts14w500,
-                          ),
-                          Spacer(),
-                          Text(
-                            "Color : ",
-                            style: AppTheme
-                                .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
-                          ),
-                          Text(
-                            "${widget.item?.product?.name}",
-                            style: AppTheme
-                                .styleWithTextBlackAdelleSansExtendedFonts14w500,
-                          ),
-                          Spacer(),
-                          Text(
-                            "Amount : ",
-                            style: AppTheme
-                                .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
-                          ),
-                          Text(
-                            "${widget.item?.quantity}",
-                            style: AppTheme
-                                .styleWithTextBlackAdelleSansExtendedFonts14w500,
-                          ),
-                        ],
-                      )
-                    : const SizedBox(),
+                Row(
+                  children: [
+                    Text(
+                      "Size : ",
+                      style: AppTheme
+                          .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
+                    ),
+                    Text(
+                      "${widget.item?.product != null ? widget.item?.product?.sizes.first.name : context.tr(dashesKey)}",
+                      style: AppTheme
+                          .styleWithTextBlackAdelleSansExtendedFonts14w500,
+                    ),
+                    Spacer(),
+                    Text(
+                      "Color : ",
+                      style: AppTheme
+                          .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
+                    ),
+                    Text(
+                      "${widget.item?.product != null ? widget.item?.product?.colors.first.name : context.tr(dashesKey)}",
+                      style: AppTheme
+                          .styleWithTextBlackAdelleSansExtendedFonts14w500,
+                    ),
+                    Spacer(),
+                    Text(
+                      "Amount : ",
+                      style: AppTheme
+                          .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
+                    ),
+                    Text(
+                      "${widget.item?.quantity}",
+                      style: AppTheme
+                          .styleWithTextBlackAdelleSansExtendedFonts14w500,
+                    ),
+                  ],
+                ),
                 const SizedBox(
                   height: 22,
                 ),
-                const Row(
+                Row(
                   children: [
-                    Text(
+                    const Text(
                       "Extra items :",
                       style: AppTheme
                           .styleWithTextAppGrey7AdelleSansExtendedFonts14w400,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 4,
                     ),
                     Text(
-                      "item 1 - item 2 - item 3 - item 4",
+                      "${widget.item?.product != null ? widget.item?.selectedProductsListItemsNames.join(", ") : widget.item?.selectedServicesListItemsNames.join(", ")}",
                       style: AppTheme
                           .styleWithTextBlackAdelleSansExtendedFonts14w500,
                     )
                   ],
                 )
-
               ],
             )),
       ),

@@ -83,7 +83,7 @@ class ClientOrderDetailsDataOrderItemsInner {
   ///
   num? price;
 
-  ClientOrderDetailsDataOrderItemsInnerProduct? product;
+  ProviderOrderDetailsOrderItemsInnerProduct? product;
 
   num? productId;
 
@@ -117,7 +117,7 @@ class ClientOrderDetailsDataOrderItemsInner {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  ProviderOrderDetailsDataOrderItemsInnerService? service;
+  ProviderOrderDetailsOrderItemsInnerService? service;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -353,7 +353,7 @@ class ClientOrderDetailsDataOrderItemsInner {
         price: json[r'price'] == null
             ? null
             : num.parse(json[r'price'].toString()),
-        product: ClientOrderDetailsDataOrderItemsInnerProduct.fromJson(json[r'product']),
+        product: ProviderOrderDetailsOrderItemsInnerProduct.fromJson(json[r'product']),
         productId: json[r'product_id'] == null
             ? null
             : num.parse(json[r'product_id'].toString()),
@@ -364,7 +364,7 @@ class ClientOrderDetailsDataOrderItemsInner {
         quantity: json[r'quantity'] == null
             ? null
             : num.parse(json[r'quantity'].toString()),
-        service: ProviderOrderDetailsDataOrderItemsInnerService.fromJson(json[r'service']),
+        service: ProviderOrderDetailsOrderItemsInnerService.fromJson(json[r'service']),
         serviceId: json[r'service_id'] == null
             ? null
             : num.parse(json[r'service_id'].toString()),
