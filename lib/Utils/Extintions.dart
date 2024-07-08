@@ -137,3 +137,9 @@ bool validateEmail(String value) {
   RegExp regex = RegExp(pattern);
   return (!regex.hasMatch(value)) ? false : true;
 }
+
+
+extension ColorParsing on String {
+  Color get getColorFromHex => Color(int.parse(replaceAll("#", "0xff")));
+
+}

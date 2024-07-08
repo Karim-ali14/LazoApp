@@ -1,4 +1,4 @@
 
 const defaultPaddingHorizontal = 16.0;
 
-const signUpUrl = "https://lazo.sa/backend/public/api";
+const signUpUrl = "https://lazo.sa/provider/signup";

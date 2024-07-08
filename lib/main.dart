@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lazo_provider/Constants/Eunms.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/Opt/OtpScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/forgetpassword/ForgetPasswordScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/ItemOrderDetailsScreen.dart';
@@ -211,7 +212,10 @@ class MyApp extends ConsumerWidget {
           }
       ),
       GoRoute(path: R_ItemOrderDetails,
-          builder: (BuildContext context , GoRouterState state) => const ItemOrderDetailsScreen())
+          builder: (BuildContext context , GoRouterState state) {
+        var extra = state.extra as Map;
+            return ItemOrderDetailsScreen(id: extra["id"], orderItemType: extra["type"] as OrderItemType,);
+          })
     ],
   );
 }

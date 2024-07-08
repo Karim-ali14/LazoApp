@@ -23,7 +23,10 @@ class ProductRowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(children: [
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
         SizedBox(
           height: 12,
         ),
@@ -38,6 +41,8 @@ class ProductRowItem extends StatelessWidget {
               ),
               const Spacer(),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   endWidget != null ? endWidget! : const SizedBox(),
                   endWidget != null

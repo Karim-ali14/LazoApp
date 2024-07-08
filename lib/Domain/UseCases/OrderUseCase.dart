@@ -114,7 +114,7 @@ class OrderServiceItemDetailsUserCase
   final PublicApi api;
   OrderServiceItemDetailsUserCase(this.ref, this.api) : super(StateModel());
 
-  void getProductItemDetails(String serviceId) async {
+  void getServiceItemDetails(String serviceId) async {
     state = StateModel.loading();
     request(() => api.showServiceDetails(serviceId: serviceId),
         onComplete: (res) {});

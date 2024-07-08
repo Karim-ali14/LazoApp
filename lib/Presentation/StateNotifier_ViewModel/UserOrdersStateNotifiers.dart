@@ -34,7 +34,6 @@ final getOrderProductItemDetailsStateProvider =
             StateModel<ProductDetailsResponse>>(
         (ref) => OrderProductItemDetailsUserCase(ref, ref.read(publicApi)));
 
-
 final getOrderServiceItemDetailsStateProvider =
     StateNotifierProvider.autoDispose<OrderServiceItemDetailsUserCase,
             StateModel<ServiceShowResponse>>(

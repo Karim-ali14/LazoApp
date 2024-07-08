@@ -31,3 +31,8 @@ enum ButtonsClickType {
   Finish,
   ReadyToShipping
 }
+
+enum OrderItemType {
+  Product,
+  Service
+}

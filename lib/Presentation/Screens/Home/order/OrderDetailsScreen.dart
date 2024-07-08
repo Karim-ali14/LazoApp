@@ -201,7 +201,9 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
                                     child: ProductItemCard(
                                         item: orderDetails
                                             .data?.data?.orderItems[index], onItemClick: (itemId) {
-                                          navigateToDetails(itemId);
+                                          navigateToDetails(itemId,orderDetails.data?.data?.orderItems.first
+                                              .product !=
+                                              null ? OrderItemType.Product : OrderItemType.Service);
                                     },),
                                   )))
                         ],
@@ -312,7 +314,7 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
             ));
   }
 
-  void navigateToDetails(int itemId) {
-    context.push(R_ItemOrderDetails);
+  void navigateToDetails(int itemId,OrderItemType type) {
+    context.push(R_ItemOrderDetails,extra: {"id" : itemId.toString() , "type" : type});
   }
 }
