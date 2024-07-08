@@ -23,10 +23,12 @@ class ProductRowItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 51,
-      child: Stack(children: [
-        Align(
-          alignment: Alignment.center,
+      child: Column(children: [
+        SizedBox(
+          height: 12,
+        ),
+        SizedBox(
+          height: 18,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -53,10 +55,13 @@ class ProductRowItem extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(
+          height: 12,
+        ),
         if (hasDivider == true)
           const Align(
               alignment: Alignment.bottomCenter,
-              child: Divider(color: AppTheme.appGrey9, height: 1))
+              child: Divider(color: AppTheme.appGrey9,thickness: 3,))
         else
           const SizedBox()
       ]),

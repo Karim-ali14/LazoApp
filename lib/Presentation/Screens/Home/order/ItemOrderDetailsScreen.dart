@@ -41,7 +41,8 @@ class _ItemOrderDetailsScreenState extends State<ItemOrderDetailsScreen> {
                 ),
                 Text(
                   "Name of product Saudi Arabi",
-                  style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts18w700
+                  style: AppTheme
+                      .styleWithTextBlackAdelleSansExtendedFonts18w700
                       .copyWith(overflow: TextOverflow.ellipsis),
                   maxLines: 1,
                 ),
@@ -50,7 +51,8 @@ class _ItemOrderDetailsScreenState extends State<ItemOrderDetailsScreen> {
                 ),
                 Text(
                   "Description",
-                  style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts18w700,
+                  style:
+                      AppTheme.styleWithTextBlackAdelleSansExtendedFonts18w700,
                 ),
                 const SizedBox(
                   height: defaultPaddingHorizontal,
@@ -117,11 +119,49 @@ class _ItemOrderDetailsScreenState extends State<ItemOrderDetailsScreen> {
                         child: ProductRowItem(
                           title: "Categories",
                           textValue: "Category 1 - Category 2 - Category 3",
+                          hasDivider: false,
                         ),
                       ),
                     ],
                   ),
-                )
+                ),
+                ...(List.generate(5, (index) =>
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 32,
+                    ),
+                    Text(
+                      "Name of List",
+                      style:
+                      AppTheme.styleWithTextBlackAdelleSansExtendedFonts18w700,
+                    ),
+                    SizedBox(
+                      height: 24,
+                    ),
+
+                    IntrinsicHeight(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 6),
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          border: Border.all(color: AppTheme.appGrey8),
+                          color: Colors.white,
+                        ),
+                        child: Column (
+                          children: [
+                            ...(List.generate(5, (index) =>
+                                ProductRowItem(title: "name 1",textValue: "SAR 50",hasDivider: index != 4,)
+                            ))
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ))),
+
               ],
             ),
           ),
