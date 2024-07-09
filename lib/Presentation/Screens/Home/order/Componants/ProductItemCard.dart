@@ -78,14 +78,29 @@ class _ProductItemCardState extends State<ProductItemCard> {
                               .styleWithTextRedAdelleSansExtendedFonts16w500,
                         ),
                         SizedBox(
-                          height: 2,
+                          height: 6,
                         ),
-                        Text(
-                          "${context.tr(SARKey)} ${widget.item?.product != null ? widget.item?.product?.price : widget.item?.service?.price}",
-                          style: AppTheme
-                              .styleWithTextAppGrey7AdelleSansExtendedFonts14w400
-                              .copyWith(height: 1.2),
-                        )
+                        if (widget.item?.product != null &&
+                            (widget.item?.product?.price ?? 0) >
+                                (widget.item?.product?.priceAfterDiscount ?? 0))
+                          Text(
+                            "${context.tr(SARKey)} ${widget.item?.product != null ? widget.item?.product?.price : widget.item?.service?.price}",
+                            style: AppTheme
+                                .styleWithTextAppGrey7AdelleSansExtendedFonts14w400
+                                .copyWith(
+                                    height: 1.2,
+                                    decoration: TextDecoration.lineThrough),
+                          )
+                        else if (widget.item?.service != null &&
+                            (widget.item?.service?.price ?? 0) >
+                                (widget.item?.service?.priceAfterDiscount ?? 0))
+                          Text(
+                              "${context.tr(SARKey)} ${widget.item?.product != null ? widget.item?.product?.price : widget.item?.service?.price}",
+                              style: AppTheme
+                                  .styleWithTextAppGrey7AdelleSansExtendedFonts14w400
+                                  .copyWith(
+                                      height: 1.2,
+                                      decoration: TextDecoration.lineThrough))
                       ],
                     )
                   ],
