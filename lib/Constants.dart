@@ -23,6 +23,6 @@ const R_OrderDetails = "/orderDetailsScreen";
 const R_ItemOrderDetails = "/itemOrderDetailsScreen";
 
 //EXTRAS
-const userKey = "user";
+const userKey = "lazoProvider";
 const emailOrPhoneKey = "emailOrPhone";
 const orderIdKey = "orderId";
