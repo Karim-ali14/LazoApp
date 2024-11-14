@@ -5,7 +5,7 @@
 import 'package:athletix/api.dart';
 ```
 
-All URIs are relative to *http://}*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -397,7 +397,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rateOrder**
-> ClientOrderDetails rateOrder(comment, orderId, rating)
+> ClientOrderDetails rateOrder(comments, orderItemsIds, ratings)
 
 Rate order
 
@@ -414,12 +414,12 @@ import 'package:athletix/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('bearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ClientApi();
-final comment = comment_example; // String | 
-final orderId = orderId_example; // String | 
-final rating = rating_example; // String | From 1 to 5
+final comments = []; // List<String> | 
+final orderItemsIds = []; // List<String> | 
+final ratings = []; // List<String> | 
 
 try {
-    final result = api_instance.rateOrder(comment, orderId, rating);
+    final result = api_instance.rateOrder(comments, orderItemsIds, ratings);
     print(result);
 } catch (e) {
     print('Exception when calling ClientApi->rateOrder: $e\n');
@@ -430,9 +430,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **comment** | **String**|  | [optional] 
- **orderId** | **String**|  | [optional] 
- **rating** | **String**| From 1 to 5 | [optional] 
+ **comments** | [**List<String>**](String.md)|  | [optional] 
+ **orderItemsIds** | [**List<String>**](String.md)|  | [optional] 
+ **ratings** | [**List<String>**](String.md)|  | [optional] 
 
 ### Return type
 
@@ -450,7 +450,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **readANotification122**
-> ReadANotification1200Response readANotification122(notificationId)
+> ReadANotification122200Response readANotification122(notificationId)
 
 read a notification
 
@@ -485,7 +485,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ReadANotification1200Response**](ReadANotification1200Response.md)
+[**ReadANotification122200Response**](ReadANotification122200Response.md)
 
 ### Authorization
 
@@ -543,7 +543,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **showNotifications2**
-> ShowNotifications1200Response showNotifications2(unreadOnly)
+> ShowNotifications2200Response showNotifications2(unreadOnly)
 
 show notifications
 
@@ -578,7 +578,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ShowNotifications1200Response**](ShowNotifications1200Response.md)
+[**ShowNotifications2200Response**](ShowNotifications2200Response.md)
 
 ### Authorization
 
@@ -782,7 +782,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **toggleProductServiceInWishlist**
-> toggleProductServiceInWishlist(productId, serviceId)
+> ToggleProductServiceInWishlist200Response toggleProductServiceInWishlist(productId, serviceId)
 
 Toggle product/service in wishlist
 
@@ -803,7 +803,8 @@ final productId = productId_example; // String | Select product or service
 final serviceId = serviceId_example; // String | Select product or service
 
 try {
-    api_instance.toggleProductServiceInWishlist(productId, serviceId);
+    final result = api_instance.toggleProductServiceInWishlist(productId, serviceId);
+    print(result);
 } catch (e) {
     print('Exception when calling ClientApi->toggleProductServiceInWishlist: $e\n');
 }
@@ -818,7 +819,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ToggleProductServiceInWishlist200Response**](ToggleProductServiceInWishlist200Response.md)
 
 ### Authorization
 
@@ -827,7 +828,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

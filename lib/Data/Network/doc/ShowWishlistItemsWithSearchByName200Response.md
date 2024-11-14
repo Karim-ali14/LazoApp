@@ -8,7 +8,7 @@ import 'package:athletix/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**List<ShowWishlistItemsWithSearchByName200ResponseDataInner>**](ShowWishlistItemsWithSearchByName200ResponseDataInner.md) |  | [optional] [default to const []]
+**data** | [**ShowWishlistItemsWithSearchByName200ResponseData**](ShowWishlistItemsWithSearchByName200ResponseData.md) |  | [optional] 
 **message** | **String** |  | [optional] 
 **status** | **bool** |  | [optional] 
 

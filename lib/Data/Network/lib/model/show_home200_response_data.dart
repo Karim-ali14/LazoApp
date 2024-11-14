@@ -13,6 +13,7 @@ part of openapi.api;
 class ShowHome200ResponseData {
   /// Returns a new [ShowHome200ResponseData] instance.
   ShowHome200ResponseData({
+    this.banners = const [],
     this.categories = const [],
     this.occasions = const [],
     this.topRatedProducts = const [],
@@ -20,18 +21,21 @@ class ShowHome200ResponseData {
     this.topRatedServices = const [],
   });
 
-  List<ShowHome200ResponseDataCategoriesInner> categories;
+  List<Banner> banners;
 
-  List<ShowHome200ResponseDataOccasionsInner> occasions;
+  List<Category> categories;
 
-  List<ShowHome200ResponseDataTopRatedProductsInner> topRatedProducts;
+  List<Occasion> occasions;
 
-  List<ShowHome200ResponseDataTopRatedProvidersInner> topRatedProviders;
+  List<ProviderProduct> topRatedProducts;
 
-  List<ShowHome200ResponseDataTopRatedServicesInner> topRatedServices;
+  List<ProviderData> topRatedProviders;
+
+  List<ServiceShowData> topRatedServices;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ShowHome200ResponseData &&
+     other.banners == banners &&
      other.categories == categories &&
      other.occasions == occasions &&
      other.topRatedProducts == topRatedProducts &&
@@ -41,6 +45,7 @@ class ShowHome200ResponseData {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (banners.hashCode) +
     (categories.hashCode) +
     (occasions.hashCode) +
     (topRatedProducts.hashCode) +
@@ -48,10 +53,11 @@ class ShowHome200ResponseData {
     (topRatedServices.hashCode);
 
   @override
-  String toString() => 'ShowHome200ResponseData[categories=$categories, occasions=$occasions, topRatedProducts=$topRatedProducts, topRatedProviders=$topRatedProviders, topRatedServices=$topRatedServices]';
+  String toString() => 'ShowHome200ResponseData[banners=$banners, categories=$categories, occasions=$occasions, topRatedProducts=$topRatedProducts, topRatedProviders=$topRatedProviders, topRatedServices=$topRatedServices]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+      json[r'banners'] = this.banners;
       json[r'categories'] = this.categories;
       json[r'occasions'] = this.occasions;
       json[r'top_rated_products'] = this.topRatedProducts;
@@ -79,11 +85,12 @@ class ShowHome200ResponseData {
       }());
 
       return ShowHome200ResponseData(
-        categories: ShowHome200ResponseDataCategoriesInner.listFromJson(json[r'categories']),
-        occasions: ShowHome200ResponseDataOccasionsInner.listFromJson(json[r'occasions']),
-        topRatedProducts: ShowHome200ResponseDataTopRatedProductsInner.listFromJson(json[r'top_rated_products']),
-        topRatedProviders: ShowHome200ResponseDataTopRatedProvidersInner.listFromJson(json[r'top_rated_providers']),
-        topRatedServices: ShowHome200ResponseDataTopRatedServicesInner.listFromJson(json[r'top_rated_services']),
+        banners: Banner.listFromJson(json[r'banners']),
+        categories: Category.listFromJson(json[r'categories']),
+        occasions: Occasion.listFromJson(json[r'occasions']),
+        topRatedProducts: ProviderProduct.listFromJson(json[r'top_rated_products']),
+        topRatedProviders: ProviderData.listFromJson(json[r'top_rated_providers']),
+        topRatedServices: ServiceShowData.listFromJson(json[r'top_rated_services']),
       );
     }
     return null;

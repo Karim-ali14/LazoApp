@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://}', this.authentication,});
+  ApiClient({this.basePath = 'http://localhost', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -199,6 +199,8 @@ class ApiClient {
           return ClientAuthResponse.fromJson(value);
         case 'ClientAuthResponseData':
           return ClientAuthResponseData.fromJson(value);
+        case 'ClientNotification':
+          return ClientNotification.fromJson(value);
         case 'ClientOrderDetails':
           return ClientOrderDetails.fromJson(value);
         case 'ClientOrderDetailsOrderItemsInner':
@@ -219,6 +221,20 @@ class ApiClient {
           return Color.fromJson(value);
         case 'ColorsResponse':
           return ColorsResponse.fromJson(value);
+        case 'FilterTopProductsServices200Response':
+          return FilterTopProductsServices200Response.fromJson(value);
+        case 'FilterTopProductsServices200ResponseData':
+          return FilterTopProductsServices200ResponseData.fromJson(value);
+        case 'FilterTopProductsServices200ResponseDataProducts':
+          return FilterTopProductsServices200ResponseDataProducts.fromJson(value);
+        case 'FilterTopProductsServices200ResponseDataServices':
+          return FilterTopProductsServices200ResponseDataServices.fromJson(value);
+        case 'FilterTopSellers200Response':
+          return FilterTopSellers200Response.fromJson(value);
+        case 'FilterTopSellers200ResponseData':
+          return FilterTopSellers200ResponseData.fromJson(value);
+        case 'FilterTopSellers200ResponseDataLinksInner':
+          return FilterTopSellers200ResponseDataLinksInner.fromJson(value);
         case 'GiftBox':
           return GiftBox.fromJson(value);
         case 'GiftCard':
@@ -231,6 +247,8 @@ class ApiClient {
           return OccasionsResponse.fromJson(value);
         case 'ProductDetails':
           return ProductDetails.fromJson(value);
+        case 'ProductDetailsRatingsInner':
+          return ProductDetailsRatingsInner.fromJson(value);
         case 'ProductDetailsResponse':
           return ProductDetailsResponse.fromJson(value);
         case 'ProductListItem':
@@ -305,6 +323,8 @@ class ApiClient {
           return ReadANotification1200Response.fromJson(value);
         case 'ReadANotification1200ResponseData':
           return ReadANotification1200ResponseData.fromJson(value);
+        case 'ReadANotification122200Response':
+          return ReadANotification122200Response.fromJson(value);
         case 'ResetCodeConfirmRequest':
           return ResetCodeConfirmRequest.fromJson(value);
         case 'ResetCodeConfirmResponse':
@@ -325,6 +345,10 @@ class ApiClient {
           return ServiceShowData.fromJson(value);
         case 'ServiceShowResponse':
           return ServiceShowResponse.fromJson(value);
+        case 'ServicesListResponse':
+          return ServicesListResponse.fromJson(value);
+        case 'ServicesListResponseData':
+          return ServicesListResponseData.fromJson(value);
         case 'ShowAllGiftBoxes200Response':
           return ShowAllGiftBoxes200Response.fromJson(value);
         case 'ShowAllGiftCards200Response':
@@ -333,14 +357,8 @@ class ApiClient {
           return ShowAllProviderSOrders200Response.fromJson(value);
         case 'ShowAllProviderSOrders200ResponseData':
           return ShowAllProviderSOrders200ResponseData.fromJson(value);
-        case 'ShowAllServicesWithFilter200Response':
-          return ShowAllServicesWithFilter200Response.fromJson(value);
-        case 'ShowAllServicesWithFilter200ResponseData':
-          return ShowAllServicesWithFilter200ResponseData.fromJson(value);
-        case 'ShowAllServicesWithFilter200ResponseDataDataInner':
-          return ShowAllServicesWithFilter200ResponseDataDataInner.fromJson(value);
-        case 'ShowAllServicesWithFilter200ResponseDataLinksInner':
-          return ShowAllServicesWithFilter200ResponseDataLinksInner.fromJson(value);
+        case 'ShowAllProviderSOrders200ResponseDataLinksInner':
+          return ShowAllProviderSOrders200ResponseDataLinksInner.fromJson(value);
         case 'ShowCartDetails200Response':
           return ShowCartDetails200Response.fromJson(value);
         case 'ShowCartDetails200ResponseData':
@@ -355,16 +373,6 @@ class ApiClient {
           return ShowHome200Response.fromJson(value);
         case 'ShowHome200ResponseData':
           return ShowHome200ResponseData.fromJson(value);
-        case 'ShowHome200ResponseDataCategoriesInner':
-          return ShowHome200ResponseDataCategoriesInner.fromJson(value);
-        case 'ShowHome200ResponseDataOccasionsInner':
-          return ShowHome200ResponseDataOccasionsInner.fromJson(value);
-        case 'ShowHome200ResponseDataTopRatedProductsInner':
-          return ShowHome200ResponseDataTopRatedProductsInner.fromJson(value);
-        case 'ShowHome200ResponseDataTopRatedProvidersInner':
-          return ShowHome200ResponseDataTopRatedProvidersInner.fromJson(value);
-        case 'ShowHome200ResponseDataTopRatedServicesInner':
-          return ShowHome200ResponseDataTopRatedServicesInner.fromJson(value);
         case 'ShowNotifications1200Response':
           return ShowNotifications1200Response.fromJson(value);
         case 'ShowNotifications1200ResponseDataInner':
@@ -373,6 +381,8 @@ class ApiClient {
           return ShowNotifications1200ResponseDataInnerProvider.fromJson(value);
         case 'ShowNotifications1200ResponseDataInnerUser':
           return ShowNotifications1200ResponseDataInnerUser.fromJson(value);
+        case 'ShowNotifications2200Response':
+          return ShowNotifications2200Response.fromJson(value);
         case 'ShowOrders200Response':
           return ShowOrders200Response.fromJson(value);
         case 'ShowOrders200ResponseData':
@@ -389,10 +399,8 @@ class ApiClient {
           return ShowPromocodeDetails200ResponseData.fromJson(value);
         case 'ShowWishlistItemsWithSearchByName200Response':
           return ShowWishlistItemsWithSearchByName200Response.fromJson(value);
-        case 'ShowWishlistItemsWithSearchByName200ResponseDataInner':
-          return ShowWishlistItemsWithSearchByName200ResponseDataInner.fromJson(value);
-        case 'ShowWishlistItemsWithSearchByName200ResponseDataInnerItemsInner':
-          return ShowWishlistItemsWithSearchByName200ResponseDataInnerItemsInner.fromJson(value);
+        case 'ShowWishlistItemsWithSearchByName200ResponseData':
+          return ShowWishlistItemsWithSearchByName200ResponseData.fromJson(value);
         case 'Size':
           return Size.fromJson(value);
         case 'SizesResponse':
@@ -401,6 +409,10 @@ class ApiClient {
           return Tag.fromJson(value);
         case 'TagsResponse':
           return TagsResponse.fromJson(value);
+        case 'ToggleProductServiceInWishlist200Response':
+          return ToggleProductServiceInWishlist200Response.fromJson(value);
+        case 'ToggleProductServiceInWishlist200ResponseData':
+          return ToggleProductServiceInWishlist200ResponseData.fromJson(value);
         case 'UpdateProfile200Response':
           return UpdateProfile200Response.fromJson(value);
         case 'UpdateProfile200ResponseData':

@@ -13,12 +13,18 @@ part of openapi.api;
 class ShowWishlistItemsWithSearchByName200Response {
   /// Returns a new [ShowWishlistItemsWithSearchByName200Response] instance.
   ShowWishlistItemsWithSearchByName200Response({
-    this.data = const [],
+    this.data,
     this.message,
     this.status,
   });
 
-  List<ShowWishlistItemsWithSearchByName200ResponseDataInner> data;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ShowWishlistItemsWithSearchByName200ResponseData? data;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -45,7 +51,7 @@ class ShowWishlistItemsWithSearchByName200Response {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (data.hashCode) +
+    (data == null ? 0 : data!.hashCode) +
     (message == null ? 0 : message!.hashCode) +
     (status == null ? 0 : status!.hashCode);
 
@@ -54,7 +60,11 @@ class ShowWishlistItemsWithSearchByName200Response {
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.data != null) {
       json[r'data'] = this.data;
+    } else {
+      json[r'data'] = null;
+    }
     if (this.message != null) {
       json[r'message'] = this.message;
     } else {
@@ -87,7 +97,7 @@ class ShowWishlistItemsWithSearchByName200Response {
       }());
 
       return ShowWishlistItemsWithSearchByName200Response(
-        data: ShowWishlistItemsWithSearchByName200ResponseDataInner.listFromJson(json[r'data']),
+        data: ShowWishlistItemsWithSearchByName200ResponseData.fromJson(json[r'data']),
         message: mapValueOfType<String>(json, r'message'),
         status: mapValueOfType<bool>(json, r'status'),
       );
