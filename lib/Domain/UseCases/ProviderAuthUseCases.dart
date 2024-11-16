@@ -123,20 +123,18 @@ class ProviderDeleteAccountUseCase extends StateNotifier<StateModel<bool>> {
 //   }
 // }
 //
-// class OTPVerificationUseCase extends StateNotifier<StateModel<OTPVerifyResponse>> {
-//
-//   final Ref ref;
-//   final PublicVerificationCodeApi _verificationApi;
-//   OTPVerificationUseCase(this.ref, this._verificationApi) : super(StateModel());
-//
-//   void verification(String phone,int otp) async {
-//     state = StateModel.loading();
-//     request(()=> _verificationApi.otpVerifyPost(phone: int.parse(phone),otp: otp),onComplete: (resp){
-//       print("Result Response $resp");
-//     });
-//   }
-//
-// }
+class UpdateFcmTokenAndDeviceUseCase extends StateNotifier<StateModel<void>> {
+
+  final Ref ref;
+  final ProviderApi _api;
+  UpdateFcmTokenAndDeviceUseCase(this.ref, this._api) : super(StateModel());
+
+  void updateFcmToken({ String? deviceType, String? fcmToken, }) async {
+    state = StateModel.loading();
+    request(()=> _api.updateFcmTokenAndDeviceType1(deviceType: "android",fcmToken: fcmToken));
+  }
+
+}
 //
 // class UserProfileUpdateUseCase extends StateNotifier<StateModel<ClientProfileResponse>> {
 //

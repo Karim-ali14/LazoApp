@@ -1,6 +1,10 @@
 
+import 'dart:convert';
+
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -24,29 +28,38 @@ import 'Presentation/Screens/Auth/login/LoginScreen.dart';
 import 'Presentation/Screens/Home/HomeScreen.dart';
 import 'Presentation/Screens/More/MoreScreen.dart';
 import 'Presentation/Theme/AppTheme.dart';
+import 'Utils/NotificationsUtils.dart';
 
 
 late SharedPreferences prefs;
 
-/*@pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
-  print("Handling a background message: ${message.messageId} ${message.data}");
 
+Future<void> _firebaseMessagingHandler(RemoteMessage message) async {
+  print('Handling a background message: ${message.messageId}');
+
+  // Process the data payload
+  if (message.data.isNotEmpty) {
+    print('Data: ${message.data}');
+    String type = message.data['type'];
+    String title = message.data['title'];
+    String messageText = message.data['description'];
+
+    // You can process the data and navigate to a specific screen or show a notification
+    // For example, if the screen is "messages_screen", navigate to a specific screen
+    print('Type: $type, Message: $messageText');
+
+    // You could trigger a local notification or some other action
+    NotificationsUtils.showNotification(title ?? "N/A", messageText ?? "N/A",dataJson: json.encode(message.data));
+
+  }
 }
 
 
-void getNotificationsOnForeground({WidgetRef? ref}){
+void getNotificationsOnForeground(/*{WidgetRef? ref}*/){
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     print('Got a message whilst in the foreground!');
     print('Message data: ${message.data}');
-
-    if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification} ${message.data}');
-      ref?.read(getNotificationsProvider.notifier).getNotifications();
-      ref?.read(notificationsCountProvider.notifier).getNotifications();
-      NotificationsUtils.showNotification(message.notification?.title ?? "N/A", message.notification?.body ?? "N/A");
-    }
+    _firebaseMessagingHandler(message);
   });
 }
 
@@ -68,10 +81,9 @@ void handlingNotificationPermission() async {
   }catch(e){
 
   }
-
 }
 
-Future<void> setupInteractedMessage(BuildContext context) async {
+Future<void> setupInteractedMessage(BuildContext? context) async {
 
   RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
 
@@ -84,30 +96,56 @@ Future<void> setupInteractedMessage(BuildContext context) async {
   });
 }
 
-void _handleMessage(RemoteMessage message,BuildContext context) {
+void _handleMessage(RemoteMessage message,BuildContext? context) {
   print("Data Opened ${message.data}");
-  GoRouter.of(context).push(R_Teams);
-}*/
+  if(context == null) return;
+  if (message.data.isNotEmpty) {
+    String type = message.data['type'];
+    String id = message.data['id'];
+
+    if(type == "order") {
+      GoRouter.of(context).push(R_OrderDetails, extra: {orderIdKey: id});
+    }
+  }
+}
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    // options: DefaultFirebaseOptions.currentPlatform,
+  );
   //SharedPrefs
   prefs = await SharedPreferences.getInstance();
   //FCM
-  //final fcmToken = await FirebaseMessaging.instance.getToken();
-  //Notifications
-  //handlingNotificationPermission();
-
-  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  print("Fcm Token : $fcmToken");
+  // // Notifications
+  handlingNotificationPermission();
+  //
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingHandler);
+  getNotificationsOnForeground();
+  // setupInteractedMessage(navigatorKey.currentContext);
   // await FirebaseMessaging.instance.subscribeToTopic("championship");
 
-  // Check if you received the link via `getInitialLink` first
+
+  // Background notification handling
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    print(" Background notification handling ${message.data}");
+    _handleMessage(message,navigatorKey.currentContext);
+  });
+
+  // Handle app launch when terminated
+  FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? message) {
+    if (message != null) {
+      print(" Handle app launch when terminated ${message.data}");
+      _handleMessage(message,navigatorKey.currentContext);
+    }
+  });
 
   ago.setLocaleMessages('ar', ago.ArMessages());
   //Main App
@@ -148,6 +186,7 @@ class MyApp extends ConsumerWidget {
   }
 
   final GoRouter _router = GoRouter(
+    navigatorKey: navigatorKey,
     routes: <GoRoute>[
       GoRoute(
         path: R_splashScreenRout,

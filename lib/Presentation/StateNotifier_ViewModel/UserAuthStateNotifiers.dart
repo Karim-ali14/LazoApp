@@ -6,11 +6,28 @@ import 'package:lazo_provider/ViewModels/UserViewModel.dart';
 
 import '../../Domain/UseCases/ProviderAuthUseCases.dart';
 
-final providerLoginStateProvider = StateNotifierProvider.autoDispose<ProviderLoginUseCase,StateModel<ProviderLoginResponse>>((ref) => ProviderLoginUseCase(ref, ref.read(providerAuthApi)));
-final sendOtpStateProvider = StateNotifierProvider.autoDispose<SendOtpUseCase,StateModel<Object>>((ref) => SendOtpUseCase(ref, ref.read(providerAuthApi)));
-final confirmResetCodeStateProvider = StateNotifierProvider.autoDispose<ConfirmResetCodeUseCase,StateModel<Object>>((ref) => ConfirmResetCodeUseCase(ref, ref.read(providerAuthApi)));
-final changePasswordStateProvider = StateNotifierProvider.autoDispose<ChangePasswordUseCase,StateModel<Object>>((ref) => ChangePasswordUseCase(ref, ref.read(providerAuthApi)));
+final providerLoginStateProvider = StateNotifierProvider.autoDispose<
+        ProviderLoginUseCase, StateModel<ProviderLoginResponse>>(
+    (ref) => ProviderLoginUseCase(ref, ref.read(providerAuthApi)));
+final sendOtpStateProvider =
+    StateNotifierProvider.autoDispose<SendOtpUseCase, StateModel<Object>>(
+        (ref) => SendOtpUseCase(ref, ref.read(providerAuthApi)));
+final confirmResetCodeStateProvider = StateNotifierProvider.autoDispose<
+        ConfirmResetCodeUseCase, StateModel<Object>>(
+    (ref) => ConfirmResetCodeUseCase(ref, ref.read(providerAuthApi)));
+final changePasswordStateProvider = StateNotifierProvider.autoDispose<
+        ChangePasswordUseCase, StateModel<Object>>(
+    (ref) => ChangePasswordUseCase(ref, ref.read(providerAuthApi)));
 
-final providerTokenStateProvider = StateNotifierProvider<UserProvider,ProviderLoginResponseData?>((ref) => UserProvider(ref));
-final providerLogoutStateProvider = StateNotifierProvider.autoDispose<LogoutUseCase,StateModel<String>>((ref) => LogoutUseCase(ref,ref.read(providerApi)));
-final providerDeleteAccountStateProvider = StateNotifierProvider.autoDispose<ProviderDeleteAccountUseCase,StateModel<bool>>((ref) => ProviderDeleteAccountUseCase(ref,ref.read(providerApi)));
+final providerTokenStateProvider =
+    StateNotifierProvider<UserProvider, ProviderLoginResponseData?>(
+        (ref) => UserProvider(ref));
+final providerLogoutStateProvider =
+    StateNotifierProvider.autoDispose<LogoutUseCase, StateModel<String>>(
+        (ref) => LogoutUseCase(ref, ref.read(providerApi)));
+final providerDeleteAccountStateProvider = StateNotifierProvider.autoDispose<
+        ProviderDeleteAccountUseCase, StateModel<bool>>(
+    (ref) => ProviderDeleteAccountUseCase(ref, ref.read(providerApi)));
+final updateFcmTokenAndDeviceUseCaseStateProvider = StateNotifierProvider.autoDispose<
+        UpdateFcmTokenAndDeviceUseCase, StateModel<void>>(
+    (ref) => UpdateFcmTokenAndDeviceUseCase(ref, ref.read(providerApi)));

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:lazo_provider/Data/Network/lib/api.dart';
 import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
@@ -40,6 +41,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       );
       final user = ref.read(providerTokenStateProvider.notifier).checkIfSavedUser();
       if(user != null){
+        initFcmToken();
         context.go(R_MainScreen);
       }else if(prefs.getBool("doneLanding") == true){
         context.go(R_LoginScreen);
@@ -50,6 +52,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     //setupInteractedMessage(context);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold
@@ -91,7 +94,14 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       backgroundColor: AppTheme.mainBackgroundLightColor,
     );
   }
-
+  void initFcmToken() async{
+    //FCM
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    ref.read(updateFcmTokenAndDeviceUseCaseStateProvider.notifier).updateFcmToken(
+        fcmToken: fcmToken
+    );
+    print("Fcm Token : $fcmToken");
+  }
   @override
   void dispose() {
     super.dispose();

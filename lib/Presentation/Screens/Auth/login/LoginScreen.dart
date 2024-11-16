@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -35,6 +36,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     handleState(providerLoginStateProvider, showLoading: true, showToast: true,
         onSuccess: (state) {
+      initFcmToken();
       context.go(R_MainScreen);
     });
 
@@ -152,6 +154,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         ),
       ),
     );
+  }
+  void initFcmToken() async{
+    //FCM
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    ref.read(updateFcmTokenAndDeviceUseCaseStateProvider.notifier).updateFcmToken(
+        fcmToken: fcmToken
+    );
+    print("Fcm Token : $fcmToken");
   }
 
   void login() async {
