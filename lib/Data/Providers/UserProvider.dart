@@ -17,46 +17,51 @@ class UserModelProvider extends StateNotifier<ProviderLoginResponseData?> {
   UserModelProvider(this.ref) : super(null) {
     String? userJson = prefs.getString(userKey);
     print("user before convert $userJson");
-    if(userJson != null){
-      Map<String,dynamic> userJsonObj = json.decode(userJson);
+    if (userJson != null) {
+      Map<String, dynamic> userJsonObj = json.decode(userJson);
       state = ProviderLoginResponseData.fromJson(userJsonObj);
     }
   }
 
-  void updateUserData(ProviderLoginResponseData? userModel){
+  void updateUserData(ProviderLoginResponseData? userModel) {
     state = userModel;
   }
 }
 
-final userProvider = StateNotifierProvider<UserModelProvider,ProviderLoginResponseData?>((ref)  {
+final userProvider =
+    StateNotifierProvider<UserModelProvider, ProviderLoginResponseData?>((ref) {
   return UserModelProvider(ref);
 });
 
-
-final httpServiceProvider = Provider<HttpOps>((ref)  {
-  return HttpOps(ref.watch(userProvider),ref);
+final httpServiceProvider = Provider<HttpOps>((ref) {
+  return HttpOps(ref.watch(userProvider), ref);
 });
 
-final userRepoProvider = Provider<UserRepository>((ref)  {
+final userRepoProvider = Provider<UserRepository>((ref) {
   return UserRepositoryImp(ref.watch(httpServiceProvider));
 });
 
-final userLogoutNotifier = StateNotifierProvider<UserLogOutUseCase,StateModel<bool>>((ref)  {
-  return UserLogOutUseCase(ref,ref.watch(userRepoProvider));
+final userLogoutNotifier =
+    StateNotifierProvider<UserLogOutUseCase, StateModel<bool>>((ref) {
+  return UserLogOutUseCase(ref, ref.watch(userRepoProvider));
 });
 
-final userFCMNotifier = StateNotifierProvider<UserFCMUseCase,StateModel<bool>>((ref)  {
-  return UserFCMUseCase(ref,ref.watch(userRepoProvider));
+final userFCMNotifier =
+    StateNotifierProvider<UserFCMUseCase, StateModel<bool>>((ref) {
+  return UserFCMUseCase(ref, ref.watch(userRepoProvider));
 });
 
-final deleteAccountNotifier = StateNotifierProvider<DeleteAccountUseCase,StateModel<bool>>((ref)  {
-  return DeleteAccountUseCase(ref,ref.watch(userRepoProvider));
+final deleteAccountNotifier =
+    StateNotifierProvider<DeleteAccountUseCase, StateModel<bool>>((ref) {
+  return DeleteAccountUseCase(ref, ref.watch(userRepoProvider));
 });
 
-final termsNotifier = StateNotifierProvider<TNCUseCase,StateModel<String>>((ref)  {
-  return TNCUseCase(ref,ref.watch(userRepoProvider));
+final termsNotifier =
+    StateNotifierProvider<TNCUseCase, StateModel<String>>((ref) {
+  return TNCUseCase(ref, ref.watch(userRepoProvider));
 });
 
-final bottomNavVisibilityNotifier = StateNotifierProvider<BottomNavState,bool>((ref)  {
-return BottomNavState(ref);
+final bottomNavVisibilityNotifier =
+    StateNotifierProvider<BottomNavState, bool>((ref) {
+  return BottomNavState(ref);
 });

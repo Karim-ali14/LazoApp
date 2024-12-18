@@ -37,5 +37,7 @@ const notificationActiveImg = "assets/images/notification_active_img.svg";
 const notificationUnActiveImg = "assets/images/notification_unactive_img.svg";
 const orderPlaceHolderIconSvg = "assets/images/orderPlaceHolderIcon.svg";
 const closeSquareSvg = "assets/images/closeSquare.svg";
+const walletWithWhiteBackgroundIconSvg = "assets/images/wallet_with_white_background.svg";
+
 
 

@@ -189,6 +189,11 @@ class SVGIcons {
       deleteAccountIc,
     );
   }
+  static Widget walletWithWhiteBackgroundIcon() {
+    return SvgPicture.asset(
+      walletWithWhiteBackgroundIconSvg,
+    );
+  }
   static Widget rightArrowWithBackgroundIcon(){
     return SvgPicture.asset(
       rightArrowWithBackgroundImg,

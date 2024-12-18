@@ -24,6 +24,9 @@ const enterYourPhoneKey = "enterYourPhone";
 const dontHaveAnAccountKey = "dontHaveAnAccount";
 const signUpKey = "signUp";
 const dashesKey = "dashes";
+const String walletBalanceKey = "walletBalance";
+const String balanceKey = "balance";
+
 
 // Params Keys
 const String doneLandingKey = "doneLanding";

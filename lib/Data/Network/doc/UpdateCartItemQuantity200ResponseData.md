@@ -1,0 +1,23 @@
+# athletix.model.UpdateCartItemQuantity200ResponseData
+
+## Load the model package
+```dart
+import 'package:athletix/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**cartItems** | [**List<CartItemsInner>**](CartItemsInner.md) |  | [optional] [default to const []]
+**createdAt** | **String** |  | [optional] 
+**id** | **num** |  | [optional] 
+**total** | **num** |  | [optional] 
+**type** | **String** |  | [optional] 
+**updatedAt** | **String** |  | [optional] 
+**userId** | **num** |  | [optional] 
+**sessionId** | **String** |  | [optional] 
+**shipmentType** | **String** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

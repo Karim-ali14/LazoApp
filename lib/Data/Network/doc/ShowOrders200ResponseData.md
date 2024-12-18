@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **from** | **num** |  | [optional] 
 **lastPage** | **num** |  | [optional] 
 **lastPageUrl** | **String** |  | [optional] 
-**links** | [**List<ShowAllProviderSOrders200ResponseDataLinksInner>**](ShowAllProviderSOrders200ResponseDataLinksInner.md) |  | [optional] [default to const []]
+**links** | [**List<Showtransactions200ResponseDataTransactionsLinksInner>**](Showtransactions200ResponseDataTransactionsLinksInner.md) |  | [optional] [default to const []]
 **nextPageUrl** | [**Object**](.md) |  | [optional] 
 **path** | **String** |  | [optional] 
 **perPage** | **num** |  | [optional] 

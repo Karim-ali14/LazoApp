@@ -21,6 +21,7 @@ const R_NotificationScreen = '/notification';
 const R_FAQScreen = '/faqScreen';
 const R_OrderDetails = "/orderDetailsScreen";
 const R_ItemOrderDetails = "/itemOrderDetailsScreen";
+const R_WalletScreen = "/walletScreen";
 
 //EXTRAS
 const userKey = "lazoProvider";

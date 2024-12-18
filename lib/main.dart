@@ -15,6 +15,7 @@ import 'package:lazo_provider/Presentation/Screens/Home/order/ItemOrderDetailsSc
 import 'package:lazo_provider/Presentation/Screens/Home/order/OrderDetailsScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/MainScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/More/FAQScreen.dart';
+import 'package:lazo_provider/Presentation/Screens/More/Balance/WalletScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Notification/NotificationScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/OnboardingPage/OnboardingScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -254,6 +255,10 @@ class MyApp extends ConsumerWidget {
           builder: (BuildContext context , GoRouterState state) {
         var extra = state.extra as Map;
             return ItemOrderDetailsScreen(id: extra["id"], orderItemType: extra["type"] as OrderItemType,);
+          }),
+      GoRoute(path: R_WalletScreen,
+          builder: (BuildContext context , GoRouterState state) {
+            return const WalletScreen();
           })
     ],
   );

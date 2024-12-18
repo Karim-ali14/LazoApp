@@ -24,5 +24,7 @@
   "enterYourPhone" : "Enter your phone",
   "signUp" : "Sign Up",
   "dontHaveAnAccount" : "Don’t have an account?",
-  "dashes" : "----"
+  "dashes" : "----",
+  "walletBalance" : "Wallet Balance",
+  "balance" : "Balance"
 }

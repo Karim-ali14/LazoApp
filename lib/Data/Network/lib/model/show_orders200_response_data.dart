@@ -70,7 +70,7 @@ class ShowOrders200ResponseData {
   ///
   String? lastPageUrl;
 
-  List<ShowAllProviderSOrders200ResponseDataLinksInner> links;
+  List<Showtransactions200ResponseDataTransactionsLinksInner> links;
 
   Object? nextPageUrl;
 
@@ -237,7 +237,7 @@ class ShowOrders200ResponseData {
             ? null
             : num.parse(json[r'last_page'].toString()),
         lastPageUrl: mapValueOfType<String>(json, r'last_page_url'),
-        links: ShowAllProviderSOrders200ResponseDataLinksInner.listFromJson(json[r'links']),
+        links: Showtransactions200ResponseDataTransactionsLinksInner.listFromJson(json[r'links']),
         nextPageUrl: mapValueOfType<Object>(json, r'next_page_url'),
         path: mapValueOfType<String>(json, r'path'),
         perPage: json[r'per_page'] == null

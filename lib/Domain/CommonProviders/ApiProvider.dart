@@ -34,6 +34,8 @@ final notificationApi = Provider((ref) => Notifications1Api(ref.read(apiClient))
 
 final providerApi = Provider((ref) => ProviderApi(ref.read(apiClient)));
 
+final transactionsApi = Provider((ref) => TransactionsApi(ref.read(apiClient)));
+
 // final userAuthApi = Provider((ref) => PublicAuthenticationApi(ref.read(apiClient)));
 //
 // final verificationApi = Provider((ref) => PublicVerificationCodeApi(ref.read(apiClient)));
@@ -77,30 +79,38 @@ extension GenericRequest<T> on StateNotifier<StateModel<T>> {
       state = StateModel(state: DataState.ERROR,data: null, message: (e).toString());
     }
   }
-  Future<void> requestForPagination(Future<dynamic> Function() asyncFunc , {Function(T)? onComplete,Function(ApiException)? onFailure}) async {
+  Future<void> requestForPagination(Future<dynamic> Function() asyncFunc,
+      {Function(T)? onComplete, Function(ApiException)? onFailure}) async {
     var response;
-    try{
+    try {
       response = await asyncFunc();
-      // state = StateModel(state: DataState.SUCCESS, data: response is T ? response : null ,message: response?.message );
+      print(" Response $response");
+      //state = StateModel(state: DataState.SUCCESS, data: response is T ? response : null ,message: response?.message );
       onComplete?.call(response);
-    }on ApiException catch (e) {
-      print("Error Response $e");
+    } on ApiException catch (e) {
+      print("Error Response $response $e");
       onFailure?.call(e);
-      Map? error = json.tryDecode(e.message??"");
-      var message = error?.containsKey("errors") == true ? (error!["errors"] as List).first : "Something wrong happen please try again later";
-      if(e.code == 401 || e.code == 403){
+      Map? error = json.tryDecode(e.message ?? "");
+      var message = error?.containsKey("errors") == true
+          ? (error!["errors"] as List).first
+          : "Something wrong happen please try again later";
+      if (e.code == 401 || e.code == 403) {
         print("Not Authed Here");
-        Future.delayed(const Duration(milliseconds: 20),(){
+        Future.delayed(const Duration(milliseconds: 20), () {
           print("Will Retry");
           request(asyncFunc);
         });
-      }else{
-        state = StateModel(state: DataState.ERROR,data: response?.data, message: message);
+      } else {
+        state = StateModel(
+            state: DataState.ERROR, data: response?.data, message: message);
       }
-    } on Exception catch(e){
+    } on Exception catch (e) {
       print("Some Err Here");
       onFailure?.call(ApiException(500, e.toString()));
-      state = StateModel(state: DataState.ERROR,data: response?.data, message: (e).toString());
+      state = StateModel(
+          state: DataState.ERROR,
+          data: response?.data,
+          message: (e).toString());
     }
   }
 

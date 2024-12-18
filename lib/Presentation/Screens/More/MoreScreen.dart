@@ -60,6 +60,20 @@ class _MoreScreenState extends ConsumerState<MoreScreen> {
             height: defaultPaddingHorizontal,
           ),
           InkWell(
+            onTap: navigateToWalletScreen,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: MoreItemCard(
+                startIcon: SVGIcons.contactUsIcon(),
+                text: "Wallet",
+                endIcon: SVGIcons.rightArrowWithBackgroundIcon(),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: defaultPaddingHorizontal,
+          ),
+          InkWell(
             onTap: showContactUsBottomSheet,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -169,6 +183,10 @@ class _MoreScreenState extends ConsumerState<MoreScreen> {
                 topLeft: Radius.circular(10), topRight: Radius.circular(10))),
         isScrollControlled: true, // Set isScrollControlled to true
         builder: (content) => ContactUsBottomSheet());
+  }
+
+  void navigateToWalletScreen() {
+    context.push(R_WalletScreen);
   }
 
   void showSignOutBottomSheet() {
