@@ -2,14 +2,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:lazo_provider/Data/Network/lib/api.dart';
 import 'package:lazo_provider/Localization/Keys.dart';
+import 'package:lazo_provider/Presentation/Screens/Home/order/Componants/ProductItemCard.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Utils/DateUtils.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
 // 525252520
+typedef OnItemClick = Function(String?);
 class TransactionItem extends StatelessWidget {
   final TransactionDetails transaction;
-
-  TransactionItem({required this.transaction});
+  final OnItemClick itemClick;
+  TransactionItem({required this.transaction, required this.itemClick});
 
   @override
   Widget build(BuildContext context) {
@@ -81,13 +83,18 @@ class TransactionItem extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                  Text(
-                    'View Report',
-                    style: AppTheme
-                        .styleWithTextMainAppColorAdelleSansExtendedFonts10w400.copyWith(
-                      decoration: TextDecoration.underline,
+                  transaction.receipt != null ? InkWell(
+                    onTap: (){
+                      itemClick.call(transaction.receipt);
+                    },
+                    child: Text(
+                      'View Report',
+                      style: AppTheme
+                          .styleWithTextMainAppColorAdelleSansExtendedFonts10w400.copyWith(
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
-                  )
+                  ) : const SizedBox()
                 ],
               ),
             ],

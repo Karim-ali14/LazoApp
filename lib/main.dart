@@ -14,6 +14,7 @@ import 'package:lazo_provider/Presentation/Screens/Auth/forgetpassword/ForgetPas
 import 'package:lazo_provider/Presentation/Screens/Home/order/ItemOrderDetailsScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Home/order/OrderDetailsScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/MainScreen.dart';
+import 'package:lazo_provider/Presentation/Screens/More/Balance/FileViewerScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/More/FAQScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/More/Balance/WalletScreen.dart';
 import 'package:lazo_provider/Presentation/Screens/Notification/NotificationScreen.dart';
@@ -24,6 +25,7 @@ import 'package:timeago/timeago.dart' as ago;
 import '../../../../../Constants.dart';
 import '../../../../../Presentation/Screens/SplashScreen.dart';
 
+import 'Localization/keys.dart';
 import 'Presentation/Screens/Auth/forgetpassword/ChangePasswordScreen.dart';
 import 'Presentation/Screens/Auth/login/LoginScreen.dart';
 import 'Presentation/Screens/Home/HomeScreen.dart';
@@ -259,6 +261,11 @@ class MyApp extends ConsumerWidget {
       GoRoute(path: R_WalletScreen,
           builder: (BuildContext context , GoRouterState state) {
             return const WalletScreen();
+          }),
+      GoRoute(path: R_FileViewerScreen,
+          builder: (BuildContext context , GoRouterState state) {
+            var extra = state.extra as Map;
+            return  FileViewerScreen(fileUrl: extra[fileUrlKey]);
           })
     ],
   );

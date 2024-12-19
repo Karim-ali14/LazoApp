@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Presentation/Screens/More/Balance/Widgets/TransactionItem.dart';
 import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/TransactionStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Widgets/DataListView.dart';
@@ -103,7 +105,9 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
               }, builder: (TransactionDetails item) {
                   return Skeletonizer(
                       enabled: transactions.state == DataState.LOADING,
-                      child: TransactionItem(transaction: item));
+                      child: TransactionItem(transaction: item, itemClick: (link) {
+                        navigateToFileViewer(link);
+                      },));
                 }),
             )
           ],
@@ -115,4 +119,9 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
   void getTransactions() {
     ref.read(transactionStateProvider.notifier).getTransactions();
   }
+
+  void navigateToFileViewer(String? link) {
+    context.push(R_FileViewerScreen,extra: {fileUrlKey : link});
+  }
+
 }

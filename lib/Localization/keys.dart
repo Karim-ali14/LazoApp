@@ -30,3 +30,4 @@ const String balanceKey = "balance";
 
 // Params Keys
 const String doneLandingKey = "doneLanding";
+const String fileUrlKey = "fileUrl";
