@@ -12,7 +12,7 @@ class TransactionsUseCases
   TransactionsUseCases(this.api)
       : super(StateModel());
   void getTransactions({ String page = "1", String? dateFrom, String? dateTo,  }) async {
-    state = page != 1
+    state = page != "1"
         ? StateModel(data: state.data, state: DataState.MORE_LOADING)
         : StateModel.loading();
     requestForPagination(

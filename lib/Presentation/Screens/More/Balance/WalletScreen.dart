@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lazo_provider/Presentation/Screens/More/Balance/Widgets/TransactionItem.dart';
 import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/TransactionStateNotifiers.dart';
 import 'package:lazo_provider/Presentation/Widgets/DataListView.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../Data/Models/StateModel.dart';
 import '../../../../Data/Network/lib/api.dart';
 import '../../../../Localization/keys.dart';
@@ -100,7 +101,9 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
                       .getTransactions(page: (++currentPage).toString());
                 }
               }, builder: (TransactionDetails item) {
-                  return TransactionItem(transaction: item);
+                  return Skeletonizer(
+                      enabled: transactions.state == DataState.LOADING,
+                      child: TransactionItem(transaction: item));
                 }),
             )
           ],
