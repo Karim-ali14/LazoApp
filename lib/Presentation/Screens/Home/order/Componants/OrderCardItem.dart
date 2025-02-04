@@ -161,7 +161,18 @@ class _OrderCardItemState extends ConsumerState<OrderCardItem> {
           // });
           break;
         }
-      case ButtonsClickType.ReadyToShipping:
+      case ButtonsClickType.Preparing:
+        {
+
+          widget.onOrderItemActionClick?.call(
+              widget.orderModel?.id.toString() ?? "",
+              "4",
+              null
+          );
+
+          break;
+        }
+        case ButtonsClickType.ReadyToShipping:
         {
 
           widget.onOrderItemActionClick?.call(
@@ -170,33 +181,6 @@ class _OrderCardItemState extends ConsumerState<OrderCardItem> {
               null
           );
 
-
-          // ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
-          //     cancellationReason: null,
-          //     orderId: widget.orderModel?.id.toString(),
-          //     statusId: "5",
-          //     onSuccess: (res) {
-          //       updateData();
-          //       if (context.isThereCurrentDialogShowing()) {
-          //         try {
-          //           context.pop();
-          //         } catch (e) {
-          //           print("NAV cannont pop");
-          //         }
-          //       }
-          //     },
-          //     onLoading: () {
-          //       context.showLoadingDialog();
-          //     },
-          //     onFailureRequest: () {
-          //       if (context.isThereCurrentDialogShowing()) {
-          //         try {
-          //           context.pop();
-          //         } catch (e) {
-          //           print("NAV cannont pop");
-          //         }
-          //       }
-          //     });
           break;
         }
       case ButtonsClickType.Finish:

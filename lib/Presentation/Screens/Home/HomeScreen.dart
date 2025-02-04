@@ -78,6 +78,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
         ref
             .read(getCanselOrderStateProvider.notifier)
             .updateList(res.data!.data!);
+      } else if (actionType == OrderStateActionType.Preparing) {
+        ref
+            .read(getNewOrderStateProvider.notifier)
+            .deleteOrder(res.data!.data!);
+        ref
+            .read(getCurrentOrderStateProvider.notifier)
+            .updateList(res.data!.data!);
       } else if (actionType == OrderStateActionType.ReadyToShipping) {
         ref
             .read(getCurrentOrderStateProvider.notifier)
@@ -278,6 +285,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                                         OrderStateActionType.Cancel) {
                                       showCancellationBottomSheet(
                                           orderId, statusId);
+                                    }else if (actionType ==
+                                        OrderStateActionType.Preparing) {
+                                      ref
+                                          .read(updateOrderStatusStateProvider
+                                          .notifier)
+                                          .updateOrderStatus(
+                                          orderId: orderId,
+                                          statusId: statusId);
                                     }
                                   } else {
                                     AppSnackBar.showSnackBar(context,

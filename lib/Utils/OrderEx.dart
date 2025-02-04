@@ -84,9 +84,13 @@ extension OrderEx on String{
         orderStatusColor = ButtonsType.ShowAcceptOrCancel;
         break;
       }
-      case "3" :
+
       case "2" : {
         orderStatusColor =  ButtonsType.ViewDetails;
+        break;
+      }
+      case "3" : {
+        orderStatusColor =  ButtonsType.Preparing;
         break;
       }case "4" : {
         orderStatusColor =  ButtonsType.ReadyToShipping;
@@ -114,6 +118,9 @@ extension OrderEx on String{
     switch (this){
       case "2" : {
         orderStatusColor = OrderStateActionType.Accepte;
+        break;
+      }case "4" : {
+        orderStatusColor = OrderStateActionType.Preparing;
         break;
       }case "5" : {
         orderStatusColor =  OrderStateActionType.ReadyToShipping;

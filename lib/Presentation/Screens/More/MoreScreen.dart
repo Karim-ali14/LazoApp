@@ -7,12 +7,17 @@ import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Constants/Constants.dart';
 import 'package:lazo_provider/Data/Models/StateModel.dart';
 import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
+import 'package:lazo_provider/Localization/LanguageType.dart';
 import 'package:lazo_provider/Presentation/Dialogs/AskBottomSheet.dart';
 import 'package:lazo_provider/Presentation/Dialogs/ContactUsBottomSheet.dart';
+import 'package:lazo_provider/Presentation/Dialogs/LoadingDialog.dart';
+import 'package:lazo_provider/Presentation/Dialogs/SelectorDialog.dart';
 import 'package:lazo_provider/Presentation/Theme/AppTheme.dart';
 import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
 import 'package:lazo_provider/Presentation/Widgets/SvgIcons.dart';
+import 'package:lazo_provider/main.dart';
 
+import '../../../Localization/LanguageProvider.dart';
 import '../../StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import 'Componants/MoreItemCard.dart';
 
@@ -45,14 +50,21 @@ class _MoreScreenState extends ConsumerState<MoreScreen> {
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: MoreItemCard(
-              startIcon: SVGIcons.langIcon(),
-              text: "Language",
-              endIcon: Text(
-                "English",
-                style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w500,
+          InkWell(
+            onTap: (){
+              context.showSelectionActionSheet(["ar" , "en"], (lang){
+                changeLang(lang == 1 ? LanguageType.en : LanguageType.ar);
+              }, header: "Select language");
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: MoreItemCard(
+                startIcon: SVGIcons.langIcon(),
+                text: "Language",
+                endIcon: Text(
+                  "English",
+                  style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w500,
+                ),
               ),
             ),
           ),
@@ -222,7 +234,9 @@ class _MoreScreenState extends ConsumerState<MoreScreen> {
         )
     );
   }
-
+  void changeLang(String lang) {
+    ref.read(langProvider.notifier).fetchLocale(lang);
+  }
   void navigateToLogin() {
     context.go(R_LoginScreen);
   }

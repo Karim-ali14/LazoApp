@@ -14,14 +14,16 @@ enum OrderStateActionType {
   Accepte,
   Cancel,
   Finish,
-  ReadyToShipping
+  ReadyToShipping,
+  Preparing
 }
 
 enum ButtonsType {
   ViewDetails,
   ShowAcceptOrCancel,
   Finish,
-  ReadyToShipping
+  ReadyToShipping,
+  Preparing
 }
 
 enum ButtonsClickType {
@@ -29,7 +31,8 @@ enum ButtonsClickType {
   Accept,
   Cancel,
   Finish,
-  ReadyToShipping
+  ReadyToShipping,
+  Preparing
 }
 
 enum OrderItemType {

@@ -17,6 +17,7 @@ import '../../../../Constants/Constants.dart';
 import '../../../../Localization/keys.dart';
 import '../../../Theme/AppTheme.dart';
 import '../../../Widgets/AppButton.dart';
+import '../../../Widgets/LanguageText.dart';
 import '../../../Widgets/SvgIcons.dart';
 import 'Componants/TimerCounter.dart';
 
@@ -53,10 +54,7 @@ class _OtpScreenState extends ConsumerState<OtpScreen> {
           trailingWidget: Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: defaultPaddingHorizontal),
-            child: Text(
-              context.tr(arabicKey),
-              style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,
-            ),
+            child: LanguageText(),
           )),
       body: SafeArea(
         child: Column(

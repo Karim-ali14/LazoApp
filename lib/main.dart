@@ -25,6 +25,7 @@ import 'package:timeago/timeago.dart' as ago;
 import '../../../../../Constants.dart';
 import '../../../../../Presentation/Screens/SplashScreen.dart';
 
+import 'Localization/LanguageProvider.dart';
 import 'Localization/keys.dart';
 import 'Presentation/Screens/Auth/forgetpassword/ChangePasswordScreen.dart';
 import 'Presentation/Screens/Auth/login/LoginScreen.dart';
@@ -169,6 +170,9 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
+    print("app lang ${prefs.getString("lang")}");
+    print("app lang ${ref.watch(langProvider).languageCode}");
+
     return ThemeProvider(
       initTheme: Theme.of(context),
       duration: const Duration(milliseconds: 500),
@@ -180,7 +184,7 @@ class MyApp extends ConsumerWidget {
         darkTheme: AppTheme.darkTheme,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
-        locale: context.locale,
+        locale: ref.watch(langProvider),
         routerDelegate: _router.routerDelegate,
         routeInformationProvider: _router.routeInformationProvider,
         routeInformationParser: _router.routeInformationParser,

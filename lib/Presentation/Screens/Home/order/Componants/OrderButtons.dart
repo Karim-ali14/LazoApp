@@ -92,6 +92,19 @@ class OrderButtons extends StatelessWidget {
                   style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w400,
                 )),
           )
+          else if(type == ButtonsType.Preparing)
+          AppButton(
+            height: 40,
+            onPress:(){
+              onButtonClickListener?.call(ButtonsClickType.Preparing);
+            },
+            backColor: AppTheme.mainAppColorLight2,
+            child: const Center(
+                child: Text(
+                  "Preparing",
+                  style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w400,
+                )),
+          )
       else
         const SizedBox()
     ]);

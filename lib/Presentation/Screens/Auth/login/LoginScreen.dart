@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
+import 'package:lazo_provider/Localization/LanguageType.dart';
 import 'package:lazo_provider/Localization/keys.dart';
 import 'package:lazo_provider/Presentation/Screens/Auth/login/Widgets/BlockProviderBottomSheet.dart';
 import 'package:lazo_provider/Presentation/StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
@@ -17,7 +18,9 @@ import 'package:lazo_provider/Utils/Extintions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../Constants/Constants.dart';
+import '../../../../Localization/LanguageProvider.dart';
 import '../../../Widgets/AppButton.dart';
+import '../../../Widgets/LanguageText.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -61,11 +64,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               .styleWithTextBlackAdelleSansExtendedFonts20w700,
                         ),
                         const Expanded(child: SizedBox()),
-                        Text(
-                          context.tr(arabicKey),
-                          style: AppTheme
-                              .styleWithTextBlackAdelleSansExtendedFonts16w400,
-                        ),
+                        LanguageText()
                       ],
                     ),
                   ),

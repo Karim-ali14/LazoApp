@@ -7,6 +7,7 @@ import 'package:lazo_provider/Constants.dart';
 import 'package:lazo_provider/Constants/Eunms.dart';
 import 'package:lazo_provider/Domain/CommonProviders/ApiProvider.dart';
 import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
+import 'package:lazo_provider/Presentation/Widgets/LanguageText.dart';
 import 'package:lazo_provider/Utils/Extintions.dart';
 
 import '../../../../Constants/Constants.dart';
@@ -40,7 +41,7 @@ class _ForgetPasswordScreenState extends ConsumerState<ForgetPasswordScreen> {
           navigated: true,
           trailingWidget: Padding(
             padding: const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal),
-            child: Text(context.tr(arabicKey),style: AppTheme.styleWithTextBlackAdelleSansExtendedFonts16w400,),
+            child: LanguageText(),
           )
       ),
       body: SafeArea(

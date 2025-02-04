@@ -74,7 +74,15 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
         ref
             .read(getCanselOrderStateProvider.notifier)
             .updateList(res.data!.data!);
-      } else if (actionType == OrderStateActionType.ReadyToShipping) {
+      } else if (actionType == OrderStateActionType.Preparing) {
+        ref
+            .read(getNewOrderStateProvider.notifier)
+            .deleteOrder(res.data!.data!);
+        ref
+            .read(getCurrentOrderStateProvider.notifier)
+            .updateOrder(res.data!.data!);
+      }
+      else if (actionType == OrderStateActionType.ReadyToShipping) {
         ref
             .read(getCurrentOrderStateProvider.notifier)
             .updateOrder(res.data!.data!);
@@ -260,7 +268,20 @@ class _OrderDetailsScreenState extends ConsumerState<OrderDetailsScreen> {
 
           break;
         }
-      case ButtonsClickType.ReadyToShipping:
+      case ButtonsClickType.Preparing:
+        {
+          if (user?.provider?.status != "pending") {
+            actionType = OrderStateActionType.Preparing;
+            ref.read(updateOrderStatusStateProvider.notifier).updateOrderStatus(
+                orderId: orderModel?.id.toString(), statusId: "4");
+          } else {
+            AppSnackBar.showSnackBar(context,
+                isSuccess: true, message: "Your account is still pending");
+          }
+
+          break;
+        }
+        case ButtonsClickType.ReadyToShipping:
         {
           if (user?.provider?.status != "pending") {
             actionType = OrderStateActionType.ReadyToShipping;
