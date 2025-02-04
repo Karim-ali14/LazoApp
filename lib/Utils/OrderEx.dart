@@ -10,7 +10,7 @@ extension OrderEx on String{
     String orderStatus = "";
     switch (this){
       case "1" : {
-        orderStatus = context.tr(paddingKey);
+        orderStatus = context.tr(pendingKey);
         break;
       }
       case "3" :

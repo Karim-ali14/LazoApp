@@ -47,108 +47,110 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               const EdgeInsets.symmetric(horizontal: defaultPaddingHorizontal),
           child: Form(
             key: fromKey,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: defaultPaddingHorizontal, vertical: 20),
-                  child: Row(
-                    children: [
-                      Text(
-                        context.tr(loginKey),
-                        style: AppTheme
-                            .styleWithTextBlackAdelleSansExtendedFonts20w700,
-                      ),
-                      const Expanded(child: SizedBox()),
-                      Text(
-                        context.tr(arabicKey),
-                        style: AppTheme
-                            .styleWithTextBlackAdelleSansExtendedFonts16w400,
-                      ),
-                    ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: defaultPaddingHorizontal, vertical: 20),
+                    child: Row(
+                      children: [
+                        Text(
+                          context.tr(loginKey),
+                          style: AppTheme
+                              .styleWithTextBlackAdelleSansExtendedFonts20w700,
+                        ),
+                        const Expanded(child: SizedBox()),
+                        Text(
+                          context.tr(arabicKey),
+                          style: AppTheme
+                              .styleWithTextBlackAdelleSansExtendedFonts16w400,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                SVGIcons.appLogoIcon(
-                    width: 113, height: 95, color: Colors.black),
-                const SizedBox(
-                  height: 40,
-                ),
-                AppTextField(
-                  mode: AutovalidateMode.onUserInteraction,
-                  hint: context.tr(phoneNumberAndEmailAddressKey),
-                  label: context.tr(phoneNumberAndEmailAddressKey),
-                  textEditingController: phoneAndEmailController,
-                  validate: (value) {
-                    if (value?.isEmpty == true) {
-                      return 'You should select phone or email';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                AppTextField(
+                  SVGIcons.appLogoIcon(
+                      width: 113, height: 95, color: Colors.black),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  AppTextField(
                     mode: AutovalidateMode.onUserInteraction,
-                    hint: context.tr(passwordKey),
-                    label: context.tr(passwordKey),
-                    textEditingController: passwordController,
+                    hint: context.tr(phoneNumberAndEmailAddressKey),
+                    label: context.tr(phoneNumberAndEmailAddressKey),
+                    textEditingController: phoneAndEmailController,
                     validate: (value) {
                       if (value?.isEmpty == true) {
-                        return context.tr(enterYourPhoneKey);
+                        return 'You should select phone or email';
                       } else {
                         return null;
                       }
-                    }),
-                const SizedBox(
-                  height: defaultPaddingHorizontal,
-                ),
-                Row(
-                  children: [
-                    const Spacer(),
-                    InkWell(
-                        onTap: forgetPassword,
-                        child: Text(
-                          context.tr(forgetPasswordKey),
-                          style: AppTheme
-                              .styleWithTextBlackAdelleSansExtendedFonts14w400,
-                        ))
-                  ],
-                ),
-                SizedBox(
-                  height: 24,
-                ),
-                AppButton(
-                  height: 48,
-                  onPress: login,
-                  text: context.tr(loginKey),
-                  width: context.getScreenSize.width,
-                ),
-                SizedBox(
-                  height: 24,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      context.tr(dontHaveAnAccountKey),
-                      style: AppTheme
-                          .styleWithTextBlackAdelleSansExtendedFonts16w400,
-                    ),
-                    InkWell(
-                        onTap: openSignUpUrl,
-                        child: Text(
-                          context.tr(signUpKey),
-                          style: AppTheme
-                              .styleWithTextRedAdelleSansExtendedFonts16w400
-                              .copyWith(
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: AppTheme.mainAppColor),
-                        ))
-                  ],
-                )
-              ],
+                    },
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  AppTextField(
+                      mode: AutovalidateMode.onUserInteraction,
+                      hint: context.tr(passwordKey),
+                      label: context.tr(passwordKey),
+                      textEditingController: passwordController,
+                      validate: (value) {
+                        if (value?.isEmpty == true) {
+                          return context.tr(enterYourPhoneKey);
+                        } else {
+                          return null;
+                        }
+                      }),
+                  const SizedBox(
+                    height: defaultPaddingHorizontal,
+                  ),
+                  Row(
+                    children: [
+                      const Spacer(),
+                      InkWell(
+                          onTap: forgetPassword,
+                          child: Text(
+                            context.tr(forgetPasswordKey),
+                            style: AppTheme
+                                .styleWithTextBlackAdelleSansExtendedFonts14w400,
+                          ))
+                    ],
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  AppButton(
+                    height: 48,
+                    onPress: login,
+                    text: context.tr(loginKey),
+                    width: context.getScreenSize.width,
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        context.tr(dontHaveAnAccountKey),
+                        style: AppTheme
+                            .styleWithTextBlackAdelleSansExtendedFonts16w400,
+                      ),
+                      InkWell(
+                          onTap: openSignUpUrl,
+                          child: Text(
+                            context.tr(signUpKey),
+                            style: AppTheme
+                                .styleWithTextRedAdelleSansExtendedFonts16w400
+                                .copyWith(
+                                    decoration: TextDecoration.underline,
+                                    decorationColor: AppTheme.mainAppColor),
+                          ))
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

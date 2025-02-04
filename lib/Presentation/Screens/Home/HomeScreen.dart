@@ -215,7 +215,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                     ),
                     child: Center(
                       child: Text(
-                        "Cancel Order",
+                        "Cancelled Order",
                         style: activeTabIndex == 3
                             ? AppTheme
                                 .styleWithTextWhiteAdelleSansExtendedFonts14w400
