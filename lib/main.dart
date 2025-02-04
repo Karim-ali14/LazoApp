@@ -170,8 +170,6 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    print("app lang ${prefs.getString("lang")}");
-    print("app lang ${ref.watch(langProvider).languageCode}");
 
     return ThemeProvider(
       initTheme: Theme.of(context),

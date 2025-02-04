@@ -17,6 +17,7 @@ import 'package:lazo_provider/Presentation/Widgets/CustomAppBar.dart';
 import 'package:lazo_provider/Presentation/Widgets/SvgIcons.dart';
 import 'package:lazo_provider/main.dart';
 
+import '../../../Localization/Keys.dart';
 import '../../../Localization/LanguageProvider.dart';
 import '../../StateNotifier_ViewModel/UserAuthStateNotifiers.dart';
 import 'Componants/MoreItemCard.dart';
@@ -32,6 +33,7 @@ class _MoreScreenState extends ConsumerState<MoreScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isEnglishLang = ref.watch(langProvider.notifier).isEnglish;
 
     handleState(providerLogoutStateProvider,showLoading: true , onSuccess: (res){
       if(res.state == DataState.SUCCESS){
@@ -62,7 +64,7 @@ class _MoreScreenState extends ConsumerState<MoreScreen> {
                 startIcon: SVGIcons.langIcon(),
                 text: "Language",
                 endIcon: Text(
-                  "English",
+                  isEnglishLang ? context.tr(englishKey) : context.tr(arabicKey),
                   style: AppTheme.styleWithTextRedAdelleSansExtendedFonts16w500,
                 ),
               ),
